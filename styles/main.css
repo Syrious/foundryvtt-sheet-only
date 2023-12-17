@@ -1,0 +1,7 @@
+.sheet-only > header{
+    display: none !important;
+}
+
+body.sheet-only > *:not(.sheet) {
+    display: none !important;
+}
