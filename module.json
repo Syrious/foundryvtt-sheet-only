@@ -6,8 +6,9 @@
     "minimum": "11",
     "verified": "11"
   },
-    "esmodules": [
-    "./main.mjs"
+  "esmodules": [
+    "main.mjs",
+    "settings.js"
   ],
   "styles": [
     "styles/main.css"

@@ -1,10 +1,11 @@
-
-
 Hooks.once('ready', async function () {
-    if(!game.user.isGM){
-        console.log("Sheet-Only Ready")
+    console.log("Sheet-Only Ready")
+    let playerdata = game.settings.get("sheet-only", 'playerdata');
+    let user = getUser();
+
+    if (playerdata[user.id] && playerdata[user.id].display) {
         hideCanvas();
-        popupSheet(getUser());
+        popupSheet(user);
     }
 });
 
@@ -19,9 +20,6 @@ function hideCanvas() {
     body.toggleClass('sheet-only', true)
 }
 
-/**
- * Opens the sheet of the user's actor
- */
 function popupSheet(user) {
     const actor = user.character;
 
@@ -33,13 +31,11 @@ function popupSheet(user) {
             top: 0,
             width: window.innerWidth,
             height: window.innerHeight,
-            classes:[
+            classes: [
                 ...sheet.options.classes,
                 "sheet-only"
             ]
         });
-
-
 
 
     } else {

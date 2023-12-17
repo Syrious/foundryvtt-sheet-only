@@ -1,0 +1,35 @@
+<div class="sheet-only flexcol" style="height:100%;">
+    <div class="dialog-content" style="max-height: calc(100% - 32px);">
+        <form style="height:100%;" class="flexcol">
+            <div class="sheet">
+                <ol class="items-list inventory-list">
+                    <li class="items-header flexrow">
+                        <h3 class="item-name flexrow noborder" style="margin-right:auto;">Players</h3>
+                        <div class="item-control" title="Sheet-Only">
+                            Sheet Only
+                        </div>
+                    </li>
+
+                    <ol class="item-list">
+                        {{#each players}}
+                        <li class="item flexrow " data-item-id="{{this.id}}">
+                            <div class="item-name flexrow rollable">
+                                <h4>
+                                    {{this.name}}
+                                </h4>
+                            </div>
+                            <div class="item-controls flexrow">
+                                <input type="checkbox" {{#if this.display}}checked{{/if}} class="display" />
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                </ol>
+            </div>
+        </form>
+    </div>
+    <hr style="width: 60%;flex: 0 0 1px;" />
+    <div class="dialog-buttons" style="flex: 0 0 30px;">
+        <button type="submit" name="submit" class="dialog-buttons save" data-button="request"><i class="far fa-save"></i> Save</button>
+    </div>
+</div>
