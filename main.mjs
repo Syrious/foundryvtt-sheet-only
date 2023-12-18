@@ -1,11 +1,30 @@
-Hooks.once('ready', async function () {
-    console.log("Sheet-Only Ready")
+function isSheetOnly() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = getUser();
 
-    if (playerdata[user.id] && playerdata[user.id].display) {
+    return playerdata[user.id] && playerdata[user.id].display;
+}
+
+function startCleanup() {
+    setInterval(() => {
+        const bodyChildren = Array.from(document.body.children);
+        bodyChildren.forEach(child => {
+
+            const styles = window.getComputedStyle(child);
+            if (styles.getPropertyValue('display') === 'none') {
+                          child.remove();
+            }
+        });
+    }, 30000);
+}
+
+Hooks.once('ready', async function () {
+    console.log("Sheet-Only Ready")
+
+    if (isSheetOnly()) {
         hideCanvas();
-        popupSheet(user);
+        popupSheet(getUser());
+        startCleanup();
     }
 });
 
@@ -41,5 +60,7 @@ function popupSheet(user) {
     } else {
         console.log(`No actor for user found.`);
     }
-
 }
+
+
+

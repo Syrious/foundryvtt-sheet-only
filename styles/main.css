@@ -2,6 +2,10 @@
     display: none !important;
 }
 
-body.sheet-only > *:not(.sheet) {
+body.sheet-only > *:not(.sheet):not(.dnd5e.dialog) {
     display: none !important;
+}
+
+#roll-hd{
+    display: none;
 }
