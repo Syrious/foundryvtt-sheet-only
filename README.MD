@@ -18,5 +18,5 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 
 ### Compatibilities
 Should work with 
-[Tidy5e Sheet](https://foundryvtt.com/packages/tidy5e-sheet/)
-[Compact DnDBeyond 5e Character Sheet](https://foundryvtt.com/packages/compact-beyond-5e-sheet)
+* [Tidy5e Sheet](https://foundryvtt.com/packages/tidy5e-sheet/)
+* [Compact DnDBeyond 5e Character Sheet](https://foundryvtt.com/packages/compact-beyond-5e-sheet)
