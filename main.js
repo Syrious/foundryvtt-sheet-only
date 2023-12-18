@@ -1,39 +1,26 @@
-Hooks.on('sightRefresh', (visibility) => {
-    if (isSheetOnly()) {
-        pullToSheetOnlyScene();
+Hooks.on('setup', async()=>{
+    if (isSheetOnly) {
+    }
+
+    if (isSheetOnly() && !game.settings.get("core", "noCanvas")) { 
+        await game.settings.set('core','noCanvas',true)
+        ui.notifications.info("Disabling your canvas and reloading Foundry");
+        foundry.utils.debouncedReload();
     }
 });
 
 Hooks.once('ready', async function () {
+    console.log('------------sheet only test ready')
     if (isSheetOnly()) {
-        pullToSheetOnlyScene();
-        hideCanvas();
         popupSheet(getUser());
         startCleanup();
-    } else if (getUser().isGM) {
-        let scene = game.scenes.getName("sheetonly");
-
-        if (!scene) {
-            importScene();
-        }
     }
 });
 
 function isSheetOnly() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = getUser();
-
     return playerdata[user.id] && playerdata[user.id].display;
-}
-
-function importScene() {
-    console.log("Importing sheet-only scene")
-    game.scenes.importFromCompendium(game.packs.get('sheet-only.sheet-only'), "ywfbI4h9xo8FHEht", {}, {keepId: true});
-}
-
-function pullToSheetOnlyScene() {
-    let scene = game.scenes.getName("sheetonly");
-    scene.view();
 }
 
 function startCleanup() {
@@ -49,15 +36,8 @@ function startCleanup() {
     }, 30000);
 }
 
-
 function getUser() {
-    const userId = game.userId;
-    return game.users.get(userId);
-}
-
-function hideCanvas() {
-    let body = $('body');
-    body.toggleClass('sheet-only', true)
+    return game.users.get(game.userId);
 }
 
 function popupSheet(user) {
