@@ -1,7 +1,4 @@
 Hooks.on('setup', async()=>{
-    if (isSheetOnly) {
-    }
-
     if (isSheetOnly() && !game.settings.get("core", "noCanvas")) { 
         await game.settings.set('core','noCanvas',true)
         ui.notifications.info("Disabling your canvas and reloading Foundry");
