@@ -1,8 +1,30 @@
+Hooks.on('sightRefresh', (visibility) => {
+    if(isSheetOnly()) {
+        pullToSheetOnlyScene();
+    }
+});
+
+Hooks.once('ready', async function () {
+    if (isSheetOnly()) {
+        pullToSheetOnlyScene();
+        hideCanvas();
+        popupSheet(getUser());
+        startCleanup();
+    }
+});
+
 function isSheetOnly() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = getUser();
 
     return playerdata[user.id] && playerdata[user.id].display;
+}
+
+function pullToSheetOnlyScene() {
+    let scene = game.scenes.getName("SHEETONLY");
+    if(scene) {
+        scene.view();
+    }
 }
 
 function startCleanup() {
@@ -12,21 +34,11 @@ function startCleanup() {
 
             const styles = window.getComputedStyle(child);
             if (styles.getPropertyValue('display') === 'none') {
-                          child.remove();
+                child.remove();
             }
         });
     }, 30000);
 }
-
-Hooks.once('ready', async function () {
-    console.log("Sheet-Only Ready")
-
-    if (isSheetOnly()) {
-        hideCanvas();
-        popupSheet(getUser());
-        startCleanup();
-    }
-});
 
 
 function getUser() {
@@ -36,7 +48,7 @@ function getUser() {
 
 function hideCanvas() {
     let body = $('body');
-    body.toggleClass('sheet-only', true)
+     body.toggleClass('sheet-only', true)
 }
 
 function popupSheet(user) {
