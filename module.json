@@ -12,8 +12,8 @@
       "discord": "syrious_"
     }
   ],
-  "esmodules": [
-    "main.mjs",
+  "scripts": [
+    "main.js",
     "settings.js"
   ],
   "styles": [
