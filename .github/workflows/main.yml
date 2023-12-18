@@ -19,7 +19,7 @@ jobs:
         id: create_versioned_release
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true # set to false if you do not want to allow updates on existing releases
+          allowUpdates: false # set to false if you do not want to allow updates on existing releases
           name: Release ${{ steps.get-version.outputs.version }} # Use the version in the name
           draft: false
           prerelease: false
@@ -29,7 +29,7 @@ jobs:
       - name: Create Release
         id: create_latest_release
         uses: ncipollo/release-action@v1
-        if: endsWith(github.ref, 'master') # Only update the latest release when pushing to the master branch
+        if: endsWith(github.ref, 'main') # Only update the latest release when pushing to the master branch
         with:
           allowUpdates: true
           name: Latest
