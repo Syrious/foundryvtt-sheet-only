@@ -1,0 +1,25 @@
+{
+  "id": "sheet-only",
+  "title": "Sheet Only",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "esmodules": [
+    "main.mjs",
+    "settings.js"
+  ],
+  "styles": [
+    "styles/main.css"
+  ],
+  "packs": [
+    {
+      "name": "sheet-only",
+      "label": "Sheet-Only",
+      "path": "/packs/maps.db",
+      "entity": "Scene",
+      "type": "Scene"
+    }
+  ]
+}
