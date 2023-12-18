@@ -2,7 +2,7 @@
     display: none !important;
 }
 
-body.sheet-only > *:not(.sheet):not(.dnd5e.dialog) {
+body.sheet-only > *:not(.sheet):not(.dnd5e.dialog):not(.dialog) {
     display: none !important;
 }
 
