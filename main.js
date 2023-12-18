@@ -7,7 +7,6 @@ Hooks.on('setup', async()=>{
 });
 
 Hooks.once('ready', async function () {
-    console.log('------------sheet only test ready')
     if (isSheetOnly()) {
         popupSheet(getUser());
         startCleanup();
