@@ -12,5 +12,14 @@
   ],
   "styles": [
     "styles/main.css"
+  ],
+  "packs": [
+    {
+      "name": "sheet-only",
+      "label": "Sheet-Only",
+      "path": "/packs/maps.db",
+      "entity": "Scene",
+      "type": "Scene"
+    }
   ]
 }

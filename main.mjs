@@ -1,5 +1,5 @@
 Hooks.on('sightRefresh', (visibility) => {
-    if(isSheetOnly()) {
+    if (isSheetOnly()) {
         pullToSheetOnlyScene();
     }
 });
@@ -10,6 +10,12 @@ Hooks.once('ready', async function () {
         hideCanvas();
         popupSheet(getUser());
         startCleanup();
+    } else if (getUser().isGM) {
+        let scene = game.scenes.getName("sheetonly");
+
+        if (!scene) {
+            importScene();
+        }
     }
 });
 
@@ -20,11 +26,14 @@ function isSheetOnly() {
     return playerdata[user.id] && playerdata[user.id].display;
 }
 
+function importScene() {
+    console.log("Importing sheet-only scene")
+    game.scenes.importFromCompendium(game.packs.get('sheet-only.sheet-only'), "ywfbI4h9xo8FHEht", {}, {keepId: true});
+}
+
 function pullToSheetOnlyScene() {
-    let scene = game.scenes.getName("SHEETONLY");
-    if(scene) {
-        scene.view();
-    }
+    let scene = game.scenes.getName("sheetonly");
+    scene.view();
 }
 
 function startCleanup() {
@@ -48,7 +57,7 @@ function getUser() {
 
 function hideCanvas() {
     let body = $('body');
-     body.toggleClass('sheet-only', true)
+    body.toggleClass('sheet-only', true)
 }
 
 function popupSheet(user) {
