@@ -14,7 +14,7 @@ jobs:
         shell: bash
         id: get-version
         run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
-      - run: zip -r ./my-module.zip module.json settings.js main.js packs/ styles/ templates/
+      - run: zip -r ./module.zip module.json settings.js main.js packs/ styles/ templates/
       - name: Create Release                                # Create an additional release for this version
         id: create_versioned_release
         uses: ncipollo/release-action@v1
