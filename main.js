@@ -16,14 +16,9 @@ Hooks.once('ready', async function () {
 
 Hooks.on('renderActorSheet', async (app, html, data) => {
     if (isSheetOnly() && html.hasClass('sheet')) {
-        html.css({
-            left: "5%",
-            top: 0,
-            width: '95%',
-            height: window.innerHeight,
-            flexGrow: 5
-        });
+        app.setPosition({left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, scale: 2});
 
+        html.addClass('sheet-only-sheet');
         $('.sheet-only-container').append(html);
     }
 })
