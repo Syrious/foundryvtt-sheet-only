@@ -13,4 +13,14 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 ### Installation and setup
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets.
 
-![setup.png](setup.png)
+<img alt="setup.png" height="500" src="setup.png"/>
+
+### Usage
+* If sheet-only user they can only see their sheet
+* If they have multiple characters, a sidebar is shown and the users are able to switch between characters
+
+<img alt="example.png" height="500" src="example.png"/>
+
+### Issues
+* The UI is not very reactive. If you go from portrait to landscape or vice versa you probably need to reload
+* Changing the permission on an actor does not get synced with connected users
