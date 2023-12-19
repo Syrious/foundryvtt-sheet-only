@@ -34,42 +34,39 @@ Hooks.on('createActor', async function () {
 
 Hooks.on('deleteActor', async function () {
     rebuildActorList();
+    popupSheet(getUser())
 });
 
 function setupContainer() {
-    // Create a new flex container
     const flexContainer = $('<div>').addClass('sheet-only-container');
     $('body').append(flexContainer);
 
-    const list = getActorList();
-    flexContainer.append(list);
+    flexContainer.append($('<div>').addClass('sheet-only-actor-list'));
+    rebuildActorList()
 }
 
 function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');
+
     actorList.empty();
-    actorList.append(getActorList())
+    getActorElements().forEach(elem => actorList.append(elem));
 }
 
-function getActorList() {
-    const list = $('<div>').addClass('sheet-only-actor-list');
-    game.actors
-        .filter(actor => actor.ownership[game.user.id] === 3)
-        .forEach(actor => {
-                const elem = $('<div>')
-                    // .text(actor.name)
-                    .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
-                    .click(async () => {
-                        if (currentSheet) {
-                            currentSheet.close();
-                        }
+function getActorElements() {
+    let actors = game.actors.filter(actor => actor.ownership[game.user.id] === 3);
+    return actors.map(actor => {
+            return $('<div>')
+                // .text(actor.name)
+                .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
+                .click(async () => {
+                    if (currentSheet) {
+                        currentSheet.close();
+                    }
+                    currentSheet = actor.sheet.render(true);
+                });
 
-                        currentSheet = actor.sheet.render(true);
-                    });
-                list.append(elem);
-            }
-        );
-    return list;
+        }
+    );
 }
 
 function hideElements() {
