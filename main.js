@@ -16,7 +16,12 @@ Hooks.once('ready', async function () {
 
 Hooks.on('renderActorSheet', async (app, html, data) => {
     if (isSheetOnly() && html.hasClass('sheet')) {
-        app.setPosition({left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, scale: 2});
+        app.setPosition({
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
 
         html.addClass('sheet-only-sheet');
         $('.sheet-only-container').append(html);
@@ -52,7 +57,8 @@ function getActorList() {
         .filter(actor => actor.ownership[game.user.id] === 3)
         .forEach(actor => {
                 const elem = $('<div>')
-                    .text(actor.name)
+                    // .text(actor.name)
+                    .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
                     .click(async () => {
                         if (currentSheet) {
                             currentSheet.close();
@@ -62,7 +68,7 @@ function getActorList() {
                     });
                 list.append(elem);
             }
-        )
+        );
     return list;
 }
 

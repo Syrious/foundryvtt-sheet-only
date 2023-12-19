@@ -4,6 +4,10 @@
     display: none !important;
 }
 
+.sheet-only-sheet{
+    position: relative;
+}
+
 .sheet-only .sheet .items-list {
     list-style: none;
     margin: 0;
@@ -14,9 +18,15 @@
 }
 
 .sheet-only-actor-list {
-    color: aqua;
-    font-size: 28px;
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: brown;
+    justify-items: flex-start;
+    padding: 5px;
+    gap: 3px;
+}
+.sheet-only-actor-list img{
+    border: none;
 }
 
 .sheet-only-container {
@@ -26,6 +36,7 @@
     top: 0;
     width: 100%;
     height: 100%;
+    justify-items: flex-start;
 }
 
 .sheet-only .sheet .items-list .item-list {
