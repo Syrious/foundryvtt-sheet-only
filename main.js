@@ -10,7 +10,7 @@ Hooks.once('ready', async function () {
     if (isSheetOnly()) {
         setupContainer();
         hideElements();
-        popupSheet(getUser());
+        popupSheet(game.user);
     }
 });
 
@@ -28,14 +28,22 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
     }
 })
 
-Hooks.on('createActor', async function () {
+Hooks.on('createActor', async function (actor) {
     rebuildActorList();
+
+    if (isActorOwnedByUser(actor)) {
+        actor.sheet.render(true);
+    }
 });
 
 Hooks.on('deleteActor', async function () {
     rebuildActorList();
-    popupSheet(getUser())
+    popupSheet(game.user)
 });
+
+function isActorOwnedByUser(actor) {
+    return actor.ownership[game.user.id] === 3;
+}
 
 function setupContainer() {
     const flexContainer = $('<div>').addClass('sheet-only-container');
@@ -52,19 +60,22 @@ function rebuildActorList() {
     getActorElements().forEach(elem => actorList.append(elem));
 }
 
+function getOwnedActors() {
+    return game.actors.filter(actor => isActorOwnedByUser(actor));
+}
+
 function getActorElements() {
-    let actors = game.actors.filter(actor => actor.ownership[game.user.id] === 3);
+    let actors = getOwnedActors();
     return actors.map(actor => {
             return $('<div>')
                 // .text(actor.name)
                 .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
-                .click(async () => {
+                .click(() => {
                     if (currentSheet) {
                         currentSheet.close();
                     }
                     currentSheet = actor.sheet.render(true);
                 });
-
         }
     );
 }
@@ -78,12 +89,8 @@ function hideElements() {
 
 function isSheetOnly() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
-    let user = getUser();
+    let user = game.user;
     return playerdata[user.id] && playerdata[user.id].display;
-}
-
-function getUser() {
-    return game.users.get(game.userId);
 }
 
 function popupSheet(user) {
