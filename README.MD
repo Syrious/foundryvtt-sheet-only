@@ -11,12 +11,6 @@ their character and my information were not in sync. If they lost HP both sheets
 I fixed that problem. Both, GM and players are looking and updating the same sheet now.
 
 ### Installation and setup
-* After activating the module a new scene gets created. To this scene all the sheet-only-users will be re-directed 
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets.
 
 ![setup.png](setup.png)
-
-### Compatibilities
-Should work with 
-* [Tidy5e Sheet](https://foundryvtt.com/packages/tidy5e-sheet/)
-* [Compact DnDBeyond 5e Character Sheet](https://foundryvtt.com/packages/compact-beyond-5e-sheet)
