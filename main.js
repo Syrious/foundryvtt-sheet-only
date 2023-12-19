@@ -57,7 +57,15 @@ function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');
 
     actorList.empty();
-    getActorElements().forEach(elem => actorList.append(elem));
+
+    let actorElements = getActorElements();
+
+    if(actorElements.length > 1) {
+        actorList.show();
+        actorElements.forEach(elem => actorList.append(elem));
+    }else{
+        actorList.hide();
+    }
 }
 
 function getOwnedActors() {

@@ -21,7 +21,7 @@
 .sheet-only-actor-list {
     display: flex;
     flex-direction: column;
-    background-color: brown;
+    background-color: #424353;
     justify-items: flex-start;
     padding: 5px;
     gap: 3px;
