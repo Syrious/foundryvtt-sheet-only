@@ -1,5 +1,5 @@
 .sheet-only-hide,
-.sheet-only > header,
+.sheet-only-sheet > header,
 #roll-hd {
     display: none !important;
 }
@@ -11,6 +11,21 @@
     overflow-y: auto;
     scrollbar-width: thin;
     color: #7a7971;
+}
+
+.sheet-only-actor-list {
+    color: aqua;
+    font-size: 28px;
+    flex-grow: 1;
+}
+
+.sheet-only-container {
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .sheet-only .sheet .items-list .item-list {

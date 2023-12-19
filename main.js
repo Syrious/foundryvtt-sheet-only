@@ -1,3 +1,4 @@
+let currentSheet = null; // Track the currently open sheet
 Hooks.on('setup', async () => {
     if (isSheetOnly() && !game.settings.get("core", "noCanvas")) {
         await game.settings.set('core', 'noCanvas', true)
@@ -5,18 +6,70 @@ Hooks.on('setup', async () => {
     }
 });
 
-Hooks.on('renderActorSheet', async (app, html, data) => {
+Hooks.once('ready', async function () {
     if (isSheetOnly()) {
+        setupContainer();
+        hideElements();
+        popupSheet(getUser());
+    }
+});
+
+Hooks.on('renderActorSheet', async (app, html, data) => {
+    if (isSheetOnly() && html.hasClass('sheet')) {
         html.css({
-            left: 0,
+            left: "5%",
             top: 0,
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: '95%',
+            height: window.innerHeight,
+            flexGrow: 5
         });
 
-        html.addClass('sheet-only');
+        $('.sheet-only-container').append(html);
     }
 })
+
+Hooks.on('createActor', async function () {
+    rebuildActorList();
+});
+
+Hooks.on('deleteActor', async function () {
+    rebuildActorList();
+});
+
+function setupContainer() {
+    // Create a new flex container
+    const flexContainer = $('<div>').addClass('sheet-only-container');
+    $('body').append(flexContainer);
+
+    const list = getActorList();
+    flexContainer.append(list);
+}
+
+function rebuildActorList() {
+    let actorList = $('.sheet-only-actor-list');
+    actorList.empty();
+    actorList.append(getActorList())
+}
+
+function getActorList() {
+    const list = $('<div>').addClass('sheet-only-actor-list');
+    game.actors
+        .filter(actor => actor.ownership[game.user.id] === 3)
+        .forEach(actor => {
+                const elem = $('<div>')
+                    .text(actor.name)
+                    .click(async () => {
+                        if (currentSheet) {
+                            currentSheet.close();
+                        }
+
+                        currentSheet = actor.sheet.render(true);
+                    });
+                list.append(elem);
+            }
+        )
+    return list;
+}
 
 function hideElements() {
     $("#notifications").addClass("sheet-only-hide");
@@ -25,30 +78,10 @@ function hideElements() {
     $("#tooltip").addClass("sheet-only-hide");
 }
 
-Hooks.once('ready', async function () {
-    if (isSheetOnly()) {
-        hideElements();
-        popupSheet(getUser());
-    }
-});
-
 function isSheetOnly() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = getUser();
     return playerdata[user.id] && playerdata[user.id].display;
-}
-
-function startCleanup() {
-    setInterval(() => {
-        const bodyChildren = Array.from(document.body.children);
-        bodyChildren.forEach(child => {
-
-            const styles = window.getComputedStyle(child);
-            if (styles.getPropertyValue('display') === 'none') {
-                child.remove();
-            }
-        });
-    }, 30000);
 }
 
 function getUser() {
@@ -59,8 +92,8 @@ function popupSheet(user) {
     const actor = user.character;
 
     if (actor) {
-        let sheet = actor.sheet;
-        sheet.render(true);
+        currentSheet = actor.sheet;
+        currentSheet.render(true);
     } else {
         console.log(`No actor for user found.`);
     }
