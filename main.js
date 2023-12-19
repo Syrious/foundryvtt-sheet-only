@@ -24,6 +24,8 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
         });
 
         html.addClass('sheet-only-sheet');
+        $(".window-resizable-handle").hide();
+
         $('.sheet-only-container').append(html);
     }
 })
