@@ -1,7 +1,6 @@
 Hooks.on('setup', async()=>{
     if (isSheetOnly() && !game.settings.get("core", "noCanvas")) { 
         await game.settings.set('core','noCanvas',true)
-        ui.notifications.info("Disabling your canvas and reloading Foundry");
         foundry.utils.debouncedReload();
     }
 });
@@ -52,8 +51,6 @@ function popupSheet(user) {
                 "sheet-only"
             ]
         });
-
-
     } else {
         console.log(`No actor for user found.`);
     }

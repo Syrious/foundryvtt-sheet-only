@@ -2,14 +2,13 @@
     display: none !important;
 }
 
-body.sheet-only > *:not(.sheet):not(.dnd5e.dialog):not(.dialog) {
+.notification {
     display: none !important;
 }
 
 #roll-hd{
     display: none;
 }
-
 
 .sheet-only .sheet .items-list {
     list-style: none;

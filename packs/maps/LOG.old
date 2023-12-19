@@ -1,5 +1,0 @@
-2023/12/18-10:27:18.501 5044 Delete type=3 #1
-2023/12/18-11:44:02.767 5558 Level-0 table #5: started
-2023/12/18-11:44:02.772 5558 Level-0 table #5: 942 bytes OK
-2023/12/18-11:44:02.777 5558 Delete type=0 #3
-2023/12/18-11:44:02.777 5558 Manual compaction at level-0 from '!scenes!ywfbI4h9xo8FHEht' @ 72057594037927935 : 1 .. '!scenes!ywfbI4h9xo8FHEht' @ 0 : 0; will stop at (end)
