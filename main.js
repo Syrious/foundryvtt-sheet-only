@@ -5,6 +5,19 @@ Hooks.on('setup', async () => {
     }
 });
 
+Hooks.on('renderActorSheet', async (app, html, data) => {
+    if (isSheetOnly()) {
+        html.css({
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+
+        html.addClass('sheet-only');
+    }
+})
+
 function hideElements() {
     $("#notifications").addClass("sheet-only-hide");
     $("#interface").addClass("sheet-only-hide");
@@ -47,17 +60,7 @@ function popupSheet(user) {
 
     if (actor) {
         let sheet = actor.sheet;
-
-        sheet.render(true, {
-            left: 0,
-            top: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-            classes: [
-                ...sheet.options.classes,
-                "sheet-only"
-            ]
-        });
+        sheet.render(true);
     } else {
         console.log(`No actor for user found.`);
     }
