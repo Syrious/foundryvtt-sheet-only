@@ -1,14 +1,21 @@
-Hooks.on('setup', async()=>{
-    if (isSheetOnly() && !game.settings.get("core", "noCanvas")) { 
-        await game.settings.set('core','noCanvas',true)
+Hooks.on('setup', async () => {
+    if (isSheetOnly() && !game.settings.get("core", "noCanvas")) {
+        await game.settings.set('core', 'noCanvas', true)
         foundry.utils.debouncedReload();
     }
 });
 
+function hideElements() {
+    $("#notifications").addClass("sheet-only-hide");
+    $("#interface").addClass("sheet-only-hide");
+    $("#pause").addClass("sheet-only-hide");
+    $("#tooltip").addClass("sheet-only-hide");
+}
+
 Hooks.once('ready', async function () {
     if (isSheetOnly()) {
+        hideElements();
         popupSheet(getUser());
-        startCleanup();
     }
 });
 

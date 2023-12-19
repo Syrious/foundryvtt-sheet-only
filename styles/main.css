@@ -1,13 +1,7 @@
-.sheet-only > header{
+.sheet-only-hide,
+.sheet-only > header,
+#roll-hd {
     display: none !important;
-}
-
-.notification {
-    display: none !important;
-}
-
-#roll-hd{
-    display: none;
 }
 
 .sheet-only .sheet .items-list {
@@ -76,7 +70,7 @@
 
 .sheet-only .sheet .items-list .item-controls {
     flex: 0 0 90px;
-    text-align:center;
+    text-align: center;
 }
 
 .sheet-only .sheet .items-list .item-controls .item-control {
