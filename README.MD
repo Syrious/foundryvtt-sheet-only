@@ -16,8 +16,9 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 <img alt="setup.png" height="500" src="setup.png"/>
 
 ### Usage
-* If sheet-only user they can only see their sheet
+* If sheet-only users log in they will only see their sheets
 * If they have multiple characters, a sidebar is shown and the users are able to switch between characters
+  * Works for companions and wild shapes (as long as the user has owner permission)
 
 <img alt="example.png" height="500" src="example.png"/>
 
