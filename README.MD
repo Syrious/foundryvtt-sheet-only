@@ -24,3 +24,6 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 ### Issues
 * The UI is not very reactive. If you go from portrait to landscape or vice versa you probably need to reload
 * Changing the permission on an actor does not get synced with connected users
+
+### Support
+If you like to support my work [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/syrious). I really appreciate it!
