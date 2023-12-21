@@ -91,10 +91,13 @@ function getActorElements() {
 }
 
 function hideElements() {
-    $("#notifications").addClass("sheet-only-hide");
     $("#interface").addClass("sheet-only-hide");
     $("#pause").addClass("sheet-only-hide");
     $("#tooltip").addClass("sheet-only-hide");
+
+    if (!game.settings.get("sheet-only", "display-notifications")) {
+        $("#notifications").addClass("sheet-only-hide");
+    }
 }
 
 function isSheetOnly() {

@@ -1,13 +1,27 @@
+function i18n(key) {
+   return game.i18n.localize(key)
+}
+
 Hooks.on('init', () => {
     let moduleId = "sheet-only";
 
     game.settings.registerMenu(moduleId, "settingsMenu", {
         name: "Users",
-        label: "Select",      // The text label used in the button
+        label: "Select",
         hint: "Choose users who only have access to their sheet",
-        icon: "fas fa-bars",               // A Font Awesome icon used in the submenu button
-        type: MySubmenuApplicationClass,   // A FormApplication subclass
-        restricted: true                   // Restrict this submenu to gamemaster only?
+        icon: "fas fa-users",
+        type: PlayerSelectionMenu,
+        restricted: true
+    });
+
+    game.settings.register(moduleId, "display-notifications", {
+        name: i18n("Sheet-Only.display-notifications.name"),
+        hint: i18n("Sheet-Only.display-notifications.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+        requiresReload: true
     });
 
     game.settings.register(moduleId, "playerdata", {
@@ -18,12 +32,7 @@ Hooks.on('init', () => {
     });
 })
 
-
-/**
- * For more information about FormApplications, see:
- * https://foundryvtt.wiki/en/development/guides/understanding-form-applications
- */
-class MySubmenuApplicationClass extends FormApplication {
+class PlayerSelectionMenu extends FormApplication {
     constructor(options = {}) {
         super(options);
     }
