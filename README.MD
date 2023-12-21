@@ -12,6 +12,7 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 
 ### Installation and setup
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets.
+* There are also settings to change the default behaviour regarding notifications and the canvas
 
 <img alt="setup.png" height="500" src="setup.png"/>
 
