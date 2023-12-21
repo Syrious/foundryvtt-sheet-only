@@ -4,9 +4,9 @@
             <div class="sheet">
                 <ol class="items-list inventory-list">
                     <li class="items-header flexrow">
-                        <h3 class="item-name flexrow noborder" style="margin-right:auto;">Players</h3>
-                        <div class="item-control" title="Sheet-Only">
-                            Sheet Only
+                        <h3 class="item-name flexrow noborder" style="margin-right:auto;">{{localize 'Sheet-Only.players'}}</h3>
+                        <div class="item-control" title="{{localize 'Sheet-Only.hint'}}">
+                            {{localize 'Sheet-Only.name'}}
                         </div>
                     </li>
 
@@ -30,6 +30,6 @@
     </div>
     <hr style="width: 60%;flex: 0 0 1px;" />
     <div class="dialog-buttons" style="flex: 0 0 30px;">
-        <button type="submit" name="submit" class="dialog-buttons save" data-button="request"><i class="far fa-save"></i> Save</button>
+        <button type="submit" name="submit" class="dialog-buttons save" data-button="request"><i class="far fa-save"></i>{{localize 'Sheet-Only.button.save'}}</button>
     </div>
 </div>

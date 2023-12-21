@@ -23,9 +23,10 @@
       "path": "lang/en.json"
     }
   ],
-  "scripts": [
+  "esmodules": [
     "main.js",
-    "settings.js"
+    "settings.js",
+    "utils.js"
   ],
   "styles": [
     "styles/main.css"

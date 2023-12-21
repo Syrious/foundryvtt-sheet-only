@@ -1,14 +1,12 @@
-function i18n(key) {
-   return game.i18n.localize(key)
-}
+import {i18n} from "./utils.js";
 
 Hooks.on('init', () => {
     let moduleId = "sheet-only";
 
     game.settings.registerMenu(moduleId, "settingsMenu", {
-        name: "Users",
-        label: "Select",
-        hint: "Choose users who only have access to their sheet",
+        name: i18n("Sheet-Only.settingsMenu.name"),
+        label: i18n("Sheet-Only.settingsMenu.label"),
+        hint: i18n("Sheet-Only.settingsMenu.hint"),
         icon: "fas fa-users",
         type: PlayerSelectionMenu,
         restricted: true
