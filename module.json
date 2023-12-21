@@ -1,7 +1,7 @@
 {
   "id": "sheet-only",
   "title": "Sheet Only",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -16,9 +16,17 @@
       }
     }
   ],
-  "scripts": [
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "esmodules": [
     "main.js",
-    "settings.js"
+    "settings.js",
+    "utils.js"
   ],
   "styles": [
     "styles/main.css"

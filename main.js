@@ -1,7 +1,10 @@
 let currentSheet = null; // Track the currently open sheet
 Hooks.on('setup', async () => {
-    if (isSheetOnly() && !game.settings.get("core", "noCanvas")) {
-        await game.settings.set('core', 'noCanvas', true)
+    let isCanvasDisabled = game.settings.get("core", "noCanvas");
+    let shouldCanvasBeDisabled = game.settings.get("sheet-only", "disable-canvas");
+
+    if (isSheetOnly() && isCanvasDisabled !== shouldCanvasBeDisabled) {
+        await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
         foundry.utils.debouncedReload();
     }
 });
@@ -91,10 +94,13 @@ function getActorElements() {
 }
 
 function hideElements() {
-    $("#notifications").addClass("sheet-only-hide");
     $("#interface").addClass("sheet-only-hide");
     $("#pause").addClass("sheet-only-hide");
     $("#tooltip").addClass("sheet-only-hide");
+
+    if (!game.settings.get("sheet-only", "display-notifications")) {
+        $("#notifications").addClass("sheet-only-hide");
+    }
 }
 
 function isSheetOnly() {

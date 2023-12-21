@@ -1,0 +1,13 @@
+{
+  "Sheet-Only.display-notifications.name": "Display Notifications",
+  "Sheet-Only.display-notifications.hint": "(Default: Unchecked) Whether or not to display ui notifications for clients",
+  "Sheet-Only.settingsMenu.name": "User",
+  "Sheet-Only.settingsMenu.label": "Select",
+  "Sheet-Only.settingsMenu.hint": "Choose users who only have access to their sheet",
+  "Sheet-Only.players": "Players",
+  "Sheet-Only.name": "Sheet-Only",
+  "Sheet-Only.hint": "Select Users",
+  "Sheet-Only.button.save": "Save",
+  "Sheet-Only.disable-canvas.name": "Disable Canvas for users",
+  "Sheet-Only.disable-canvas.hint": "(Default: Checked) Whether or not the player's canvas should be disabled. If the canvas is disabled, users won't get pulled into and don't render scenes (which saves resources). Some systems in combination with certain modules won't work if the canvas disabled."
+}
