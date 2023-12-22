@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+latest+release)  ![](https://img.shields.io/github/downloads-pre/Syrious/foundryvtt-sheet-only/latest/total)
+![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+latest+release)  ![](https://img.shields.io/github/downloads-pre/Syrious/foundryvtt-sheet-only/latest/total?label=Total)
 
 
 # FoundryVTT Sheet-Only
