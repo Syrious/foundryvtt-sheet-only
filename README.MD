@@ -1,4 +1,5 @@
-![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+latest+release)
+![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+latest+release)  ![](https://img.shields.io/github/downloads-pre/Syrious/foundryvtt-sheet-only/latest/total)
+
 
 # FoundryVTT Sheet-Only
 Designed for in-person sessions. Players can connect with their tablets to foundry and will see their character sheet and only their character sheet. 
