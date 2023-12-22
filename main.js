@@ -17,8 +17,8 @@ Hooks.once('ready', async function () {
     }
 });
 
-Hooks.on('renderActorSheet', async (app, html, data) => {
-    if (isSheetOnly() && html.hasClass('sheet')) {
+Hooks.on('renderActorSheet', async (app, html) => {
+    if (isSheetOnly()) {
         app.setPosition({
             left: 0,
             top: 0,
@@ -26,10 +26,11 @@ Hooks.on('renderActorSheet', async (app, html, data) => {
             height: window.innerHeight
         });
 
-        html.addClass('sheet-only-sheet');
+        app.element.addClass('sheet-only-sheet');
+        $('.sheet-only-container').append(app.element);
+
         $(".window-resizable-handle").hide();
 
-        $('.sheet-only-container').append(html);
     }
 })
 

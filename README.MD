@@ -23,9 +23,16 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 
 <img alt="example.png" height="500" src="example.png"/>
 
+### Tested with
+- [Cyberpunk RED](https://foundryvtt.com/packages/cyberpunk-red-core) (Little wonky though)
+- [Das Schwarze Auge / The Dark Eye (5th Edition)](https://foundryvtt.com/packages/dsa5)
+- [DnD5e](https://foundryvtt.com/packages/dnd5e)
+- [Level Up: Advanced 5th Edition (Official)](https://foundryvtt.com/packages/a5e)
+
 ### Issues
 * The UI is not very reactive. If you go from portrait to landscape or vice versa you probably need to reload
 * Changing the permission on an actor does not get synced with connected users
+* On some systems (e.g. TDE5e, Cyberpunk Red) Dice So Nice! doesn't show roll if the canvas is disabled. To make it work again, uncheck "Disable Canvas for users" in Sheet-Only settings  
 
 ### Support
 If you like to support my work [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/syrious). I really appreciate it!

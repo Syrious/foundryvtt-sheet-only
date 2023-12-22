@@ -1,3 +1,7 @@
+# 1.0.5
+- Compatibility with 'Level Up! Advanced 5th Edition'
+- Added higher system compatibility in general
+
 # 1.0.4
 - Added a setting to enable/disable notifications for all clients. 
 - Added a setting to enable/disable canvas rendering. In some systems the canvas is needed in combination with some modules (e.g. The Dark Eye 5e + Dice So Nice)
