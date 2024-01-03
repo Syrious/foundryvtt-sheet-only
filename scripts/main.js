@@ -14,7 +14,6 @@ Hooks.on('setup', async () => {
 Hooks.once('ready', async function () {
     if (isSheetOnly()) {
         setupContainer();
-
         hideElements();
         popupSheet(game.user);
     }

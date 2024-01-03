@@ -24,9 +24,8 @@
     }
   ],
   "esmodules": [
-    "main.js",
-    "settings.js",
-    "utils.js"
+    "/scripts/main.js",
+    "/scripts/settings.js"
   ],
   "styles": [
     "styles/main.css"
