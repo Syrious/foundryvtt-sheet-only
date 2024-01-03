@@ -18,6 +18,18 @@
     justify-items: flex-start;
 }
 
+.sheet-only-container > .button-container {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9999; /* Higher z-index value */
+}
+
+.sheet-only-container > .button-container > .button {
+    cursor: pointer;
+}
 
 
 .sheet-only-actor-list {

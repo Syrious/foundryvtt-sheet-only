@@ -12,6 +12,7 @@ Hooks.on('setup', async () => {
 Hooks.once('ready', async function () {
     if (isSheetOnly()) {
         setupContainer();
+
         hideElements();
         popupSheet(game.user);
     }
@@ -52,13 +53,62 @@ function isActorOwnedByUser(actor) {
 }
 
 function setupContainer() {
-    const flexContainer = $('<div>').addClass('sheet-only-container');
-    $('body').append(flexContainer);
+    const sheetContainer = $('<div>').addClass('sheet-only-container');
+    $('body').append(sheetContainer);
 
-    flexContainer.append($('<div>').addClass('sheet-only-actor-list'));
+    sheetContainer.append($('<div>').addClass('sheet-only-actor-list'));
     rebuildActorList()
-}
 
+    addSizingButtons(sheetContainer);
+}
+function addSizingButtons(sheetContainer) {
+    const defaultFontSize = game.settings.settings.get('core.fontSize').default;
+    const max = game.settings.settings.get('core.fontSize').range.max;
+    const min = game.settings.settings.get('core.fontSize').range.min;
+
+    sheetContainer.load("modules/sheet-only/templates/buttons.html", function () {
+        const increaseButton = sheetContainer.find("#increase-font");
+        const decreaseButton = sheetContainer.find("#decrease-font");
+        const resetButton = sheetContainer.find("#reset-font");
+
+        increaseButton.on("click", function () {
+            changeFontSize(1);
+        });
+
+        decreaseButton.on("click", function () {
+            changeFontSize(-1);
+        });
+
+        resetButton.on("click", function () {
+            game.settings.set("core", "fontSize", defaultFontSize)
+        });
+
+        // Non-persisting but smaller steps
+        function changeFontSizeAlternative(delta) {
+            var htmlElement = $('html');
+            var fontSizeValue = htmlElement.css('font-size');
+            var fontSizeWithoutUnit = parseInt(fontSizeValue, 10);
+
+            htmlElement.css('font-size', `${fontSizeWithoutUnit + delta}px`);
+        }
+
+        function changeFontSize(delta) {
+            const currentFontSize = game.settings.get("core", "fontSize");
+            let newFontSize = currentFontSize + delta;
+
+
+            if (newFontSize > max) {
+                newFontSize = max;
+            } else {
+                if (newFontSize < min) {
+                    newFontSize = min;
+                }
+            }
+
+            game.settings.set("core", "fontSize", newFontSize)
+        }
+    });
+}
 function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');
 
@@ -66,10 +116,10 @@ function rebuildActorList() {
 
     let actorElements = getActorElements();
 
-    if(actorElements.length > 1) {
+    if (actorElements.length > 1) {
         actorList.show();
         actorElements.forEach(elem => actorList.append(elem));
-    }else{
+    } else {
         actorList.hide();
     }
 }
