@@ -3,10 +3,12 @@ export function addSizingButtons(sheetContainer) {
     const max = game.settings.settings.get('core.fontSize').range.max;
     const min = game.settings.settings.get('core.fontSize').range.min;
 
-    sheetContainer.load("modules/sheet-only/templates/buttons.html", function () {
-        const increaseButton = sheetContainer.find("#increase-font");
-        const decreaseButton = sheetContainer.find("#decrease-font");
-        const resetButton = sheetContainer.find("#reset-font");
+    const uiElement = $(`<div class="button-container"></div>`);
+
+    uiElement.load("modules/sheet-only/templates/buttons.html", function () {
+        const increaseButton = uiElement.find("#increase-font");
+        const decreaseButton = uiElement.find("#decrease-font");
+        const resetButton = uiElement.find("#reset-font");
 
         increaseButton.on("click", function () {
             changeFontSize(1);
@@ -45,4 +47,6 @@ export function addSizingButtons(sheetContainer) {
             game.settings.set("core", "fontSize", newFontSize)
         }
     });
+
+    sheetContainer.append(uiElement);
 }
