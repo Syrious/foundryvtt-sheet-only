@@ -1,4 +1,5 @@
-import {addSizingButtons} from "./addSizingButtons.js";
+import {addFontSizeButtons} from "./addFontSizeButtons.js";
+import {addZoomButtons} from "./addZoomButtons.js";
 
 let currentSheet = null; // Track the currently open sheet
 Hooks.on('setup', async () => {
@@ -25,14 +26,12 @@ Hooks.on('renderActorSheet', async (app, html) => {
             left: 0,
             top: 0,
             width: window.innerWidth,
-            height: window.innerHeight
+            height: 'auto'
         });
 
         app.element.addClass('sheet-only-sheet');
         $('.sheet-only-container').append(app.element);
-
         $(".window-resizable-handle").hide();
-
     }
 })
 
@@ -60,7 +59,14 @@ function setupContainer() {
     sheetContainer.append($('<div>').addClass('sheet-only-actor-list'));
     rebuildActorList()
 
-    addSizingButtons(sheetContainer);
+    if(navigator.userAgent.indexOf("Firefox") !== -1){
+        console.log("Adding font-size buttons for firefox");
+        addFontSizeButtons(sheetContainer);
+    }else{
+        console.log("Adding zoom buttons");
+        addZoomButtons(sheetContainer);
+    }
+
 }
 function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');

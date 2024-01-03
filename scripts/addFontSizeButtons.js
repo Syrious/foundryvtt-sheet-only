@@ -1,4 +1,4 @@
-export function addSizingButtons(sheetContainer) {
+export function addFontSizeButtons(sheetContainer) {
     const defaultFontSize = game.settings.settings.get('core.fontSize').default;
     const max = game.settings.settings.get('core.fontSize').range.max;
     const min = game.settings.settings.get('core.fontSize').range.min;
