@@ -20,8 +20,11 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 * If sheet-only users log in they will only see their sheets
 * If they have multiple characters, a sidebar is shown and the users are able to switch between characters
   * Works for companions and wild shapes (as long as the user has owner permission)
-* In the bottom right corner there are buttons to resize the UI. For this, the foundryVTT font size gets adjusted (like you would in the core setting) and therefore does only work with sheets that uses relative font-sizes (rem instead of px)
-  * A working example is the default sheet of [Level Up: Advanced 5th Edition (Official)](https://foundryvtt.com/packages/a5e) 
+
+#### Zooming
+* In the bottom right corner there are buttons to resize the UI. Depending on the browser you are using it works differently
+  * Firefox: If you are using firefox, only the font size gets adjusted (like you would in the core setting) and therefore does only work with sheets that uses relative font-size units (rem instead of px). A working example is the default sheet of [Level Up: Advanced 5th Edition (Official)](https://foundryvtt.com/packages/a5e)
+  * Non-Firefox: Taking advantage of the 'zoom'-property, this should zoom in and out quite nicely regardless of the font size units
 
 <img alt="example.png" height="500" src="example.png"/>
 

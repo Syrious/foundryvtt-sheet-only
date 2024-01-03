@@ -26,7 +26,7 @@ Hooks.on('renderActorSheet', async (app, html) => {
             left: 0,
             top: 0,
             width: window.innerWidth,
-            height: 'auto'
+            height: window.innerHeight
         });
 
         app.element.addClass('sheet-only-sheet');
