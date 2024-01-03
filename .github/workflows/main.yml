@@ -16,7 +16,7 @@ jobs:
         uses: battila7/get-version-action@v2
 
       - name: Create Zip archive
-        run: zip -r ./module.zip module.json /scripts packs/ styles/ templates/ lang/
+        run: zip -r ./module.zip module.json scripts/ packs/ styles/ templates/ lang/
 
       - name: Update release with files
         id: create_version_release
