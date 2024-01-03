@@ -1,37 +1,32 @@
 name: Publish Release
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Get Version                                   # Run the script that returns the version from `module.json`
-        shell: bash
-        id: get-version
-        run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
-      - run: zip -r ./module.zip module.json settings.js main.js utils.js packs/ styles/ templates/ lang/
-      - name: Create Release                                # Create an additional release for this version
-        id: create_versioned_release
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Extract tag version number
+        id: get_version
+        uses: battila7/get-version-action@v2
+
+      - name: Create Zip archive
+        run: zip -r ./module.zip module.json settings.js main.js utils.js packs/ styles/ templates/ lang/
+
+      - name: Update release with files
+        id: create_version_release
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true # set to false if you do not want to allow updates on existing releases
-          name: Release ${{ steps.get-version.outputs.version }} # Use the version in the name
-          draft: false
-          prerelease: false
+          allowUpdates: true # Set this to false if you want to prevent updating existing releases
+          name: ${{ github.event.release.name }}
+          draft: ${{ github.event.release.unpublished }}
+          prerelease: ${{ github.event.release.prerelease }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.json,./module.zip'
-          tag: ${{ steps.get-version.outputs.version }} # Use the version as the tag
-      - name: Create Release
-        id: create_latest_release
-        uses: ncipollo/release-action@v1
-        if: endsWith(github.ref, 'main') # Only update the latest release when pushing to the master branch
-        with:
-          allowUpdates: true
-          name: Latest
-          draft: false
-          prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json,./module.zip'
-          tag: latest
+          tag: ${{ github.event.release.tag_name }}
+          body: ${{ github.event.release.body }}
