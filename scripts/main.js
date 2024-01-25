@@ -93,8 +93,8 @@ function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
         return $('<div>')
-            // .text(actor.name)
-            .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
+            .text(actor.name)
+            .append($('<img>').attr('src', actor.img).attr('width', 'auto').attr('height', 'auto'))
             .click(() => {
                 if (currentSheet) {
                     currentSheet.close();
