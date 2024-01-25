@@ -13,6 +13,11 @@ export function addControlButtons(sheetContainer) {
         collapseButton.on("click", function () {
             $('#collapse-actor-select i').toggleClass('hidden');
             $('.sheet-only-actor-list').toggleClass('collapse');
+            if($('.sheet-only-actor-list.collapse')){
+                localStorage.setItem("collapsed-actor-select", "true");
+            } else{
+                localStorage.setItem("collapsed-actor-select", "false");
+            }
         });
         increaseButton.on("click", function () {
             scaleFactor += 0.1;
@@ -31,8 +36,13 @@ export function addControlButtons(sheetContainer) {
             ui.menu.items.logout.onClick();
         })
     });
-
     sheetContainer.append(uiElement);
+
+    if(localStorage.getItem("collapsed-actor-select") === 'true'){
+        $('#collapse-actor-select i').toggleClass('hidden');
+        $('.sheet-only-actor-list').toggleClass('collapse');
+    }
+
 }
 
 function setZoom(sheetContainer) {
