@@ -1,5 +1,5 @@
 import {addFontSizeButtons} from "./addFontSizeButtons.js";
-import {addZoomButtons} from "./addZoomButtons.js";
+import {addControlButtons} from "./addControlButtons.js";
 
 let currentSheet = null; // Track the currently open sheet
 Hooks.on('setup', async () => {
@@ -66,7 +66,7 @@ function setupContainer() {
         addFontSizeButtons(sheetContainer);
     }else{
         console.log("Adding zoom buttons");
-        addZoomButtons(sheetContainer);
+        addControlButtons(sheetContainer);
     }
 
 }

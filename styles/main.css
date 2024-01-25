@@ -36,11 +36,20 @@
 .sheet-only-actor-list {
     display: flex;
     flex-direction: column;
-    background-color: #424353;
+    background-color: rgb(66 67 83 / 90%);
     justify-items: flex-start;
     padding: 5px;
     gap: 3px;
     flex-shrink: 0;
+    position: absolute;
+    z-index: 200;
+    height: 100vh;
+    width: 33vw;
+    transition: all 250ms;
+}
+.sheet-only-actor-list.collapse{
+    width: 0;
+    padding: 0;
 }
 .sheet-only-actor-list img{
     border: none;
@@ -151,7 +160,7 @@
 }
 
 .dnd5e.sheet.actor.character.sheet-only-sheet{
-    min-width: none;
+    min-width: auto;
 }
 .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
     overflow: auto;
@@ -171,4 +180,5 @@
 }
 .dnd5e.sheet.actor.character.sheet-only-sheet .center-pane{
     flex: 1 0 100%;
+    overflow-y: visible;
 }
