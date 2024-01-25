@@ -46,6 +46,7 @@
     height: 100vh;
     width: 33vw;
     transition: all 250ms;
+    overflow: auto;
 }
 .sheet-only-actor-list.collapse{
     width: 0;
@@ -162,6 +163,12 @@
 .dnd5e.sheet.actor.character.sheet-only-sheet{
     min-width: auto;
 }
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header img.profile{
+    border: none;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .header-details{
+    border-left: 2px groove #eeede0;
+}
 .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
     overflow: auto;
 }
@@ -174,6 +181,9 @@
 }
 .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .attributes .attribute{
     flex: 1 0 33%;
+    border:none;
+    border-bottom: 2px groove #eeede0;
+    border-left: 2px groove #eeede0;
 }
 .dnd5e.sheet.actor.character.sheet-only-sheet .skills-list{
     flex: auto;
