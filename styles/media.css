@@ -1,0 +1,13 @@
+@media only screen and (max-width: 575px){
+    .dnd5e.sheet.actor.character.sheet-only-sheet .item-detail.item-quantity{
+        display: none;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spell-target{
+        display: none;
+    }
+}
+@media only screen and (max-width: 615px){
+    .dnd5e.sheet.actor.character.sheet-only-sheet .inventory-filters .currency h3{
+        display: none;
+    }
+}

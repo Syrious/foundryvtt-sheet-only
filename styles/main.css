@@ -16,7 +16,7 @@
     width: 100vw;
     height: 100vh;
     justify-items: flex-start;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .sheet-only-container > .button-container {
@@ -148,4 +148,27 @@
     text-align: left;
     font-size: 16px;
     min-width: 60px;
+}
+
+.dnd5e.sheet.actor.character.sheet-only-sheet{
+    min-width: none;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
+    overflow: auto;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation{
+    flex: 0 0 60px;
+    flex-wrap: wrap;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation .item{
+    flex: 1 0 25%;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .attributes .attribute{
+    flex: 1 0 33%;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .skills-list{
+    flex: auto;
+}
+.dnd5e.sheet.actor.character.sheet-only-sheet .center-pane{
+    flex: 1 0 100%;
 }

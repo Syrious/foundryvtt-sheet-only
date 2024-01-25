@@ -28,7 +28,8 @@
     "/scripts/settings.js"
   ],
   "styles": [
-    "styles/main.css"
+    "styles/main.css",
+    "styles/media.css"
   ],
   "url": "https://github.com/Syrious/foundryvtt-sheet-only",
   "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/latest/module.json",

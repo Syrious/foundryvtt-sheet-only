@@ -32,6 +32,8 @@ Hooks.on('renderActorSheet', async (app, html) => {
         app.element.addClass('sheet-only-sheet');
         $('.sheet-only-container').append(app.element);
         $(".window-resizable-handle").hide();
+
+        getTokenizerImage();
     }
 })
 
@@ -72,7 +74,7 @@ function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');
 
     actorList.empty();
-
+    
     let actorElements = getActorElements();
 
     if (actorElements.length > 1) {
@@ -90,17 +92,32 @@ function getOwnedActors() {
 function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
-            return $('<div>')
-                // .text(actor.name)
-                .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
-                .click(() => {
-                    if (currentSheet) {
-                        currentSheet.close();
-                    }
-                    currentSheet = actor.sheet.render(true);
-                });
+        return $('<div>')
+            // .text(actor.name)
+            .append($('<img>').attr('src', actor.img).attr('width', '75').attr('height', '75'))
+            .click(() => {
+                if (currentSheet) {
+                    currentSheet.close();
+                }
+                currentSheet = actor.sheet.render(true);
+            });
         }
     );
+}
+
+function getTokenizerImage(){
+    let actors = getOwnedActors();
+    actors.map(actor => {
+        let actorImg = actor.img;
+        let sheet = $('#ActorSheet5eCharacter-Actor-' + actor._id)[0];
+        if(sheet !== undefined){
+            if(actorImg.includes('tokenizer') 
+            && actorImg.includes('Avatar')){
+                actorImg = actorImg.replace('Avatar', 'Token');
+                $('.sheet-only-container .sheet-header img.profile')[0].src = actorImg;
+            }
+        }
+    });
 }
 
 function hideElements() {
