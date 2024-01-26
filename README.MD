@@ -26,7 +26,13 @@ I fixed that problem. Both, GM and players are looking and updating the same she
   * Firefox: If you are using firefox, only the font size gets adjusted (like you would in the core setting) and therefore does only work with sheets that uses relative font-size units (rem instead of px). A working example is the default sheet of [Level Up: Advanced 5th Edition (Official)](https://foundryvtt.com/packages/a5e)
   * Non-Firefox: Taking advantage of the 'zoom'-property, this should zoom in and out quite nicely regardless of the font size units
 
-<img alt="example.png" height="500" src="example.png"/>
+<img alt="example1.png" height="500" src="example1.png"/>
+
+#### Actor List
+* If you own more than one actor a button at the bottom right can be used to toggle a list of all your actors
+* If you don't have more than one actor, this button does nothing
+
+<img alt="example2.png" height="500" src="example2.png"/>
 
 ### Tested with
 - [Cyberpunk RED](https://foundryvtt.com/packages/cyberpunk-red-core) (Little wonky though)

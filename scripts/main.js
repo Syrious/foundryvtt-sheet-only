@@ -68,20 +68,24 @@ function setupContainer() {
         console.log("Adding zoom buttons");
         addControlButtons(sheetContainer);
     }
-
 }
+
 function rebuildActorList() {
     let actorList = $('.sheet-only-actor-list');
+    let collapseButton = $('#collapse-actor-select');
+        console.error("YAY")
 
     actorList.empty();
-    
-    let actorElements = getActorElements();
 
+    let actorElements = getActorElements();
     if (actorElements.length > 1) {
         actorList.show();
+        collapseButton.show();
+
         actorElements.forEach(elem => actorList.append(elem));
     } else {
         actorList.hide();
+        collapseButton.hide();
     }
 }
 

@@ -6,9 +6,15 @@ export function addFontSizeButtons(sheetContainer) {
     const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
+        const collapseButton = uiElement.find("#collapse-actor-select")
         const increaseButton = uiElement.find("#increase-font");
         const decreaseButton = uiElement.find("#decrease-font");
         const resetButton = uiElement.find("#reset-font");
+        const logoutButton = uiElement.find("#so-log-out");
+
+        collapseButton.on("click", function () {
+            toggleActorList();
+        });
 
         increaseButton.on("click", function () {
             changeFontSize(1);
@@ -21,6 +27,10 @@ export function addFontSizeButtons(sheetContainer) {
         resetButton.on("click", function () {
             game.settings.set("core", "fontSize", defaultFontSize)
         });
+
+        logoutButton.on("click", function () {
+            ui.menu.items.logout.onClick();
+        })
 
         // Non-persisting but smaller steps
         function changeFontSizeAlternative(delta) {
@@ -49,4 +59,14 @@ export function addFontSizeButtons(sheetContainer) {
     });
 
     sheetContainer.append(uiElement);
+}
+
+function toggleActorList() {
+    $('#collapse-actor-select i').toggleClass('hidden');
+    $('.sheet-only-actor-list').toggleClass('collapse');
+    if ($('.sheet-only-actor-list.collapse')) {
+        localStorage.setItem("collapsed-actor-select", "true");
+    } else {
+        localStorage.setItem("collapsed-actor-select", "false");
+    }
 }
