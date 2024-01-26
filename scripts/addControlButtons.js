@@ -50,6 +50,7 @@ function setZoom(sheetContainer) {
     sheet.css({
         'zoom': scaleFactor,
         'transform-origin': 'top left',
-        'width': '100vw'
+        'width': '100vw',
+        'height': '100vh'
     });
 }
