@@ -1,3 +1,6 @@
+# 1.0.8
+- Adds dynamic actor list (Thanks to [ZeroXNoxus](https://github.com/ZeroXNoxus))
+
 # 1.0.7
 - Improved zooming (does not work for Firefox)
 
