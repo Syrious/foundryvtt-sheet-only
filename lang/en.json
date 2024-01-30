@@ -8,6 +8,8 @@
   "Sheet-Only.name": "Sheet-Only",
   "Sheet-Only.hint": "Select Users",
   "Sheet-Only.button.save": "Save",
+  "Sheet-Only.mobile-only.name": "Only display on mobile",
+  "Sheet-Only.mobile-only.hint": "(Default: Checked) Whether the sheet should only be displayed as an 'Only Sheet' on mobile devices. Disable to display for the selected users on any device.",
   "Sheet-Only.disable-canvas.name": "Disable Canvas for users",
   "Sheet-Only.disable-canvas.hint": "(Default: Checked) Whether or not the player's canvas should be disabled. If the canvas is disabled, users won't get pulled into and don't render scenes (which saves resources). Some systems in combination with certain modules won't work if the canvas disabled."
 }

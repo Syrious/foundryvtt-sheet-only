@@ -131,6 +131,13 @@ function hideElements() {
 }
 
 function isSheetOnly() {
+//  Check if mobile only is set & is actually mobile device   
+    if(game.settings.get("sheet-only", 'mobile-only') == true){
+//      1024px width, aka the min. width for FoundryVTT
+        if(screen.width >= 1024){
+            return false;
+        }
+    }
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = game.user;
     return playerdata[user.id] && playerdata[user.id].display;
@@ -146,6 +153,3 @@ function popupSheet(user) {
         console.log(`No actor for user found.`);
     }
 }
-
-
-
