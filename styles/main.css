@@ -1,3 +1,4 @@
+/*Sheet Only Styling*/
 .sheet-only-hide,
 .sheet-only-sheet > header,
 #roll-hd {
@@ -29,12 +30,9 @@
     right: 10px;
     z-index: 9999; /* Higher z-index value */
 }
-
 .sheet-only-container > .button-container > .button {
     cursor: pointer;
 }
-
-
 .sheet-only-actor-list {
     display: flex;
     flex-direction: column;
@@ -61,109 +59,7 @@
     border: none;
 }
 
-.sheet-only .sheet .items-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    color: #7a7971;
-}
-
-.sheet-only .sheet .items-list .item-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.sheet-only .sheet .items-list .item-name {
-    flex: 1;
-    margin: 0;
-    overflow: hidden;
-    font-size: 13px;
-    text-align: left;
-    align-items: center;
-}
-
-.sheet-only .sheet .items-list .item-name h3, .sheet-only .sheet .items-list .item-name h4 {
-    margin: 0;
-    white-space: nowrap;
-    overflow-x: hidden;
-}
-
-.sheet-only .sheet .items-list .item {
-    align-items: center;
-    padding: 0 2px;
-    border-bottom: 1px solid #c9c7b8;
-}
-
-.sheet-only .sheet .items-list .item:last-child {
-    border-bottom: none;
-}
-
-.sheet-only .sheet .items-list .item .item-name {
-    color: #191813;
-}
-
-.sheet-only .sheet .items-list .item .item-name .item-image {
-    flex: 0 0 30px;
-    height: 30px;
-    width: 30px;
-    background-size: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    margin-right: 5px;
-    text-align: center;
-}
-
-.window-content .sheet-only .sheet .items-list .item .item-name .item-image {
-    flex: 0 0 48px;
-    width: 48px;
-}
-
-.sheet-only .sheet .items-list .item-controls {
-    flex: 0 0 90px;
-    text-align: center;
-}
-
-.sheet-only .sheet .items-list .item-controls .item-control {
-    flex: 0 0 25px;
-}
-
-.sheet-only .sheet .items-list .item-controls > input {
-    margin: auto;
-}
-
-.sheet-only .sheet .items-list .items-header {
-    height: 28px;
-    margin: 2px 0;
-    padding: 0;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
-    font-weight: bold;
-}
-
-.sheet-only .sheet .items-list .items-header .item-control {
-    font-weight: normal;
-    flex: 0 0 90px;
-    font-size: 12px;
-    text-align: center;
-}
-
-.sheet-only .sheet .items-list .items-header h3 {
-    padding-left: 5px;
-    font-family: "Modesto Condensed", "Palatino Linotype", serif;
-    font-weight: 700;
-    text-align: left;
-    font-size: 16px;
-    min-width: 60px;
-}
-
+/*DnD 5th Edition v1 (2.1.4 and lower)*/
 .dnd5e.sheet.actor.character.sheet-only-sheet{
     min-width: auto;
 }
@@ -195,4 +91,125 @@
 .dnd5e.sheet.actor.character.sheet-only-sheet .center-pane{
     flex: 1 0 100%;
     overflow-y: visible;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: #7a7971;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-name {
+    flex: 1;
+    margin: 0;
+    overflow: hidden;
+    font-size: 13px;
+    text-align: left;
+    align-items: center;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-name h3, .sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-name h4 {
+    margin: 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item {
+    align-items: center;
+    padding: 0 2px;
+    border-bottom: 1px solid #c9c7b8;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item:last-child {
+    border-bottom: none;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name {
+    color: #191813;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name .item-image {
+    flex: 0 0 30px;
+    height: 30px;
+    width: 30px;
+    background-size: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    margin-right: 5px;
+    text-align: center;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name .item-image {
+    flex: 0 0 48px;
+    width: 48px;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-controls {
+    flex: 0 0 90px;
+    text-align: center;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-controls .item-control {
+    flex: 0 0 25px;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .item-controls > input {
+    margin: auto;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .items-header {
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px groove #eeede0;
+    font-weight: bold;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .items-header .item-control {
+    font-weight: normal;
+    flex: 0 0 90px;
+    font-size: 12px;
+    text-align: center;
+}
+.sheet-only .dnd5e.sheet.sheet-only-sheet .items-list .items-header h3 {
+    padding-left: 5px;
+    font-family: "Modesto Condensed", "Palatino Linotype", serif;
+    font-weight: 700;
+    text-align: left;
+    font-size: 16px;
+    min-width: 60px;
+}
+
+/*DnD 5th Edition v2 (3.0.0 and higher)*/
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet {
+    min-width: none;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet .tab-details .tab-body {
+    padding-top: 75px;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs {
+    flex-direction: row; 
+    gap: 0.75rem; 
+    z-index: 1; 
+    right: 5px; 
+    left: auto; 
+    top: 104px;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item {
+    border-radius: 8px;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item.active,
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item:hover {
+    margin-left: calc((var(--tab-full-width) - var(--tab-inactive-width)) * -1);
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item::after {
+    border-radius: 5px; 
+    border-left: 1px solid;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet .sheet-header > .left .document-name {
+    font-size: 2.4rem;
+}
+.sheet-only .dnd5e2.sheet.actor.character.sheet-only-sheet .sheet-header > .right > div:last-child {
+    margin-top: -1rem;
 }
