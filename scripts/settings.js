@@ -68,6 +68,7 @@ class PlayerSelectionMenu extends FormApplication {
                     img: u.avatar,
                     display: false,
                     mobile: false,
+                    screenwidth: 0,
                     mirror: false,
                     selection: false
                 }, data);
@@ -87,6 +88,7 @@ class PlayerSelectionMenu extends FormApplication {
 
             data.display = $('.display', this).is(':checked');
             data.mobile = $('.mobile', this).is(':checked');
+            data.screenwidth = $('.screenwidth', this).val();
 
             playerdata[id] = data;
         });

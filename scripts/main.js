@@ -144,7 +144,7 @@ function isSheetOnly() {
             // Check if mobile only is set & is actually mobile device
             if (!userData.mobile) {
                 return true;
-            } else if (screen.width <= FOUNDRY_MIN_WIDTH) {
+            } else if (userData.screenwidth > 0 && userData.screenwidth >= screen.width) {
                 return true;
             }
         }

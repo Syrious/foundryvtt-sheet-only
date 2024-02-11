@@ -14,6 +14,9 @@
                         <div>
                             <label>Activate only on mobile</label>
                         </div>
+                        <div>
+                            <label>Screen width</label>
+                        </div>
                     </li>
 
                     <ol class="item-list">
@@ -30,6 +33,9 @@
                             <div class="item-controls flexcol">
 
                                 <input type="checkbox" {{#if this.mobile}}checked{{/if}} class="mobile" />
+                            </div>
+                            <div class="item-controls flexcol">
+                                <input type="number" min="0" placeholder="1024" value={{this.screenwidth}} class="screenwidth" />
                             </div>
                         </li>
                         {{/each}}
