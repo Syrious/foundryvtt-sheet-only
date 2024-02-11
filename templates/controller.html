@@ -12,11 +12,9 @@
                             <label>Use Sheet Only</label>
                         </div>
                         <div>
-                            <label>Activate only on mobile</label>
+                            <label>Activation screen width</label>
                         </div>
-                        <div>
-                            <label>Screen width</label>
-                        </div>
+
                     </li>
 
                     <ol class="item-list">
@@ -31,11 +29,7 @@
                                 <input type="checkbox" {{#if this.display}}checked{{/if}} class="display" />
                             </div>
                             <div class="item-controls flexcol">
-
-                                <input type="checkbox" {{#if this.mobile}}checked{{/if}} class="mobile" />
-                            </div>
-                            <div class="item-controls flexcol">
-                                <input type="number" min="0" placeholder="1024" value={{this.screenwidth}} class="screenwidth" />
+                                <input type="number" min="0" placeholder="Screen Width to activate" value={{this.screenwidth}} class="screenwidth" title="Only activate if the screen width is smaller than entered value. Set to 0 to not check screen width."/>
                             </div>
                         </li>
                         {{/each}}
