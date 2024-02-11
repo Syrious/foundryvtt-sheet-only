@@ -88,7 +88,7 @@ class PlayerSelectionMenu extends FormApplication {
 
             data.display = $('.display', this).is(':checked');
             data.mobile = $('.mobile', this).is(':checked');
-            data.screenwidth = $('.screenwidth', this).val();
+            data.screenwidth = $('.screenwidth', this).val() || 0;
 
             playerdata[id] = data;
         });
