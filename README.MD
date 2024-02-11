@@ -11,7 +11,9 @@ their character and my information were not in sync. If they lost HP both sheets
 I fixed that problem. Both, GM and players are looking and updating the same sheet now.
 
 ### Installation and setup
-* Go to Settings -> Sheet-Only and select the players which should only see their character sheets.
+* Go to Settings -> Sheet-Only and select the players which should only see their character sheets
+* There you can also set a screen-width so that this module only activates if the screen width it below a certain value
+  * Let's say you want to use it only if you are logging in with your mobile. Set it to 800 (or whatever you mobile screen maximum width is) and you will see your sheet only if you are logged in with your mobile device
 * There are also settings to change the default behaviour regarding notifications and the canvas
 
 <img alt="setup.png" height="500" src="setup.png"/>
