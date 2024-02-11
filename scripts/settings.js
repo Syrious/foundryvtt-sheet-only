@@ -32,17 +32,6 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-//  Mobile only setting - Allows DM to only display Only Sheet on mobile devices
-    game.settings.register(moduleId, "mobile-only", {
-        name: i18n("Sheet-Only.mobile-only.name"),
-        hint: i18n("Sheet-Only.mobile-only.hint"),
-        scope: "world",
-        config: true,
-        default: true,
-        type: Boolean,
-        requiresReload: false
-    });
-
     game.settings.register(moduleId, "playerdata", {
         scope: "world",
         config: false,
@@ -78,6 +67,7 @@ class PlayerSelectionMenu extends FormApplication {
                     name: u.name,
                     img: u.avatar,
                     display: false,
+                    mobile: false,
                     mirror: false,
                     selection: false
                 }, data);
@@ -96,6 +86,7 @@ class PlayerSelectionMenu extends FormApplication {
             let data = playerdata[id] || {};
 
             data.display = $('.display', this).is(':checked');
+            data.mobile = $('.mobile', this).is(':checked');
 
             playerdata[id] = data;
         });
