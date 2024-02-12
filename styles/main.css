@@ -12,6 +12,7 @@
 }
 
 .sheet-only-container {
+    position: absolute;
     display: flex;
     flex-direction: row;
     left: 0;
