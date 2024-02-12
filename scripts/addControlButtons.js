@@ -16,17 +16,17 @@ export function addControlButtons(sheetContainer) {
 
         increaseButton.on("click", function () {
             scaleFactor += 0.1;
-            setZoom(sheetContainer);
+            setZoom();
         });
 
         decreaseButton.on("click", function () {
             scaleFactor = Math.max(scaleFactor - 0.1, 0.1);
-            setZoom(sheetContainer);
+            setZoom();
         });
 
         resetButton.on("click", function () {
             scaleFactor = 1;
-            setZoom(sheetContainer);
+            setZoom();
         });
 
         logoutButton.on("click", function () {
@@ -53,8 +53,8 @@ function toggleActorList() {
     }
 }
 
-function setZoom(sheetContainer) {
-    let sheet = sheetContainer.find('.sheet-only-sheet');
+function setZoom() {
+    let sheet = $('.sheet-only-sheet');
     sheet.css({
         'zoom': scaleFactor,
         'transform-origin': 'top left',

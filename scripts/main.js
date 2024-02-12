@@ -24,6 +24,7 @@ Hooks.once('ready', async function () {
 });
 
 Hooks.on('renderActorSheet', async (app, html) => {
+
     if (isSheetOnly()) {
         app.setPosition({
             left: 0,
@@ -33,7 +34,6 @@ Hooks.on('renderActorSheet', async (app, html) => {
         });
 
         app.element.addClass('sheet-only-sheet');
-        $('.sheet-only-container').append(app.element);
         $(".window-resizable-handle").hide();
 
         getTokenizerImage();

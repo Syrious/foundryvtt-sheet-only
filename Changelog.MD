@@ -1,3 +1,6 @@
+# 1.0.10
+- Fixes bug with auto-closing item entry on legacy sheet
+
 # 1.0.9
 - Adds D&D 5e v 3.0.0 support (Thanks to [ZeroXNoxus](https://github.com/ZeroXNoxus))
 - Adds the option to set a screen width as a trigger. If the screen width is above the entered value, sheet-only gets not activated. This idea was brought to you by [ZeroXNoxus](https://github.com/ZeroXNoxus)
