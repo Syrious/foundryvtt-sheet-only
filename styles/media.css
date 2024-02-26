@@ -22,14 +22,18 @@
 
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
 @media only screen and (max-width: 523px){
-    .sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .ability-scores .rows > div {
+    .sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows > div {
         gap: 1rem; 
         flex-wrap: wrap;
     }
-    .sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .ability-scores .ability-score {
+    .sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .ability-score {
         flex: 0 0 30%;
     }
-    .sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .tab-details .tab-body {
+    .sheet-only-sheet.dnd5e2.sheet.actor.character .tab-details .tab-body {
         padding-top: 160px;
+    }
+    .sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-body .tab-body .tab.details {
+        --skills-col-width: unset;
+        grid-template-columns: 95vw;
     }
 }

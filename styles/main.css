@@ -183,13 +183,13 @@
 }
 
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet {
+.sheet-only-sheet.dnd5e2.sheet.actor.character {
     min-width: unset;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .tab-details .tab-body {
+.sheet-only-sheet.dnd5e2.sheet.actor.character .tab-details .tab-body {
     padding-top: 75px;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs {
+.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs {
     flex-direction: row; 
     gap: 0.75rem; 
     z-index: 1; 
@@ -197,30 +197,27 @@
     left: auto; 
     top: 104px;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item {
+.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item {
     border-radius: 8px;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item.active,
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item:hover {
+.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item.active,
+.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item:hover {
     margin-left: calc((var(--tab-full-width) - var(--tab-inactive-width)) * -1);
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet nav.tabs > .item::after {
+.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item::after {
     border-radius: 5px; 
     border-left: 1px solid;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .sheet-header > .left .document-name {
+.sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-header > .left .document-name {
     font-size: 2.4rem;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .sheet-header > .right > div:last-child {
+.sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-header > .right > div:last-child {
     margin-top: -1rem;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .sheet-body .tab-body .tab.details {
-    --skills-col-width: unset;
-}
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .ability-scores .rows > .top {
+.sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows > .top {
     display: none;
 }
-.sheet-only-container .dnd5e2.sheet.actor.character.sheet-only-sheet .ability-scores .rows {
+.sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows {
     padding: 0;
     margin-top: 8.75rem;
     background: rgba(0, 0, 0, 0.85);
