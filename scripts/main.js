@@ -3,15 +3,23 @@ const FOUNDRY_MIN_WIDTH = 1024;
 import {addFontSizeButtons} from "./addFontSizeButtons.js";
 
 import {addControlButtons} from "./addControlButtons.js";
+
 let currentSheet = null; // Track the currently open sheet
+
+async function setCanvasDisabled(shouldCanvasBeDisabled) {
+    await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
+    foundry.utils.debouncedReload();
+}
 
 Hooks.on('setup', async () => {
     let isCanvasDisabled = game.settings.get("core", "noCanvas");
     let shouldCanvasBeDisabled = game.settings.get("sheet-only", "disable-canvas");
 
     if (isSheetOnly() && isCanvasDisabled !== shouldCanvasBeDisabled) {
-        await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
-        foundry.utils.debouncedReload();
+        await setCanvasDisabled(shouldCanvasBeDisabled);
+    } else if (!isSheetOnly() && isCanvasDisabled) {
+        // We should re-enable the canvas
+        await setCanvasDisabled(false);
     }
 });
 
@@ -52,10 +60,12 @@ Hooks.on('deleteActor', async function () {
     rebuildActorList();
     popupSheet(game.user)
 });
+
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
 
 }
+
 function setupContainer() {
     const sheetContainer = $('<div>').addClass('sheet-only-container');
 
@@ -72,6 +82,7 @@ function setupContainer() {
     }
 
 }
+
 function rebuildActorList() {
 
     let actorList = $('.sheet-only-actor-list');
@@ -87,10 +98,12 @@ function rebuildActorList() {
     }
 
 }
+
 function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
 
 }
+
 function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
@@ -107,6 +120,7 @@ function getActorElements() {
     );
 
 }
+
 function getTokenizerImage() {
     let actors = getOwnedActors();
     actors.map(actor => {
@@ -122,6 +136,7 @@ function getTokenizerImage() {
     });
 
 }
+
 function hideElements() {
     $("#interface").addClass("sheet-only-hide");
     $("#pause").addClass("sheet-only-hide");
@@ -140,11 +155,18 @@ function isSheetOnly() {
     let userData = playerdata[user.id];
 
     if (userData) {
-        if (userData.display) {
-            // Check if mobile only is set & is actually mobile device
-            if (!userData.mobile) {
+        const useSheetOnly = userData.display;
+
+        if (useSheetOnly) {
+            const screenWidthToIgnoreSheetOnly = userData.screenwidth;
+
+            if(screenWidthToIgnoreSheetOnly <= 0){
+                // We ignore screen size
                 return true;
-            } else if (userData.screenwidth > 0 && userData.screenwidth >= screen.width) {
+            }
+
+            if (screen.width < screenWidthToIgnoreSheetOnly) {
+                // If the mobile value is set, the screen width must be smaller than the set value to get sheet-only activated
                 return true;
             }
         }

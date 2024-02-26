@@ -29,7 +29,8 @@
   ],
   "styles": [
     "styles/main.css",
-    "styles/media.css"
+    "styles/dnd5e.css",
+    "styles/dnd5e_media.css"
   ],
   "url": "https://github.com/Syrious/foundryvtt-sheet-only",
   "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/latest/module.json",
