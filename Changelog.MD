@@ -1,3 +1,7 @@
+# 1.0.11
+- Fixes bug with activation by screen size not working
+- Adds a bit more styling to the nav bar at the top right of the sheet
+
 # 1.0.10
 - Fixes bug with auto-closing item entry on legacy sheet
 
