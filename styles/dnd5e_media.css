@@ -18,6 +18,12 @@
     .dnd5e.sheet.actor.character.sheet-only-sheet .inventory-filters .currency h3{
         display: none;
     }
+
+    /* No images in chat log */
+    .sheet-only-chat  ol#chat-log li img{
+        /*display: none;*/
+    }
+
 }
 
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
