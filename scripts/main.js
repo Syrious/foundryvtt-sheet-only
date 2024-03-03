@@ -1,7 +1,8 @@
 const FOUNDRY_MIN_WIDTH = 1024;
 
-import {addFontSizeButtons} from "./addFontSizeButtons.js";
 import {addControlButtons} from "./addControlButtons.js";
+import * as FirefoxZoom from "./firefoxZoom.js";
+import * as DefaultZoom from "./defaultZoom.js";
 
 let currentSheet = null; // Track the currently open sheet
 
@@ -73,18 +74,18 @@ function setupContainer() {
     sheetContainer.append($('<div>').addClass('sheet-only-actor-list'));
 
     rebuildActorList()
+
+    // Add control buttons depending on browser
     if (navigator.userAgent.indexOf("Firefox") !== -1) {
         console.log("Adding font-size buttons for firefox");
-        addFontSizeButtons(sheetContainer);
+        addControlButtons(sheetContainer, FirefoxZoom.increaseZoom, FirefoxZoom.decreaseZoom, FirefoxZoom.resetZoom);
     } else {
         console.log("Adding zoom buttons");
-        addControlButtons(sheetContainer);
+        addControlButtons(sheetContainer, DefaultZoom.increaseZoom, DefaultZoom.decreaseZoom, DefaultZoom.resetZoom);
     }
-
 }
 
 function rebuildActorList() {
-
     let actorList = $('.sheet-only-actor-list');
 
     actorList.empty();
@@ -96,12 +97,10 @@ function rebuildActorList() {
     } else {
         actorList.hide();
     }
-
 }
 
 function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
-
 }
 
 function getActorElements() {
@@ -118,7 +117,6 @@ function getActorElements() {
                 });
         }
     );
-
 }
 
 function getTokenizerImage() {
@@ -138,7 +136,6 @@ function getTokenizerImage() {
 }
 
 function hideUnusedElements() {
-
     $("#interface").addClass("sheet-only-hide");
     $("#pause").addClass("sheet-only-hide");
 
@@ -146,8 +143,6 @@ function hideUnusedElements() {
     if (!game.settings.get("sheet-only", "display-notifications")) {
         $("#notifications").addClass("sheet-only-hide");
     }
-
-
 }
 
 function setupChatPanel() {

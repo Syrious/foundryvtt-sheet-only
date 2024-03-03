@@ -1,8 +1,4 @@
-let scaleFactor = 1;
-
-
-
-export function addControlButtons(sheetContainer) {
+export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom,  resetZoom) {
     const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
@@ -22,18 +18,15 @@ export function addControlButtons(sheetContainer) {
         });
 
         increaseButton.on("click", function () {
-            scaleFactor += 0.1;
-            setZoom();
+            increaseZoom();
         });
 
         decreaseButton.on("click", function () {
-            scaleFactor = Math.max(scaleFactor - 0.1, 0.1);
-            setZoom();
+            decreaseZoom();
         });
 
         resetButton.on("click", function () {
-            scaleFactor = 1;
-            setZoom();
+            resetZoom()
         });
 
         logoutButton.on("click", function () {
@@ -71,14 +64,4 @@ function toggleChat() {
     } else {
         localStorage.setItem("collapsed-chat", "false");
     }
-}
-
-function setZoom() {
-    let sheet = $('.sheet-only-sheet');
-    sheet.css({
-        'zoom': scaleFactor,
-        'transform-origin': 'top left',
-        'width': '100vw',
-        'height': '100vh'
-    });
 }
