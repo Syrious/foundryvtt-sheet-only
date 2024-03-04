@@ -1,10 +1,9 @@
-let scaleFactor = 1;
-
-export function addControlButtons(sheetContainer) {
+export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom,  resetZoom) {
     const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
         const collapseButton = uiElement.find("#collapse-actor-select")
+        const chatButton = uiElement.find("#toggle-chat")
         const increaseButton = uiElement.find("#increase-font");
         const decreaseButton = uiElement.find("#decrease-font");
         const resetButton = uiElement.find("#reset-font");
@@ -14,19 +13,20 @@ export function addControlButtons(sheetContainer) {
             toggleActorList();
         });
 
+        chatButton.on("click", function () {
+            toggleChat();
+        });
+
         increaseButton.on("click", function () {
-            scaleFactor += 0.1;
-            setZoom();
+            increaseZoom();
         });
 
         decreaseButton.on("click", function () {
-            scaleFactor = Math.max(scaleFactor - 0.1, 0.1);
-            setZoom();
+            decreaseZoom();
         });
 
         resetButton.on("click", function () {
-            scaleFactor = 1;
-            setZoom();
+            resetZoom()
         });
 
         logoutButton.on("click", function () {
@@ -37,14 +37,17 @@ export function addControlButtons(sheetContainer) {
 
     sheetContainer.append(uiElement);
 
-    if (localStorage.getItem("collapsed-actor-select") === 'true') {
-        $('#collapse-actor-select i').toggleClass('hidden');
-        $('.sheet-only-actor-list').toggleClass('collapse');
-    }
+    setupDefaults();
+}
+
+function setupDefaults() {
+    $('#collapse-actor-select i').addClass('hidden');
+    $('.sheet-only-actor-list').addClass('collapse');
 }
 
 function toggleActorList() {
     $('#collapse-actor-select i').toggleClass('hidden');
+
     $('.sheet-only-actor-list').toggleClass('collapse');
     if ($('.sheet-only-actor-list.collapse')) {
         localStorage.setItem("collapsed-actor-select", "true");
@@ -53,12 +56,12 @@ function toggleActorList() {
     }
 }
 
-function setZoom() {
-    let sheet = $('.sheet-only-sheet');
-    sheet.css({
-        'zoom': scaleFactor,
-        'transform-origin': 'top left',
-        'width': '100vw',
-        'height': '100vh'
-    });
+function toggleChat() {
+    $('.sheet-only-chat').toggleClass('collapse');
+
+    if ($('.sheet-only-chat.collapse')) {
+        localStorage.setItem("collapsed-chat", "true");
+    } else {
+        localStorage.setItem("collapsed-chat", "false");
+    }
 }

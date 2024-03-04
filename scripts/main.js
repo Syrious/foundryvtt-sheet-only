@@ -1,8 +1,8 @@
 const FOUNDRY_MIN_WIDTH = 1024;
 
-import {addFontSizeButtons} from "./addFontSizeButtons.js";
-
 import {addControlButtons} from "./addControlButtons.js";
+import * as FirefoxZoom from "./firefoxZoom.js";
+import * as DefaultZoom from "./defaultZoom.js";
 
 let currentSheet = null; // Track the currently open sheet
 
@@ -26,7 +26,8 @@ Hooks.on('setup', async () => {
 Hooks.once('ready', async function () {
     if (isSheetOnly()) {
         setupContainer();
-        hideElements();
+        setupChatPanel();
+        hideUnusedElements();
         popupSheet(game.user);
     }
 });
@@ -73,18 +74,18 @@ function setupContainer() {
     sheetContainer.append($('<div>').addClass('sheet-only-actor-list'));
 
     rebuildActorList()
+
+    // Add control buttons depending on browser
     if (navigator.userAgent.indexOf("Firefox") !== -1) {
         console.log("Adding font-size buttons for firefox");
-        addFontSizeButtons(sheetContainer);
+        addControlButtons(sheetContainer, FirefoxZoom.increaseZoom, FirefoxZoom.decreaseZoom, FirefoxZoom.resetZoom);
     } else {
         console.log("Adding zoom buttons");
-        addControlButtons(sheetContainer);
+        addControlButtons(sheetContainer, DefaultZoom.increaseZoom, DefaultZoom.decreaseZoom, DefaultZoom.resetZoom);
     }
-
 }
 
 function rebuildActorList() {
-
     let actorList = $('.sheet-only-actor-list');
 
     actorList.empty();
@@ -96,12 +97,10 @@ function rebuildActorList() {
     } else {
         actorList.hide();
     }
-
 }
 
 function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
-
 }
 
 function getActorElements() {
@@ -118,7 +117,6 @@ function getActorElements() {
                 });
         }
     );
-
 }
 
 function getTokenizerImage() {
@@ -137,7 +135,7 @@ function getTokenizerImage() {
 
 }
 
-function hideElements() {
+function hideUnusedElements() {
     $("#interface").addClass("sheet-only-hide");
     $("#pause").addClass("sheet-only-hide");
 
@@ -145,7 +143,27 @@ function hideElements() {
     if (!game.settings.get("sheet-only", "display-notifications")) {
         $("#notifications").addClass("sheet-only-hide");
     }
+}
 
+function setupChatPanel() {
+    var chatElement = $('#chat'); // Get the chat element
+
+    var newParentElement = $('.sheet-only-container'); // Get the new parent
+
+    if(chatElement.length && newParentElement.length) {
+        // Create a new div and wrap the chat element inside it
+        chatElement.wrap('<div id="chat-wrapper"></div>');
+
+        // Get the wrapper we just created along with its child
+        var chatElementWrapper = $('#chat-wrapper');
+        chatElementWrapper.addClass("sheet-only-chat");
+        chatElementWrapper.addClass('collapse');
+
+        chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
+        newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
+    }else{
+        console.log("Could not find chat panel")
+    }
 }
 
 function isSheetOnly() {
