@@ -1,3 +1,6 @@
+# 1.0.12
+- Adds a button to toggle chat
+
 # 1.0.11
 - Fixes bug with activation by screen size not working
 - Adds a bit more styling to the nav bar at the top right of the sheet
