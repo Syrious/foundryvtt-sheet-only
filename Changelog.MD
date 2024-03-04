@@ -1,3 +1,6 @@
+# 1.0.13
+- Hotfix: Fixes bug preventing interactions with the sheet
+- 
 # 1.0.12
 - Adds a button to toggle chat
 
