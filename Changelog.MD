@@ -1,3 +1,6 @@
+# 1.0.14
+- Fixes bug where chat input was always disabled, not matter if sheet-only was enabled or not
+
 # 1.0.13
 - Hotfix: Fixes bug preventing interactions with the sheet
 - 
