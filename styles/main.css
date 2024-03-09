@@ -76,7 +76,7 @@
 }
 
 /* chat input box */
-#chat-form{
+#chat-form.hidden{
     display: none;
 }
 
