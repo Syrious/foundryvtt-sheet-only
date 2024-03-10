@@ -159,9 +159,6 @@ function setupChatPanel() {
         chatElementWrapper.addClass("sheet-only-chat");
         chatElementWrapper.addClass('collapse');
 
-        // Hide the chat input form
-        $('#chat-form').addClass("hidden");
-
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
     }else{

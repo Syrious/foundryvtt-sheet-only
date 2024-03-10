@@ -1,7 +1,7 @@
 {
   "id": "sheet-only",
   "title": "Sheet Only",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "compatibility": {
     "minimum": "11",
     "verified": "11"

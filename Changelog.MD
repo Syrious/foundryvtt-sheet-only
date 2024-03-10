@@ -1,3 +1,6 @@
+# 1.0.15
+- Removes dice tray and chat controls
+
 # 1.0.14
 - Fixes bug where chat input was always disabled, not matter if sheet-only was enabled or not
 

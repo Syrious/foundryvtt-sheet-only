@@ -76,7 +76,9 @@
 }
 
 /* chat input box */
-#chat-form.hidden{
+.sheet-only-chat #chat-form,
+.sheet-only-chat #chat-controls,
+.sheet-only-chat .dice-tray {
     display: none;
 }
 
