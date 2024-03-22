@@ -38,6 +38,11 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 
 <img alt="example2.png" height="500" src="example2.png"/>
 
+### Sheet-Only-Plus
+The foolowing features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
+* Targeting
+* (Upcomming) Movement
+
 ### Tested with
 - [Cyberpunk RED](https://foundryvtt.com/packages/cyberpunk-red-core) (Little wonky though)
 - [Das Schwarze Auge / The Dark Eye (5th Edition)](https://foundryvtt.com/packages/dsa5)

@@ -1,3 +1,6 @@
+# 1.1.0
+- Adds support for Sheet-Only-Plus
+
 # 1.0.15
 - Removes dice tray and chat controls
 
