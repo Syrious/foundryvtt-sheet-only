@@ -39,7 +39,7 @@ I fixed that problem. Both, GM and players are looking and updating the same she
 <img alt="example2.png" height="500" src="example2.png"/>
 
 ### Sheet-Only-Plus
-The foolowing features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
+These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
 * Targeting
 * (Upcomming) Movement
 
