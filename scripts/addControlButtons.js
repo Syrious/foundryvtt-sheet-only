@@ -1,4 +1,6 @@
-export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom,  resetZoom) {
+import {showPatreonDialog, wipDialog} from "./dialogs.js"
+
+export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
@@ -8,6 +10,9 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom,  r
         const decreaseButton = uiElement.find("#decrease-font");
         const resetButton = uiElement.find("#reset-font");
         const logoutButton = uiElement.find("#so-log-out");
+        const targetingButton = uiElement.find("#targeting");
+        const controllingButton = uiElement.find("#controlling");
+        const fontsControl = uiElement.find("#toggle-font-controls");
 
         collapseButton.on("click", function () {
             toggleActorList();
@@ -31,8 +36,35 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom,  r
 
         logoutButton.on("click", function () {
             ui.menu.items.logout.onClick();
-        })
+        });
 
+        fontsControl.on("click", function () {
+            let fontControls = document.getElementById('font-controls');
+            // toggle visibility
+            if (fontControls.style.display === 'none' || fontControls.style.display === '') {
+                fontControls.style.display = 'flex';
+            } else {
+                fontControls.style.display = 'none';
+            }
+        });
+
+        targetingButton.on("click", function () {
+            if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openTargeting === "function") {
+                window.sheetOnlyPlus.openTargeting();
+            } else {
+                showPatreonDialog("Targeting");
+            }
+        });
+
+        controllingButton.on("click", function () {
+            wipDialog("Movement", "It will let you move your tokens.");
+
+            // if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openControls === "function") {
+            //     window.sheetOnlyPlus.openControls();
+            // } else {
+            //    showPatreonDialog("Movement");
+            // }
+        });
     });
 
     sheetContainer.append(uiElement);
@@ -65,3 +97,4 @@ function toggleChat() {
         localStorage.setItem("collapsed-chat", "false");
     }
 }
+

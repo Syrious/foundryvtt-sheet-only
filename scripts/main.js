@@ -5,6 +5,7 @@ import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 
 let currentSheet = null; // Track the currently open sheet
+let currentActor; // The currently selected actor
 
 async function setCanvasDisabled(shouldCanvasBeDisabled) {
     await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
@@ -43,6 +44,13 @@ Hooks.on('renderActorSheet', async (app, html) => {
         });
 
         app.element.addClass('sheet-only-sheet');
+
+        const shouldMoveDOM = false
+        if(shouldMoveDOM) {
+            var parent = $('.sheet-only-container');
+            parent.append(app.element);
+        }
+
         $(".window-resizable-handle").hide();
 
         getTokenizerImage();
@@ -114,6 +122,7 @@ function getActorElements() {
                         currentSheet.close();
                     }
                     currentSheet = actor.sheet.render(true);
+                    currentActor = actor;
                 });
         }
     );
@@ -195,11 +204,22 @@ function isSheetOnly() {
 
 function popupSheet(user) {
     const actor = user.character;
+    currentActor = actor;
 
     if (actor) {
         currentSheet = actor.sheet;
         currentSheet.render(true);
     } else {
         console.log(`No actor for user found.`);
+    }
+}
+
+window.sheetOnly = {
+    isSheetOnly: function () {
+        return isSheetOnly();
+    },
+
+    getActor: function (){
+        return currentActor;
     }
 }
