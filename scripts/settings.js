@@ -1,4 +1,6 @@
 import {i18n} from "./utils.js";
+import {realDiceActive} from "./compatibility.js";
+
 
 Hooks.on('init', () => {
     let moduleId = "sheet-only";
@@ -31,6 +33,21 @@ Hooks.on('init', () => {
         type: Boolean,
         requiresReload: true
     });
+
+    if (realDiceActive()) {
+        game.settings.register(moduleId, "real-dice", {
+            name: i18n("Sheet-Only.real-dice.name"),
+            hint: i18n("Sheet-Only.real-dice.hint"),
+            scope: "world",
+            config: true,
+            default: false,
+            type: Boolean,
+            requiresReload: false,
+            onChange: value => {
+                game.settings.set("real-dice", "manualRollMode", value)
+            }
+        });
+    }
 
     game.settings.register(moduleId, "playerdata", {
         scope: "world",

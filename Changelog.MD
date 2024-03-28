@@ -1,3 +1,6 @@
+# 1.1.1
+- Enables support for [Real-Dice](https://foundryvtt.com/packages/real-dice)
+
 # 1.1.0
 - Adds support for Sheet-Only-Plus
 
