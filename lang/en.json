@@ -13,5 +13,5 @@
   "Sheet-Only.disable-canvas.name": "Disable Canvas for users",
   "Sheet-Only.disable-canvas.hint": "(Default: Checked) Whether or not the player's canvas should be disabled. If the canvas is disabled, users won't get pulled into and don't render scenes (which saves resources). Some systems in combination with certain modules won't work if the canvas disabled.",
   "Sheet-Only.real-dice.name": "Real Dice: Enable manual rolls",
-  "Sheet-Only.real-dice.hint": "(Default: Checked) You have Real Dice installed. Should manual rolling be enabled for all players?"
+  "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?"
 }

@@ -34,14 +34,13 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-
     if (realDiceActive()) {
         game.settings.register(moduleId, "real-dice", {
             name: i18n("Sheet-Only.real-dice.name"),
             hint: i18n("Sheet-Only.real-dice.hint"),
             scope: "world",
             config: true,
-            default: true,
+            default: false,
             type: Boolean,
             requiresReload: false,
             onChange: value => {

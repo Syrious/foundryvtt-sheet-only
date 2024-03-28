@@ -1,6 +1,7 @@
 import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
+import {setupCompatibility} from "./compatibility.js";
 
 CONFIG.debug.hooks = false;
 
@@ -22,6 +23,8 @@ Hooks.on('setup', async () => {
         // We should re-enable the canvas
         await setCanvasDisabled(false);
     }
+
+    setupCompatibility();
 });
 
 Hooks.once('ready', async function () {

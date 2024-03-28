@@ -43,6 +43,9 @@ These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
 * Targeting
 * (Upcomming) Movement
 
+### Compatibility
+* [Real-Dice](https://foundryvtt.com/packages/real-dice) If installed, you can enable manual rolling in sheet-only settings.
+
 ### Tested with
 - [Cyberpunk RED](https://foundryvtt.com/packages/cyberpunk-red-core) (Little wonky though)
 - [Das Schwarze Auge / The Dark Eye (5th Edition)](https://foundryvtt.com/packages/dsa5)
