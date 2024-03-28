@@ -1,8 +1,8 @@
-const FOUNDRY_MIN_WIDTH = 1024;
-
 import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
+
+CONFIG.debug.hooks = false;
 
 let currentSheet = null; // Track the currently open sheet
 let currentActor; // The currently selected actor
