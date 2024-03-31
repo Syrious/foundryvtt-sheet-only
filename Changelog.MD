@@ -1,3 +1,6 @@
+# 1.1.2
+- Fixes bug where the backpack (dnd5e) was not usable
+
 # 1.1.1
 - Enables support for [Real-Dice](https://foundryvtt.com/packages/real-dice)
 
