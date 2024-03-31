@@ -49,7 +49,7 @@ Hooks.on('renderActorSheet', async (app, html) => {
         app.element.addClass('sheet-only-sheet');
 
         const shouldMoveDOM = false
-        if(shouldMoveDOM) {
+        if (shouldMoveDOM) {
             var parent = $('.sheet-only-container');
             parent.append(app.element);
         }
@@ -130,6 +130,12 @@ function getActorElements() {
                     }
                     currentSheet = actor.sheet.render(true);
                     currentActor = actor;
+
+                    // Take control of the token of this actor (for targeting)
+                    const activeTokens = currentActor.getActiveTokens();
+                    if (activeTokens) {
+                        activeTokens.forEach(token => token.control({releaseOthers: true}))
+                    }
                 });
         }
     );
@@ -166,7 +172,7 @@ function setupChatPanel() {
 
     var newParentElement = $('.sheet-only-container'); // Get the new parent
 
-    if(chatElement.length && newParentElement.length) {
+    if (chatElement.length && newParentElement.length) {
         // Create a new div and wrap the chat element inside it
         chatElement.wrap('<div id="chat-wrapper"></div>');
 
@@ -177,7 +183,7 @@ function setupChatPanel() {
 
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
-    }else{
+    } else {
         console.log("Could not find chat panel")
     }
 }
@@ -194,7 +200,7 @@ function isSheetOnly() {
         if (useSheetOnly) {
             const screenWidthToIgnoreSheetOnly = userData.screenwidth;
 
-            if(screenWidthToIgnoreSheetOnly <= 0){
+            if (screenWidthToIgnoreSheetOnly <= 0) {
                 // We ignore screen size
                 return true;
             }
@@ -226,7 +232,7 @@ window.sheetOnly = {
         return isSheetOnly();
     },
 
-    getActor: function (){
+    getActor: function () {
         return currentActor;
     }
 }
