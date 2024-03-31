@@ -73,6 +73,10 @@ Hooks.on('deleteActor', async function () {
     popupSheet(game.user)
 });
 
+Hooks.on('renderContainerSheet', async (app, html, data) => {
+    html.css('z-index', '99999');
+});
+
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
 
