@@ -8,10 +8,6 @@ They can interact with the sheet, see all the relevant information and the sheet
 
 I built this simple module for my own in-person sessions, where I have a large display to show foundry (using [Monk's Common Display](https://github.com/ironmonk88/monks-common-display))
 
-My players used digital character apps (e.g. D&D beyond). The problem I had with this was that their information about 
-their character and my information were not in sync. If they lost HP both sheets (external and foundry sheet) had to be updated. Adding new items was also a nuisance. With this module
-I fixed that problem. Both, GM and players are looking and updating the same sheet now.
-
 ### Installation and setup
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets
 * There you can also set a screen-width so that this module only activates if the screen width it below a certain value
