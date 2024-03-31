@@ -74,6 +74,12 @@ Hooks.on('deleteActor', async function () {
 });
 
 Hooks.on('renderContainerSheet', async (app, html, data) => {
+    app.setPosition({
+        left: window.innerWidth,
+        top: 0,
+        width: 1, // It will adjust to its minimum width
+        height: window.innerHeight // It will adjust to its minimum height
+    })
     html.css('z-index', '99999');
 });
 
