@@ -124,6 +124,8 @@ function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
 }
 
+
+
 function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
@@ -137,11 +139,7 @@ function getActorElements() {
                     currentSheet = actor.sheet.render(true);
                     currentActor = actor;
 
-                    // Take control of the token of this actor (for targeting)
-                    const activeTokens = currentActor.getActiveTokens();
-                    if (activeTokens) {
-                        activeTokens.forEach(token => token.control({releaseOthers: true}))
-                    }
+                    setCurrentActorTokenAsControlled();
                 });
         }
     );
@@ -228,8 +226,17 @@ function popupSheet(user) {
     if (actor) {
         currentSheet = actor.sheet;
         currentSheet.render(true);
+        setCurrentActorTokenAsControlled();
     } else {
         console.log(`No actor for user found.`);
+    }
+}
+
+// Take control of the token of this actor (for targeting)
+function setCurrentActorTokenAsControlled() {
+    const activeTokens = currentActor.getActiveTokens();
+    if (activeTokens.length > 0) {
+        activeTokens[0].control({releaseOthers: true})
     }
 }
 
