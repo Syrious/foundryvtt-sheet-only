@@ -1,3 +1,6 @@
+# 1.1.3
+- Internal code to improve targeting in sheet-only-plus
+
 # 1.1.2
 - Fixes bug where the backpack (dnd5e) was not usable
 
