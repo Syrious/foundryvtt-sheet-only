@@ -77,7 +77,7 @@ function setupDefaults() {
     $('.sheet-only-actor-list').addClass('collapse');
 }
 
-function toggleActorList() {
+export function toggleActorList() {
     $('#collapse-actor-select i').toggleClass('hidden');
 
     $('.sheet-only-actor-list').toggleClass('collapse');

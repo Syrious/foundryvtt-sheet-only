@@ -2,6 +2,7 @@ import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
+import {toggleActorList} from "./addControlButtons.js";
 
 CONFIG.debug.hooks = false;
 
@@ -83,6 +84,11 @@ Hooks.on('renderContainerSheet', async (app, html, data) => {
     html.css('z-index', '99999');
 });
 
+Hooks.once('closeUserConfig', async () => {
+    // Popup sheet after user selected their character
+    popupSheet(game.user)
+});
+
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
 
@@ -125,7 +131,6 @@ function getOwnedActors() {
 }
 
 
-
 function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
@@ -140,6 +145,7 @@ function getActorElements() {
                     currentActor = actor;
 
                     setCurrentActorTokenAsControlled();
+                    toggleActorList();
                 });
         }
     );
