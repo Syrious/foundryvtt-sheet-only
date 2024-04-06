@@ -13,6 +13,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const targetingButton = uiElement.find("#targeting");
         const controllingButton = uiElement.find("#controlling");
         const fontsControl = uiElement.find("#toggle-font-controls");
+        const settingsButton = uiElement.find("#so-fvtt-settings");
 
         collapseButton.on("click", function () {
             toggleActorList();
@@ -37,6 +38,10 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         logoutButton.on("click", function () {
             ui.menu.items.logout.onClick();
         });
+
+        settingsButton.on("click", function () {
+            game.settings.sheet.render(true);
+        })
 
         fontsControl.on("click", function () {
             let fontControls = document.getElementById('font-controls');

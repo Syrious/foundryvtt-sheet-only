@@ -24,16 +24,6 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-    game.settings.register(moduleId, "disable-canvas", {
-        name: i18n("Sheet-Only.disable-canvas.name"),
-        hint: i18n("Sheet-Only.disable-canvas.hint"),
-        scope: "world",
-        config: true,
-        default: true,
-        type: Boolean,
-        requiresReload: true
-    });
-
     if (realDiceActive()) {
         game.settings.register(moduleId, "real-dice", {
             name: i18n("Sheet-Only.real-dice.name"),

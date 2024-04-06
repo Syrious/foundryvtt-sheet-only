@@ -1,8 +1,7 @@
-import {addControlButtons} from "./addControlButtons.js";
+import {addControlButtons, toggleActorList} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
-import {toggleActorList} from "./addControlButtons.js";
 
 CONFIG.debug.hooks = false;
 
@@ -11,15 +10,22 @@ let currentActor; // The currently selected actor
 
 async function setCanvasDisabled(shouldCanvasBeDisabled) {
     await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
-    foundry.utils.debouncedReload();
 }
 
 Hooks.on('setup', async () => {
-    let isCanvasDisabled = game.settings.get("core", "noCanvas");
-    let shouldCanvasBeDisabled = game.settings.get("sheet-only", "disable-canvas");
+    if (isSheetOnly()) {
+        let shouldReload = false;
 
-    if (isSheetOnly() && isCanvasDisabled !== shouldCanvasBeDisabled) {
-        await setCanvasDisabled(shouldCanvasBeDisabled);
+        if (await game.settings.get("core", "noCanvas")) {
+            await setCanvasDisabled(false);
+            shouldReload = true;
+        }
+
+        if (shouldReload) {
+            foundry.utils.debouncedReload();
+        }
+
+
     } else if (!isSheetOnly() && isCanvasDisabled) {
         // We should re-enable the canvas
         await setCanvasDisabled(false);
