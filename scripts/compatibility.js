@@ -13,7 +13,9 @@ export function realDiceActive() {
 
 async function realDice() {
     const isRealDiceActive = realDiceActive();
-    const shouldBeEnabled = await game.settings.get('sheet-only', 'real-dice');
+    const shouldBeEnabled = game.settings.settings.has('sheet-only.real-dice')
+        ? await game.settings.get('sheet-only', 'real-dice')
+        : false;
 
     if (isRealDiceActive) {
         console.log("Enabling Real Dice for Sheet-Only ", shouldBeEnabled)
