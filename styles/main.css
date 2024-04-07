@@ -60,6 +60,13 @@
     display: none;
 }
 
+#so-main-buttons, #so-settings-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .sheet-only-chat {
     display: flex;
     flex-direction: column;

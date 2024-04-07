@@ -2,30 +2,29 @@ import {addControlButtons, toggleActorList} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
+import {hideCanvas} from "./canvasHider.js";
 
 CONFIG.debug.hooks = false;
 
 let currentSheet = null; // Track the currently open sheet
 let currentActor; // The currently selected actor
 
-async function setCanvasDisabled(shouldCanvasBeDisabled) {
-    await game.settings.set('core', 'noCanvas', shouldCanvasBeDisabled)
+async function setupClient() {
+    let shouldReload = false;
+
+    if (await game.settings.get("core", "noCanvas")) {
+        await game.settings.set('core', 'noCanvas', false)
+        shouldReload = true;
+    }
+
+    if (shouldReload) {
+        foundry.utils.debouncedReload();
+    }
 }
 
 Hooks.on('setup', async () => {
     if (isSheetOnly()) {
-        let shouldReload = false;
-
-        if (await game.settings.get("core", "noCanvas")) {
-            await setCanvasDisabled(false);
-            shouldReload = true;
-        }
-
-        if (shouldReload) {
-            foundry.utils.debouncedReload();
-        }
-
-
+        await setupClient();
     } else if (!isSheetOnly() && isCanvasDisabled) {
         // We should re-enable the canvas
         await setCanvasDisabled(false);
@@ -136,7 +135,6 @@ function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
 }
 
-
 function getActorElements() {
     let actors = getOwnedActors();
     return actors.map(actor => {
@@ -144,9 +142,16 @@ function getActorElements() {
                 //.text(actor.name)
                 .append($('<img>').attr('src', actor.img))
                 .click(() => {
+                    if (currentActor === actor) {
+                        // We clicked the same actor. Do nothing here
+                        toggleActorList();
+                        return;
+                    }
+
                     if (currentSheet) {
                         currentSheet.close();
                     }
+
                     currentSheet = actor.sheet.render(true);
                     currentActor = actor;
 
@@ -170,7 +175,6 @@ function getTokenizerImage() {
             }
         }
     });
-
 }
 
 function hideUnusedElements() {
@@ -178,8 +182,13 @@ function hideUnusedElements() {
     $("#pause").addClass("sheet-only-hide");
 
     $("#tooltip").addClass("sheet-only-hide");
+
     if (!game.settings.get("sheet-only", "display-notifications")) {
         $("#notifications").addClass("sheet-only-hide");
+    }
+
+    if(game.settings.get("sheet-only", "hide-canvas")) {
+        hideCanvas();
     }
 }
 

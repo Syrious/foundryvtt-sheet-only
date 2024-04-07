@@ -4,16 +4,16 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
     const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
-        const collapseButton = uiElement.find("#collapse-actor-select")
-        const chatButton = uiElement.find("#toggle-chat")
-        const increaseButton = uiElement.find("#increase-font");
-        const decreaseButton = uiElement.find("#decrease-font");
-        const resetButton = uiElement.find("#reset-font");
+        const collapseButton = uiElement.find("#so-collapse-actor-select")
+        const chatButton = uiElement.find("#so-toggle-chat")
+        const increaseButton = uiElement.find("#so-increase-font");
+        const decreaseButton = uiElement.find("#so-decrease-font");
+        const resetButton = uiElement.find("#so-reset-font");
         const logoutButton = uiElement.find("#so-log-out");
-        const targetingButton = uiElement.find("#targeting");
-        const controllingButton = uiElement.find("#controlling");
-        const fontsControl = uiElement.find("#toggle-font-controls");
+        const targetingButton = uiElement.find("#so-targeting");
+        const controllingButton = uiElement.find("#so-controlling");
         const settingsButton = uiElement.find("#so-fvtt-settings");
+        const menuButton = uiElement.find("#so-menu");
 
         collapseButton.on("click", function () {
             toggleActorList();
@@ -43,16 +43,6 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
             game.settings.sheet.render(true);
         })
 
-        fontsControl.on("click", function () {
-            let fontControls = document.getElementById('font-controls');
-            // toggle visibility
-            if (fontControls.style.display === 'none' || fontControls.style.display === '') {
-                fontControls.style.display = 'flex';
-            } else {
-                fontControls.style.display = 'none';
-            }
-        });
-
         targetingButton.on("click", function () {
             if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openTargeting === "function") {
                 window.sheetOnlyPlus.openTargeting();
@@ -69,6 +59,10 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
             // } else {
             //    showPatreonDialog("Movement");
             // }
+        });
+
+        menuButton.on("click", function () {
+            toggleMenu();
         });
     });
 
@@ -101,5 +95,10 @@ function toggleChat() {
     } else {
         localStorage.setItem("collapsed-chat", "false");
     }
+}
+
+function toggleMenu(){
+    $('#so-main-buttons').toggle();
+    $('#so-settings-buttons').toggle();
 }
 
