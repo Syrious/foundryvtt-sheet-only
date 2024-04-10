@@ -54,4 +54,4 @@ These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
 * On some systems (e.g. TDE5e, Cyberpunk Red) Dice So Nice! doesn't show roll if the canvas is disabled. To make it work again, uncheck "Disable Canvas for users" in Sheet-Only settings  
 
 ### Support
-If you like to support my work [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/syrious). I really appreciate it!
+If you like to support my work find me on [Patreon](https://www.patreon.com/SyriousWorkshop).

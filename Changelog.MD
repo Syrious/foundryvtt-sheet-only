@@ -1,3 +1,9 @@
+# 1.1.4
+* Pops up character sheet after initial choice of character
+* Closes actor list when selecting new character
+* Hides canvas instead of disabling it
+* Adds settings button for player
+
 # 1.1.3
 - Internal code to improve targeting in sheet-only-plus
 
