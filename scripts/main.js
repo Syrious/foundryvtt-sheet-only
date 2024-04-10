@@ -268,5 +268,9 @@ window.sheetOnly = {
 
     getActor: function () {
         return currentActor;
+    },
+
+    getPlusCompatibility: function() {
+        return "0.1.0";
     }
 }
