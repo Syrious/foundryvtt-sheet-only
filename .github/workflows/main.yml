@@ -16,7 +16,7 @@ jobs:
         uses: battila7/get-version-action@v2
 
       - name: Check Version
-        run: node check-versions.js
+        run: node ./.github/workflows/check-version.js
         env:
           GITHUB_REF: ${{ github.ref }}
 
