@@ -44,6 +44,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         })
 
         targetingButton.on("click", function () {
+          // TODO use API
             if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openTargeting === "function") {
                 window.sheetOnlyPlus.openTargeting();
             } else {

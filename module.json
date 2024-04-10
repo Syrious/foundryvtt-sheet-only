@@ -26,7 +26,8 @@
   ],
   "esmodules": [
     "/scripts/main.js",
-    "/scripts/settings.js"
+    "/scripts/settings.js",
+    "/scripts/api.js"
   ],
   "styles": [
     "styles/main.css",

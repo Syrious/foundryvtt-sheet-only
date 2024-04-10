@@ -4,15 +4,19 @@ import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 
+/* global game, canvas, Hooks, CONFIG, foundry */
+
 CONFIG.debug.hooks = false;
 
 let currentSheet = null; // Track the currently open sheet
-let currentActor; // The currently selected actor
+export let currentActor; // The currently selected actor
 
 async function setupClient() {
     let shouldReload = false;
 
-    if (await game.settings.get("core", "noCanvas")) {
+    let isCanvasDisabled = await game.settings.get("core", "noCanvas");
+
+    if (isCanvasDisabled) {
         await game.settings.set('core', 'noCanvas', false)
         shouldReload = true;
     }
@@ -23,11 +27,9 @@ async function setupClient() {
 }
 
 Hooks.on('setup', async () => {
+
     if (isSheetOnly()) {
         await setupClient();
-    } else if (!isSheetOnly() && isCanvasDisabled) {
-        // We should re-enable the canvas
-        await setCanvasDisabled(false);
     }
 
     setupCompatibility();
@@ -42,7 +44,7 @@ Hooks.once('ready', async function () {
     }
 });
 
-Hooks.on('renderActorSheet', async (app, html) => {
+Hooks.on('renderActorSheet', async (app) => {
 
     if (isSheetOnly()) {
         app.setPosition({
@@ -56,7 +58,7 @@ Hooks.on('renderActorSheet', async (app, html) => {
 
         const shouldMoveDOM = false
         if (shouldMoveDOM) {
-            var parent = $('.sheet-only-container');
+            const parent = $('.sheet-only-container');
             parent.append(app.element);
         }
 
@@ -79,7 +81,7 @@ Hooks.on('deleteActor', async function () {
     popupSheet(game.user)
 });
 
-Hooks.on('renderContainerSheet', async (app, html, data) => {
+Hooks.on('renderContainerSheet', async (app, html) => {
     app.setPosition({
         left: window.innerWidth,
         top: 0,
@@ -213,7 +215,7 @@ function setupChatPanel() {
     }
 }
 
-function isSheetOnly() {
+export function isSheetOnly() {
 
     let playerdata = game.settings.get("sheet-only", 'playerdata');
     let user = game.user;
@@ -261,6 +263,8 @@ function setCurrentActorTokenAsControlled() {
     }
 }
 
+
+// TODO Remove. Use API instead
 window.sheetOnly = {
     isSheetOnly: function () {
         return isSheetOnly();
@@ -268,9 +272,5 @@ window.sheetOnly = {
 
     getActor: function () {
         return currentActor;
-    },
-
-    getPlusCompatibility: function() {
-        return "0.1.0";
     }
 }
