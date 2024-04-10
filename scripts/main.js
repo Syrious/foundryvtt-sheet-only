@@ -262,15 +262,3 @@ function setCurrentActorTokenAsControlled() {
         activeTokens[0].control({releaseOthers: true})
     }
 }
-
-
-// TODO Remove. Use API instead
-window.sheetOnly = {
-    isSheetOnly: function () {
-        return isSheetOnly();
-    },
-
-    getActor: function () {
-        return currentActor;
-    }
-}
