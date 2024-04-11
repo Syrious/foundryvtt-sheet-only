@@ -42,6 +42,8 @@ Hooks.once('ready', async function () {
         hideUnusedElements();
         popupSheet(game.user);
     }
+
+    libWrapper.register("sheet-only", "CONFIG.Item.documentClass.prototype.use", doItemUse, "MIXED");
 });
 
 Hooks.on('renderActorSheet', async (app) => {
@@ -189,7 +191,7 @@ function hideUnusedElements() {
         $("#notifications").addClass("sheet-only-hide");
     }
 
-    if(game.settings.get("sheet-only", "hide-canvas")) {
+    if (game.settings.get("sheet-only", "hide-canvas")) {
         hideCanvas();
     }
 }
@@ -262,3 +264,84 @@ function setCurrentActorTokenAsControlled() {
         activeTokens[0].control({releaseOthers: true})
     }
 }
+
+let test;
+Hooks.on("drawMeasuredTemplate", async (abilityTemplate) => {
+
+    console.log(abilityTemplate)
+
+    if (abilityTemplate.isPreview) {
+        test = abilityTemplate
+        document.getElementById('board').style.display = 'block';
+
+        // TODO only for debugging
+        game.modules.get('sheet-only').api = {
+            getTemplate: function () {
+                return abilityTemplate;
+            }
+        }
+    }
+});
+
+export async function doItemUse(wrapped, ...args) {
+    let result = wrapped(...args);
+
+    const item = this;
+    const autoplace = item && item.hasAreaTarget && ["self"].includes(item.system.range?.units) && ["radius", "squareRadius"].includes(item.system.target.type);
+
+    console.warn("has Target are", item.hasAreaTarget)
+    console.warn("is range self",["self"].includes(item.system.range?.units))
+    console.warn("is radius or square",["radius", "squareRadius"].includes(item.system.target.type))
+    console.warn("",item.system.target.type)
+    console.warn(item.system.range)
+    console.warn(item.system.range?.units)
+
+    console.warn(item.system.target) // eg. 20ft sphere
+
+
+    console.warn(autoplace)
+
+
+    // ... do things ...
+
+    return result;
+}
+
+Hooks.on("fuck", async (data) => {
+    console.warn(data)
+})
+
+window.addEventListener('keydown', function (event) {
+    if (event.key === 'u') {
+        test.setTransform(test.transform.position.x + 10, test.transform.position.y + 10);
+    }
+
+    if (event.key === 'i') {
+
+        Hooks.call("midi-qol.RollComplete", test.document, {undo: false} ,game.user, );
+
+        let document = {
+            ...test.document,
+            x: test.transform.position.x,
+            y: test.transform.position.y
+        }
+
+        console.log(document)
+        canvas?.scene?.createEmbeddedDocuments("MeasuredTemplate", [document])
+
+        // // That actually works
+        // // get the DOM element
+        // let element = document.querySelector('.vtt.game');
+        //
+        // console.warn(element)
+        // // create a right-click event
+        // let clickEvent = new MouseEvent('mousedown', {
+        //     bubbles: true,
+        //     button: 2, // Right button
+        //     cancelable: true
+        // });
+        //
+        // // dispatch the event
+        // element.dispatchEvent(clickEvent);
+    }
+});
