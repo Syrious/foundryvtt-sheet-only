@@ -124,9 +124,3 @@ class PlayerSelectionMenu extends FormApplication {
 
 
 }
-
-Hooks.once('ready', async () => {
-    game.settings.set("core", "globalPlaylistVolume", 0.0)
-    game.settings.set("core", "globalAmbientVolume", 0.0)
-    game.settings.set("core", "globalInterfaceVolume", 0.0)
-});
