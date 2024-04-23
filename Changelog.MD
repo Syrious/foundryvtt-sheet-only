@@ -1,8 +1,11 @@
+# 1.1.5
+- Disables playlist-, ambience- and interface sounds for Sheet-Only clients
+
 # 1.1.4
-* Pops up character sheet after initial choice of character
-* Closes actor list when selecting new character
-* Hides canvas instead of disabling it
-* Adds settings button for player
+- Pops up character sheet after initial choice of character
+- Closes actor list when selecting new character
+- Hides canvas instead of disabling it
+- Adds settings button for player
 
 # 1.1.3
 - Internal code to improve targeting in sheet-only-plus

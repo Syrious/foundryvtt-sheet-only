@@ -11,21 +11,6 @@ CONFIG.debug.hooks = false;
 let currentSheet = null; // Track the currently open sheet
 export let currentActor; // The currently selected actor
 
-async function setupClient() {
-    let shouldReload = false;
-
-    let isCanvasDisabled = await game.settings.get("core", "noCanvas");
-
-    if (isCanvasDisabled) {
-        await game.settings.set('core', 'noCanvas', false)
-        shouldReload = true;
-    }
-
-    if (shouldReload) {
-        foundry.utils.debouncedReload();
-    }
-}
-
 Hooks.on('setup', async () => {
 
     if (isSheetOnly()) {
@@ -95,6 +80,28 @@ Hooks.once('closeUserConfig', async () => {
     // Popup sheet after user selected their character
     popupSheet(game.user)
 });
+
+async function setupClient() {
+    disableSounds();
+
+    let shouldReload = false;
+    let isCanvasDisabled = await game.settings.get("core", "noCanvas");
+
+    if (isCanvasDisabled) {
+        await game.settings.set('core', 'noCanvas', false)
+        shouldReload = true;
+    }
+
+    if (shouldReload) {
+        foundry.utils.debouncedReload();
+    }
+}
+
+function disableSounds() {
+    game.settings.set("core", "globalPlaylistVolume", 0.0)
+    game.settings.set("core", "globalAmbientVolume", 0.0)
+    game.settings.set("core", "globalInterfaceVolume", 0.0)
+}
 
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
