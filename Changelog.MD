@@ -1,3 +1,6 @@
+# 1.1.7
+- Fixed a minor bug when checking for sheet-only-plus 
+
 # 1.1.6
 - Changes canvas behaviour. Canvas is disabled by default and needs to be manually enabled for targeting
 - Adds button to enable fullscreen

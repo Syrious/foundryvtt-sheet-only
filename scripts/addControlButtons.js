@@ -1,6 +1,7 @@
 import {showPatreonDialog, wipDialog} from "./dialogs.js"
 import {initDragListener, wasDragged} from "./drag.js";
 import {toggleFullscreen} from "./fullscreen.js";
+import {sheetOnlyPlusActive} from "./compatibility.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container"></div>`);
@@ -56,7 +57,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 
         targetingButton.on("click", function () {
             if (wasDragged()) return;
-            if (game.modules.has('sheet-only-plus')) {
+            if (sheetOnlyPlusActive()) {
                 game.modules.get('sheet-only-plus').api.openTargeting();
             } else {
                 showPatreonDialog("Targeting");
