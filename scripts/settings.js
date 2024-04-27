@@ -24,22 +24,20 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-
-        // Only control canvas if sheet-only-PLUS is not active
-        game.settings.register(moduleId, "canvas-option", {
-            name: i18n("Sheet-Only.canvas-option.name"),
-            hint: i18n("Sheet-Only.canvas-option.hint"),
-            scope: "client",
-            config: true,
-            type: String,
-            choices: {
-                "No-Control": "No Control",
-                "Hidden": "Hide",
-                "Disabled": "Disable"
-            },
-            default: "Disabled",
-            requiresReload: true
-        });
+    game.settings.register(moduleId, "canvas-option", {
+        name: i18n("Sheet-Only.canvas-option.name"),
+        hint: i18n("Sheet-Only.canvas-option.hint"),
+        scope: "client",
+        config: true,
+        type: String,
+        choices: {
+            "No-Control": "No Control",
+            "Hidden": "Hide",
+            "Disabled": "Disable"
+        },
+        default: "Disabled",
+        requiresReload: true
+    });
 
     if (realDiceActive()) {
         game.settings.register(moduleId, "real-dice", {
