@@ -10,8 +10,8 @@
   "Sheet-Only.button.save": "Save",
   "Sheet-Only.mobile-only.name": "Only display on mobile",
   "Sheet-Only.mobile-only.hint": "(Default: Checked) Whether the sheet should only be displayed as an 'Only Sheet' on mobile devices. Disable to display for the selected users on any device.",
-  "Sheet-Only.hide-canvas.name": "Hide Canvas for users",
-  "Sheet-Only.hide-canvas.hint": "(Default: Checked) Whether or not the player's canvas should be hidden to save resources. Some systems in combination with certain modules won't work if the canvas disabled. If you encounter any issues, try to uncheck this option.",
+  "Sheet-Only.canvas-option.name": "Canvas Controls",
+  "Sheet-Only.canvas-option.hint": "(Default: Disabled)  Disabling the canvas is the most performant option but other modules might not work.",
   "Sheet-Only.real-dice.name": "Real Dice: Enable manual rolls",
   "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?"
 }

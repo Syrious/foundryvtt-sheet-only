@@ -1,5 +1,5 @@
 import {i18n} from "./utils.js";
-import {realDiceActive} from "./compatibility.js";
+import {realDiceActive, sheetOnlyPlusActive} from "./compatibility.js";
 
 
 Hooks.on('init', () => {
@@ -24,15 +24,22 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-    game.settings.register(moduleId, "hide-canvas", {
-        name: i18n("Sheet-Only.hide-canvas.name"),
-        hint: i18n("Sheet-Only.hide-canvas.hint"),
-        scope: "world",
-        config: true,
-        default: true,
-        type: Boolean,
-        requiresReload: true
-    });
+
+        // Only control canvas if sheet-only-PLUS is not active
+        game.settings.register(moduleId, "canvas-option", {
+            name: i18n("Sheet-Only.canvas-option.name"),
+            hint: i18n("Sheet-Only.canvas-option.hint"),
+            scope: "client",
+            config: true,
+            type: String,
+            choices: {
+                "No-Control": "Sheet-Only does change the canvas behaviour.",
+                "Hidden": "Only hides the canvas.",
+                "Disabled": "Disables the canvas."
+            },
+            default: "Disabled",
+            requiresReload: true
+        });
 
     if (realDiceActive()) {
         game.settings.register(moduleId, "real-dice", {
