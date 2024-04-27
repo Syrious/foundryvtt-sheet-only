@@ -23,16 +23,16 @@
     overflow: hidden;
 }
 
-.sheet-only-container > .button-container {
+.sheet-only-container > .so-button-container {
     display: flex;
     flex-direction: row;
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 10px;
     z-index: 99999;
 }
 
-.sheet-only-container > .button-container > .button {
+.sheet-only-container > .so-button-container > .button {
     cursor: pointer;
 }
 
@@ -60,7 +60,7 @@
     display: none;
 }
 
-#so-main-buttons, #so-settings-buttons {
+#so-main-buttons, #so-settings-buttons, #so-menu-button {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

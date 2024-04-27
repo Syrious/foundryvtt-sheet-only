@@ -1,7 +1,8 @@
 import {showPatreonDialog, wipDialog} from "./dialogs.js"
+import {initDragListener} from "./drag.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    const uiElement = $(`<div class="button-container"></div>`);
+    const uiElement = $(`<div class="so-button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
         const collapseButton = uiElement.find("#so-collapse-actor-select")
@@ -69,6 +70,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
     sheetContainer.append(uiElement);
 
     setupDefaults();
+    initDragListener();
 }
 
 function setupDefaults() {
