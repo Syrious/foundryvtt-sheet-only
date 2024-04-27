@@ -24,13 +24,18 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-    game.settings.register(moduleId, "hide-canvas", {
-        name: i18n("Sheet-Only.hide-canvas.name"),
-        hint: i18n("Sheet-Only.hide-canvas.hint"),
-        scope: "world",
+    game.settings.register(moduleId, "canvas-option", {
+        name: i18n("Sheet-Only.canvas-option.name"),
+        hint: i18n("Sheet-Only.canvas-option.hint"),
+        scope: "client",
         config: true,
-        default: true,
-        type: Boolean,
+        type: String,
+        choices: {
+            "No-Control": "No Control",
+            "Hidden": "Hide",
+            "Disabled": "Disable"
+        },
+        default: "Disabled",
         requiresReload: true
     });
 

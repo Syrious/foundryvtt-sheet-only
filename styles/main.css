@@ -26,9 +26,7 @@
 .sheet-only-container > .button-container {
     display: flex;
     flex-direction: row;
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
+    position: absolute;
     z-index: 99999;
 }
 
@@ -57,10 +55,10 @@
 }
 
 .sheet-only-actor-list.collapse {
-    display: none;
+    display: none !important;
 }
 
-#so-main-buttons, #so-settings-buttons {
+#so-main-buttons, #so-settings-buttons, #so-menu-button {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

@@ -20,19 +20,20 @@ I built this simple module for my own in-person sessions, where I have a large d
 * If sheet-only users log in they will only see their sheets
 * If they have multiple characters, a sidebar is shown and the users are able to switch between characters
   * Works for companions and wild shapes (as long as the user has owner permission)
+* You can drag the button bar if it is in your way. It starts always in the top left corner after login
 
 #### Zooming
 * In the bottom right corner there are buttons to resize the UI. Depending on the browser you are using it works differently
   * Firefox: If you are using firefox, only the font size gets adjusted (like you would in the core setting) and therefore does only work with sheets that uses relative font-size units (rem instead of px). A working example is the default sheet of [Level Up: Advanced 5th Edition (Official)](https://foundryvtt.com/packages/a5e)
   * Non-Firefox: Taking advantage of the 'zoom'-property, this should zoom in and out quite nicely regardless of the font size units
 
-<img alt="example1.png" height="500" src="example1.png"/>
+<img alt="example1.png" height="500" src="example2.png"/>
 
 #### Actor List
 * If you own more than one actor a button at the bottom right can be used to toggle a list of all your actors
 * If you don't have more than one actor, this button does nothing
 
-<img alt="example2.png" height="500" src="example2.png"/>
+<img alt="example2.png" height="500" src="example1.png"/>
 
 ### Sheet-Only-Plus
 These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
