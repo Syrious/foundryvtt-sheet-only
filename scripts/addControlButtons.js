@@ -1,5 +1,5 @@
 import {showPatreonDialog, wipDialog} from "./dialogs.js"
-import {initDragListener} from "./drag.js";
+import {initDragListener, wasDragged} from "./drag.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="so-button-container"></div>`);
@@ -17,34 +17,43 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const menuButton = uiElement.find("#so-menu");
 
         collapseButton.on("click", function () {
+            if (wasDragged()) return;
+
             toggleActorList();
         });
 
         chatButton.on("click", function () {
+            if (wasDragged()) return;
             toggleChat();
         });
 
         increaseButton.on("click", function () {
+            if (wasDragged()) return;
             increaseZoom();
         });
 
         decreaseButton.on("click", function () {
+            if (wasDragged()) return;
             decreaseZoom();
         });
 
         resetButton.on("click", function () {
+            if (wasDragged()) return;
             resetZoom()
         });
 
         logoutButton.on("click", function () {
+            if (wasDragged()) return;
             ui.menu.items.logout.onClick();
         });
 
         settingsButton.on("click", function () {
+            if (wasDragged()) return;
             game.settings.sheet.render(true);
         })
 
         targetingButton.on("click", function () {
+            if (wasDragged()) return;
             if (game.modules.has('sheet-only-plus')){
                 game.modules.get('sheet-only-plus').api.openTargeting();
             } else {
@@ -53,6 +62,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         });
 
         controllingButton.on("click", function () {
+            if (wasDragged()) return;
             wipDialog("Movement", "It will let you move your tokens.");
 
             // if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openControls === "function") {
@@ -63,6 +73,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         });
 
         menuButton.on("click", function () {
+            if (wasDragged()) return;
             toggleMenu();
         });
     });
@@ -79,14 +90,15 @@ function setupDefaults() {
 }
 
 export function toggleActorList() {
+    console.log("Toggling actor list")
     $('#collapse-actor-select i').toggleClass('hidden');
 
     $('.sheet-only-actor-list').toggleClass('collapse');
-    if ($('.sheet-only-actor-list.collapse')) {
-        localStorage.setItem("collapsed-actor-select", "true");
-    } else {
-        localStorage.setItem("collapsed-actor-select", "false");
-    }
+    // if ($('.sheet-only-actor-list.collapse')) {
+    //     localStorage.setItem("collapsed-actor-select", "true");
+    // } else {
+    //     localStorage.setItem("collapsed-actor-select", "false");
+    // }
 }
 
 function toggleChat() {

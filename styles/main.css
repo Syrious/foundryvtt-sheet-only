@@ -27,9 +27,9 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    bottom: 20px;
-    right: 10px;
     z-index: 99999;
+    top: calc(100% - 40px); /* instead of bottom: 20px; */
+    left: calc(100% - 180px); /* instead of right: 10px; */
 }
 
 .sheet-only-container > .so-button-container > .button {
@@ -57,7 +57,7 @@
 }
 
 .sheet-only-actor-list.collapse {
-    display: none;
+    display: none !important;
 }
 
 #so-main-buttons, #so-settings-buttons, #so-menu-button {

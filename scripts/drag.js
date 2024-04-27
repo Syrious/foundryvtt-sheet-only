@@ -6,23 +6,27 @@ let hasMoved = false;
 let threshold = 10; // set the amount of movement to initiate dragging.
 
 export function initDragListener(){
-    document.addEventListener('mousedown', dragStart, false);
-    document.addEventListener('touchstart', dragStart, false);
+    document.addEventListener('mousedown', dragStart, {passive: false});
+    document.addEventListener('touchstart', dragStart, {passive: false});
 
-    document.addEventListener('mousemove', dragMove, false);
-    document.addEventListener('touchmove', dragMove, false);
+    document.addEventListener('mousemove', dragMove, {passive: false});
+    document.addEventListener('touchmove', dragMove, {passive: false});
 
-    document.addEventListener('mouseup', checkDrag, false);
-    document.addEventListener('touchend', checkDrag, false);
+    document.addEventListener('mouseup', checkDrag, {passive: false});
+    document.addEventListener('touchend', checkDrag, {passive: false});
 
   //  document.getElementById('mydiv').addEventListener('click', toggleColor, false);
 }
 
+
+export function wasDragged(){
+    console.log(hasMoved)
+    return hasMoved;
+}
+
 function dragStart(event) {
     let container = findAncestor(event.target, '.so-button-container');
-    console.log(container)
     if(container) {
-        console.log("Start Dragging")
         event.preventDefault();
         selectedElement = container;
         let rect = selectedElement.getBoundingClientRect();
@@ -41,7 +45,6 @@ function findAncestor (el, sel) {
 
 function dragMove(event) {
     if(selectedElement) {
-        console.log("Moving")
         let xPosition = (event.clientX || event.touches[0].clientX) - xOffset;
         let yPosition = (event.clientY || event.touches[0].clientY) - yOffset;
         if (Math.abs(initialX - xPosition) > threshold || Math.abs(initialY - yPosition) > threshold) {
@@ -54,10 +57,4 @@ function dragMove(event) {
 
 function checkDrag() {
     selectedElement = null;
-}
-
-function toggleColor(event) {
-    if (!hasMoved) {
-        event.target.style.backgroundColor = event.target.style.backgroundColor === 'rgb(0, 128, 0)' ? '#f00' : '#008000';
-    }
 }
