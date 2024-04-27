@@ -28,7 +28,7 @@ function disable() {
 }
 
 export function toggleFullscreen() {
-    var isInFullScreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+    const isInFullScreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
 
     if (isInFullScreen) {
         disable()
