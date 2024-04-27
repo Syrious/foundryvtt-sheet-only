@@ -2,7 +2,7 @@ import {showPatreonDialog, wipDialog} from "./dialogs.js"
 import {initDragListener, wasDragged} from "./drag.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    const uiElement = $(`<div class="so-button-container"></div>`);
+    const uiElement = $(`<div class="button-container"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
         const collapseButton = uiElement.find("#so-collapse-actor-select")
@@ -54,7 +54,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 
         targetingButton.on("click", function () {
             if (wasDragged()) return;
-            if (game.modules.has('sheet-only-plus')){
+            if (game.modules.has('sheet-only-plus')) {
                 game.modules.get('sheet-only-plus').api.openTargeting();
             } else {
                 showPatreonDialog("Targeting");
@@ -90,15 +90,14 @@ function setupDefaults() {
 }
 
 export function toggleActorList() {
-    console.log("Toggling actor list")
     $('#collapse-actor-select i').toggleClass('hidden');
 
     $('.sheet-only-actor-list').toggleClass('collapse');
-    // if ($('.sheet-only-actor-list.collapse')) {
-    //     localStorage.setItem("collapsed-actor-select", "true");
-    // } else {
-    //     localStorage.setItem("collapsed-actor-select", "false");
-    // }
+    if ($('.sheet-only-actor-list.collapse')) {
+        localStorage.setItem("collapsed-actor-select", "true");
+    } else {
+        localStorage.setItem("collapsed-actor-select", "false");
+    }
 }
 
 function toggleChat() {
@@ -111,7 +110,7 @@ function toggleChat() {
     }
 }
 
-function toggleMenu(){
+function toggleMenu() {
     $('#so-main-buttons').toggle();
     $('#so-settings-buttons').toggle();
 }

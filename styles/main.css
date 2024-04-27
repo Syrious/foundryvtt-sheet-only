@@ -23,16 +23,14 @@
     overflow: hidden;
 }
 
-.sheet-only-container > .so-button-container {
+.sheet-only-container > .button-container {
     display: flex;
     flex-direction: row;
     position: absolute;
     z-index: 99999;
-    top: calc(100% - 40px); /* instead of bottom: 20px; */
-    left: calc(100% - 180px); /* instead of right: 10px; */
 }
 
-.sheet-only-container > .so-button-container > .button {
+.sheet-only-container > .button-container > .button {
     cursor: pointer;
 }
 

@@ -6,28 +6,25 @@ let hasMoved = false;
 let threshold = 10; // set the amount of movement to initiate dragging.
 
 export function initDragListener(){
-    document.addEventListener('mousedown', dragStart, {passive: false});
-    document.addEventListener('touchstart', dragStart, {passive: false});
+    document.addEventListener('mousedown', dragStart, false);
+    document.addEventListener('touchstart', dragStart, false);
 
-    document.addEventListener('mousemove', dragMove, {passive: false});
-    document.addEventListener('touchmove', dragMove, {passive: false});
+    document.addEventListener('mousemove', dragMove, false);
+    document.addEventListener('touchmove', dragMove, false);
 
-    document.addEventListener('mouseup', checkDrag, {passive: false});
-    document.addEventListener('touchend', checkDrag, {passive: false});
+    document.addEventListener('mouseup', checkDrag, false);
+    document.addEventListener('touchend', checkDrag, false);
 
-  //  document.getElementById('mydiv').addEventListener('click', toggleColor, false);
 }
 
 
 export function wasDragged(){
-    console.log(hasMoved)
     return hasMoved;
 }
 
 function dragStart(event) {
-    let container = findAncestor(event.target, '.so-button-container');
+    let container = findAncestor(event.target, '.button-container');
     if(container) {
-        event.preventDefault();
         selectedElement = container;
         let rect = selectedElement.getBoundingClientRect();
         initialX = rect.left;
