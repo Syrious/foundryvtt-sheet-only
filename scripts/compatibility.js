@@ -11,11 +11,6 @@ export function realDiceActive() {
     return game.modules.has(moduleName) && game.modules.get(moduleName).active;
 }
 
-export function sheetOnlyPlusActive(){
-    let moduleName = "sheet-only-plus";
-    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
-}
-
 async function realDice() {
     const isRealDiceActive = realDiceActive();
     const shouldBeEnabled = game.settings.settings.has('sheet-only.real-dice')

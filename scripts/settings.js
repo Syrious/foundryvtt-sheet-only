@@ -1,5 +1,5 @@
 import {i18n} from "./utils.js";
-import {realDiceActive, sheetOnlyPlusActive} from "./compatibility.js";
+import {realDiceActive} from "./compatibility.js";
 
 
 Hooks.on('init', () => {
