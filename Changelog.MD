@@ -1,3 +1,8 @@
+# 1.1.6
+- Changes canvas behaviour. Canvas is disabled by default and needs to be manually enabled for targeting
+- Adds button to enable fullscreen
+- Buttons can now be re-positioned by dragging (it always starts at the top left corner)
+
 # 1.1.5
 - Disables playlist-, ambience- and interface sounds for Sheet-Only clients
 
