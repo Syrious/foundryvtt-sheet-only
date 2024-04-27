@@ -33,9 +33,9 @@ Hooks.on('init', () => {
             config: true,
             type: String,
             choices: {
-                "No-Control": "Sheet-Only does change the canvas behaviour.",
-                "Hidden": "Only hides the canvas.",
-                "Disabled": "Disables the canvas."
+                "No-Control": "No Control",
+                "Hidden": "Hide",
+                "Disabled": "Disable"
             },
             default: "Disabled",
             requiresReload: true
