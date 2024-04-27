@@ -1,5 +1,6 @@
 import {showPatreonDialog, wipDialog} from "./dialogs.js"
 import {initDragListener, wasDragged} from "./drag.js";
+import {toggleFullscreen} from "./fullscreen.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container"></div>`);
@@ -15,6 +16,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const controllingButton = uiElement.find("#so-controlling");
         const settingsButton = uiElement.find("#so-fvtt-settings");
         const menuButton = uiElement.find("#so-menu");
+        const fullscreen = uiElement.find("#so-fullscreen");
 
         collapseButton.on("click", function () {
             if (wasDragged()) return;
@@ -75,6 +77,11 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         menuButton.on("click", function () {
             if (wasDragged()) return;
             toggleMenu();
+        });
+
+        fullscreen.on("click", function () {
+            if (wasDragged()) return;
+            toggleFullscreen();
         });
     });
 
