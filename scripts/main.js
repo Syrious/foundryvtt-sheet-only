@@ -22,10 +22,11 @@ Hooks.on('setup', async () => {
 
 Hooks.once('ready', async function () {
     if (isSheetOnly()) {
+        await userInitialization();
         setupContainer();
         setupChatPanel();
+        popupSheet();
         hideUnusedElements();
-        popupSheet(game.user);
     }
 });
 
@@ -63,7 +64,7 @@ Hooks.on('createActor', async function (actor) {
 
 Hooks.on('deleteActor', async function () {
     rebuildActorList();
-    popupSheet(game.user)
+    popupSheet()
 });
 
 Hooks.on('renderContainerSheet', async (app, html) => {
@@ -78,23 +79,11 @@ Hooks.on('renderContainerSheet', async (app, html) => {
 
 Hooks.once('closeUserConfig', async () => {
     // Popup sheet after user selected their character
-    popupSheet(game.user)
+    popupSheet()
 });
 
 async function setupClient() {
     disableSounds();
-
-    let shouldReload = false;
-    let isCanvasDisabled = await game.settings.get("core", "noCanvas");
-
-    if (isCanvasDisabled) {
-        await game.settings.set('core', 'noCanvas', false)
-        shouldReload = true;
-    }
-
-    if (shouldReload) {
-        foundry.utils.debouncedReload();
-    }
 }
 
 function disableSounds() {
@@ -196,7 +185,7 @@ function hideUnusedElements() {
         $("#notifications").addClass("sheet-only-hide");
     }
 
-    if(game.settings.get("sheet-only", "hide-canvas")) {
+    if (game.settings.get("sheet-only", "hide-canvas")) {
         hideCanvas();
     }
 }
@@ -249,16 +238,45 @@ export function isSheetOnly() {
     return false;
 }
 
-function popupSheet(user) {
-    const actor = user.character;
-    currentActor = actor;
+function userInitialization() {
+    return new Promise((resolve, reject) => {
+        let count = 0;
+        const checkApiInterval = setInterval(() => {
+            if (count % 10 === 0) {
+                ui.notifications.info("Sheet-Only: Waiting for actor to be initialized...");
+            }
 
-    if (actor) {
-        currentSheet = actor.sheet;
+            const ownedActors = getOwnedActors();
+
+            if (ownedActors && ownedActors.length > 0) {
+                ui.notifications.info("Sheet-Only: Found at least one owned actor");
+
+                clearInterval(checkApiInterval);
+                resolve();
+            } else if (count >= 500) {
+                ui.notifications.error("Could not initialize actor.");
+                clearInterval(checkApiInterval);
+                reject(new Error("Could not initialize actor."));
+            } else {
+                count++;
+            }
+        }, 500);
+    });
+}
+
+function popupSheet() {
+    const ownedActors = getOwnedActors();
+
+    if (ownedActors?.length > 0) {
+        currentActor = ownedActors[0];
+    }
+
+    if (currentActor) {
+        currentSheet = currentActor.sheet;
         currentSheet.render(true);
         setCurrentActorTokenAsControlled();
     } else {
-        console.log(`No actor for user found.`);
+        console.error(`No actor for user found.`);
     }
 }
 
