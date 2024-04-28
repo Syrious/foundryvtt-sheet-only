@@ -304,3 +304,8 @@ function setCurrentActorTokenAsControlled() {
         activeTokens[0].control({releaseOthers: true})
     }
 }
+
+addEventListener("resize", onResize);
+function onResize(event) {
+    currentSheet.render(true)
+}
