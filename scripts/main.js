@@ -32,6 +32,8 @@ Hooks.once('ready', async function () {
     setupChatPanel();
     popupSheet();
     hideUnusedElements();
+
+    addEventListener("resize", onResize);
 });
 
 Hooks.on('renderActorSheet', async (app) => {
@@ -59,11 +61,12 @@ Hooks.on('renderActorSheet', async (app) => {
     getTokenizerImage();
 })
 
+
 Hooks.on('createActor', async function (actor) {
     rebuildActorList();
 
     if (isActorOwnedByUser(actor)) {
-        actor.sheet.render(true);
+        switchToActor(actor);
     }
 });
 
@@ -108,7 +111,7 @@ function controlCanvas() {
     } else if (setting === 'Hidden') {
         hideCanvas();
 
-        if(coreIsDisabled) {
+        if (coreIsDisabled) {
             game.settings.set("core", "noCanvas", false);
             foundry.utils.debouncedReload();
         }
@@ -118,6 +121,17 @@ function controlCanvas() {
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
 
+}
+
+function switchToActor(actor) {
+    currentSheet?.close();
+
+    currentActor = actor;
+    currentSheet = currentActor.sheet;
+
+    currentSheet.render(true);
+
+    setCurrentActorTokenAsControlled();
 }
 
 function setupContainer() {
@@ -167,14 +181,7 @@ function getActorElements() {
                         return;
                     }
 
-                    if (currentSheet) {
-                        currentSheet.close();
-                    }
-
-                    currentSheet = actor.sheet.render(true);
-                    currentActor = actor;
-
-                    setCurrentActorTokenAsControlled();
+                    switchToActor(actor);
                     toggleActorList();
                 });
         }
@@ -285,13 +292,7 @@ function popupSheet() {
     const ownedActors = getOwnedActors();
 
     if (ownedActors?.length > 0) {
-        currentActor = ownedActors[0];
-    }
-
-    if (currentActor) {
-        currentSheet = currentActor.sheet;
-        currentSheet.render(true);
-        setCurrentActorTokenAsControlled();
+        switchToActor(ownedActors[0]);
     } else {
         console.error(`No actor for user found.`);
     }
@@ -305,7 +306,6 @@ function setCurrentActorTokenAsControlled() {
     }
 }
 
-addEventListener("resize", onResize);
 function onResize(event) {
-    currentSheet.render(true)
+    currentSheet?.render(true)
 }
