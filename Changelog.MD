@@ -1,3 +1,6 @@
+# 1.1.8
+- Better responsiveness of the sheet when tilting the device
+
 # 1.1.7
 - Fixed a minor bug when checking for sheet-only-plus 
 
