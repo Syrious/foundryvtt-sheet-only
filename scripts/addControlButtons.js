@@ -14,6 +14,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const resetButton = uiElement.find("#so-reset-font");
         const logoutButton = uiElement.find("#so-log-out");
         const targetingButton = uiElement.find("#so-targeting");
+        const journalButton = uiElement.find("#so-journal");
         const controllingButton = uiElement.find("#so-controlling");
         const settingsButton = uiElement.find("#so-fvtt-settings");
         const menuButton = uiElement.find("#so-menu");
@@ -61,6 +62,15 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
                 game.modules.get('sheet-only-plus').api.openTargeting();
             } else {
                 showPatreonDialog("Targeting");
+            }
+        });
+
+        journalButton.on("click", function () {
+            if (wasDragged()) return;
+            if (sheetOnlyPlusActive()) {
+                game.modules.get('sheet-only-plus').api.openJournal();
+            } else {
+                showPatreonDialog("Journal");
             }
         });
 
