@@ -9,7 +9,8 @@ assignees: ''
 ## Before raising an issue
 - Update the game system and all modules to the current version
 - Disable all other modules and see if the issue goes away
-- If this is the case, please use [Find The Culprit](<https://foundryvtt.com/packages/find-the-culprit/>) to narrow down the suspects
+  - If this is the case, please use [Find The Culprit](<https://foundryvtt.com/packages/find-the-culprit/>) to narrow down the suspects
+- Disable Sheet-Only, log into Foundry with your desired device and open a character sheet manually. If this does not work without issues then your device might not be compatible with FoundryVTT 
 - If the issue persists, please go ahead and fill out the issue template
 
 #### Issue description
