@@ -13,6 +13,10 @@ function setupApi() {
 
         getActor: function () {
             return currentActor;
+        },
+
+        isSheetOnly: function () {
+            return isSheetOnly();
         }
 
         // ExampleClass: class {

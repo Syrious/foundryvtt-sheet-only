@@ -1,5 +1,5 @@
 export function showPatreonDialog(titleSuffix) {
-    let dialogContent = `<p>This is a Patreon-only feature.</p> 
+    let dialogContent = `<p>This is a Sheet-only-PLUS feature.</p> 
                 <p>Please visit: <a href="https://www.patreon.com/SyriousWorkshop" target="_blank">Syrious' Workshop on Patreon</a></p>`;
 
     new Dialog({

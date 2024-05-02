@@ -30,7 +30,6 @@ Hooks.once('ready', async function () {
     setupContainer();
     rebuildActorList()
     setupChatPanel();
-    // setupJournalPanel(); TODO
     popupSheet();
     hideUnusedElements();
 
@@ -226,27 +225,6 @@ function setupChatPanel() {
 
         // Get the wrapper we just created along with its child
         var chatElementWrapper = $('#chat-wrapper');
-        chatElementWrapper.addClass("sheet-only-chat");
-        chatElementWrapper.addClass('collapse');
-
-        chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
-        newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
-    } else {
-        console.log("Could not find chat panel")
-    }
-}
-
-function setupJournalPanel() {
-    var chatElement = $('#journal'); // Get the chat element
-
-    var newParentElement = $('.sheet-only-container'); // Get the new parent
-
-    if (chatElement.length && newParentElement.length) {
-        // Create a new div and wrap the chat element inside it
-        chatElement.wrap('<div id="journal-wrapper"></div>');
-
-        // Get the wrapper we just created along with its child
-        var chatElementWrapper = $('#journal-wrapper');
         chatElementWrapper.addClass("sheet-only-chat");
         chatElementWrapper.addClass('collapse');
 
