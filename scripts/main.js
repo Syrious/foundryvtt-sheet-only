@@ -307,5 +307,8 @@ function setCurrentActorTokenAsControlled() {
 }
 
 function onResize(event) {
-    currentSheet?.render(true)
+    if (!document.activeElement || document.activeElement.tagName.toLowerCase() !== 'input') {
+        // We do not want to resize if an input field was tapped. That would result in closing the virtual keyboard immediately
+        currentSheet?.render(true);
+    }
 }
