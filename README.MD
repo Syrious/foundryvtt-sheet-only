@@ -38,6 +38,7 @@ I built this simple module for my own in-person sessions, where I have a large d
 ### Sheet-Only-Plus
 These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
 * Targeting
+* Journal
 * (Upcomming) Movement
 
 ### Compatibility
