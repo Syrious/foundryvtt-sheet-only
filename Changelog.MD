@@ -1,3 +1,7 @@
+# 1.1.9
+- Fixes bug that closes virtual keyboard when trying to enter something
+- Adds compatibility with sheet-only-plus journals 
+
 # 1.1.8
 - Better responsiveness of the sheet when tilting the device
 

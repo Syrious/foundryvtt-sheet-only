@@ -9,10 +9,14 @@ Hooks.once('setup', async () => {
 function setupApi() {
     game.modules.get('sheet-only').api = {
         // Compatibility with plus version
-        plusCompatibility: "0.1.2",
+        plusCompatibility: "0.1.3",
 
         getActor: function () {
             return currentActor;
+        },
+
+        isSheetOnly: function () {
+            return isSheetOnly();
         }
 
         // ExampleClass: class {
