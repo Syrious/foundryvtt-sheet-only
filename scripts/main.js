@@ -8,6 +8,7 @@ import {hideCanvas} from "./canvasHider.js";
 
 CONFIG.debug.hooks = false;
 
+/** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
 export let currentActor; // The currently selected actor
 
@@ -123,6 +124,10 @@ function isActorOwnedByUser(actor) {
 
 }
 
+/**
+ *
+ * @param {Actor} actor
+ */
 function switchToActor(actor) {
     currentSheet?.close();
 
@@ -307,8 +312,8 @@ function setCurrentActorTokenAsControlled() {
 }
 
 function onResize(event) {
-    if (!document.activeElement || document.activeElement.tagName.toLowerCase() !== 'input') {
-        // We do not want to resize if an input field was tapped. That would result in closing the virtual keyboard immediately
-        currentSheet?.render(true);
-    }
+    currentSheet?.element.css({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
 }
