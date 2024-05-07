@@ -1,3 +1,8 @@
+# 1.1.10
+- Fixes bug that closes virtual keyboard when trying to enter something
+- Modifies the height of the sheet to fit better on screen 
+- Changes styling of actor list. The last actor should now be fully visible
+
 # 1.1.9
 - Fixes bug that closes virtual keyboard when trying to enter something
 - Adds compatibility with sheet-only-plus journals 
