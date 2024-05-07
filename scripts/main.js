@@ -3,6 +3,7 @@ import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
+import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 
@@ -35,23 +36,10 @@ Hooks.once('ready', async function () {
     hideUnusedElements();
 
     addEventListener("resize", onResize);
+
+    dnd5eReadyHook();
 });
 
-/**
- * Moves the edit slider for the new dnd sheet from header to sheet
- */
-function moveDndEditSlider() {
-    if (game.system.id !== 'dnd5e') {
-        return
-    }
-
-    const slider = $('.mode-slider');
-    if (slider) {
-        slider.css({position: 'absolute', top: '10px', left: '10px'});
-        const parent = $('.sheet-only-sheet');
-        parent.append(slider);
-    }
-}
 
 Hooks.on('renderActorSheet',
     /** @param {FormApplication|null} app */
@@ -68,13 +56,8 @@ Hooks.on('renderActorSheet',
         });
 
         app.element.addClass('sheet-only-sheet');
-        moveDndEditSlider();
 
-        const shouldMoveDOM = true
-        if (shouldMoveDOM) {
-            const parent = $('.sheet-only-container');
-            parent.append(app.element);
-        }
+        dnd5eEditSlider();
 
         $(".window-resizable-handle").hide();
 
