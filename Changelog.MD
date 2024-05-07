@@ -1,3 +1,7 @@
+# 1.1.11
+- Fixed a bug where dialogs popped up twice
+- Dnd5e: Using the new character sheet, clicking on a spell/item additionally opens the tooltip
+
 # 1.1.10
 - Fixes bug that closes virtual keyboard when trying to enter something
 - Modifies the height of the sheet to fit better on screen 
