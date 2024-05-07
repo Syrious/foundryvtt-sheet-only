@@ -123,6 +123,7 @@
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
 .sheet-only-sheet.dnd5e2.sheet.actor.character {
     min-width: unset;
+    min-height: unset;
 }
 .sheet-only-sheet.dnd5e2.sheet.actor.character .tab-details .tab-body {
     padding-top: 75px;

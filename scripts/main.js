@@ -8,6 +8,7 @@ import {hideCanvas} from "./canvasHider.js";
 
 CONFIG.debug.hooks = false;
 
+/** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
 export let currentActor; // The currently selected actor
 
@@ -36,30 +37,49 @@ Hooks.once('ready', async function () {
     addEventListener("resize", onResize);
 });
 
-Hooks.on('renderActorSheet', async (app) => {
-    if (!isSheetOnly()) {
-        return;
+/**
+ * Moves the edit slider for the new dnd sheet from header to sheet
+ */
+function moveDndEditSlider() {
+    if (game.system.id !== 'dnd5e') {
+        return
     }
 
-    app.setPosition({
-        left: 0,
-        top: 0,
-        width: window.innerWidth,
-        height: window.innerHeight
-    });
-
-    app.element.addClass('sheet-only-sheet');
-
-    const shouldMoveDOM = false
-    if (shouldMoveDOM) {
-        const parent = $('.sheet-only-container');
-        parent.append(app.element);
+    const slider = $('.mode-slider');
+    if (slider) {
+        slider.css({position: 'absolute', top: '10px', left: '10px'});
+        const parent = $('.sheet-only-sheet');
+        parent.append(slider);
     }
+}
 
-    $(".window-resizable-handle").hide();
+Hooks.on('renderActorSheet',
+    /** @param {FormApplication|null} app */
+    async (app) => {
+        if (!isSheetOnly()) {
+            return;
+        }
 
-    getTokenizerImage();
-})
+        app?.setPosition({
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+
+        app.element.addClass('sheet-only-sheet');
+        moveDndEditSlider();
+
+        const shouldMoveDOM = true
+        if (shouldMoveDOM) {
+            const parent = $('.sheet-only-container');
+            parent.append(app.element);
+        }
+
+        $(".window-resizable-handle").hide();
+
+        getTokenizerImage();
+    })
 
 
 Hooks.on('createActor', async function (actor) {
@@ -123,6 +143,10 @@ function isActorOwnedByUser(actor) {
 
 }
 
+/**
+ *
+ * @param {Actor} actor
+ */
 function switchToActor(actor) {
     currentSheet?.close();
 
@@ -307,8 +331,8 @@ function setCurrentActorTokenAsControlled() {
 }
 
 function onResize(event) {
-    if (!document.activeElement || document.activeElement.tagName.toLowerCase() !== 'input') {
-        // We do not want to resize if an input field was tapped. That would result in closing the virtual keyboard immediately
-        currentSheet?.render(true);
-    }
+    currentSheet?.element.css({
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
 }

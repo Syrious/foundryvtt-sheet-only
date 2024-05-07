@@ -36,7 +36,10 @@ I built this simple module for my own in-person sessions, where I have a large d
 <img alt="example2.png" height="500" src="example1.png"/>
 
 ### Sheet-Only-Plus
-These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop)
+These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop). For a very small fee, you gain access to the additional features. 
+Your support helps immensely to keep developing foundry modules, but I understand if you don't like to continuously support the project. In this case, you can cancel your subscription anytime and continue to use the module. You only need to re-subscribe if you want newer features or upgrade to a compatible version. 
+
+The current features in the Plus-Version are:
 * Targeting
 * Journal
 * (Upcomming) Movement
