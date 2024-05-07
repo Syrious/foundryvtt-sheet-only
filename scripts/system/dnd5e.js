@@ -31,7 +31,13 @@ export function dnd5eEditSlider() {
  * @param event
  */
 function onActivate(event) {
-    if (event.target.hasAttribute('data-tooltip-class')) {
-        game.tooltip.activate(event.target)
+    let element = event.target;
+
+    while(element) {
+        if (element.hasAttribute('data-tooltip-class')) {
+            game.tooltip.activate(element);
+            break;
+        }
+        element = element.parentElement;
     }
 }
