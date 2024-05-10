@@ -54,6 +54,16 @@ Hooks.on('init', () => {
         });
     }
 
+        // Adpaly setting for  save lastActorId
+        game.settings.register(moduleId, "lastActorId", {
+            name: game.i18n.localize("Sheet-Only.lastActorId.name"),
+            hint: game.i18n.localize("Sheet-Only.lastActorId.hint"),
+            scope: "client",
+            config: false,
+            type: String,
+            default: "",
+        });
+
     game.settings.register(moduleId, "playerdata", {
         scope: "world",
         config: false,

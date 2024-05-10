@@ -126,6 +126,16 @@ function isActorOwnedByUser(actor) {
 
 }
 
+//function to set acotorID to settings
+function saveLastActorId(actorId) {
+    game.settings.set("sheet-only", "lastActorId", actorId);
+}
+
+//function to get  acotorID to settings
+function getLastActorId() {
+    return game.settings.get("sheet-only", "lastActorId");
+}
+
 /**
  *
  * @param {Actor} actor
@@ -139,6 +149,7 @@ function switchToActor(actor) {
     currentSheet.render(true);
 
     setCurrentActorTokenAsControlled();
+    saveLastActorId(currentActor.id);
 }
 
 function setupContainer() {
@@ -274,18 +285,17 @@ function userInitialization() {
         let count = 0;
         const checkApiInterval = setInterval(() => {
             if (count % 10 === 0) {
-                ui.notifications.info("Sheet-Only: Waiting for actor to be initialized...");
+                ui.notifications.info(game.i18n.localize("Sheet-Only.display-notifications.wait-init"));
             }
 
             const ownedActors = getOwnedActors();
 
             if (ownedActors && ownedActors.length > 0) {
-                ui.notifications.info("Sheet-Only: Found at least one owned actor");
-
+                ui.notifications.info(game.i18n.localize("Sheet-Only.notifications.ownedActorFound"));
                 clearInterval(checkApiInterval);
                 resolve();
             } else if (count >= 500) {
-                ui.notifications.error("Could not initialize actor.");
+                ui.notifications.error(game.i18n.localize("Sheet-Only.notifications.actorInitError"));
                 clearInterval(checkApiInterval);
                 reject(new Error("Could not initialize actor."));
             } else {
@@ -297,11 +307,24 @@ function userInitialization() {
 
 function popupSheet() {
     const ownedActors = getOwnedActors();
+    const lastActorId = getLastActorId();
 
+    // Attempt to open the last used actor
+    if (lastActorId) {
+        const lastActor = game.actors.get(lastActorId);
+        if (lastActor) {
+            switchToActor(lastActor);
+            return; // Exit the function if the last actor was successfully loaded
+        } else {
+            console.log("The saved actor could not be found, opening the first actor.");
+        }
+    }
+
+    // Open the first actor in the list if no saved actor was found or could not be loaded
     if (ownedActors?.length > 0) {
         switchToActor(ownedActors[0]);
     } else {
-        console.error(`No actor for user found.`);
+        console.error("No actor for user found.");
     }
 }
 
