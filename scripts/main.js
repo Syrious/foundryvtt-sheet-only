@@ -90,6 +90,7 @@ Hooks.on('deleteActor', async function (actor) {
         rebuildActorList();
 
         if(actor === currentActor){
+            // We need to pop up the sheet for another character the user owns
             popupSheet()
         }
     }
