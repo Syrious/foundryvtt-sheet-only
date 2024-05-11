@@ -1,3 +1,6 @@
+# 1.1.13
+- Fixes bug with sheet popping up when any actor gets deleted
+
 # 1.1.12
 - Adds german translation. Thanks to [Niclasp1501](https://github.com/Niclasp1501)
  
