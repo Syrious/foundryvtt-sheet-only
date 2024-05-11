@@ -1,6 +1,10 @@
 {
   "Sheet-Only.display-notifications.name": "Display Notifications",
+  "Sheet-Only.display-notifications.wait-init": "Sheet-Only: Waiting for actor to be initialized...",
+  "Sheet-Only.notifications.ownedActorFound": "Sheet-Only: Found at least one owned actor",
+  "Sheet-Only.notifications.actorInitError": "Could not initialize actor.",
   "Sheet-Only.display-notifications.hint": "(Default: Unchecked) Whether or not to display ui notifications for clients",
+  "Sheet-Only.activation-screen.width": "Activation screen width",
   "Sheet-Only.settingsMenu.name": "User",
   "Sheet-Only.settingsMenu.label": "Select",
   "Sheet-Only.settingsMenu.hint": "Choose users who only have access to their sheet",
@@ -15,3 +19,4 @@
   "Sheet-Only.real-dice.name": "Real Dice: Enable manual rolls",
   "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?"
 }
+

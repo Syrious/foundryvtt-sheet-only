@@ -1,3 +1,6 @@
+# 1.1.12
+- Adds german translation. Thanks to [Niclasp1501](https://github.com/Niclasp1501)
+ 
 # 1.1.11
 - Fixed a bug where dialogs popped up twice
 - Dnd5e: Using the new character sheet, clicking on a spell/item additionally opens the tooltip

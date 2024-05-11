@@ -54,6 +54,13 @@ Hooks.on('init', () => {
         });
     }
 
+    game.settings.register(moduleId, "lastActorId", {
+        scope: "client",
+        config: false,
+        type: String,
+        default: "",
+    });
+
     game.settings.register(moduleId, "playerdata", {
         scope: "world",
         config: false,

@@ -1,0 +1,21 @@
+{
+  "Sheet-Only.display-notifications.name": "Benachrichtigungen anzeigen",
+  "Sheet-Only.display-notifications.wait-init": "Sheet-Only: Warte auf die Initialisierung des Akteurs...",
+  "Sheet-Only.notifications.ownedActorFound": "Sheet-Only: Mindestens ein eigener Akteur gefunden",
+  "Sheet-Only.notifications.actorInitError": "Akteur konnte nicht initialisiert werden.",
+  "Sheet-Only.display-notifications.hint": "(Standard: Nicht aktiviert) Benachrichtigungen für Benutzer aktivieren?",
+  "Sheet-Only.activation-screen.width": "Aktivieren ab Bildschirmbreite",
+  "Sheet-Only.settingsMenu.name": "Benutzer",
+  "Sheet-Only.settingsMenu.label": "Auswählen",
+  "Sheet-Only.settingsMenu.hint": "Wähle Benutzer, die ausschließlich Zugang zu ihren Charakterinformationen haben",
+  "Sheet-Only.players": "Spieler",
+  "Sheet-Only.name": "Sheet-Only",
+  "Sheet-Only.hint": "Benutzer auswählen",
+  "Sheet-Only.button.save": "Speichern",
+  "Sheet-Only.mobile-only.name": "Nur auf Mobilgeräten anzeigen",
+  "Sheet-Only.mobile-only.hint": "(Standard: Aktiviert) Ob das Blatt nur als 'Sheet-Only' auf Mobilgeräten angezeigt werden soll. Deaktivieren, um es für ausgewählte Benutzer auf jedem Gerät anzuzeigen.",
+  "Sheet-Only.canvas-option.name": "Canvas-Steuerungen",
+  "Sheet-Only.canvas-option.hint": "Diese Option ermöglicht es dir, zu spezifizieren, ob Sheet-Only das Figuren-Spielfeld deaktivieren (Standard), verstecken oder keine Änderungen daran vornehmen soll. Das Deaktivieren ist am leistungsstärksten, aber einige Module funktionieren möglicherweise nicht.",
+  "Sheet-Only.real-dice.name": "Real Dice: Manuelles Würfeln aktivieren",
+  "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?"
+}
