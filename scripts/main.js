@@ -4,6 +4,8 @@ import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
+import {getLastActorId, saveLastActorId} from "./actorStorage.js";
+import {i18n} from "./utils.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 
@@ -13,6 +15,9 @@ CONFIG.debug.hooks = false;
 let currentSheet = null; // Track the currently open sheet
 export let currentActor; // The currently selected actor
 
+/* ************************************* */
+/* *************** HOOKS *************** */
+/* ************************************* */
 Hooks.on('setup', async () => {
     if (!isSheetOnly()) {
         return;
@@ -93,6 +98,10 @@ Hooks.once('closeUserConfig', async () => {
     popupSheet()
 });
 
+/* ************************************* */
+/* ************************************* */
+/* ************************************* */
+
 async function setupClient() {
     disableSounds();
     controlCanvas()
@@ -124,16 +133,6 @@ function controlCanvas() {
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
 
-}
-
-//function to set acotorID to settings
-function saveLastActorId(actorId) {
-    game.settings.set("sheet-only", "lastActorId", actorId);
-}
-
-//function to get  acotorID to settings
-function getLastActorId() {
-    return game.settings.get("sheet-only", "lastActorId");
 }
 
 /**
@@ -285,17 +284,17 @@ function userInitialization() {
         let count = 0;
         const checkApiInterval = setInterval(() => {
             if (count % 10 === 0) {
-                ui.notifications.info(game.i18n.localize("Sheet-Only.display-notifications.wait-init"));
+                ui.notifications.info(i18n("Sheet-Only.display-notifications.wait-init"));
             }
 
             const ownedActors = getOwnedActors();
 
             if (ownedActors && ownedActors.length > 0) {
-                ui.notifications.info(game.i18n.localize("Sheet-Only.notifications.ownedActorFound"));
+                ui.notifications.info(i18n("Sheet-Only.notifications.ownedActorFound"));
                 clearInterval(checkApiInterval);
                 resolve();
             } else if (count >= 500) {
-                ui.notifications.error(game.i18n.localize("Sheet-Only.notifications.actorInitError"));
+                ui.notifications.error(i18n("Sheet-Only.notifications.actorInitError"));
                 clearInterval(checkApiInterval);
                 reject(new Error("Could not initialize actor."));
             } else {
@@ -312,7 +311,9 @@ function popupSheet() {
     // Attempt to open the last used actor
     if (lastActorId) {
         const lastActor = game.actors.get(lastActorId);
-        if (lastActor) {
+        const actorIsOwned = ownedActors.some(actor => actor.id === lastActorId);
+
+        if (lastActor && actorIsOwned) {
             switchToActor(lastActor);
             return; // Exit the function if the last actor was successfully loaded
         } else {

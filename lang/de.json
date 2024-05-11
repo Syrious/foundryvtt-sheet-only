@@ -7,7 +7,7 @@
   "Sheet-Only.activation-screen.width": "Aktivieren ab Bildschirmbreite",
   "Sheet-Only.settingsMenu.name": "Benutzer",
   "Sheet-Only.settingsMenu.label": "Auswählen",
-  "Sheet-Only.settingsMenu.hint": "Wähle Benutzer, die nur Zugang zu ihrem Sheet-Only haben",
+  "Sheet-Only.settingsMenu.hint": "Wähle Benutzer, die ausschließlich Zugang zu ihren Charakterinformationen haben",
   "Sheet-Only.players": "Spieler",
   "Sheet-Only.name": "Sheet-Only",
   "Sheet-Only.hint": "Benutzer auswählen",
@@ -15,9 +15,7 @@
   "Sheet-Only.mobile-only.name": "Nur auf Mobilgeräten anzeigen",
   "Sheet-Only.mobile-only.hint": "(Standard: Aktiviert) Ob das Blatt nur als 'Sheet-Only' auf Mobilgeräten angezeigt werden soll. Deaktivieren, um es für ausgewählte Benutzer auf jedem Gerät anzuzeigen.",
   "Sheet-Only.canvas-option.name": "Canvas-Steuerungen",
-  "Sheet-Only.canvas-option.hint": "Diese Option ermöglicht es dir zu spezifizieren, ob Sheet-Only die Leinwand deaktivieren (Standard), verstecken oder keine Änderungen vornehmen soll. Das Deaktivieren ist am leistungsstärksten, aber einige Module funktionieren möglicherweise nicht.",
-  "Sheet-Only.real-dice.name": "Real Dice: Manuelle Würfe aktivieren",
-  "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?",
-  "Sheet-Only.lastActorId.name": "ID des zuletzt geöffneten Actors",
-  "Sheet-Only.lastActorId.hint": "Speichert die ID des zuletzt geöffneten Actors für einen schnellen Zugriff."
+  "Sheet-Only.canvas-option.hint": "Diese Option ermöglicht es dir, zu spezifizieren, ob Sheet-Only das Figuren-Spielfeld deaktivieren (Standard), verstecken oder keine Änderungen daran vornehmen soll. Das Deaktivieren ist am leistungsstärksten, aber einige Module funktionieren möglicherweise nicht.",
+  "Sheet-Only.real-dice.name": "Real Dice: Manuelles Würfeln aktivieren",
+  "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?"
 }
