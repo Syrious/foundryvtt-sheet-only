@@ -71,16 +71,29 @@ Hooks.on('renderActorSheet',
 
 
 Hooks.on('createActor', async function (actor) {
-    rebuildActorList();
+    if (!isSheetOnly()) {
+        return;
+    }
 
     if (isActorOwnedByUser(actor)) {
+        rebuildActorList();
         switchToActor(actor);
     }
 });
 
-Hooks.on('deleteActor', async function () {
-    rebuildActorList();
-    popupSheet()
+Hooks.on('deleteActor', async function (actor) {
+    if (!isSheetOnly()) {
+        return;
+    }
+
+    if (isActorOwnedByUser(actor)) {
+        rebuildActorList();
+
+        if(actor === currentActor){
+            // We need to pop up the sheet for another character the user owns
+            popupSheet()
+        }
+    }
 });
 
 Hooks.on('renderContainerSheet', async (app, html) => {
@@ -100,6 +113,7 @@ Hooks.once('closeUserConfig', async () => {
 
 /* ************************************* */
 /* ************************************* */
+
 /* ************************************* */
 
 async function setupClient() {
