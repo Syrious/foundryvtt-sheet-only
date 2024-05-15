@@ -25,16 +25,27 @@ jobs:
       # Create a zip file with all files required by the module to add to the release.
       - run: zip -r ./module.zip module.json scripts/ packs/ styles/ templates/ lang/
 
-      # Create a release for this specific version.
-      - name: Update Release with Files
+      - name: Update release with files
         id: create_version_release
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true # Set this to false if you want to prevent updating existing releases.
+          allowUpdates: true # Set this to false if you want to prevent updating existing releases
           name: ${{ github.event.release.name }}
+          draft: ${{ github.event.release.unpublished }}
+          prerelease: ${{ github.event.release.prerelease }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: './module.json,./module.zip'
+          tag: ${{ github.event.release.tag_name }}
+          body: ${{ github.event.release.body }}
+
+      - name: Create Latest Release
+        id: create_latest_release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          name: Latest
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json, ./module.zip'
-          tag: ${{ github.event.release.tag_name }}
-          body: ${{ github.event.release.body }}
+          artifacts: './module.json,./module.zip'
+          tag: latest
