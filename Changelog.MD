@@ -1,3 +1,7 @@
+# 1.1.14
+- Fixes minor issues
+- Rollout new buid. The last might be corrupt
+
 # 1.1.13
 - Fixes bug with sheet popping up when any actor gets deleted
 
