@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+latest+release) 
+![](https://img.shields.io/badge/Foundry-v11-informational) ![GitHub All Releases](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/total?label=Downloads+Total) 
 
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/Syrious/foundryvtt-sheet-only/latest/total)
 
