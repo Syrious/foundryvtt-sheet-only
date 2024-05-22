@@ -1,6 +1,6 @@
 function enable() {
     const element = document.body;
-    const requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+    const requestMethod = element.requestFullscreen || element.webkitRequestFullscreen || element.mozRequestFullScreen || element.msRequestFullscreen;
 
     if (requestMethod) { // Native full screen.
         requestMethod.call(element);

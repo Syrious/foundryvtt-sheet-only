@@ -145,11 +145,9 @@ function controlCanvas() {
 
 function isActorOwnedByUser(actor) {
     return actor.ownership[game.user.id] === 3;
-
 }
 
 /**
- *
  * @param {Actor} actor
  */
 function switchToActor(actor) {

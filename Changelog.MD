@@ -1,3 +1,6 @@
+# 1.1.15
+- Fixes bug with fullscreen
+
 # 1.1.14
 - Fixes minor issues
 - Rollout new buid. The last might be corrupt
