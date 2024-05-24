@@ -51,6 +51,7 @@ The current features in the Plus-Version are:
 * [Real-Dice](https://foundryvtt.com/packages/real-dice) If installed, you can enable manual rolling in sheet-only settings.
 
 ### Tested with
+- [Alien RPG](https://foundryvtt.com/packages/alienrpg)
 - [Cyberpunk RED](https://foundryvtt.com/packages/cyberpunk-red-core) (Little wonky though)
 - [Das Schwarze Auge / The Dark Eye (5th Edition)](https://foundryvtt.com/packages/dsa5)
 - [DnD5e](https://foundryvtt.com/packages/dnd5e)
