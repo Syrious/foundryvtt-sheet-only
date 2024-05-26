@@ -8,8 +8,8 @@ Hooks.once('setup', async () => {
 
 function setupApi() {
     game.modules.get('sheet-only').api = {
-        // Compatibility with plus version
-        plusCompatibility: "0.1.3",
+        // This sheet-only version is compatible with the following sheet-only-plus version
+        plusCompatibility: "0.2.0",
 
         getActor: function () {
             return currentActor;

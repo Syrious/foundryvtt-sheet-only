@@ -1,3 +1,6 @@
+# 1.2.0
+- v12 compatibility
+
 # 1.1.15
 - Fixes bug with fullscreen
 

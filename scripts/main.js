@@ -89,7 +89,7 @@ Hooks.on('deleteActor', async function (actor) {
     if (isActorOwnedByUser(actor)) {
         rebuildActorList();
 
-        if(actor === currentActor){
+        if (actor === currentActor) {
             // We need to pop up the sheet for another character the user owns
             popupSheet()
         }
@@ -111,8 +111,6 @@ Hooks.once('closeUserConfig', async () => {
     popupSheet()
 });
 
-/* ************************************* */
-/* ************************************* */
 /* ************************************* */
 
 async function setupClient() {
