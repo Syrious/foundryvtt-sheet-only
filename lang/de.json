@@ -17,5 +17,8 @@
   "Sheet-Only.canvas-option.name": "Canvas-Steuerungen",
   "Sheet-Only.canvas-option.hint": "Diese Option ermöglicht es dir, zu spezifizieren, ob Sheet-Only das Figuren-Spielfeld deaktivieren (Standard), verstecken oder keine Änderungen daran vornehmen soll. Das Deaktivieren ist am leistungsstärksten, aber einige Module funktionieren möglicherweise nicht.",
   "Sheet-Only.real-dice.name": "Real Dice: Manuelles Würfeln aktivieren",
-  "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?"
+  "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?",
+  "Sheet-Only.volume.playlist.name": "Lautstärke Musik",
+  "Sheet-Only.volume.ambience.name": "Lautstärke Umgebungsgeräusche",
+  "Sheet-Only.volume.interface.name": "Lautstärke Benutzeroberfläche"
 }

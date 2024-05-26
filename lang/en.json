@@ -17,6 +17,9 @@
   "Sheet-Only.canvas-option.name": "Canvas Controls",
   "Sheet-Only.canvas-option.hint": "This option allows you to specify whether Sheet-Only should deactivate the canvas (default), hide it or not make any changes at all. Disabling it is the most performant but some modules might not work.",
   "Sheet-Only.real-dice.name": "Real Dice: Enable manual rolls",
-  "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?"
+  "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?",
+  "Sheet-Only.volume.playlist.name": "Playlist Volume",
+  "Sheet-Only.volume.ambience.name": "Ambience Volume",
+  "Sheet-Only.volume.interface.name": "Interface Volume"
 }
 
