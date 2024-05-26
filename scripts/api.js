@@ -11,7 +11,7 @@ function setupApi() {
         // This sheet-only version is compatible with the following sheet-only-plus version
         plusCompatibility: "0.2.0",
 
-        getActor: function () {
+        getCurrentActor: function () {
             return currentActor;
         },
 
