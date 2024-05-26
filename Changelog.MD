@@ -1,3 +1,6 @@
+# 1.3.0
+- Adds volume settings
+
 # 1.2.0
 - v12 compatibility
 
