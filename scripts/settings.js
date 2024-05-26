@@ -1,10 +1,9 @@
 import {i18n} from "./utils.js";
 import {realDiceActive} from "./compatibility.js";
 
+const moduleId = "sheet-only";
 
 Hooks.on('init', () => {
-    let moduleId = "sheet-only";
-
     game.settings.registerMenu(moduleId, "settingsMenu", {
         name: i18n("Sheet-Only.settingsMenu.name"),
         label: i18n("Sheet-Only.settingsMenu.label"),
@@ -17,7 +16,7 @@ Hooks.on('init', () => {
     game.settings.register(moduleId, "display-notifications", {
         name: i18n("Sheet-Only.display-notifications.name"),
         hint: i18n("Sheet-Only.display-notifications.hint"),
-        scope: "world",
+        scope: "client",
         config: true,
         default: false,
         type: Boolean,
@@ -67,7 +66,47 @@ Hooks.on('init', () => {
         default: {},
         type: Object,
     });
+
+    volumeSettings(moduleId);
 })
+
+function volumeSettings() {
+    game.settings.register(moduleId, "volume_playlist", {
+        name: i18n("Sheet-Only.volume.playlist.name"),
+        scope: "client",
+        config: true,
+        range: {min: 0, max: 1.0, step: .1},
+        type: Number,
+        default: 0.8,
+        onChange: value => {
+            game.settings.set("core", "globalPlaylistVolume", value)
+        }
+    });
+
+    game.settings.register(moduleId, "volume_ambience", {
+        name: i18n("Sheet-Only.volume.ambience.name"),
+        scope: "client",
+        config: true,
+        range: {min: 0, max: 1.0, step: .1},
+        type: Number,
+        default: 0.8,
+        onChange: value => {
+            game.settings.set("core", "globalAmbientVolume", value)
+        }
+    });
+
+    game.settings.register(moduleId, "volume_interface", {
+        name: i18n("Sheet-Only.volume.interface.name"),
+        scope: "client",
+        config: true,
+        range: {min: 0, max: 1.0, step: .1},
+        type: Number,
+        default: 0.8,
+        onChange: value => {
+            game.settings.set("core", "globalInterfaceVolume", value)
+        }
+    });
+}
 
 class PlayerSelectionMenu extends FormApplication {
     constructor(options = {}) {

@@ -119,9 +119,9 @@ async function setupClient() {
 }
 
 function disableSounds() {
-    game.settings.set("core", "globalPlaylistVolume", 0.0)
-    game.settings.set("core", "globalAmbientVolume", 0.0)
-    game.settings.set("core", "globalInterfaceVolume", 0.0)
+    // game.settings.set("core", "globalPlaylistVolume", 0.0)
+    // game.settings.set("core", "globalAmbientVolume", 0.0)
+    // game.settings.set("core", "globalInterfaceVolume", 0.0)
 }
 
 function controlCanvas() {
