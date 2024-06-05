@@ -1,3 +1,6 @@
+# 1.4.1
+- Adds token movement
+
 # 1.3.1
 - Changes Real-Dice option to a client setting
 - Prompts users when they are not 'sheet-only' but have disabled canvas
