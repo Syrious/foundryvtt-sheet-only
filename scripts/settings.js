@@ -42,7 +42,7 @@ Hooks.on('init', () => {
         game.settings.register(moduleId, "real-dice", {
             name: i18n("Sheet-Only.real-dice.name"),
             hint: i18n("Sheet-Only.real-dice.hint"),
-            scope: "world",
+            scope: "client",
             config: true,
             default: false,
             type: Boolean,
