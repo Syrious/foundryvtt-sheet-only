@@ -1,7 +1,7 @@
 import {i18n} from "./utils.js";
 import {realDiceActive} from "./compatibility.js";
 
-const moduleId = "sheet-only";
+export const moduleId = "sheet-only";
 
 Hooks.on('init', () => {
     game.settings.registerMenu(moduleId, "settingsMenu", {
@@ -58,6 +58,13 @@ Hooks.on('init', () => {
         config: false,
         type: String,
         default: "",
+    });
+
+    game.settings.register(moduleId, "neverAskCanvas", {
+        scope: "client",
+        config: false,
+        type: Boolean,
+        default: false,
     });
 
     game.settings.register(moduleId, "playerdata", {
