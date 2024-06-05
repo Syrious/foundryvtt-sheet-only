@@ -6,6 +6,7 @@ import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
 import {getLastActorId, saveLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
+import {enableCanvas} from "./dialogs.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 
@@ -29,6 +30,10 @@ Hooks.on('setup', async () => {
 
 Hooks.once('ready', async function () {
     if (!isSheetOnly()) {
+        if(game.settings.get("core", "noCanvas")){
+            enableCanvas();
+        }
+
         return;
     }
 

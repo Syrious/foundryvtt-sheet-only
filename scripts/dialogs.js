@@ -29,3 +29,27 @@ export function wipDialog(titleSuffix, text) {
         }
     }).render(true);
 }
+
+export function enableCanvas() {
+    let dialogContent = `<p>Sheet-Only is not active for you but your canvas is disabled.</p> 
+                <p>Should the canvas be activated for you?</p>`;
+
+    new Dialog({
+        title: "Enable canvas?",
+        content: dialogContent,
+        buttons: {
+            yes: {
+                icon: "<i class='fas fa-check'></i>",
+                label: 'Yes',
+                callback: () => {
+                    game.settings.set("core", "noCanvas", false);
+                    foundry.utils.debouncedReload();
+                }
+            },
+            no: {
+                icon: "<i class='fas fa-xmark'></i>",
+                label: 'No'
+            }
+        }
+    }).render(true);
+}
