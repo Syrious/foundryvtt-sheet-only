@@ -76,7 +76,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 
         controllingButton.on("click", function () {
             if (wasDragged()) return;
-            wipDialog("Movement", "It will let you move your tokens.");
+            wipDialog("Movement", "It will let you move your tokens. Currently in Early-Access");
 
             // if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openControls === "function") {
             //     window.sheetOnlyPlus.openControls();
