@@ -1,7 +1,7 @@
 import {i18n} from "./utils.js";
 import {realDiceActive} from "./compatibility.js";
 
-const moduleId = "sheet-only";
+export const moduleId = "sheet-only";
 
 Hooks.on('init', () => {
     game.settings.registerMenu(moduleId, "settingsMenu", {
@@ -42,7 +42,7 @@ Hooks.on('init', () => {
         game.settings.register(moduleId, "real-dice", {
             name: i18n("Sheet-Only.real-dice.name"),
             hint: i18n("Sheet-Only.real-dice.hint"),
-            scope: "world",
+            scope: "client",
             config: true,
             default: false,
             type: Boolean,
@@ -58,6 +58,13 @@ Hooks.on('init', () => {
         config: false,
         type: String,
         default: "",
+    });
+
+    game.settings.register(moduleId, "neverAskCanvas", {
+        scope: "client",
+        config: false,
+        type: Boolean,
+        default: false,
     });
 
     game.settings.register(moduleId, "playerdata", {
