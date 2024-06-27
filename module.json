@@ -1,21 +1,16 @@
 {
-  "id": "sheet-only",
-  "title": "Sheet Only",
-  "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "1.3.1",
+  "id": "sheet-only-plus-plus",
+  "title": "Sheet Only++",
+  "description": "Provides a fullscreen character sheet, inventory, and spellbook view for 5e systems on Android and Apple ioS mobile devices.",
+  "version": "1.0.0",
   "compatibility": {
     "minimum": "11",
     "verified": "12"
   },
   "authors": [
     {
-      "name": "Syrious",
-      "discord": "syrious_",
-      "flags": {
-        "patreon": "SyriousWorkshop",
-        "github": "Syrious",
-        "ko-fi": "syrious"
-      }
+      "author": "Routable",
+      "original author": "Syrious"
     }
   ],
   "languages": [
@@ -40,7 +35,7 @@
     "styles/dnd5e.css",
     "styles/dnd5e_media.css"
   ],
-  "url": "https://github.com/Syrious/foundryvtt-sheet-only",
-  "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/latest/module.json",
-  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/latest/module.zip"
+  "url": "https://github.com/Routable/foundryvtt-sheet-only",
+  "manifest": "https://github.com/Routable/foundryvtt-sheet-only/releases/download/latest/module.json",
+  "download": "https://github.com/Routable/foundryvtt-sheet-only/releases/download/latest/module.zip"
 }
