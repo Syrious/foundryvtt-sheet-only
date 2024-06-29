@@ -11,7 +11,7 @@ They can interact with the sheet, see all the relevant information and the sheet
 
 I built this simple module for my own in-person sessions, where I have a large display to show foundry (using [Monk's Common Display](https://github.com/ironmonk88/monks-common-display))
 
-*Looking for something to work on smartphones? Check out [Mobile-Compantion](https://github.com/Syrious/foundryvtt-mobile-companion)*
+*(Looking for something to work on smartphones? Check out [Mobile-Compantion](https://github.com/Syrious/foundryvtt-mobile-companion))*
 
 ### Installation and setup
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets
