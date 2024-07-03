@@ -56,7 +56,7 @@ You only need to re-subscribe if you want newer features or upgrade to a compati
 The current features in the Plus-Version are:
 * Targeting
 * Journal
-* (Upcoming) Movement
+* Movement
 
 ### Compatibility
 * [Real-Dice](https://foundryvtt.com/packages/real-dice) If installed, you can enable manual rolling in sheet-only settings.
