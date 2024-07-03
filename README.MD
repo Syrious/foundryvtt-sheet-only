@@ -22,7 +22,7 @@ I built this simple module for my own in-person sessions, where I have a large d
 <img alt="setup.png" height="500" src="setup.png"/>
 
 ### Usage
-* If sheet-only users log in they will only see their sheets
+* If sheet-only users log in, they will only see their sheets
 * If they have multiple characters, a sidebar is shown and the users are able to switch between characters
   * Works for companions and wild shapes (as long as the user has owner permission)
 * You can drag the button bar if it is in your way. It starts always in the top left corner after login
