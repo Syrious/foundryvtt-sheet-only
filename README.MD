@@ -6,10 +6,12 @@
 [Discord](https://discord.gg/VMqndcyUGS)
 
 # FoundryVTT Sheet-Only
-Designed for in-person sessions. Players can connect with their tablets to foundry and will see their character sheet and only their character sheet. 
+Designed for in-person sessions. Players can connect with their **tablets** to foundry and will see their character sheet and only their character sheet. 
 They can interact with the sheet, see all the relevant information, and the sheet gets updated if the GM makes any changes such as inventory, HP and so on.
 
 I built this simple module for my own in-person sessions, where I have a large display to show foundry (using [Monk's Common Display](https://github.com/ironmonk88/monks-common-display))
+
+*(Looking for something to work on smartphones? Check out [Mobile-Companion](https://github.com/Syrious/foundryvtt-mobile-companion))*
 
 ### Installation and setup
 * Go to Settings -> Sheet-Only and select the players which should only see their character sheets
