@@ -1,3 +1,8 @@
+# 1.4.2 
+- Changes drag and drop functionality
+  - Now, you need to press and hold to activate the drag and drop
+- Applies drag and drop to the chat window
+
 # 1.4.1
 - Adds token movement
 
@@ -16,7 +21,7 @@
 
 # 1.1.14
 - Fixes minor issues
-- Rollout new buid. The last might be corrupt
+- Rollout new build. The last might be corrupt
 
 # 1.1.13
 - Fixes bug with sheet popping up when any actor gets deleted
