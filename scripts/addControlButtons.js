@@ -4,7 +4,7 @@ import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    const uiElement = $(`<div class="button-container"></div>`);
+    const uiElement = $(`<div class="button-container so-draggable"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
         const collapseButton = uiElement.find("#so-collapse-actor-select")
@@ -76,13 +76,12 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 
         controllingButton.on("click", function () {
             if (wasDragged()) return;
-            wipDialog("Movement", "It will let you move your tokens. Currently in Early-Access");
 
-            // if (window.sheetOnlyPlus && typeof window.sheetOnlyPlus.openControls === "function") {
-            //     window.sheetOnlyPlus.openControls();
-            // } else {
-            //    showPatreonDialog("Movement");
-            // }
+            if (sheetOnlyPlusActive()) {
+                game.modules.get('sheet-only-plus').api.openControls();
+            } else {
+                showPatreonDialog("Movement");
+            }
         });
 
         menuButton.on("click", function () {
