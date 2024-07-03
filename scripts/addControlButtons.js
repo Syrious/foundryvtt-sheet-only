@@ -4,7 +4,7 @@ import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    const uiElement = $(`<div class="button-container"></div>`);
+    const uiElement = $(`<div class="button-container so-draggable"></div>`);
 
     uiElement.load("modules/sheet-only/templates/buttons.html", function () {
         const collapseButton = uiElement.find("#so-collapse-actor-select")
