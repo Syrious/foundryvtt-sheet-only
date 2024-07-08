@@ -28,6 +28,11 @@ function handleStart(event) {
     }
 }
 
+function findAncestor(el, sel) {
+    while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) ;
+    return el;
+}
+
 export function wasDragged() {
     return hasMoved;
 }
@@ -47,11 +52,6 @@ function dragStart(event, container) {
     yOffset = (event.clientY || event.touches[0].clientY) - initialY;
 }
 
-function findAncestor(el, sel) {
-    while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) ;
-    return el;
-}
-
 function dragMove(event) {
     if (selectedElement) {
         event.preventDefault();
@@ -66,10 +66,13 @@ function dragMove(event) {
 }
 
 function dragEnd(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
     clearTimeout(pressTimer);
-    selectedElement.classList.remove('dragged');
-    selectedElement = null;
+
+    if (selectedElement) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        selectedElement.classList.remove('dragged');
+        selectedElement = null;
+    }
 }

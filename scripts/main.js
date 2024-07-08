@@ -33,6 +33,7 @@ Hooks.once('ready', async function () {
     if (!isSheetOnly()) {
         const canvasDisabled = game.settings.get("core", "noCanvas");
         const neverAsk = game.settings.get(moduleId, "neverAskCanvas");
+
         if(canvasDisabled && !neverAsk){
             enableCanvasDialog();
         }
@@ -61,6 +62,9 @@ Hooks.on('renderActorSheet',
             return;
         }
 
+        currentSheet?.close();
+        currentSheet = app;
+
         app?.setPosition({
             left: 0,
             top: 0,
@@ -70,11 +74,11 @@ Hooks.on('renderActorSheet',
 
         app.element.addClass('sheet-only-sheet');
 
-        dnd5eEditSlider();
-
         $(".window-resizable-handle").hide();
 
         getTokenizerImage();
+
+        dnd5eEditSlider(app);
     })
 
 
@@ -150,12 +154,8 @@ function isActorOwnedByUser(actor) {
  * @param {Actor} actor
  */
 function switchToActor(actor) {
-    currentSheet?.close();
-
     currentActor = actor;
-    currentSheet = currentActor.sheet;
-
-    currentSheet.render(true);
+    actor.sheet.render(true);
 
     setCurrentActorTokenAsControlled();
     saveLastActorId(currentActor.id);
@@ -202,12 +202,6 @@ function getActorElements() {
                 //.text(actor.name)
                 .append($('<img>').attr('src', actor.img))
                 .click(() => {
-                    if (currentActor === actor) {
-                        // We clicked the same actor. Do nothing here
-                        toggleActorList();
-                        return;
-                    }
-
                     switchToActor(actor);
                     toggleActorList();
                 });
