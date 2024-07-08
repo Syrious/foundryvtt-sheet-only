@@ -1,3 +1,6 @@
+# 1.4.3
+- Fixes bug introduced with new dragging method
+
 # 1.4.2 
 - Changes drag and drop functionality
   - Now, you need to press and hold to activate the drag and drop
