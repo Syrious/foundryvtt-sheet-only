@@ -72,15 +72,18 @@
     position: absolute;
     background-color: rgb(0 0 0 / 15%);
     right: 0;
-    /*height: 75vh;*/
     min-height: 30px;
     max-height: 100%;
     width: var(--sidebar-width);
-    z-index: 99999;
+    z-index: 500;
     border: #7a7971;
     border-bottom-left-radius: 5px;
     transition: all 250ms;
     overflow: auto;
+}
+
+.sheet-only-chat.fullscreen {
+    width: 100%;
 }
 
 .dragged {

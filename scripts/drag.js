@@ -54,7 +54,6 @@ function dragStart(event, container) {
 
 function dragMove(event) {
     if (selectedElement) {
-        event.preventDefault();
         event.stopPropagation();
 
         let xPosition = (event.clientX || event.touches[0].clientX) - xOffset;
@@ -69,7 +68,6 @@ function dragEnd(event) {
     clearTimeout(pressTimer);
 
     if (selectedElement) {
-        event.preventDefault();
         event.stopPropagation();
 
         selectedElement.classList.remove('dragged');
