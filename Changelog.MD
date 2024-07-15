@@ -1,3 +1,7 @@
+# 1.4.4
+- Adds a settings option to display chat window fullscreen
+- Fixes minor incompatibilities with sheet-only-plus
+
 # 1.4.3
 - Fixes bug introduced with new dragging method
 
