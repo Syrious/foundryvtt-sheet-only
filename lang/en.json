@@ -20,6 +20,8 @@
   "Sheet-Only.real-dice.hint": "(Default: Unchecked) You have Real Dice installed. Should manual rolling be enabled for all players?",
   "Sheet-Only.volume.playlist.name": "Playlist Volume",
   "Sheet-Only.volume.ambience.name": "Ambience Volume",
-  "Sheet-Only.volume.interface.name": "Interface Volume"
+  "Sheet-Only.volume.interface.name": "Interface Volume",
+  "Sheet-Only.chat-full-width.name": "Chat as fullscreen window",
+  "Sheet-Only.chat-full-width.hint": "Displays chat as fullscreen"
 }
 

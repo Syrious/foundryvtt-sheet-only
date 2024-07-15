@@ -23,6 +23,16 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
+    game.settings.register(moduleId, "chat-fullscreen", {
+        name: i18n("Sheet-Only.chat-full-width.name"),
+        hint: i18n("Sheet-Only.chat-full-width.hint"),
+        scope: "client",
+        config: true,
+        default: false,
+        type: Boolean,
+        requiresReload: false
+    });
+
     game.settings.register(moduleId, "canvas-option", {
         name: i18n("Sheet-Only.canvas-option.name"),
         hint: i18n("Sheet-Only.canvas-option.hint"),

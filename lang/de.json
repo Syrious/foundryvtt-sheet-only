@@ -20,5 +20,7 @@
   "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?",
   "Sheet-Only.volume.playlist.name": "Lautstärke Musik",
   "Sheet-Only.volume.ambience.name": "Lautstärke Umgebungsgeräusche",
-  "Sheet-Only.volume.interface.name": "Lautstärke Benutzeroberfläche"
+  "Sheet-Only.volume.interface.name": "Lautstärke Benutzeroberfläche",
+  "Sheet-Only.chat-full-width.name": "Chat als Vollbild",
+  "Sheet-Only.chat-full-width.hint": "Maximiere Chat-Fenster"
 }

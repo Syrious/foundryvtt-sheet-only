@@ -236,19 +236,23 @@ function hideUnusedElements() {
 }
 
 function setupChatPanel() {
-    var chatElement = $('#chat'); // Get the chat element
-
-    var newParentElement = $('.sheet-only-container'); // Get the new parent
+    const chatElement = $('#chat'); // Get the chat element
+    const newParentElement = $('.sheet-only-container'); // Get the new parent
 
     if (chatElement.length && newParentElement.length) {
         // Create a new div and wrap the chat element inside it
         chatElement.wrap('<div id="chat-wrapper"></div>');
 
         // Get the wrapper we just created along with its child
-        var chatElementWrapper = $('#chat-wrapper');
+        const chatElementWrapper = $('#chat-wrapper');
         chatElementWrapper.addClass("sheet-only-chat");
         chatElementWrapper.addClass('collapse');
         chatElementWrapper.addClass('so-draggable');
+
+       const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
+       if(chatFullscreen){
+           chatElementWrapper.addClass('fullscreen');
+       }
 
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
