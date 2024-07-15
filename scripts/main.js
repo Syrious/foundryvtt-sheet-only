@@ -249,11 +249,6 @@ function setupChatPanel() {
         chatElementWrapper.addClass('collapse');
         chatElementWrapper.addClass('so-draggable');
 
-       const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-       if(chatFullscreen){
-           chatElementWrapper.addClass('fullscreen');
-       }
-
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
     } else {
