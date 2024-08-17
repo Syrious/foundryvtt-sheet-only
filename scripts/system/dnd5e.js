@@ -1,4 +1,5 @@
 import {openChat} from "../chat.js";
+import { moduleId } from "../settings.js";
 
 export function dnd5eReadyHook() {
     if (!isDnd5e()) {
@@ -18,6 +19,9 @@ export function isDnd5e() {
  * Handle use items
  */
 function handleChatMessage(message, _html, messageData){
+    const shouldOpenChat = game.settings.get(moduleId, "open-chat-on-item-use");
+    if(!shouldOpenChat) return;
+
     // Check if this user is the author of the message
     if (!messageData.author.isSelf) return;
 

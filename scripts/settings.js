@@ -1,6 +1,7 @@
 import {i18n} from "./utils.js";
 import {realDiceActive} from "./compatibility.js";
 import { updateChatFullscreen } from "./chat.js";
+import {isDnd5e} from "./system/dnd5e.js";
 
 export const moduleId = "sheet-only";
 
@@ -36,6 +37,18 @@ Hooks.on('init', () => {
             updateChatFullscreen(value)
         }
     });
+
+    if(isDnd5e()) {
+        game.settings.register(moduleId, "open-chat-on-item-use", {
+            name: i18n("Sheet-Only.open-chat-on-item-use.name"),
+            hint: i18n("Sheet-Only.open-chat-on-item-use.hint"),
+            scope: "client",
+            config: true,
+            default: true,
+            type: Boolean,
+            requiresReload: false
+        });
+    }
 
     game.settings.register(moduleId, "canvas-option", {
         name: i18n("Sheet-Only.canvas-option.name"),
