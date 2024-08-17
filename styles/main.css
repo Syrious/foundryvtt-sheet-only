@@ -82,6 +82,10 @@
     overflow: auto;
 }
 
+body.hidden-canvas canvas#board {
+    display: none !important;
+}
+
 .sheet-only-chat.fullscreen {
     width: 100%;
 }
