@@ -4,9 +4,6 @@ function updateChatState(isCollapsed) {
     const $sheet = $('.sheet-only-chat');
     $sheet.toggleClass('collapse', isCollapsed);
 
-    const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-    chatElementWrapper.toggleClass('fullscreen', chatFullscreen)
-
     localStorage.setItem("collapsed-chat", isCollapsed ? "true" : "false");
 }
 
@@ -36,7 +33,13 @@ export function setupChatPanel() {
         const chatElementWrapper = $('#chat-wrapper');
         chatElementWrapper.addClass("sheet-only-chat");
         chatElementWrapper.addClass('collapse');
-        chatElementWrapper.addClass('so-draggable');
+
+        const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
+        if(!chatFullscreen) {
+            chatElementWrapper.addClass('so-draggable');
+        } else {
+            chatElementWrapper.addClass('fullscreen')
+        }
 
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
