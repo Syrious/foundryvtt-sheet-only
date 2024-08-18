@@ -113,8 +113,6 @@ function setupDefaults() {
 }
 
 export function toggleActorList() {
-    $('#collapse-actor-select i').toggleClass('hidden');
-
     $('.sheet-only-actor-list').toggleClass('collapse');
     if ($('.sheet-only-actor-list.collapse')) {
         localStorage.setItem("collapsed-actor-select", "true");
