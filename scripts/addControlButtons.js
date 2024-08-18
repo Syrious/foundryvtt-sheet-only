@@ -3,6 +3,7 @@ import {initDragListener, wasDragged} from "./drag.js";
 import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {moduleId} from "./settings.js";
+import { getOwnedActors } from "./main.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container so-draggable"></div>`);
@@ -20,6 +21,10 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const settingsButton = uiElement.find("#so-fvtt-settings");
         const menuButton = uiElement.find("#so-menu");
         const fullscreen = uiElement.find("#so-fullscreen");
+
+        if(getOwnedActors().length <= 1) {
+            collapseButton.remove()
+        }
 
         collapseButton.on("click", function () {
             if (wasDragged()) return;

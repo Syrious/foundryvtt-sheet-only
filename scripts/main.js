@@ -187,16 +187,11 @@ function rebuildActorList() {
 
     actorList.empty();
     let actorElements = getActorElements();
-    if (actorElements.length > 1) {
-
-        actorList.show();
-        actorElements.forEach(elem => actorList.append(elem));
-    } else {
-        actorList.hide();
-    }
+    actorList.show();
+    actorElements.forEach(elem => actorList.append(elem));
 }
 
-function getOwnedActors() {
+export function getOwnedActors() {
     return game.actors.filter(actor => isActorOwnedByUser(actor));
 }
 
