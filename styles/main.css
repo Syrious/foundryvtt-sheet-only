@@ -56,14 +56,16 @@
 
 @media (max-width: 800px) {
     .sheet-only-sheet {
-        padding-bottom: 55px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 53px;
     }
     .sheet-only-container {
-        padding-bottom: 55px;
+        padding-bottom: 53px;
     }
     .sheet-only-chat {
         padding-top: 35px;
-        padding-bottom: 55px;
+        padding-bottom: 53px;
     }
     #so-settings-buttons {
         display: flex !important;
