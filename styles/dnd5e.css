@@ -34,6 +34,18 @@
 
 @media (max-width: 800px) {
     /** General Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary {
+        height: auto;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li {
+        min-width: 80px;
+        min-width: min-content;
+        height: auto;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li input {
+        min-width: 80px;
+    }
+
     .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation.tabs {
         column-gap: 24px;
         row-gap: 5px;
