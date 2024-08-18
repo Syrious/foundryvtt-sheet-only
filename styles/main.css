@@ -7,6 +7,15 @@
 
 
 @media (max-width: 800px) {
+    /** Display jump fix */
+    #hud {
+        display: none;
+    }
+    .sheet-only-sheet {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     /* Item dialog improvements */
     .window-app {
         min-width: auto !important;
