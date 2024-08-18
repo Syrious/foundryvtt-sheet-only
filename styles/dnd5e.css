@@ -75,6 +75,18 @@
         max-inline-size: 30px;
         height: 30px;
     }
+
+    /** Spellbook Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters {
+        justify-content: flex-start;
+
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters > .filter-list {
+        padding: 10px 0;
+        max-width: none;
+        flex-basis: 100%;
+        max-width: 500px;
+    }
 }
 
 .sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list {
