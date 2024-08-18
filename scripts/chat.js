@@ -35,15 +35,33 @@ export function setupChatPanel() {
         chatElementWrapper.addClass('collapse');
 
         const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-        if(!chatFullscreen) {
-            chatElementWrapper.addClass('so-draggable');
-        } else {
-            chatElementWrapper.addClass('fullscreen')
-        }
+        updateChatFullscreen(chatFullscreen)
 
         chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
         newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
     } else {
         console.log("Could not find chat panel")
+    }
+}
+
+export function updateChatFullscreen(fullscreen) {
+    const chatElementWrapper = $('#chat-wrapper');
+    if(fullscreen) {
+        // To reset the chat to correct place even after moved around with draggable
+        chatElementWrapper.css({
+            left: 0,
+            right: 0,
+            top: 0
+        });
+        chatElementWrapper.removeClass('so-draggable')
+        chatElementWrapper.addClass('fullscreen')
+    } else {
+        chatElementWrapper.css({
+            left: '',
+            right: 0,
+            top: 0
+        });
+        chatElementWrapper.removeClass('fullscreen')
+        chatElementWrapper.addClass('so-draggable');
     }
 }

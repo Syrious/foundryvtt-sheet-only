@@ -1,5 +1,6 @@
 import {i18n} from "./utils.js";
 import {realDiceActive} from "./compatibility.js";
+import { updateChatFullscreen } from "./chat.js";
 
 export const moduleId = "sheet-only";
 
@@ -30,7 +31,10 @@ Hooks.on('init', () => {
         config: true,
         default: false,
         type: Boolean,
-        requiresReload: false
+        requiresReload: false,
+        onChange: value => {
+            updateChatFullscreen(value)
+        }
     });
 
     game.settings.register(moduleId, "canvas-option", {
