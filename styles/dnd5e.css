@@ -33,8 +33,15 @@
 }
 
 @media (max-width: 800px) {
-    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-body {
-        padding-top: 5px;
+    /** General Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation.tabs {
+        column-gap: 24px;
+        row-gap: 5px;
+        padding-bottom: 10px;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation .item {
+        margin: 0;
     }
 
     /** Inventory Responsive Changes */
