@@ -8,6 +8,9 @@
 .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .header-details{
     border-left: 2px groove #eeede0;
 }
+.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header {
+    zoom: 0.85;
+}
 .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
     overflow: auto;
 }
