@@ -165,7 +165,12 @@ function setupContainer() {
     const sheetContainer = $('<div>').addClass('sheet-only-container');
 
     $('body').append(sheetContainer);
-    sheetContainer.append($('<div>').addClass('sheet-only-actor-list').attr('id', 'sheet-only-actor-list'));
+    sheetContainer.append(
+      $('<div>')
+        .css({ 'padding-top': '40px' })
+        .addClass('sheet-only-actor-list')
+        .attr('id', 'sheet-only-actor-list')
+    );
 
     // Add control buttons depending on browser
     if (navigator.userAgent.indexOf("Firefox") !== -1) {
