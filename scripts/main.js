@@ -1,13 +1,14 @@
-import {addControlButtons, toggleActorList} from "./addControlButtons.js";
+import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
-import {getLastActorId, saveLastActorId} from "./actorStorage.js";
+import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
+import { rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser } from "./actorsList.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 
@@ -15,7 +16,6 @@ CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
-export let currentActor; // The currently selected actor
 
 /* ************************************* */
 /* *************** HOOKS *************** */
@@ -101,7 +101,7 @@ Hooks.on('deleteActor', async function (actor) {
     if (isActorOwnedByUser(actor)) {
         rebuildActorList();
 
-        if (actor === currentActor) {
+        if (actor === actorStorage.current) {
             // We need to pop up the sheet for another character the user owns
             popupSheet()
         }
@@ -146,21 +146,6 @@ function controlCanvas() {
     }
 }
 
-function isActorOwnedByUser(actor) {
-    return actor.ownership[game.user.id] === 3;
-}
-
-/**
- * @param {Actor} actor
- */
-function switchToActor(actor) {
-    currentActor = actor;
-    actor.sheet.render(true);
-
-    setCurrentActorTokenAsControlled();
-    saveLastActorId(currentActor.id);
-}
-
 function setupContainer() {
     const sheetContainer = $('<div>').addClass('sheet-only-container');
 
@@ -180,33 +165,6 @@ function setupContainer() {
         console.log("Adding zoom buttons");
         addControlButtons(sheetContainer, DefaultZoom.increaseZoom, DefaultZoom.decreaseZoom, DefaultZoom.resetZoom);
     }
-}
-
-function rebuildActorList() {
-    let actorList = $('.sheet-only-actor-list');
-
-    actorList.empty();
-    let actorElements = getActorElements();
-    actorList.show();
-    actorElements.forEach(elem => actorList.append(elem));
-}
-
-export function getOwnedActors() {
-    return game.actors.filter(actor => isActorOwnedByUser(actor));
-}
-
-function getActorElements() {
-    let actors = getOwnedActors();
-    return actors.map(actor => {
-            return $('<div>')
-                //.text(actor.name)
-                .append($('<img>').attr('src', actor.img))
-                .click(() => {
-                    switchToActor(actor);
-                    toggleActorList();
-                });
-        }
-    );
 }
 
 function getTokenizerImage() {
@@ -330,14 +288,6 @@ function popupSheet() {
         switchToActor(ownedActors[0]);
     } else {
         console.error("No actor for user found.");
-    }
-}
-
-// Take control of the token of this actor (for targeting)
-function setCurrentActorTokenAsControlled() {
-    const activeTokens = currentActor.getActiveTokens();
-    if (activeTokens.length > 0) {
-        activeTokens[0].control({releaseOthers: true})
     }
 }
 

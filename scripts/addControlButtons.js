@@ -3,7 +3,7 @@ import {initDragListener, wasDragged} from "./drag.js";
 import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {moduleId} from "./settings.js";
-import { getOwnedActors } from "./main.js";
+import { displayActorListButton, toggleActorList } from "./actorsList.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container so-draggable"></div>`);
@@ -21,10 +21,6 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
         const settingsButton = uiElement.find("#so-fvtt-settings");
         const menuButton = uiElement.find("#so-menu");
         const fullscreen = uiElement.find("#so-fullscreen");
-
-        if(getOwnedActors().length <= 1) {
-            collapseButton.remove()
-        }
 
         collapseButton.on("click", function () {
             if (wasDragged()) return;
@@ -99,6 +95,8 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
             if (wasDragged()) return;
             toggleFullscreen();
         });
+
+        displayActorListButton()
     });
 
     sheetContainer.append(uiElement);
@@ -110,15 +108,6 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 function setupDefaults() {
     $('#collapse-actor-select i').addClass('hidden');
     $('.sheet-only-actor-list').addClass('collapse');
-}
-
-export function toggleActorList() {
-    $('.sheet-only-actor-list').toggleClass('collapse');
-    if ($('.sheet-only-actor-list.collapse')) {
-        localStorage.setItem("collapsed-actor-select", "true");
-    } else {
-        localStorage.setItem("collapsed-actor-select", "false");
-    }
 }
 
 function toggleChat() {
