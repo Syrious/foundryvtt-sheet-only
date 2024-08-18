@@ -9,6 +9,8 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
+    transform-origin: 'top left',
 }
 
 .sheet-only-container {
@@ -19,6 +21,7 @@
     top: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     justify-items: flex-start;
     overflow: hidden;
 }
@@ -121,6 +124,7 @@
     position: absolute;
     z-index: 99999;
     height: 100vh;
+    height: 100dvh;
     width: 33vw;
     max-width: 200px;
     border-right: 10px solid rgb(68 68 68 / 90%);
