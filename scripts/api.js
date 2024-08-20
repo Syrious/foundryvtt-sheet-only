@@ -1,4 +1,5 @@
-import {isSheetOnly, currentActor} from "./main.js";
+import { actorStorage } from "./actorStorage.js";
+import {isSheetOnly} from "./main.js";
 /* global game, Hooks*/
 
 
@@ -12,7 +13,7 @@ function setupApi() {
         plusCompatibility: "0.4.2",
 
         getCurrentActor: function () {
-            return currentActor;
+            return actorStorage.current;
         },
 
         isSheetOnly: function () {
