@@ -87,6 +87,10 @@
     z-index: 600 !important;
 }
 
+body.hidden-canvas canvas#board {
+    display: none !important;
+}
+
 .sheet-only-chat.fullscreen {
     width: 100%;
 }
