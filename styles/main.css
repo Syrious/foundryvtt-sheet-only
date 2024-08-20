@@ -82,6 +82,11 @@
     overflow: auto;
 }
 
+.sheet-only-container ~ .dialog {
+    /* Needs important because foundry sets the dialog z-index to 105 on element.style */
+    z-index: 600 !important;
+}
+
 .sheet-only-chat.fullscreen {
     width: 100%;
 }

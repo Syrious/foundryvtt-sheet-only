@@ -2,7 +2,7 @@ import {showPatreonDialog} from "./dialogs.js"
 import {initDragListener, wasDragged} from "./drag.js";
 import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
-import {moduleId} from "./settings.js";
+import {toggleChat} from "./chat.js";
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const uiElement = $(`<div class="button-container so-draggable"></div>`);
@@ -115,20 +115,6 @@ export function toggleActorList() {
         localStorage.setItem("collapsed-actor-select", "true");
     } else {
         localStorage.setItem("collapsed-actor-select", "false");
-    }
-}
-
-function toggleChat() {
-    const $sheet = $('.sheet-only-chat');
-    $sheet.toggleClass('collapse');
-
-    const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-    $sheet.toggleClass('fullscreen', chatFullscreen);
-
-    if ($('.sheet-only-chat.collapse')) {
-        localStorage.setItem("collapsed-chat", "true");
-    } else {
-        localStorage.setItem("collapsed-chat", "false");
     }
 }
 
