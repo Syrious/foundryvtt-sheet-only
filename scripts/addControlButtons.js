@@ -96,7 +96,8 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
             toggleFullscreen();
         });
 
-        displayActorListButton()
+        displayActorListButton();
+        setupForSmallDisplays(uiElement);
     });
 
     sheetContainer.append(uiElement);
@@ -113,5 +114,24 @@ function setupDefaults() {
 function toggleMenu() {
     $('#so-main-buttons').toggle();
     $('#so-settings-buttons').toggle();
+}
+
+/**
+ * We need to re-arrange the button container for displays with max width 800 px (which is considered a small display)
+ * @param buttonContainer
+ */
+function setupForSmallDisplays(buttonContainer) {
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if(screenWidth < 800){
+        const menuButton = buttonContainer.find("#so-menu-button");
+        menuButton.remove();
+
+        buttonContainer.removeClass('so-draggable');
+
+        const settingsButton = buttonContainer.find("#so-settings-buttons");
+        settingsButton.addClass(' so-draggable')
+
+    }
+
 }
 
