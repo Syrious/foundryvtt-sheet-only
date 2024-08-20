@@ -16,7 +16,7 @@ export function rebuildActorList() {
 export function displayActorListButton() {
     const actorsListButton = $("#so-collapse-actor-select")
     const ownedActors = getOwnedActors();
-    console.log(document.getElementById("so-collapse-actor-select"))
+
     if(ownedActors.length > 1) {
         actorsListButton.show();
     } else {

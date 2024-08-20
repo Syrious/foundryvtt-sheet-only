@@ -110,31 +110,6 @@ function setupDefaults() {
     $('.sheet-only-actor-list').addClass('collapse');
 }
 
-function toggleChat() {
-    const $sheet = $('.sheet-only-chat');
-    $sheet.toggleClass('collapse');
-
-    const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-    $sheet.toggleClass('fullscreen', chatFullscreen);
-
-    if ($('.sheet-only-chat.collapse')) {
-        localStorage.setItem("collapsed-chat", "true");
-    } else {
-        localStorage.setItem("collapsed-chat", "false");
-    }
-}
-
-export function toggleActorList() {
-    $('#collapse-actor-select i').toggleClass('hidden');
-
-    $('.sheet-only-actor-list').toggleClass('collapse');
-    if ($('.sheet-only-actor-list.collapse')) {
-        localStorage.setItem("collapsed-actor-select", "true");
-    } else {
-        localStorage.setItem("collapsed-actor-select", "false");
-    }
-}
-
 function toggleMenu() {
     $('#so-main-buttons').toggle();
     $('#so-settings-buttons').toggle();
