@@ -3,107 +3,144 @@ import {initDragListener, wasDragged} from "./drag.js";
 import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {toggleChat} from "./chat.js";
-import { displayActorListButton, toggleActorList } from "./actorsList.js";
+import {displayActorListButton, toggleActorList} from "./actorsList.js";
+
+const maxWithForSmallDisplays = 800;
+const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    const uiElement = $(`<div class="button-container so-draggable"></div>`);
+    const buttonContainer = $(`<div class="button-container so-draggable"></div>`);
 
-    uiElement.load("modules/sheet-only/templates/buttons.html", function () {
-        const collapseButton = uiElement.find("#so-collapse-actor-select")
-        const chatButton = uiElement.find("#so-toggle-chat")
-        const increaseButton = uiElement.find("#so-increase-font");
-        const decreaseButton = uiElement.find("#so-decrease-font");
-        const resetButton = uiElement.find("#so-reset-font");
-        const logoutButton = uiElement.find("#so-log-out");
-        const targetingButton = uiElement.find("#so-targeting");
-        const journalButton = uiElement.find("#so-journal");
-        const controllingButton = uiElement.find("#so-controlling");
-        const settingsButton = uiElement.find("#so-fvtt-settings");
-        const menuButton = uiElement.find("#so-menu");
-        const fullscreen = uiElement.find("#so-fullscreen");
+    if (screenWidth < maxWithForSmallDisplays) {
+        // Create a new container for main buttons at the bottom of the screen
+        const mainButtonsContainer = $(`<div class="small-display-main-buttons"></div>`);
 
-        collapseButton.on("click", function () {
-            if (wasDragged()) return;
+        buttonContainer.load("modules/sheet-only/templates/buttons-small-display.html", () => {
+            setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom);
+            setupMenuButtonForSmallDisplays(buttonContainer);
 
-            toggleActorList();
+            const mainButtons = buttonContainer.find('#so-main-buttons');
+            mainButtonsContainer.append(mainButtons);
         });
 
-        chatButton.on("click", function () {
-            if (wasDragged()) return;
-            toggleChat();
+        sheetContainer.append(mainButtonsContainer);
+    } else {
+
+        buttonContainer.load("modules/sheet-only/templates/buttons.html", () => {
+            setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom);
+            setupMenuButtonForLargeDisplays(buttonContainer);
         });
+    }
 
-        increaseButton.on("click", function () {
-            if (wasDragged()) return;
-            increaseZoom();
-        });
-
-        decreaseButton.on("click", function () {
-            if (wasDragged()) return;
-            decreaseZoom();
-        });
-
-        resetButton.on("click", function () {
-            if (wasDragged()) return;
-            resetZoom()
-        });
-
-        logoutButton.on("click", function () {
-            if (wasDragged()) return;
-            ui.menu.items.logout.onClick();
-        });
-
-        settingsButton.on("click", function () {
-            if (wasDragged()) return;
-            game.settings.sheet.render(true);
-        })
-
-        targetingButton.on("click", function () {
-            if (wasDragged()) return;
-            if (sheetOnlyPlusActive()) {
-                game.modules.get('sheet-only-plus').api.openTargeting();
-            } else {
-                showPatreonDialog("Targeting");
-            }
-        });
-
-        journalButton.on("click", function () {
-            if (wasDragged()) return;
-            if (sheetOnlyPlusActive()) {
-                game.modules.get('sheet-only-plus').api.openJournal();
-            } else {
-                showPatreonDialog("Journal");
-            }
-        });
-
-        controllingButton.on("click", function () {
-            if (wasDragged()) return;
-
-            if (sheetOnlyPlusActive()) {
-                game.modules.get('sheet-only-plus').api.openControls();
-            } else {
-                showPatreonDialog("Movement");
-            }
-        });
-
-        menuButton.on("click", function () {
-            if (wasDragged()) return;
-            toggleMenu();
-        });
-
-        fullscreen.on("click", function () {
-            if (wasDragged()) return;
-            toggleFullscreen();
-        });
-
-        displayActorListButton();
-        setupForSmallDisplays(uiElement);
-    });
-
-    sheetContainer.append(uiElement);
+    sheetContainer.append(buttonContainer);
 
     setupDefaults();
     initDragListener();
+}
+
+function setupMenuButtonForLargeDisplays(buttonContainer) {
+    const menuButton = buttonContainer.find("#so-menu");
+    console.warn(menuButton)
+    menuButton.on("click", function () {
+        if (wasDragged()) return;
+
+        $('#so-main-buttons').toggle();
+        $('#so-settings-buttons').toggle();
+    });
+}
+
+function setupMenuButtonForSmallDisplays(buttonContainer) {
+    const menuButton = buttonContainer.find("#so-menu");
+    menuButton.on("click", function () {
+        if (wasDragged()) return;
+
+        $('#so-settings-buttons').toggle();
+    });
+}
+
+function setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom) {
+    const collapseButton = buttonContainer.find("#so-collapse-actor-select")
+    const chatButton = buttonContainer.find("#so-toggle-chat")
+    const increaseButton = buttonContainer.find("#so-increase-font");
+    const decreaseButton = buttonContainer.find("#so-decrease-font");
+    const resetButton = buttonContainer.find("#so-reset-font");
+    const logoutButton = buttonContainer.find("#so-log-out");
+    const targetingButton = buttonContainer.find("#so-targeting");
+    const journalButton = buttonContainer.find("#so-journal");
+    const controllingButton = buttonContainer.find("#so-controlling");
+    const settingsButton = buttonContainer.find("#so-fvtt-settings");
+    const fullscreen = buttonContainer.find("#so-fullscreen");
+
+    collapseButton.on("click", function () {
+        if (wasDragged()) return;
+
+        toggleActorList();
+    });
+
+    chatButton.on("click", function () {
+        if (wasDragged()) return;
+        toggleChat();
+    });
+
+    increaseButton.on("click", function () {
+        if (wasDragged()) return;
+        increaseZoom();
+    });
+
+    decreaseButton.on("click", function () {
+        if (wasDragged()) return;
+        decreaseZoom();
+    });
+
+    resetButton.on("click", function () {
+        if (wasDragged()) return;
+        resetZoom()
+    });
+
+    logoutButton.on("click", function () {
+        if (wasDragged()) return;
+        ui.menu.items.logout.onClick();
+    });
+
+    settingsButton.on("click", function () {
+        if (wasDragged()) return;
+        game.settings.sheet.render(true);
+    })
+
+    targetingButton.on("click", function () {
+        if (wasDragged()) return;
+        if (sheetOnlyPlusActive()) {
+            game.modules.get('sheet-only-plus').api.openTargeting();
+        } else {
+            showPatreonDialog("Targeting");
+        }
+    });
+
+    journalButton.on("click", function () {
+        if (wasDragged()) return;
+        if (sheetOnlyPlusActive()) {
+            game.modules.get('sheet-only-plus').api.openJournal();
+        } else {
+            showPatreonDialog("Journal");
+        }
+    });
+
+    controllingButton.on("click", function () {
+        if (wasDragged()) return;
+
+        if (sheetOnlyPlusActive()) {
+            game.modules.get('sheet-only-plus').api.openControls();
+        } else {
+            showPatreonDialog("Movement");
+        }
+    });
+
+    fullscreen.on("click", function () {
+        if (wasDragged()) return;
+        toggleFullscreen();
+    });
+
+    displayActorListButton();
 }
 
 function setupDefaults() {
@@ -111,27 +148,4 @@ function setupDefaults() {
     $('.sheet-only-actor-list').addClass('collapse');
 }
 
-function toggleMenu() {
-    $('#so-main-buttons').toggle();
-    $('#so-settings-buttons').toggle();
-}
-
-/**
- * We need to re-arrange the button container for displays with max width 800 px (which is considered a small display)
- * @param buttonContainer
- */
-function setupForSmallDisplays(buttonContainer) {
-    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if(screenWidth < 800){
-        const menuButton = buttonContainer.find("#so-menu-button");
-        menuButton.remove();
-
-        buttonContainer.removeClass('so-draggable');
-
-        const settingsButton = buttonContainer.find("#so-settings-buttons");
-        settingsButton.addClass(' so-draggable')
-
-    }
-
-}
 

@@ -24,11 +24,17 @@
     overflow: hidden;
 }
 
-.sheet-only-container > .button-container .button {
+.sheet-only-container > .small-display-main-buttons {
+    display: flex;
+    flex-direction: row;
+    z-index: 99999;
+}
+
+.sheet-only-container > .small-display-main-buttons .button {
     cursor: pointer;
 }
 
-.sheet-only-container > .button-container .button > i {
+.sheet-only-container > .small-display-main-buttons .button > i {
     vertical-align: middle;
 }
 

@@ -1,45 +1,64 @@
-@media only screen and (max-width: 500px){
-    .dnd5e.sheet.actor.character.sheet-only-sheet .item-detail.item-weight{
+@media only screen and (max-width: 500px) {
+    .dnd5e.sheet.actor.character.sheet-only-sheet .item-detail.item-weight {
         display: none;
     }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .spell-school{
-        display: none;
-    }
-}
-@media only screen and (max-width: 575px){
-    .dnd5e.sheet.actor.character.sheet-only-sheet .item-detail.item-quantity{
-        display: none;
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .spell-target{
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spell-school {
         display: none;
     }
 }
-@media only screen and (max-width: 615px){
-    .dnd5e.sheet.actor.character.sheet-only-sheet .inventory-filters .currency h3{
+
+@media only screen and (max-width: 575px) {
+    .dnd5e.sheet.actor.character.sheet-only-sheet .item-detail.item-quantity {
+        display: none;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spell-target {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    .dnd5e.sheet.actor.character.sheet-only-sheet .inventory-filters .currency h3 {
         display: none;
     }
 
     /* No images in chat log */
-    .sheet-only-chat  ol#chat-log li img{
+    .sheet-only-chat ol#chat-log li img {
         /*display: none;*/
     }
 
 }
 
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
-@media only screen and (max-width: 523px){
+@media only screen and (max-width: 523px) {
     .sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows > div {
-        gap: 1rem; 
+        gap: 1rem;
         flex-wrap: wrap;
     }
+
     .sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .ability-score {
         flex: 0 0 30%;
     }
+
     .sheet-only-sheet.dnd5e2.sheet.actor.character .tab-details .tab-body {
         padding-top: 160px;
     }
+
     .sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-body .tab-body .tab.details {
         --skills-col-width: unset;
         grid-template-columns: 95vw;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .dnd5e.sheet .sheet-navigation {
+        gap: 10px;
+        justify-content: space-around;
+    }
+
+    .dnd5e.sheet .sheet-navigation .item {
+        margin: 0;
     }
 }
