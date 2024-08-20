@@ -10,7 +10,7 @@ Hooks.once('setup', async () => {
 function setupApi() {
     game.modules.get('sheet-only').api = {
         // This sheet-only version is compatible with the following sheet-only-plus version
-        plusCompatibility: "0.4.2",
+        plusCompatibility: "0.4.3",
 
         getCurrentActor: function () {
             return actorStorage.current;
