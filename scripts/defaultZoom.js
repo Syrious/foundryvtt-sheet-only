@@ -4,12 +4,7 @@ export function increaseZoom() {
 
     scaleFactor += 0.1;
 
-    sheet.css({
-        'zoom': scaleFactor,
-        'transform-origin': 'top left',
-        'width': '100vw',
-        'height': '100vh'
-    });
+    sheet.css({ zoom: scaleFactor });
 }
 
 export function decreaseZoom() {
@@ -18,21 +13,11 @@ export function decreaseZoom() {
 
     scaleFactor = Math.max(scaleFactor - 0.1, 0.1);
 
-    sheet.css({
-        'zoom': scaleFactor,
-        'transform-origin': 'top left',
-        'width': '100vw',
-        'height': '100vh'
-    });
+    sheet.css({ zoom: scaleFactor });
 }
 
 export function resetZoom() {
     let sheet = $('.sheet-only-sheet');
 
-    sheet.css({
-        'zoom': 1,
-        'transform-origin': 'top left',
-        'width': '100vw',
-        'height': '100vh'
-    });
+    sheet.css({ zoom: 1 });
 }
