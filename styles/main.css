@@ -5,6 +5,36 @@
     display: none !important;
 }
 
+
+@media (max-width: 800px) {
+    /** Display jump fix */
+    #hud {
+        display: none;
+    }
+    .sheet-only-sheet {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* Item dialog improvements */
+    .window-app {
+        min-width: auto !important;
+        max-width: 100vw;
+    }
+    .window-app.sheet.item {
+        min-width: 100vw !important;
+        max-height: 85%;
+    }
+
+    .dnd5e.sheet .sheet-navigation {
+        gap: 10px;
+        justify-content: space-around;
+    }
+    .dnd5e.sheet .sheet-navigation .item {
+        margin: 0;
+    }
+}
+
 .sheet-only-sheet {
     position: relative;
     width: 100vw;
