@@ -1,4 +1,5 @@
-import {isSheetOnly, currentActor} from "./main.js";
+import { actorStorage } from "./actorStorage.js";
+import {isSheetOnly} from "./main.js";
 /* global game, Hooks*/
 
 
@@ -9,10 +10,10 @@ Hooks.once('setup', async () => {
 function setupApi() {
     game.modules.get('sheet-only').api = {
         // This sheet-only version is compatible with the following sheet-only-plus version
-        plusCompatibility: "0.4.2",
+        plusCompatibility: "0.4.3",
 
         getCurrentActor: function () {
-            return currentActor;
+            return actorStorage.current;
         },
 
         isSheetOnly: function () {

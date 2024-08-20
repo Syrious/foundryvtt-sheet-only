@@ -8,6 +8,26 @@
 .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .header-details{
     border-left: 2px groove #eeede0;
 }
+
+@media (max-width: 800px) {
+    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header {
+        zoom: 0.85;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes {
+        zoom: 1.15
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.inventory {
+        zoom: 1.1
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.features {
+        zoom: 1.1
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.spellbook {
+        zoom: 1.1
+    }
+}
+
 .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
     overflow: auto;
 }
@@ -31,6 +51,83 @@
     flex: 1 0 100%;
     overflow-y: visible;
 }
+
+@media (max-width: 800px) {
+    /** General Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary {
+        height: auto;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li {
+        min-width: 80px;
+        min-width: min-content;
+        height: auto;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li input {
+        min-width: 80px;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation.tabs {
+        column-gap: 24px;
+        row-gap: 5px;
+        padding-bottom: 10px;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation .item {
+        margin: 0;
+    }
+
+    /** Inventory Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency {
+        margin: 0;
+        gap: 2px;
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > h3 {
+        white-space: nowrap;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .denomination {
+        margin-inline-start: 10px;
+        font-size: 0;
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .denomination::after {
+        font-size: 12px;
+        content: "";
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .pp::after {
+        content: "P";
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .gp::after {
+        content: "G";
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .ep::after {
+        content: "E";
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .sp::after {
+        content: "S";
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .cp::after {
+        content: "C";
+    }
+
+    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > input[type="text"] {
+        margin-left:0px;
+        max-inline-size: 30px;
+        height: 30px;
+    }
+
+    /** Spellbook Responsive Changes */
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters {
+        justify-content: flex-start;
+
+    }
+    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters > .filter-list {
+        padding: 10px 0;
+        max-width: none;
+        flex-basis: 100%;
+        max-width: 500px;
+    }
+}
+
 .sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list {
     list-style: none;
     margin: 0;

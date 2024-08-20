@@ -1,3 +1,14 @@
+# 1.5.0 (The Eddie-Update)
+
+Thanks to [Eddie](https://github.com/eddiecooro) for this contribution containing the following changes
+- Improved handling for smaller displays
+- Dnd5e: Opens the chat window when using item or spell 
+- Renders dialogs on top of the chat window
+- Disables drag & drop for the chat window if the chat is set to fullscreen
+- Moves the main buttons to the bottom for smaller displays (width < 800px)
+  - The sheet might still look squished on such a small resolution
+  - For Dnd5e use the legacy sheet for best results 
+
 # 1.4.4
 - Adds a settings option to display chat window fullscreen
 - Fixes minor incompatibilities with sheet-only-plus

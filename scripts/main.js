@@ -1,13 +1,15 @@
-import {addControlButtons, toggleActorList} from "./addControlButtons.js";
+import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
-import {getLastActorId, saveLastActorId} from "./actorStorage.js";
+import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
+import { setupChatPanel } from "./chat.js";
+import { rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser } from "./actorsList.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 
@@ -15,7 +17,6 @@ CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
-export let currentActor; // The currently selected actor
 
 /* ************************************* */
 /* *************** HOOKS *************** */
@@ -101,7 +102,7 @@ Hooks.on('deleteActor', async function (actor) {
     if (isActorOwnedByUser(actor)) {
         rebuildActorList();
 
-        if (actor === currentActor) {
+        if (actor === actorStorage.current) {
             // We need to pop up the sheet for another character the user owns
             popupSheet()
         }
@@ -146,26 +147,16 @@ function controlCanvas() {
     }
 }
 
-function isActorOwnedByUser(actor) {
-    return actor.ownership[game.user.id] === 3;
-}
-
-/**
- * @param {Actor} actor
- */
-function switchToActor(actor) {
-    currentActor = actor;
-    actor.sheet.render(true);
-
-    setCurrentActorTokenAsControlled();
-    saveLastActorId(currentActor.id);
-}
-
 function setupContainer() {
     const sheetContainer = $('<div>').addClass('sheet-only-container');
 
     $('body').append(sheetContainer);
-    sheetContainer.append($('<div>').addClass('sheet-only-actor-list').attr('id', 'sheet-only-actor-list'));
+    sheetContainer.append(
+      $('<div>')
+        .css({ 'padding-top': '40px' })
+        .addClass('sheet-only-actor-list')
+        .attr('id', 'sheet-only-actor-list')
+    );
 
     // Add control buttons depending on browser
     if (navigator.userAgent.indexOf("Firefox") !== -1) {
@@ -175,38 +166,6 @@ function setupContainer() {
         console.log("Adding zoom buttons");
         addControlButtons(sheetContainer, DefaultZoom.increaseZoom, DefaultZoom.decreaseZoom, DefaultZoom.resetZoom);
     }
-}
-
-function rebuildActorList() {
-    let actorList = $('.sheet-only-actor-list');
-
-    actorList.empty();
-    let actorElements = getActorElements();
-    if (actorElements.length > 1) {
-
-        actorList.show();
-        actorElements.forEach(elem => actorList.append(elem));
-    } else {
-        actorList.hide();
-    }
-}
-
-function getOwnedActors() {
-    return game.actors.filter(actor => isActorOwnedByUser(actor));
-}
-
-function getActorElements() {
-    let actors = getOwnedActors();
-    return actors.map(actor => {
-            return $('<div>')
-                //.text(actor.name)
-                .append($('<img>').attr('src', actor.img))
-                .click(() => {
-                    switchToActor(actor);
-                    toggleActorList();
-                });
-        }
-    );
 }
 
 function getTokenizerImage() {
@@ -232,27 +191,6 @@ function hideUnusedElements() {
 
     if (!game.settings.get("sheet-only", "display-notifications")) {
         $("#notifications").addClass("sheet-only-hide");
-    }
-}
-
-function setupChatPanel() {
-    const chatElement = $('#chat'); // Get the chat element
-    const newParentElement = $('.sheet-only-container'); // Get the new parent
-
-    if (chatElement.length && newParentElement.length) {
-        // Create a new div and wrap the chat element inside it
-        chatElement.wrap('<div id="chat-wrapper"></div>');
-
-        // Get the wrapper we just created along with its child
-        const chatElementWrapper = $('#chat-wrapper');
-        chatElementWrapper.addClass("sheet-only-chat");
-        chatElementWrapper.addClass('collapse');
-        chatElementWrapper.addClass('so-draggable');
-
-        chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
-        newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
-    } else {
-        console.log("Could not find chat panel")
     }
 }
 
@@ -330,14 +268,6 @@ function popupSheet() {
         switchToActor(ownedActors[0]);
     } else {
         console.error("No actor for user found.");
-    }
-}
-
-// Take control of the token of this actor (for targeting)
-function setCurrentActorTokenAsControlled() {
-    const activeTokens = currentActor.getActiveTokens();
-    if (activeTokens.length > 0) {
-        activeTokens[0].control({releaseOthers: true})
     }
 }
 

@@ -1,0 +1,57 @@
+@media (max-width: 800px) {
+    .sheet-only-sheet {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 53px;
+    }
+
+    .sheet-only-container {
+        padding-bottom: 53px;
+    }
+
+    .sheet-only-chat {
+        padding-top: 35px;
+        padding-bottom: 53px;
+    }
+
+    #so-main-buttons {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+    }
+
+    #so-main-buttons > button {
+        height: 100%;
+    }
+
+    #so-main-buttons > button > i {
+        font-size: 24px;
+    }
+
+    /** Display jump fix */
+    #hud {
+        display: none;
+    }
+
+    .sheet-only-sheet {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* Item dialog improvements */
+    .window-app {
+        min-width: auto !important;
+        max-width: 100vw;
+    }
+
+    .window-app.sheet.item {
+        min-width: 100vw !important;
+        max-height: 85%;
+    }
+}
+
+
+

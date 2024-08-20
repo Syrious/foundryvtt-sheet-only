@@ -3,8 +3,8 @@ export function hideCanvas(){
 }
 
 function checkDnd5e() {
-    if(game.system ==='dnd5e' || document.getElementById('board')){
+  if (game.system === 'dnd5e' || document.getElementById('board')) {
         // Hide the canvas
-        document.getElementById('board').style.display = 'none';
-    }
+    document.body.classList.add("hidden-canvas");
+  }
 }

@@ -22,5 +22,7 @@
   "Sheet-Only.volume.ambience.name": "Lautstärke Umgebungsgeräusche",
   "Sheet-Only.volume.interface.name": "Lautstärke Benutzeroberfläche",
   "Sheet-Only.chat-full-width.name": "Chat als Vollbild",
-  "Sheet-Only.chat-full-width.hint": "Maximiere Chat-Fenster"
+  "Sheet-Only.chat-full-width.hint": "Maximiere Chat-Fenster",
+  "Sheet-Only.open-chat-on-item-use.name": "Chat bei Verwendung eines Gegenstands öffnen",
+  "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)"
 }
