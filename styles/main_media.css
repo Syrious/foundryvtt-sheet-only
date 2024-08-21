@@ -51,6 +51,22 @@
         min-width: 100vw !important;
         max-height: 85%;
     }
+
+    /* For Real-Dice Module*/
+    body > div.real-roll {
+        z-index: 10000 !important;
+        top: 30dvh !important;
+        left: calc(50dvw - 100px) !important;
+    }
+
+    /* v12 native manual roll resolver*/
+    body > .roll-resolver {
+        z-index: 10000 !important;
+        top: 30vh !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+        max-width: 100vw;
+    }
 }
 
 

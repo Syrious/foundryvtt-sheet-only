@@ -1,3 +1,6 @@
+# 1.5.1
+- Fixes issue with the manual roll window hidden behind chat
+
 # 1.5.0 (The Eddie-Update)
 
 Thanks to [Eddie](https://github.com/eddiecooro) for this contribution containing the following changes
