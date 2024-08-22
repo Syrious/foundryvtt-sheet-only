@@ -59,7 +59,7 @@ Hooks.once('ready', async function () {
 Hooks.on('renderActorSheet',
     /** @param {FormApplication|null} app */
     async (app) => {
-        if (!isSheetOnly()) {
+        if (!isSheetOnly() || currentSheet?.appId == app.appId) {
             return;
         }
 
