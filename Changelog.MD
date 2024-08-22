@@ -1,3 +1,6 @@
+# 1.5.2
+- [D&D 3.5] Fixes bug where character sheet closes automatically when changing values on the sheet
+
 # 1.5.1
 - Fixes issue with the manual roll window hidden behind chat
 
