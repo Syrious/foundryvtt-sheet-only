@@ -1,6 +1,7 @@
 import {i18n} from "./utils.js";
-import {realDiceActive} from "./compatibility.js";
+import {realDiceActive, searchEngineAvailable} from "./compatibility.js";
 import { updateChatFullscreen } from "./chat.js";
+import {displayMorphSearchButton} from "./morphSearch.js";
 import {isDnd5e} from "./system/dnd5e.js";
 
 export const moduleId = "sheet-only";
@@ -78,6 +79,20 @@ Hooks.on('init', () => {
                 game.settings.set("real-dice", "manualRollMode", value)
             }
         });
+    }
+
+    if (searchEngineAvailable()) {
+        game.settings.register(moduleId, "morph-on-mobile", {
+            name: i18n("Sheet-Only.morph-on-mobile.name"),
+            hint: i18n("Sheet-Only.morph-on-mobile.hint"),
+            scope: "client",
+            config: true,
+            type: Boolean,
+            requiresReload: false,
+            onChange: value => {
+                displayMorphSearchButton()
+            }
+        })
     }
 
     game.settings.register(moduleId, "lastActorId", {

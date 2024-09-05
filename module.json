@@ -1,49 +1,50 @@
 {
-  "id": "sheet-only",
-  "title": "Sheet Only",
-  "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "1.5.2",
-  "compatibility": {
-    "minimum": "11",
-    "verified": "12"
-  },
-  "authors": [
-    {
-      "name": "Syrious",
-      "discord": "syrious_",
-      "flags": {
-        "patreon": "SyriousWorkshop",
-        "github": "Syrious",
-        "ko-fi": "syrious"
-      }
-    }
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json",
-      "flags": {}
+    "id": "sheet-only",
+    "title": "Sheet Only",
+    "description": "Provides a fullscreen character sheet to use on tablets",
+    "version": "1.5.2",
+    "compatibility": {
+        "minimum": "11",
+        "verified": "12"
     },
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "lang/de.json",
-      "flags": {}
-    }
-  ],
-  "esmodules": [
-    "/scripts/main.js",
-    "/scripts/settings.js",
-    "/scripts/api.js"
-  ],
-  "styles": [
-    "styles/main.css",
-    "styles/main_media.css",
-    "styles/dnd5e.css",
-    "styles/dnd5e_media.css"
-  ],
-  "url": "https://github.com/Syrious/foundryvtt-sheet-only",
-  "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
-  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip"
+    "authors": [
+        {
+            "name": "Syrious",
+            "discord": "syrious_",
+            "flags": {
+                "patreon": "SyriousWorkshop",
+                "github": "Syrious",
+                "ko-fi": "syrious"
+            }
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        },
+        {
+            "lang": "de",
+            "name": "Deutsch",
+            "path": "lang/de.json",
+            "flags": {}
+        }
+    ],
+    "esmodules": [
+        "/scripts/main.js",
+        "/scripts/settings.js",
+        "/scripts/api.js"
+    ],
+    "styles": [
+        "styles/main.css",
+        "styles/main_media.css",
+        "styles/dnd5e.css",
+        "styles/dnd5e_media.css",
+        "styles/tidy5e_media.css"
+    ],
+    "url": "https://github.com/Syrious/foundryvtt-sheet-only",
+    "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
+    "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip"
 }

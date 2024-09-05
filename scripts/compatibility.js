@@ -1,5 +1,6 @@
 export function setupCompatibility() {
     realDice();
+    searchEngineAvailable();
 }
 
 export function sheetOnlyPlusActive() {
@@ -26,4 +27,23 @@ async function realDice() {
         console.log("Enabling Real Dice for Sheet-Only ", shouldBeEnabled)
         game.settings.set("real-dice", "manualRollMode", shouldBeEnabled ? 1 : 0)
     }
+}
+
+export function spotlightOmnisearchActive() {
+    let moduleName = 'spotlight-omnisearch';
+    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
+}
+
+export function quickInsertActive() {
+    let moduleName = 'quick-insert';
+    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
+}
+
+export function searchEngineAvailable() {
+    // const isSpotlightOmnisearchAvailable = spotlightOmnisearchActive();
+    // const isQuickInsertAvailable = quickInsertActive();
+
+    // return isSpotlightOmnisearchAvailable || isQuickInsertAvailable;
+
+    return false;
 }
