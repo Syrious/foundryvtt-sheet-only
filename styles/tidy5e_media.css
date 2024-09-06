@@ -327,8 +327,6 @@
 
 		/** Action Tab **/
 		.tidy-tab.actions {
-			.item-table-header-row {}
-
 			.item-table {
 				.item-table-row {
 
@@ -636,8 +634,6 @@
 	/** General Table-Tab **/
 	.tidy5e-sheet.actor.character.sheet-only-sheet {
 		& .tidy-tab {
-			.item-table-header-row {}
-
 			.item-table-row {
 				.item-table-cell:last-child {
 					display: none;
