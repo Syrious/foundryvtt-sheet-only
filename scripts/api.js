@@ -1,5 +1,6 @@
 import { actorStorage } from "./actorStorage.js";
 import {isSheetOnly} from "./main.js";
+import { getSocket } from "./socketlib.js";
 /* global game, Hooks*/
 
 

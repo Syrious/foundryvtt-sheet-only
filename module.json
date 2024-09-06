@@ -46,5 +46,6 @@
     ],
     "url": "https://github.com/Syrious/foundryvtt-sheet-only",
     "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
-    "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip"
+    "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip",
+    "socket": true
 }

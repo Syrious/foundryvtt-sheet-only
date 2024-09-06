@@ -12,6 +12,8 @@
 
         .flex-grow-1 {
             /** Header **/
+
+			/** Hide potential ddbImport button **/
             & > .flex-row:first-child .ddbCharacterName {
                 display: none;
             }

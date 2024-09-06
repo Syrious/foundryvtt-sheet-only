@@ -1,18 +1,20 @@
-import {addControlButtons} from "./addControlButtons.js";
+import { addControlButtons } from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
-import {setupCompatibility} from "./compatibility.js";
-import {hideCanvas} from "./canvasHider.js";
-import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
-import {actorStorage, getLastActorId} from "./actorStorage.js";
-import {i18n} from "./utils.js";
-import {enableCanvasDialog} from "./dialogs.js";
-import {moduleId} from "./settings.js";
+import { setupCompatibility } from "./compatibility.js";
+import { hideCanvas } from "./canvasHider.js";
+import { dnd5eReadyHook, dnd5eEditSlider } from "./system/dnd5e.js";
+import { actorStorage, getLastActorId } from "./actorStorage.js";
+import { i18n } from "./utils.js";
+import { enableCanvasDialog } from "./dialogs.js";
+import { moduleId } from "./settings.js";
 import { setupChatPanel } from "./chat.js";
 import { rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser } from "./actorsList.js";
+import { updateMorphSearchButton } from "./morphSearch.js";
+import { setUpSocketlib } from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
-
+let socket;
 CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
@@ -35,7 +37,7 @@ Hooks.once('ready', async function () {
         const canvasDisabled = game.settings.get("core", "noCanvas");
         const neverAsk = game.settings.get(moduleId, "neverAskCanvas");
 
-        if(canvasDisabled && !neverAsk){
+        if (canvasDisabled && !neverAsk) {
             enableCanvasDialog();
         }
 
@@ -47,7 +49,7 @@ Hooks.once('ready', async function () {
     setupContainer();
     rebuildActorList()
     setupChatPanel();
-    popupSheet();
+    await popupSheet();
     hideUnusedElements();
 
     addEventListener("resize", onResize);
@@ -55,10 +57,9 @@ Hooks.once('ready', async function () {
     dnd5eReadyHook();
 });
 
-
 Hooks.on('renderActorSheet',
     /** @param {FormApplication|null} app */
-    async (app) => {
+    async (app, _sheet, { actor }) => {
         if (currentSheet?.appId === app.appId || !isSheetOnly()) {
             return;
         }
@@ -80,7 +81,13 @@ Hooks.on('renderActorSheet',
         getTokenizerImage();
 
         dnd5eEditSlider(app);
-    })
+
+        if (actor) {
+            await switchToActor(actor, false);
+        }
+        updateMorphSearchButton();
+    }
+);
 
 
 Hooks.on('createActor', async function (actor) {
@@ -90,7 +97,7 @@ Hooks.on('createActor', async function (actor) {
 
     if (isActorOwnedByUser(actor)) {
         rebuildActorList();
-        switchToActor(actor);
+        await switchToActor(actor);
     }
 });
 
@@ -104,7 +111,7 @@ Hooks.on('deleteActor', async function (actor) {
 
         if (actor === actorStorage.current) {
             // We need to pop up the sheet for another character the user owns
-            popupSheet()
+            await popupSheet()
         }
     }
 });
@@ -121,8 +128,10 @@ Hooks.on('renderContainerSheet', async (app, html) => {
 
 Hooks.once('closeUserConfig', async () => {
     // Popup sheet after user selected their character
-    popupSheet()
+    await popupSheet()
 });
+
+setUpSocketlib();
 
 /* ************************************* */
 
@@ -152,10 +161,10 @@ function setupContainer() {
 
     $('body').append(sheetContainer);
     sheetContainer.append(
-      $('<div>')
-        .css({ 'padding-top': '40px' })
-        .addClass('sheet-only-actor-list')
-        .attr('id', 'sheet-only-actor-list')
+        $('<div>')
+            .css({ 'padding-top': '40px' })
+            .addClass('sheet-only-actor-list')
+            .attr('id', 'sheet-only-actor-list')
     );
 
     // Add control buttons depending on browser
@@ -246,7 +255,7 @@ function userInitialization() {
     });
 }
 
-function popupSheet() {
+async function popupSheet() {
     const ownedActors = getOwnedActors();
     const lastActorId = getLastActorId();
 
@@ -256,7 +265,7 @@ function popupSheet() {
         const actorIsOwned = ownedActors.some(actor => actor.id === lastActorId);
 
         if (lastActor && actorIsOwned) {
-            switchToActor(lastActor);
+            await switchToActor(lastActor);
             return; // Exit the function if the last actor was successfully loaded
         } else {
             console.log("The saved actor could not be found, opening the first actor.");
@@ -265,7 +274,7 @@ function popupSheet() {
 
     // Open the first actor in the list if no saved actor was found or could not be loaded
     if (ownedActors?.length > 0) {
-        switchToActor(ownedActors[0]);
+        await switchToActor(ownedActors[0]);
     } else {
         console.error("No actor for user found.");
     }

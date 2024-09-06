@@ -18,13 +18,13 @@
   "Sheet-Only.canvas-option.hint": "Diese Option ermöglicht es dir, zu spezifizieren, ob Sheet-Only das Figuren-Spielfeld deaktivieren (Standard), verstecken oder keine Änderungen daran vornehmen soll. Das Deaktivieren ist am leistungsstärksten, aber einige Module funktionieren möglicherweise nicht.",
   "Sheet-Only.real-dice.name": "Real Dice: Manuelles Würfeln aktivieren",
   "Sheet-Only.real-dice.hint": "(Standard: Nicht aktiviert) Du hast Real Dice installiert. Soll das manuelle Würfeln für alle Spieler aktiviert werden?",
-  "Sheet-Only.morph-on-mobile.name": "Polymorph aktivieren",
-  "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du has Spotlight Omnisearch oder Quick Insert installiert. Sollen die Spieler die Option haben nach einem Monster zu suchen um für Tiergestalt/Verwandlung/... zu verwenden?",
   "Sheet-Only.volume.playlist.name": "Lautstärke Musik",
   "Sheet-Only.volume.ambience.name": "Lautstärke Umgebungsgeräusche",
   "Sheet-Only.volume.interface.name": "Lautstärke Benutzeroberfläche",
   "Sheet-Only.chat-full-width.name": "Chat als Vollbild",
   "Sheet-Only.chat-full-width.hint": "Maximiere Chat-Fenster",
   "Sheet-Only.open-chat-on-item-use.name": "Chat bei Verwendung eines Gegenstands öffnen",
-  "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)"
+  "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)",
+  "Sheet-Only.morph-on-mobile.name": "Polymorph aktivieren",
+  "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du has Spotlight Omnisearch oder Quick Insert installiert. Sollen die Spieler die Option haben nach einem Monster zu suchen um für Tiergestalt/Verwandlung/... zu verwenden?"
 }
