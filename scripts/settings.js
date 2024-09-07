@@ -1,7 +1,8 @@
-import {i18n} from "./utils.js";
-import {realDiceActive} from "./compatibility.js";
+import { i18n } from "./utils.js";
+import { realDiceActive, searchEngineAvailable, socketlibActive } from "./compatibility.js";
 import { updateChatFullscreen } from "./chat.js";
-import {isDnd5e} from "./system/dnd5e.js";
+import { updateMorphSearchButton } from "./morphSearch.js";
+import { isDnd5e, playerPolymorphActive } from "./system/dnd5e.js";
 
 export const moduleId = "sheet-only";
 
@@ -38,7 +39,7 @@ Hooks.on('init', () => {
         }
     });
 
-    if(isDnd5e()) {
+    if (isDnd5e()) {
         game.settings.register(moduleId, "open-chat-on-item-use", {
             name: i18n("Sheet-Only.open-chat-on-item-use.name"),
             hint: i18n("Sheet-Only.open-chat-on-item-use.hint"),
@@ -80,6 +81,34 @@ Hooks.on('init', () => {
         });
     }
 
+    game.settings.register(moduleId, "morph-on-mobile", {
+        name: i18n("Sheet-Only.morph-on-mobile.name"),
+        hint: i18n("Sheet-Only.morph-on-mobile.hint"),
+        scope: "client",
+        config: isDnd5e() && searchEngineAvailable(),
+        type: Boolean,
+        default: false,
+        requiresReload: false,
+        onChange: value => {
+            updateMorphSearchButton();
+        }
+    });
+
+    game.settings.register(moduleId, "morph-on-mobile-auto-delete", {
+        name: i18n("Sheet-Only.morph-on-mobile-auto-delete.name"),
+        hint: i18n("Sheet-Only.morph-on-mobile-auto-delete.hint"),
+        scope: "world",
+        config: isDnd5e() && playerPolymorphActive() && searchEngineAvailable() && socketlibActive(),
+        type: String,
+        choices: {
+            "Auto": i18n("Sheet-Only.morph-on-mobile-auto-delete.choices.auto"),
+            "Request": i18n("Sheet-Only.morph-on-mobile-auto-delete.choices.request"),
+            "Disabled": i18n("Sheet-Only.morph-on-mobile-auto-delete.choices.disabled")
+        },
+        default: "Disabled",
+        requiresReload: true,
+    });
+
     game.settings.register(moduleId, "lastActorId", {
         scope: "client",
         config: false,
@@ -109,7 +138,7 @@ function volumeSettings() {
         name: i18n("Sheet-Only.volume.playlist.name"),
         scope: "client",
         config: true,
-        range: {min: 0, max: 1.0, step: .1},
+        range: { min: 0, max: 1.0, step: .1 },
         type: Number,
         default: 0.8,
         onChange: value => {
@@ -121,7 +150,7 @@ function volumeSettings() {
         name: i18n("Sheet-Only.volume.ambience.name"),
         scope: "client",
         config: true,
-        range: {min: 0, max: 1.0, step: .1},
+        range: { min: 0, max: 1.0, step: .1 },
         type: Number,
         default: 0.8,
         onChange: value => {
@@ -133,7 +162,7 @@ function volumeSettings() {
         name: i18n("Sheet-Only.volume.interface.name"),
         scope: "client",
         config: true,
-        range: {min: 0, max: 1.0, step: .1},
+        range: { min: 0, max: 1.0, step: .1 },
         type: Number,
         default: 0.8,
         onChange: value => {

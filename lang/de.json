@@ -24,5 +24,7 @@
   "Sheet-Only.chat-full-width.name": "Chat als Vollbild",
   "Sheet-Only.chat-full-width.hint": "Maximiere Chat-Fenster",
   "Sheet-Only.open-chat-on-item-use.name": "Chat bei Verwendung eines Gegenstands öffnen",
-  "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)"
+  "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)",
+  "Sheet-Only.morph-on-mobile.name": "Polymorph aktivieren",
+  "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du has Spotlight Omnisearch oder Quick Insert installiert. Sollen die Spieler die Option haben nach einem Monster zu suchen um für Tiergestalt/Verwandlung/... zu verwenden?"
 }

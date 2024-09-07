@@ -27,3 +27,33 @@ async function realDice() {
         game.settings.set("real-dice", "manualRollMode", shouldBeEnabled ? 1 : 0)
     }
 }
+
+/**
+ * https://foundryvtt.com/packages/spotlight-omnisearch
+ * 
+ */
+export function spotlightOmnisearchActive() {
+    let moduleName = 'spotlight-omnisearch';
+    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
+}
+
+/**
+ * https://foundryvtt.com/packages/quick-insert
+ * 
+ */
+export function quickInsertActive() {
+    let moduleName = 'quick-insert';
+    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
+}
+
+export function searchEngineAvailable() {
+    const isSpotlightOmnisearchAvailable = spotlightOmnisearchActive();
+    const isQuickInsertAvailable = quickInsertActive();
+
+    return isSpotlightOmnisearchAvailable || isQuickInsertAvailable;
+}
+
+export function socketlibActive() {
+    let moduleName = 'socketlib';
+    return game.modules.has(moduleName) && game.modules.get(moduleName).active;
+}
