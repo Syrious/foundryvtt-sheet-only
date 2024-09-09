@@ -1,5 +1,5 @@
 import { socketlibActive } from "./compatibility.js";
-import { deleteAfterUnmorph } from "./morphSearch.js";
+import { revertOriginalForm } from "./morphSearch.js";
 
 let socket;
 
@@ -11,7 +11,7 @@ export function setUpSocketlib() {
 
 export function initSocket() {
     socket = socketlib.registerModule("sheet-only");
-    socket.register("deleteAfterUnmorph", deleteAfterUnmorph);
+    socket.register("revertOriginalForm", revertOriginalForm);
 }
 
 export function getSocket() {

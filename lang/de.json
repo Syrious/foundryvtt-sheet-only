@@ -26,5 +26,5 @@
   "Sheet-Only.open-chat-on-item-use.name": "Chat bei Verwendung eines Gegenstands öffnen",
   "Sheet-Only.open-chat-on-item-use.hint": "Chat automatisch öffnen und nach unten scrollen, wenn Gegenstände oder Zauber verwendet werden (nur DnD5e)",
   "Sheet-Only.morph-on-mobile.name": "Polymorph aktivieren",
-  "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du has Spotlight Omnisearch oder Quick Insert installiert. Sollen die Spieler die Option haben nach einem Monster zu suchen um für Tiergestalt/Verwandlung/... zu verwenden?"
+  "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du hast Spotlight Omnisearch oder Quick Insert installiert. Sollen die Spieler die Option haben nach einem Monster zu suchen um sie für Tiergestalt/Verwandlung/... zu verwenden? Hinweis: Die Transformierung der Token funktioniert nur, wenn der Canvas des Spielers nicht deaktiviert ist (hide ist ok). Warnung: Die Berechtigung zum Erstellen Von Actors (Create New Actors) wird automatisch aktiviert."
 }

@@ -14,7 +14,6 @@ import { updateMorphSearchButton } from "./morphSearch.js";
 import { setUpSocketlib } from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
-let socket;
 CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
@@ -30,6 +29,17 @@ Hooks.on('setup', async () => {
 
     await setupClient();
     setupCompatibility();
+});
+
+/* Wildshape, Polymorph etc */
+Hooks.on('dnd5e.transformActor', async (fromActor, toActor) => {
+    if (!isSheetOnly()) {
+        return;
+    }
+
+    if(actorStorage.current?.id === fromActor.id){
+        actorStorage.current = toActor;
+    }
 });
 
 Hooks.once('ready', async function () {

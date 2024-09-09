@@ -1,7 +1,11 @@
-import { actorStorage } from "./actorStorage.js";
-import { quickInsertActive, searchEngineAvailable, spotlightOmnisearchActive } from "./compatibility.js";
-import { wasDragged } from "./drag.js";
-import { getSocket } from "./socketlib.js";
+import {actorStorage} from "./actorStorage.js";
+import {
+    quickInsertActive,
+    searchEngineAvailable,
+    spotlightOmnisearchActive
+} from "./compatibility.js";
+import {wasDragged} from "./drag.js";
+import {getSocket} from "./socketlib.js";
 
 export function displayMorphSearchButton() {
     const morphSearchButton = updateMorphSearchButton();
@@ -20,7 +24,7 @@ export function displayMorphSearchButton() {
 export function updateMorphSearchButton() {
     const morphSearchButton = $('#so-morph-search');
 
-    if (searchEngineAvailable() && game.settings.get('sheet-only', 'morph-on-mobile') === true) {
+    if (searchEngineAvailable() && game.settings.get('sheet-only', 'morph-on-mobile')) {
         morphSearchButton.show();
     } else {
         morphSearchButton.hide();
@@ -42,17 +46,9 @@ export function updateMorphSearchButton() {
     return morphSearchButton;
 }
 
-export function deleteAfterUnmorph(tokenId) {
-    const deleteAfterUnmorphMode = game.settings.get('sheet-only', 'morph-on-mobile-auto-delete');
-
-    if (deleteAfterUnmorphMode === "Disabled") {
-        return;
-    }
-
-    if (deleteAfterUnmorphMode === "Auto") {
-        return game.actors.get(tokenId)?.delete();
-    }
-    return game.actors.get(tokenId)?.deleteDialog();
+export async function revertOriginalForm(tokenId) {
+    const actor = await fromUuid(tokenId)
+    actor?.revertOriginalForm();
 }
 
 function actorIsMorphed() {
@@ -60,10 +56,9 @@ function actorIsMorphed() {
 }
 
 async function actorToOriginal() {
-    const id = actorStorage.current.id;
+    const id = actorStorage.current.uuid;
 
-    await actorStorage.current?.revertOriginalForm();
-    await getSocket()?.executeAsGM("deleteAfterUnmorph", id);
+   await getSocket()?.executeAsGM("revertOriginalForm", id);
 }
 
 async function performActorSearch() {
@@ -80,14 +75,14 @@ async function performSpotlightSearch() {
         return false;
     }
 
-    const shape = await CONFIG.SpotlightOmniseach.prompt({ query: "!actor " });
+    const shape = await CONFIG.SpotlightOmniseach.prompt({query: "!actor "});
     const shapeUuid = shape?.data?.uuid;
 
     if (!shapeUuid) {
         return false;
     }
 
-    await callOnDropActor({ uuid: shapeUuid });
+    await callOnDropActor({uuid: shapeUuid});
     return true;
 }
 

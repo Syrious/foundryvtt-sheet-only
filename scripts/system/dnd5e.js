@@ -15,9 +15,6 @@ export function isDnd5e() {
     return game.system.id === 'dnd5e';
 }
 
-export function playerPolymorphActive() {
-    return game.settings.get("dnd5e", "allowPolymorphing");
-}
 
 /**
  * Handle use items
