@@ -26,11 +26,6 @@
   "Sheet-Only.open-chat-on-item-use.name": "Open chat on item use",
   "Sheet-Only.open-chat-on-item-use.hint": "Automatically open chat and scroll to bottom when item or spells are used (dnd5e only)",
   "Sheet-Only.morph-on-mobile.name": "Show polymorph button",
-  "Sheet-Only.morph-on-mobile.hint": "(Default: Unchecked) You have Spotlight Omnisearch or Quick Insert installed. Should the players have the option to search for an actor to polymorph/wild shape/... into?",
-  "Sheet-Only.morph-on-mobile-auto-delete.name": "Un-polymorph mode",
-  "Sheet-Only.morph-on-mobile-auto-delete.hint": "Once the player un-polymorphs what to do with the temporary actor? Those actions happen on a signed in GM",
-  "Sheet-Only.morph-on-mobile-auto-delete.choices.auto": "Instant delete (risky)",
-  "Sheet-Only.morph-on-mobile-auto-delete.choices.request": "Open a delete dialog (with lots of un-polymorph can get spammy)",
-  "Sheet-Only.morph-on-mobile-auto-delete.choices.disabled": "Nothing, temporary actors stay where they were created"
+  "Sheet-Only.morph-on-mobile.hint": "(Default: Unchecked) You have Spotlight Omnisearch or Quick Insert installed. Should the players have the option to search for an actor to polymorph/wild shape/... into? Note: Token transformation only works if the client's/users' canvas is NOT disabled (Hide is okay). Warning: This automatically sets the 'Create New Actors' permissions for ALL USERS!"
 }
 

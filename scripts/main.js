@@ -32,6 +32,17 @@ Hooks.on('setup', async () => {
     setupCompatibility();
 });
 
+/* Wildshape, Polymorph etc */
+Hooks.on('dnd5e.transformActor', async (fromActor, toActor) => {
+    if (!isSheetOnly()) {
+        return;
+    }
+
+    if(actorStorage.current?.id === fromActor.id){
+        actorStorage.current = toActor;
+    }
+});
+
 Hooks.once('ready', async function () {
     if (!isSheetOnly()) {
         const canvasDisabled = game.settings.get("core", "noCanvas");
