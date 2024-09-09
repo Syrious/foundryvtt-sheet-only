@@ -1,4 +1,13 @@
 @media (max-width: 800px) {
+	/** Override official tidy vars **/
+	.tidy5e-sheet:is(.character, .npc, .vehicle) form .tidy-sheet-body {
+		--t5e-tab-contents-padding-top: .25rem;
+		--t5e-tab-contents-padding-right: .25rem;
+		--t5e-tab-contents-padding-bottom: .25rem;
+		--t5e-tab-contents-padding-left: .25rem;
+	}
+	/** End of override **/
+
 	.tidy5e-sheet.actor.character.sheet-only-sheet {
 		font-size: 16px;
 
@@ -233,7 +242,6 @@
 
 		/** End of Navigation **/
 
-
 		/** Attributes Tab **/
 		.attributes-tab-contents {
 			flex-direction: column;
@@ -347,7 +355,7 @@
 
 			/* Money bar */
 			.tab-footer {
-				margin: -1rem 0 1rem -1rem;
+				margin: -5px 0 1rem -1rem;
 
 				.attunement-and-currency {
 					gap: .25rem;

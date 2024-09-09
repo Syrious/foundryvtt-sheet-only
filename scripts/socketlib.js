@@ -1,5 +1,5 @@
 import { socketlibActive } from "./compatibility.js";
-import { revertOriginalForm } from "./morphSearch.js";
+import { transformInto, revertOriginalForm } from "./morphSearch.js";
 
 let socket;
 
@@ -12,6 +12,7 @@ export function setUpSocketlib() {
 export function initSocket() {
     socket = socketlib.registerModule("sheet-only");
     socket.register("revertOriginalForm", revertOriginalForm);
+    socket.register("transformInto", transformInto);
 }
 
 export function getSocket() {
