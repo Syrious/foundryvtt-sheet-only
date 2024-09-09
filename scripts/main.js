@@ -14,7 +14,6 @@ import { updateMorphSearchButton } from "./morphSearch.js";
 import { setUpSocketlib } from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
-let socket;
 CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
