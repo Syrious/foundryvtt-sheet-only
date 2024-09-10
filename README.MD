@@ -47,9 +47,9 @@ The same works for the chat window
 
 #### Polymorph/Wildshape (v12+ and DND5e only)
 To be able to polymorph or wildshape from client-side you need
-to have [socket-lib](https://foundryvtt.com/packages/socketlib) installed and active as well as one of 
-either [quick insert](https://foundryvtt.com/packages/quick-insert) 
-or [spotlight omnisearch](https://foundryvtt.com/packages/spotlight-omnisearch)
+to have [SocketLib](https://foundryvtt.com/packages/socketlib) installed and active as well as one of 
+either [Quick Insert](https://foundryvtt.com/packages/quick-insert) 
+or [Spotlight Omnisearch](https://foundryvtt.com/packages/spotlight-omnisearch)
 
 The GM can then enable that feature in the Sheet-Only settings, allowing users to polymorph or wildshape. 
 **A GM has to be logged in for that feature to work!**
