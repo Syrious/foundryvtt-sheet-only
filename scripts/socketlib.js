@@ -1,5 +1,4 @@
-import { socketlibActive } from "./compatibility.js";
-import { transformInto, revertOriginalForm } from "./morphSearch.js";
+import { transformInto, revertOriginalForm } from "./system-specific/dnd5e/morphSearch.js";
 
 let socket;
 

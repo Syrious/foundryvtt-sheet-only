@@ -1,8 +1,8 @@
 import {i18n} from "./utils.js";
 import {realDiceActive, searchEngineAvailable} from "./compatibility.js";
 import {updateChatFullscreen} from "./chat.js";
-import {updateMorphSearchButton} from "./morphSearch.js";
-import {isDnd5e} from "./system/dnd5e.js";
+import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
+import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
 
 export const moduleId = "sheet-only";
 

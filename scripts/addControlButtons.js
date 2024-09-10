@@ -4,7 +4,7 @@ import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {toggleChat} from "./chat.js";
 import {displayActorListButton, toggleActorList} from "./actorsList.js";
-import { displayMorphSearchButton } from "./morphSearch.js";
+import { displayMorphSearchButton } from "./system-specific/dnd5e/morphSearch.js";
 
 const maxWithForSmallDisplays = 800;
 const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;

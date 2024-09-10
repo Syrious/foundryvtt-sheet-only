@@ -1,11 +1,11 @@
-import { actorStorage } from "./actorStorage.js";
+import { actorStorage } from "../../actorStorage.js";
 import {
     quickInsertActive,
     searchEngineAvailable,
     spotlightOmnisearchActive
-} from "./compatibility.js";
-import { wasDragged } from "./drag.js";
-import { getSocket } from "./socketlib.js";
+} from "../../compatibility.js";
+import { wasDragged } from "../../drag.js";
+import { getSocket } from "../../socketlib.js";
 
 export function displayMorphSearchButton() {
     const morphSearchButton = updateMorphSearchButton();

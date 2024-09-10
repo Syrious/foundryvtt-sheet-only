@@ -1,5 +1,5 @@
-import {openChat} from "../chat.js";
-import { moduleId } from "../settings.js";
+import {openChat} from "../../chat.js";
+import { moduleId } from "../../settings.js";
 
 export function dnd5eReadyHook() {
     if (!isDnd5e()) {

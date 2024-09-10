@@ -3,14 +3,14 @@ import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
-import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
+import {dnd5eReadyHook, dnd5eEditSlider} from "./system-specific/dnd5e/dnd5e.js";
 import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
 import {setupChatPanel} from "./chat.js";
 import {rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser} from "./actorsList.js";
-import {updateMorphSearchButton} from "./morphSearch.js";
+import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {setUpSocketlib} from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
