@@ -288,3 +288,6 @@
     border: 1px solid var(--dnd5e-color-gold);
     border-radius: 3px;
 }
+
+/** Quick Insert for Morph Search **
+aside.tooltip

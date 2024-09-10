@@ -38,8 +38,8 @@ export function getActorElements() {
             return $('<div>')
                 //.text(actor.name)
                 .append($('<img>').attr('src', actor.img))
-                .click(() => {
-                    switchToActor(actor);
+                .click(async () => {
+                    await switchToActor(actor);
                     toggleActorList();
                 });
         }
@@ -49,9 +49,9 @@ export function getActorElements() {
 /**
  * @param {Actor} actor
  */
-export function switchToActor(actor) {
+export async function switchToActor(actor, render = true) {
     actorStorage.current = actor;
-    actor.sheet.render(true);
+    if (render) await actor.sheet.render(true);
 
     setCurrentActorTokenAsControlled();
     saveLastActorId(actorStorage.current.id);

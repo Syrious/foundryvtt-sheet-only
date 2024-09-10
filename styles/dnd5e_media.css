@@ -61,4 +61,13 @@
     .dnd5e.sheet .sheet-navigation .item {
         margin: 0;
     }
+
+    .dnd5e.polymorph section .two-column {
+        /* grid-template-columns: 1fr;
+        grid-auto-rows: auto; */
+    }
+
+    .dnd5e.polymorph .two-column label.checkbox {
+        height: fit-content;
+    }
 }

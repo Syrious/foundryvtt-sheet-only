@@ -1,0 +1,736 @@
+@media (max-width: 800px) {
+	/** Override official tidy vars **/
+	.tidy5e-sheet:is(.character, .npc, .vehicle) form .tidy-sheet-body {
+		--t5e-tab-contents-padding-top: .25rem;
+		--t5e-tab-contents-padding-right: .25rem;
+		--t5e-tab-contents-padding-bottom: .25rem;
+		--t5e-tab-contents-padding-left: .25rem;
+	}
+	/** End of override **/
+
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		font-size: 16px;
+
+		* {
+			scrollbar-width: auto;
+		}
+
+		.tidy5e-sheet-header {
+			--sheet-only-tiny5e-header-left-width: 30dvw;
+			--sheet-only-tiny5e-header-portrait-size: 25dvw;
+			--sheet-only-tiny5e-header-right-width: 65dvw;
+
+			display: revert;
+
+			/** Header left **/
+			.flex-0 {
+				width: var(--sheet-only-tiny5e-header-left-width);
+				display: inline-block;
+
+				.profile-wrap,
+				.profile {
+					max-width: var(--sheet-only-tiny5e-header-portrait-size);
+					max-height: var(--sheet-only-tiny5e-header-portrait-size);
+				}
+			}
+
+			/** Header right **/
+			.flex-grow-1 {
+				display: inline-block;
+
+				&>.flex-row:first-child {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: var(--sheet-only-tiny5e-header-right-width);
+					height: 2rem;
+				}
+
+				&>.class-list {
+					position: absolute;
+					top: 2rem;
+					right: 0;
+					width: var(--sheet-only-tiny5e-header-right-width);
+					height: 2rem;
+					padding-top: 0;
+				}
+
+				&>.origin-summary {
+					border: 0;
+
+					position: absolute;
+					top: 4rem;
+					right: 0;
+					width: var(--sheet-only-tiny5e-header-right-width);
+					height: 4rem;
+					line-height: 1rem;
+				}
+
+				&>.flex-row.extra-small-gap {
+					position: absolute;
+					top: 8rem;
+					right: 0;
+					width: var(--sheet-only-tiny5e-header-right-width);
+					height: 2rem;
+
+					.movement {
+						padding: 0;
+					}
+				}
+
+				/** Hide potential ddbImport button **/
+				&>.flex-row:first-child .ddbCharacterName {
+					display: none;
+				}
+
+				&>.flex-row:nth-child(1)>.actor-name {
+					flex: 0.8;
+				}
+
+				&>.flex-row:nth-child(1)>.flex-row:last-child {
+					flex: 0.2;
+				}
+
+
+				&>.class-list {
+					font-size: 18px;
+				}
+
+
+				&>.origin-summary {
+					flex-direction: column;
+					align-items: start;
+				}
+
+				&>.origin-summary>.origin-points {
+					flex: 0.6;
+					font-size: 14px;
+					grid-template-columns: min-content min-content;
+					grid-template-rows: min-content;
+					column-gap: 1.25rem;
+				}
+
+				&>.origin-summary>.origin-points span:nth-child(2n) {
+					display: none;
+				}
+
+				&>.origin-summary>.origin-points>button.configure-creature-type {
+					text-align: left;
+				}
+
+				/* Proficiency */
+				&>.origin-summary>span.flex-row {
+					flex: 0.4;
+					font-size: 15px;
+					align-items: start;
+					width: 100%;
+				}
+
+				&>.flex-row:nth-child(4) {
+					flex-direction: column;
+				}
+
+				/* Speed */
+				&>.flex-row:nth-child(4)>section.movement {
+					font-size: 15px;
+					flex: 1;
+				}
+
+				/* Concentration */
+				&>.flex-row:nth-child(4)>span.special-save {
+					font-size: 20px;
+					flex: 1;
+				}
+
+				/* Actor Stats */
+				&>.actor-stats {
+					width: 100dvw;
+
+					display: grid;
+					grid-template-columns: 1fr 2fr 2fr 2fr;
+					grid-template-rows: 1fr 1fr;
+					grid-template-areas:
+						"ac stat stat stat"
+						"ini stat stat stat";
+
+					background: var(--t5e-header-background);
+				}
+
+				&>.actor-stats>.vertical-line-separator {
+					display: none;
+				}
+
+				&>.actor-stats>.ac-display {
+					grid-area: ac;
+				}
+
+				&>.actor-stats>.ac-display .ac-shield {
+					width: 3rem;
+				}
+
+				&>.actor-stats>.ac-display button {
+					font-size: 30px;
+				}
+
+
+				&>.actor-stats>div:nth-child(3) {
+					grid-area: ini;
+
+					.config-button {
+						display: none;
+					}
+				}
+
+				&>.actor-stats .ability-score-container {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr 1fr;
+					width: 80%;
+					row-gap: 5px;
+				}
+
+				/* Stat score */
+				&>.actor-stats .ability-score-container>button {
+					grid-column-start: span 4;
+				}
+
+				/* Stat score header */
+				&>.actor-stats .ability-score-container>button h4 {
+					font-size: 25px;
+				}
+
+				&>.actor-stats .ability-score-container .block-score {
+					padding-right: 5px;
+				}
+
+				&>.actor-stats .ability-score-container .ability-modifiers {
+					grid-column-start: span 2;
+					align-items: unset;
+				}
+
+				&>.actor-stats .ability-score-container .proficiency-toggle-readonly {
+					position: absolute;
+					top: 30%;
+					right: 0;
+					bottom: unset;
+					left: unset;
+					transform: translateX(150%);
+				}
+
+			}
+
+		}
+
+		/** End of Header **/
+
+
+
+		/** Navigation **/
+		nav.tidy-tabs {
+			display: grid;
+			grid-template-columns: repeat(3, auto);
+			justify-content: unset;
+
+		}
+
+		nav.tidy-tabs>button.tab-option {
+			font-size: 20px;
+		}
+
+		nav.tidy-tabs .sheet-edit-mode-toggle {
+			display: none;
+		}
+
+		/** End of Navigation **/
+
+		/** Attributes Tab **/
+		.attributes-tab-contents {
+			flex-direction: column;
+
+			.side-panel {
+				width: 100%;
+
+				.skills-list {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					grid-template-rows: repeat(9, 1fr);
+					column-gap: 0.5rem;
+					grid-auto-flow: column;
+
+					.skill {
+						height: 1.5rem;
+
+						& button {
+							font-size: 1.1rem;
+							line-height: 1.1rem;
+						}
+
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+
+		/** End of Attributes Tab **/
+
+		/** General Table-Tab changes **/
+		.tidy-tab {
+
+			.utility-toolbar {
+				display: none;
+			}
+
+			.item-table-header-row {
+				line-height: 2.5rem;
+
+				.item-table-column,
+				.item-table-column>span {
+					font-size: 1.25rem;
+				}
+
+				i.expand-indicator {
+					display: none;
+				}
+			}
+
+			.item-table {
+				.item-table-row {
+
+					/* Item image and name */
+					.item-table-cell:nth-child(1) {
+						.item-image {
+							flex: 0 0 3rem;
+							height: 3rem;
+						}
+
+						.item-name {
+							font-size: 1.3rem;
+
+							.ammo {
+								display: none;
+							}
+						}
+					}
+
+					.item-table-cell {
+						font-size: 1rem;
+					}
+
+					.tidy5e-classic-controls button {
+						font-size: 1rem;
+					}
+				}
+
+				/* Item expandable */
+				.expandable {
+
+					p,
+					li {
+						font-size: 1.3rem;
+					}
+				}
+			}
+		}
+
+		/** End of general Table-Tab changes **/
+
+		/** Action Tab **/
+		.tidy-tab.actions {
+			.item-table {
+				.item-table-row {
+
+					/* Hide Uses */
+					.item-table-cell:nth-child(2)>.item-uses {
+						display: none;
+					}
+				}
+			}
+		}
+
+		/** End of Action Tab **/
+
+		/** Inventory Tab **/
+		.tidy-tab.inventory {
+			/* Move money bar to the top */
+			flex-direction: column-reverse;
+
+			/* Money bar */
+			.tab-footer {
+				margin: -5px 0 1rem -1rem;
+
+				.attunement-and-currency {
+					gap: .25rem;
+
+					.attunement-tracker {
+						padding-left: 0;
+						margin-right: 0;
+					}
+
+					ol.currency {
+						gap: .25rem;
+						margin: 0;
+					}
+				}
+
+				.currency-item.convert {
+					display: none;
+				}
+			}
+
+			.item-table-header-row {
+
+				/* Hide Weight */
+				.item-table-column:nth-child(3) {
+					display: none;
+				}
+
+				/* Hide Quantity */
+				.item-table-column:nth-child(6) {
+					display: none;
+				}
+			}
+
+			.item-table {
+				.item-table-row {
+
+					/* Hide Weight */
+					.item-table-cell:nth-child(3) {
+						display: none;
+					}
+
+					/* Hide Quantity */
+					.item-table-cell:nth-child(6) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		/** End of Inventory Tab **/
+
+		/** Spellbook Tab **/
+		.tidy-tab.spellbook {
+
+			.item-table-header-row {
+
+				/* Spell level */
+				.item-table-column:nth-child(2) {
+					.spell-slot-markers {
+						margin-left: 0.5rem;
+
+						.pip {
+							width: 1.25rem;
+							height: 1.25rem;
+						}
+					}
+				}
+
+				/* Hide School */
+				.item-table-column:nth-child(4) {
+					display: none;
+				}
+
+				/* Hide Target */
+				.item-table-column:nth-child(5) {
+					display: none;
+				}
+
+				/* Hide Range */
+				.item-table-column:nth-child(6) {
+					display: none;
+				}
+			}
+
+			.item-table {
+				.item-table-row {
+
+					/* Hide School */
+					.item-table-cell:nth-child(3) {
+						display: none;
+					}
+
+					/* Hide Target */
+					.item-table-cell:nth-child(4) {
+						display: none;
+					}
+
+					/* Hide Range */
+					.item-table-cell:nth-child(5) {
+						display: none;
+					}
+				}
+			}
+
+			.tab-footer {
+
+				p,
+				span {
+					font-size: 1.25rem;
+				}
+
+				.spellcasting-attribute {
+					display: none;
+				}
+			}
+		}
+
+		/** End of Spellbook Tab **/
+
+		/** Effects Tab **/
+		.tidy-tab.effects {
+
+			.item-table-header-row {
+
+				/* Hide Source */
+				.item-table-column:nth-child(2) {
+					display: none;
+				}
+			}
+
+			.item-table {
+				.item-table-row {
+
+					/* Item image and name */
+					.item-table-cell:nth-child(1) {
+						.item-image {
+							flex: 0 0 2rem;
+							height: 2rem;
+						}
+
+						.item-name {
+							font-size: 1.3rem;
+
+							.ammo {
+								display: none;
+							}
+						}
+					}
+
+					/* Hide Source */
+					.item-table-cell:nth-child(2) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		/** End of Effects Tab **/
+	}
+}
+
+@media (max-width: 500px) {
+
+	/** Header **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet form .tidy5e-sheet-header {
+		--sheet-only-tiny5e-header-left-width: 40dvw;
+		--sheet-only-tiny5e-header-portrait-size: 25dvw;
+		--sheet-only-tiny5e-header-right-width: 55dvw;
+		padding: 0.25rem;
+
+		.flex-0 {
+			.profile-wrap {
+				height: 32dvw;
+				max-height: 32dvw;
+
+				.profile {
+					height: 32dvw;
+					max-height: 32dvw;
+
+					display: grid;
+					grid-template-columns: var(--sheet-only-tiny5e-header-portrait-size) 8dvw 8dvw;
+					grid-template-rows: 8dvw 8dvw 8dvw 8dvw;
+					column-gap: .5dvw;
+					row-gap: .5dvw;
+
+					.portrait {
+						grid-area: 1 / 1 / 4 / 1;
+					}
+
+					.exhaustion-container {
+						grid-area: 1 / 3 / 1 / 3;
+						position: relative;
+					}
+
+					.inspiration {
+						position: relative;
+						grid-area: 1 / 2 / 1 / 2;
+					}
+
+					.portrait-hp {
+						position: revert;
+						grid-area: 4 / 1 / 4 / 3;
+						transform: revert;
+						width: 41dvw;
+					}
+
+					.rest-container {
+						position: revert;
+						grid-area: 2 / 3 / 2 / 3;
+
+						z-index: 10;
+					}
+
+					.portrait-hd {
+						position: revert;
+						grid-area: 2 / 2 / 2 / 2;
+					}
+				}
+			}
+
+			.profile-temp {
+				input {
+					font-size: 15px;
+					flex: auto;
+				}
+
+				.temphp {
+					text-align: left;
+				}
+
+				.max-temphp {
+					font-size: 15px;
+					text-align: right;
+				}
+			}
+		}
+
+		.flex-grow-1 {
+			&>.origin-summary {
+				height: 1.5rem;
+
+				&>.origin-points {
+					display: none;
+				}
+			}
+
+			&>.flex-row.extra-small-gap {
+				top: 5.5rem;
+			}
+
+			.button-menu-wrapper {
+				display: none;
+			}
+
+			&>.actor-stats {
+				&>div {
+					margin-top: auto;
+					margin-bottom: auto;
+
+					.ability-score-container {
+						grid-template-columns: 1fr 1fr 1fr;
+
+						&>button {
+							grid-column-start: span 3;
+						}
+
+						.block-score {
+							padding-right: 0;
+							grid-column-start: 2;
+						}
+
+						.ability-modifiers {
+							display: none;
+
+						}
+					}
+				}
+
+				.ini-bonus {
+					display: none;
+				}
+			}
+		}
+	}
+
+
+
+	/** Attributes Tab **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		& .attributes-tab-contents {
+			& .side-panel {
+				.skills-list {
+					grid-template-columns: 1fr;
+					grid-template-rows: repeat(18, 1fr);
+				}
+			}
+		}
+	}
+
+	/** End of Attributes Tab **/
+
+	/** General Table-Tab **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		& .tidy-tab {
+			.item-table-header-row {
+				.item-table-column:last-child {
+					display: none;
+				}
+			}
+
+			.item-table-row {
+				.item-table-cell:last-child {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/** Actions Tab **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		& .tidy-tab.actions {
+			.item-table-header-row {
+
+				/* Hide Range */
+				.item-table-column:nth-child(3) {
+					display: none;
+				}
+
+				/* Hide Hit / DC */
+				.item-table-column:nth-child(4) {
+					display: none;
+				}
+			}
+
+			.item-table-row {
+
+				/* Hide Range */
+				.item-table-cell:nth-child(2) {
+					display: none;
+				}
+
+				/* Hide Hit / DC */
+				.item-table-cell:nth-child(3) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/** End of Actions Tab **/
+
+	/** Features Tab **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		& .tidy-tab.features {
+			.item-table-header-row {
+
+				.item-table-column.primary {
+					white-space: nowrap;
+				}
+
+				/* Hide Requirements */
+				.item-table-column:nth-last-child(2) {
+					display: none;
+				}
+			}
+
+			.item-table-row {
+
+				/* Hide Range */
+				.item-table-cell:nth-last-child(2) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/** End of Features Tab **/
+}

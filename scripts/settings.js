@@ -1,7 +1,8 @@
 import {i18n} from "./utils.js";
-import {realDiceActive} from "./compatibility.js";
-import { updateChatFullscreen } from "./chat.js";
-import {isDnd5e} from "./system/dnd5e.js";
+import {realDiceActive, searchEngineAvailable} from "./compatibility.js";
+import {updateChatFullscreen} from "./chat.js";
+import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
+import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
 
 export const moduleId = "sheet-only";
 
@@ -38,17 +39,15 @@ Hooks.on('init', () => {
         }
     });
 
-    if(isDnd5e()) {
-        game.settings.register(moduleId, "open-chat-on-item-use", {
-            name: i18n("Sheet-Only.open-chat-on-item-use.name"),
-            hint: i18n("Sheet-Only.open-chat-on-item-use.hint"),
-            scope: "client",
-            config: true,
-            default: true,
-            type: Boolean,
-            requiresReload: false
-        });
-    }
+    game.settings.register(moduleId, "open-chat-on-item-use", {
+        name: i18n("Sheet-Only.open-chat-on-item-use.name"),
+        hint: i18n("Sheet-Only.open-chat-on-item-use.hint"),
+        scope: "client",
+        config: isDnd5e(),
+        default: true,
+        type: Boolean,
+        requiresReload: false
+    });
 
     game.settings.register(moduleId, "canvas-option", {
         name: i18n("Sheet-Only.canvas-option.name"),
@@ -65,20 +64,31 @@ Hooks.on('init', () => {
         requiresReload: true
     });
 
-    if (realDiceActive()) {
-        game.settings.register(moduleId, "real-dice", {
-            name: i18n("Sheet-Only.real-dice.name"),
-            hint: i18n("Sheet-Only.real-dice.hint"),
-            scope: "client",
-            config: true,
-            default: false,
-            type: Boolean,
-            requiresReload: false,
-            onChange: value => {
-                game.settings.set("real-dice", "manualRollMode", value)
-            }
-        });
-    }
+    game.settings.register(moduleId, "real-dice", {
+        name: i18n("Sheet-Only.real-dice.name"),
+        hint: i18n("Sheet-Only.real-dice.hint"),
+        scope: "client",
+        config: realDiceActive(),
+        default: false,
+        type: Boolean,
+        requiresReload: false,
+        onChange: value => {
+            game.settings.set("real-dice", "manualRollMode", value)
+        }
+    });
+
+    game.settings.register(moduleId, "morph-on-mobile", {
+        name: i18n("Sheet-Only.morph-on-mobile.name"),
+        hint: i18n("Sheet-Only.morph-on-mobile.hint"),
+        scope: "world",
+        config: isDnd5e() && searchEngineAvailable(),
+        type: Boolean,
+        default: false,
+        requiresReload: false,
+        onChange: value => {
+            updateMorphSearchButton();
+        }
+    });
 
     game.settings.register(moduleId, "lastActorId", {
         scope: "client",

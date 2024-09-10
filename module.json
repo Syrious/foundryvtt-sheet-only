@@ -41,9 +41,11 @@
     "styles/main.css",
     "styles/main_media.css",
     "styles/dnd5e.css",
-    "styles/dnd5e_media.css"
+    "styles/dnd5e_media.css",
+    "styles/tidy5e_media.css"
   ],
   "url": "https://github.com/Syrious/foundryvtt-sheet-only",
   "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
-  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip"
+  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip",
+  "socket": true
 }

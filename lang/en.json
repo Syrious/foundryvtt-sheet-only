@@ -24,6 +24,8 @@
   "Sheet-Only.chat-full-width.name": "Chat as fullscreen window",
   "Sheet-Only.chat-full-width.hint": "Displays chat as fullscreen",
   "Sheet-Only.open-chat-on-item-use.name": "Open chat on item use",
-  "Sheet-Only.open-chat-on-item-use.hint": "Automatically open chat and scroll to bottom when item or spells are used (dnd5e only)"
+  "Sheet-Only.open-chat-on-item-use.hint": "Automatically open chat and scroll to bottom when item or spells are used (dnd5e only)",
+  "Sheet-Only.morph-on-mobile.name": "Show polymorph button",
+  "Sheet-Only.morph-on-mobile.hint": "(Default: Unchecked) You have Spotlight Omnisearch or Quick Insert installed. Should the players have the option to search for an actor to polymorph/wild shape/... into? Note: Token transformation only works if a GM account is logged on as well."
 }
 

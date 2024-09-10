@@ -2,6 +2,11 @@
 <html>
 <head>
 </head>
+    <style>
+        .fa-stack.middle{
+            vertical-align: bottom;
+        }
+    </style>
     <body>
         <div id="so-main-buttons">
             <button id="so-collapse-actor-select" class="button">
@@ -13,6 +18,12 @@
             <button id="so-targeting" class="button"><i class="fa-solid fa-bullseye"></i></button>
             <button id="so-journal" class="button"><i class="fa-solid fa-book"></i></button>
             <button id="so-controlling" class="button"><i class="fa-solid fa-person-walking"></i></button>
+            <button id="so-morph-search" class="button" style="display: none">
+                <span class="fa-stack middle">
+                    <i class="fa-solid fa-paw fa-stack-1x"></i>
+                    <i class="fa-solid fa-ban fa-stack-1x" style="display: none; color: rgba(126,0,0,0.70)"></i>
+                </span>
+            </button>
         </div>
 
         <div id="so-settings-buttons" style="display: none">
