@@ -31,15 +31,10 @@ export function updateMorphSearchButton() {
     }
 
     const isMorphed = actorIsMorphed();
-    const morphFontawesome = $('#so-morph-search .fa-spaghetti-monster-flying');
     const unmorphFontawesome = $('#so-morph-search .fa-ban');
     if (isMorphed) {
-        morphFontawesome.addClass('fa-stack-1x');
-        morphFontawesome.removeClass('fa-stack-2x');
         unmorphFontawesome.show();
     } else {
-        morphFontawesome.addClass('fa-stack-2x');
-        morphFontawesome.removeClass('fa-stack-1x');
         unmorphFontawesome.hide();
     }
 
@@ -116,7 +111,7 @@ async function openMorphDialog(data) {
 
     /* 
         Copied from https://github.com/foundryvtt/dnd5e/blob/5e0edf959a4c0ac62ee7cb5afb4b0233df7ead5b/module/applications/actor/base-sheet.mjs#L843
-        Sadly the dialog is not in it's own function then it could have been less copied code.
+        Sadly the dialog is not in its own function then it could have been less copied code.
     */
     const canPolymorph = game.user.isGM || (actor.isOwner && game.settings.get("dnd5e", "allowPolymorphing"));
     if (!canPolymorph) return false;

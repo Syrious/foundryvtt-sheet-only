@@ -1,17 +1,17 @@
-import { addControlButtons } from "./addControlButtons.js";
+import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
-import { setupCompatibility } from "./compatibility.js";
-import { hideCanvas } from "./canvasHider.js";
-import { dnd5eReadyHook, dnd5eEditSlider } from "./system/dnd5e.js";
-import { actorStorage, getLastActorId } from "./actorStorage.js";
-import { i18n } from "./utils.js";
-import { enableCanvasDialog } from "./dialogs.js";
-import { moduleId } from "./settings.js";
-import { setupChatPanel } from "./chat.js";
-import { rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser } from "./actorsList.js";
-import { updateMorphSearchButton } from "./morphSearch.js";
-import { setUpSocketlib } from "./socketlib.js";
+import {setupCompatibility} from "./compatibility.js";
+import {hideCanvas} from "./canvasHider.js";
+import {dnd5eReadyHook, dnd5eEditSlider} from "./system/dnd5e.js";
+import {actorStorage, getLastActorId} from "./actorStorage.js";
+import {i18n} from "./utils.js";
+import {enableCanvasDialog} from "./dialogs.js";
+import {moduleId} from "./settings.js";
+import {setupChatPanel} from "./chat.js";
+import {rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser} from "./actorsList.js";
+import {updateMorphSearchButton} from "./morphSearch.js";
+import {setUpSocketlib} from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 CONFIG.debug.hooks = false;
@@ -37,7 +37,7 @@ Hooks.on('dnd5e.transformActor', async (fromActor, toActor) => {
         return;
     }
 
-    if(actorStorage.current?.id === fromActor.id){
+    if (actorStorage.current?.id === fromActor.id) {
         actorStorage.current = toActor;
     }
 });
@@ -69,7 +69,7 @@ Hooks.once('ready', async function () {
 
 Hooks.on('renderActorSheet',
     /** @param {FormApplication|null} app */
-    async (app, _sheet, { actor }) => {
+    async (app, _sheet, {actor}) => {
         if (currentSheet?.appId === app.appId || !isSheetOnly()) {
             return;
         }
@@ -172,7 +172,7 @@ function setupContainer() {
     $('body').append(sheetContainer);
     sheetContainer.append(
         $('<div>')
-            .css({ 'padding-top': '40px' })
+            .css({'padding-top': '40px'})
             .addClass('sheet-only-actor-list')
             .attr('id', 'sheet-only-actor-list')
     );

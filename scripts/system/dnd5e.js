@@ -15,7 +15,6 @@ export function isDnd5e() {
     return game.system.id === 'dnd5e';
 }
 
-
 /**
  * Handle use items
  */
