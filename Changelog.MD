@@ -1,3 +1,7 @@
+# 1.6.1
+- [DND5e] Only shows Morph-Button if all requirements are met (FoundryVTT is at least v12, socketlib and 
+either Quick Insert or Spotlight Omnisearch is installed)
+
 # 1.6.0 (The Fehr-Update)
 Thanks to [TheFehr](https://github.com/TheFehr) for this awesome contribution. It contains the following changes:
 
