@@ -1,5 +1,5 @@
 import {i18n} from "./utils.js";
-import {realDiceActive, searchEngineAvailable} from "./compatibility.js";
+import {allMorphRequirementsMet, realDiceActive} from "./compatibility.js";
 import {updateChatFullscreen} from "./chat.js";
 import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
@@ -81,7 +81,7 @@ Hooks.on('init', () => {
         name: i18n("Sheet-Only.morph-on-mobile.name"),
         hint: i18n("Sheet-Only.morph-on-mobile.hint"),
         scope: "world",
-        config: isDnd5e() && searchEngineAvailable(),
+        config: allMorphRequirementsMet(),
         type: Boolean,
         default: false,
         requiresReload: false,

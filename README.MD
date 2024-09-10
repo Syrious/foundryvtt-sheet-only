@@ -45,6 +45,15 @@ If the control buttons are in your way, press and hold the button bar for about 
 then drag and drop it elsewhere.
 The same works for the chat window
 
+#### Polymorph/Wildshape (v12+ and DND5e only)
+To be able to polymorph or wildshape from client-side you need
+to have [socket-lib](https://foundryvtt.com/packages/socketlib) installed and active as well as one of 
+either [quick insert](https://foundryvtt.com/packages/quick-insert) 
+or [spotlight omnisearch](https://foundryvtt.com/packages/spotlight-omnisearch)
+
+The GM can then enable that feature in the Sheet-Only settings, allowing users to polymorph or wildshape. 
+**A GM has to be logged in for that feature to work!**
+
 ### Sheet-Only-Plus
 These features are [Patreon-Only](https://www.patreon.com/SyriousWorkshop).
 For a tiny fee, you gain access to the additional features. 

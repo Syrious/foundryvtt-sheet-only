@@ -1,3 +1,5 @@
+import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
+
 export function setupCompatibility() {
     realDice();
 }
@@ -46,14 +48,20 @@ export function quickInsertActive() {
     return game.modules.has(moduleName) && game.modules.get(moduleName).active;
 }
 
-export function searchEngineAvailable() {
+export function allMorphRequirementsMet(){
+    return isDnd5e() && searchEngineAvailable() && socketlibActive() && game.version.startsWith("12.");
+}
+
+function searchEngineAvailable() {
     const isSpotlightOmnisearchAvailable = spotlightOmnisearchActive();
     const isQuickInsertAvailable = quickInsertActive();
 
     return isSpotlightOmnisearchAvailable || isQuickInsertAvailable;
 }
 
-export function socketlibActive() {
+function socketlibActive() {
     let moduleName = 'socketlib';
     return game.modules.has(moduleName) && game.modules.get(moduleName).active;
 }
+
+

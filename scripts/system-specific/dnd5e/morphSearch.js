@@ -1,7 +1,7 @@
 import { actorStorage } from "../../actorStorage.js";
 import {
+    allMorphRequirementsMet,
     quickInsertActive,
-    searchEngineAvailable,
     spotlightOmnisearchActive
 } from "../../compatibility.js";
 import { wasDragged } from "../../drag.js";
@@ -24,7 +24,7 @@ export function displayMorphSearchButton() {
 export function updateMorphSearchButton() {
     const morphSearchButton = $('#so-morph-search');
 
-    if (searchEngineAvailable() && game.settings.get('sheet-only', 'morph-on-mobile')) {
+    if (allMorphRequirementsMet() && game.settings.get('sheet-only', 'morph-on-mobile')) {
         morphSearchButton.show();
     } else {
         morphSearchButton.hide();
