@@ -1,12 +1,18 @@
+# 1.6.0 (The Fehr-Update)
+Thanks to [TheFehr](https://github.com/TheFehr) for this awesome contribution. It contains the following changes:
+
+- [DND5e] Adds a morph-button to the controls, which lets the player polymorph/wildshape their characters
+- [DND5e] Adds some styling for Tidy5e-Sheet. Thanks to []() for that incredible contribituion
+
 # 1.5.2
-- [D&D 3.5] Fixes bug where character sheet closes automatically when changing values on the sheet. Thanks to [DavidAremaCarretero](https://github.com/DavidAremaCarretero)
+- [DND3.5] Fixes bug where character sheet closes automatically when changing values on the sheet. Thanks to [DavidAremaCarretero](https://github.com/DavidAremaCarretero)
 
 # 1.5.1
 - Fixes issue with the manual roll window hidden behind chat
 
 # 1.5.0 (The Eddie-Update)
 
-Thanks to [Eddie](https://github.com/eddiecooro) for this contribution containing the following changes
+Thanks to [Eddie](https://github.com/eddiecooro) for this contribution containing the following changes:
 - Improved handling for smaller displays
 - Dnd5e: Opens the chat window when using item or spell 
 - Renders dialogs on top of the chat window
