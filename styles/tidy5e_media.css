@@ -1,13 +1,18 @@
 @media (max-width: 800px) {
+	/** Override official tidy vars **/
+	.tidy5e-sheet:is(.character, .npc, .vehicle) form .tidy-sheet-body {
+		--t5e-tab-contents-padding-top: .25rem;
+		--t5e-tab-contents-padding-right: .25rem;
+		--t5e-tab-contents-padding-bottom: .25rem;
+		--t5e-tab-contents-padding-left: .25rem;
+	}
+	/** End of override **/
+
 	.tidy5e-sheet.actor.character.sheet-only-sheet {
 		font-size: 16px;
 
 		* {
 			scrollbar-width: auto;
-		}
-
-		.scroll-container {
-			padding-right: 2rem;
 		}
 
 		.tidy5e-sheet-header {
@@ -170,6 +175,10 @@
 
 				&>.actor-stats>div:nth-child(3) {
 					grid-area: ini;
+
+					.config-button {
+						display: none;
+					}
 				}
 
 				&>.actor-stats .ability-score-container {
@@ -232,7 +241,6 @@
 		}
 
 		/** End of Navigation **/
-
 
 		/** Attributes Tab **/
 		.attributes-tab-contents {
@@ -347,7 +355,21 @@
 
 			/* Money bar */
 			.tab-footer {
-				margin: -1rem 0 1rem -1rem;
+				margin: -5px 0 1rem -1rem;
+
+				.attunement-and-currency {
+					gap: .25rem;
+
+					.attunement-tracker {
+						padding-left: 0;
+						margin-right: 0;
+					}
+
+					ol.currency {
+						gap: .25rem;
+						margin: 0;
+					}
+				}
 
 				.currency-item.convert {
 					display: none;
@@ -584,7 +606,7 @@
 				top: 5.5rem;
 			}
 
-			.button-menu-wrapper  {
+			.button-menu-wrapper {
 				display: none;
 			}
 
@@ -611,6 +633,10 @@
 						}
 					}
 				}
+
+				.ini-bonus {
+					display: none;
+				}
 			}
 		}
 	}
@@ -634,6 +660,12 @@
 	/** General Table-Tab **/
 	.tidy5e-sheet.actor.character.sheet-only-sheet {
 		& .tidy-tab {
+			.item-table-header-row {
+				.item-table-column:last-child {
+					display: none;
+				}
+			}
+
 			.item-table-row {
 				.item-table-cell:last-child {
 					display: none;
@@ -674,4 +706,31 @@
 	}
 
 	/** End of Actions Tab **/
+
+	/** Features Tab **/
+	.tidy5e-sheet.actor.character.sheet-only-sheet {
+		& .tidy-tab.features {
+			.item-table-header-row {
+
+				.item-table-column.primary {
+					white-space: nowrap;
+				}
+
+				/* Hide Requirements */
+				.item-table-column:nth-last-child(2) {
+					display: none;
+				}
+			}
+
+			.item-table-row {
+
+				/* Hide Range */
+				.item-table-cell:nth-last-child(2) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/** End of Features Tab **/
 }

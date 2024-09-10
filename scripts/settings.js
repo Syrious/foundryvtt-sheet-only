@@ -87,14 +87,6 @@ Hooks.on('init', () => {
         requiresReload: false,
         onChange: value => {
             updateMorphSearchButton();
-
-            if (value) {
-                game.settings.set("dnd5e", "allowPolymorphing", true);
-                game.settings.set("core", "permissions", {
-                    ...game.permissions,
-                    ACTOR_CREATE: [1, 2, 3, 4]
-                });
-            }
         }
     });
 
