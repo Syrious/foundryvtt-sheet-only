@@ -95,6 +95,7 @@ Hooks.on('renderActorSheet',
         if (actor) {
             await switchToActor(actor, false);
         }
+
         updateMorphSearchButton();
     }
 );

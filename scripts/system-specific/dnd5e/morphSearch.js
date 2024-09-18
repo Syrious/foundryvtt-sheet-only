@@ -8,6 +8,10 @@ import { wasDragged } from "../../drag.js";
 import { getSocket } from "../../socketlib.js";
 
 export function displayMorphSearchButton() {
+    if(!allMorphRequirementsMet()){
+        return;
+    }
+
     const morphSearchButton = updateMorphSearchButton();
 
     morphSearchButton.on('click', function () {
@@ -24,10 +28,13 @@ export function displayMorphSearchButton() {
 export function updateMorphSearchButton() {
     const morphSearchButton = $('#so-morph-search');
 
-    if (allMorphRequirementsMet() && game.settings.get('sheet-only', 'morph-on-mobile')) {
+    const morphIsEnabled = game.settings.get('sheet-only', 'morph-on-mobile');
+
+    if (allMorphRequirementsMet() && morphIsEnabled) {
         morphSearchButton.show();
     } else {
         morphSearchButton.hide();
+        return;
     }
 
     const isMorphed = actorIsMorphed();
