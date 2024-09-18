@@ -1,3 +1,6 @@
+# 1.6.2
+- Fixes a bug where the new dnd5e-morph-button conflicts with non-dnd5e systems
+
 # 1.6.1
 - [DND5e] Only shows Morph-Button if all requirements are met (FoundryVTT is at least v12, socketlib and 
 either Quick Insert or Spotlight Omnisearch is installed)
