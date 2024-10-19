@@ -8,13 +8,14 @@ import {wasDragged} from "../../drag.js";
 import {getSocket} from "../../socketlib.js";
 
 export function displayMorphSearchButton() {
-    if (!allMorphRequirementsMet() || !isMorphEnabled()) {
+    if (!allMorphRequirementsMet()) {
         return;
     }
 
     const morphSearchButton = updateMorphSearchButton();
 
     morphSearchButton.on('click', function () {
+
         if (wasDragged()) return;
 
         if (actorIsMorphed()) {
@@ -25,19 +26,16 @@ export function displayMorphSearchButton() {
     });
 }
 
-function isMorphEnabled() {
-    return game.settings.get('sheet-only', 'morph-on-mobile');
-}
 
 export function updateMorphSearchButton() {
     const morphSearchButton = $('#so-morph-search');
 
-    if (!allMorphRequirementsMet()) {
-        morphSearchButton.hide();
-        return;
-    }
+    const morphIsEnabled = game.settings.get('sheet-only', 'morph-on-mobile');
 
-    morphSearchButton.show();
+    if (!allMorphRequirementsMet() || !morphIsEnabled) {
+        morphSearchButton.hide();
+        return morphSearchButton;
+    }
 
     const isMorphed = actorIsMorphed();
     const unmorphFontawesome = $('#so-morph-search .fa-ban');
@@ -47,6 +45,7 @@ export function updateMorphSearchButton() {
         unmorphFontawesome.hide();
     }
 
+    morphSearchButton.show();
     return morphSearchButton;
 }
 
