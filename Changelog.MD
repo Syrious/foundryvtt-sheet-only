@@ -1,3 +1,6 @@
+# 1.6.3
+- [DND5e] Fixes a bug where the control bar did not respond if the GM disabled the morph feature
+
 # 1.6.2
 - Fixes a bug where the new dnd5e-morph-button conflicts with non-dnd5e systems
 

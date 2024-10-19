@@ -2,7 +2,7 @@
   "id": "sheet-only",
   "title": "Sheet Only",
   "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "compatibility": {
     "minimum": "11",
     "verified": "12"
@@ -46,6 +46,6 @@
   ],
   "url": "https://github.com/Syrious/foundryvtt-sheet-only",
   "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
-  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.5.2/module.zip",
+  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.6.3/module.zip",
   "socket": true
 }
