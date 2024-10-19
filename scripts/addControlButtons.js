@@ -41,7 +41,7 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
 
 function setupMenuButtonForLargeDisplays(buttonContainer) {
     const menuButton = buttonContainer.find("#so-menu");
-    console.warn(menuButton)
+
     menuButton.on("click", function () {
         if (wasDragged()) return;
 

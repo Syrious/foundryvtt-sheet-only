@@ -49,7 +49,7 @@ export function quickInsertActive() {
 }
 
 export function allMorphRequirementsMet(){
-    return isDnd5e() && searchEngineAvailable() && socketlibActive() && game.version.startsWith("12.");
+    return isDnd5e() && searchEngineAvailable() && socketlibActive() && foundry.utils.isNewerVersion(game.version, "12");
 }
 
 function searchEngineAvailable() {

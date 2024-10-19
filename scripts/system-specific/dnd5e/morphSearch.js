@@ -1,20 +1,21 @@
-import { actorStorage } from "../../actorStorage.js";
+import {actorStorage} from "../../actorStorage.js";
 import {
     allMorphRequirementsMet,
     quickInsertActive,
     spotlightOmnisearchActive
 } from "../../compatibility.js";
-import { wasDragged } from "../../drag.js";
-import { getSocket } from "../../socketlib.js";
+import {wasDragged} from "../../drag.js";
+import {getSocket} from "../../socketlib.js";
 
 export function displayMorphSearchButton() {
-    if(!allMorphRequirementsMet()){
+    if (!allMorphRequirementsMet()) {
         return;
     }
 
     const morphSearchButton = updateMorphSearchButton();
 
     morphSearchButton.on('click', function () {
+
         if (wasDragged()) return;
 
         if (actorIsMorphed()) {
@@ -25,16 +26,15 @@ export function displayMorphSearchButton() {
     });
 }
 
+
 export function updateMorphSearchButton() {
     const morphSearchButton = $('#so-morph-search');
 
     const morphIsEnabled = game.settings.get('sheet-only', 'morph-on-mobile');
 
-    if (allMorphRequirementsMet() && morphIsEnabled) {
-        morphSearchButton.show();
-    } else {
+    if (!allMorphRequirementsMet() || !morphIsEnabled) {
         morphSearchButton.hide();
-        return;
+        return morphSearchButton;
     }
 
     const isMorphed = actorIsMorphed();
@@ -45,11 +45,12 @@ export function updateMorphSearchButton() {
         unmorphFontawesome.hide();
     }
 
+    morphSearchButton.show();
     return morphSearchButton;
 }
 
 export async function transformInto(actorId, targetActorData, settings) {
-    const actor = game.actors.get(actorId); 
+    const actor = game.actors.get(actorId);
 
     const cls = getDocumentClass("Actor");
     const targetActor = await cls.fromDropData(targetActorData);
@@ -86,14 +87,14 @@ async function performSpotlightSearch() {
         return false;
     }
 
-    const shape = await CONFIG.SpotlightOmniseach.prompt({ query: "!actor " });
+    const shape = await CONFIG.SpotlightOmniseach.prompt({query: "!actor "});
     const shapeUuid = shape?.data?.uuid;
 
     if (!shapeUuid) {
         return false;
     }
 
-    await openMorphDialog({ uuid: shapeUuid });
+    await openMorphDialog({uuid: shapeUuid});
     return true;
 }
 
@@ -160,7 +161,7 @@ async function openMorphDialog(data) {
                 label: CONFIG.DND5E.transformationPresets.wildshape.label,
                 callback: html => getSocket()?.executeAsGM("transformInto", actor.id, data, foundry.utils.mergeObject(
                     CONFIG.DND5E.transformationPresets.wildshape.options,
-                    { transformTokens: rememberOptions(html).transformTokens }
+                    {transformTokens: rememberOptions(html).transformTokens}
                 ))
             },
             polymorph: {
@@ -168,7 +169,7 @@ async function openMorphDialog(data) {
                 label: CONFIG.DND5E.transformationPresets.polymorph.label,
                 callback: html => getSocket()?.executeAsGM("transformInto", actor.id, data, foundry.utils.mergeObject(
                     CONFIG.DND5E.transformationPresets.polymorph.options,
-                    { transformTokens: rememberOptions(html).transformTokens }
+                    {transformTokens: rememberOptions(html).transformTokens}
                 ))
             },
             self: {
@@ -176,7 +177,7 @@ async function openMorphDialog(data) {
                 label: CONFIG.DND5E.transformationPresets.polymorphSelf.label,
                 callback: html => getSocket()?.executeAsGM("transformInto", actor.id, data, foundry.utils.mergeObject(
                     CONFIG.DND5E.transformationPresets.polymorphSelf.options,
-                    { transformTokens: rememberOptions(html).transformTokens }
+                    {transformTokens: rememberOptions(html).transformTokens}
                 ))
             },
             cancel: {
