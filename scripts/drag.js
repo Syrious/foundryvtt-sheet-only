@@ -1,11 +1,12 @@
 let selectedElement = null;
 let xOffset = 0;
 let yOffset = 0;
-let initialX, initialY;
 let hasMoved = false;
 
 let pressTimer;
 let longPressDuration;
+
+const scaleUpTo = 1.05;
 
 export function initDragListener() {
     document.addEventListener('mousedown', handleStart, false);
@@ -20,13 +21,12 @@ export function initDragListener() {
     longPressDuration = getDuration();
 }
 
-function getDuration(){
+function getDuration() {
     return game.settings.get("sheet-only", "dragDuration");
 }
 
 function handleStart(event) {
-    console.log(longPressDuration)
-    if(longPressDuration <= 0) return;
+    if (longPressDuration <= 0) return;
 
     hasMoved = false;
 
@@ -38,7 +38,7 @@ function handleStart(event) {
 }
 
 function findAncestor(el, sel) {
-    while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel)) ;
+    while ((el = el.parentElement) && !(el.matches || el.matchesSelector).call(el, sel));
     return el;
 }
 
@@ -54,11 +54,13 @@ function dragStart(event, container) {
     selectedElement.classList.add('dragged');
     hasMoved = true;
 
-    let rect = selectedElement.getBoundingClientRect();
-    initialX = rect.left;
-    initialY = rect.top;
-    xOffset = (event.clientX || event.touches[0].clientX) - initialX;
-    yOffset = (event.clientY || event.touches[0].clientY) - initialY;
+    let { x, y } = getPosition();
+
+    xOffset = (event.clientX || event.touches[0].clientX) - x;
+    yOffset = (event.clientY || event.touches[0].clientY) - y;
+
+    selectedElement.style.transform = `translate(${x}px, ${y}px) scale(${scaleUpTo})`;
+
 }
 
 function dragMove(event) {
@@ -68,8 +70,8 @@ function dragMove(event) {
         let xPosition = (event.clientX || event.touches[0].clientX) - xOffset;
         let yPosition = (event.clientY || event.touches[0].clientY) - yOffset;
 
-        selectedElement.style.left = `${xPosition}px`;
-        selectedElement.style.top = `${yPosition}px`;
+        // Apply transform using translate for positional adjustments and keep the scale constant
+        selectedElement.style.transform = `translate(${xPosition}px, ${yPosition}px) scale(${scaleUpTo})`;
     }
 }
 
@@ -79,7 +81,27 @@ function dragEnd(event) {
     if (selectedElement) {
         event.stopPropagation();
 
+        let { x, y } = getPosition();
+
+        // Reset the scale to 1.0 and maintain the final position using translate
+        selectedElement.style.transform = `translate(${x}px, ${y}px) scale(1)`;
+
         selectedElement.classList.remove('dragged');
         selectedElement = null;
     }
+}
+
+function getPosition() {
+    const elementStyle = window.getComputedStyle(selectedElement);
+    const transform = elementStyle.transform;
+    let xPosition = 0;
+    let yPosition = 0;
+
+    if (transform && transform !== 'none') {
+        const matrix = new WebKitCSSMatrix(transform);
+        xPosition = matrix.m41;
+        yPosition = matrix.m42;
+    }
+
+    return { x: xPosition, y: yPosition };
 }
