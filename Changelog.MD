@@ -1,3 +1,8 @@
+# 1.7.0
+- Fixes a bug where the journal could not be re-opened
+- Improves dragging behaviour
+- The time it takes before the drag functionality kicks in can now be set in the settings
+
 # 1.6.3
 - [DND5e] Fixes a bug where the control bar did not respond if the GM disabled the morph feature
 
