@@ -5,7 +5,7 @@ let initialX, initialY;
 let hasMoved = false;
 
 let pressTimer;
-let longPressDuration = 500;
+let longPressDuration;
 
 export function initDragListener() {
     document.addEventListener('mousedown', handleStart, false);
@@ -16,9 +16,18 @@ export function initDragListener() {
 
     document.addEventListener('mouseup', dragEnd, false);
     document.addEventListener('touchend', dragEnd, false);
+
+    longPressDuration = getDuration();
+}
+
+function getDuration(){
+    return game.settings.get("sheet-only", "dragDuration");
 }
 
 function handleStart(event) {
+    console.log(longPressDuration)
+    if(longPressDuration <= 0) return;
+
     hasMoved = false;
 
     let container = findAncestor(event.target, '.so-draggable');

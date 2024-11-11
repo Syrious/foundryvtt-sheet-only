@@ -90,6 +90,16 @@ Hooks.on('init', () => {
         }
     });
 
+    game.settings.register(moduleId, "dragDuration", {
+        name: i18n("Sheet-Only.drag.name"),
+        hint: i18n("Sheet-Only.drag.hint"),
+        scope: "client",
+        config: true,
+        type: Number,
+        requiresReload: true,
+        default: 500,
+    });
+
     game.settings.register(moduleId, "lastActorId", {
         scope: "client",
         config: false,
