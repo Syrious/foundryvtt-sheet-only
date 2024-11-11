@@ -6,7 +6,7 @@ let hasMoved = false;
 let pressTimer;
 let longPressDuration;
 
-const scaleUpTo = 1.05;
+const scaleUpTo = 1.08;
 
 export function initDragListener() {
     document.addEventListener('mousedown', handleStart, false);
