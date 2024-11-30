@@ -98,7 +98,6 @@ Hooks.on('renderActorSheet',
     }
 );
 
-
 Hooks.on('createActor', async function (actor) {
     if (!isSheetOnly()) {
         return;

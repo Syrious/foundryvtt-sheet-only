@@ -10,8 +10,6 @@ function popoutChat() {
 
         if (tabApp && typeof tabApp.renderPopout === 'function') {
             // Call renderPopout on the tabApp
-            tabApp.element.addClass("sheet-only-chat")
-
             tabApp.renderPopout(tabApp);
 
             function waitForRender() {
@@ -44,7 +42,6 @@ function updateChatState(isCollapsed) {
 }
 
 export function openChat() {
-    console.warn("Opening chat")
     updateChatState(false);
 }
 
