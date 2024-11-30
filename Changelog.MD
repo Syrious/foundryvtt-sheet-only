@@ -1,3 +1,8 @@
+# 1.7.1
+- Fixes a bug where the chat was not well visible 
+- Fixes a bug where the settings window was hidden behind the bottom button bar 
+- On smaller screens the settings window now has two rows instead of two columns, making it more usable
+
 # 1.7.0
 - Fixes a bug where the journal could not be re-opened
 - Improves dragging behaviour
