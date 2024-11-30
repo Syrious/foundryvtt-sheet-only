@@ -27,7 +27,7 @@
 .sheet-only-container > .small-display-main-buttons {
     display: flex;
     flex-direction: row;
-    z-index: 99999;
+    z-index: 1000;
 }
 
 .sheet-only-container > .small-display-main-buttons .button {
@@ -42,7 +42,7 @@
 .sheet-only-container > .button-container {
     display: flex;
     flex-direction: row;
-    z-index: 99999;
+    z-index: 1000;
     position: absolute;
 }
 
@@ -71,7 +71,7 @@ body.hidden-canvas canvas#board {
     gap: 3px;
     flex-shrink: 0;
     position: absolute;
-    z-index: 99999;
+    z-index: 1001;
     height: 100dvh;
     width: 33vw;
     max-width: 200px;

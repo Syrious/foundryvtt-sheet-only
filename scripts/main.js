@@ -139,6 +139,10 @@ Hooks.once('closeUserConfig', async () => {
     await popupSheet()
 });
 
+Hooks.on('renderSettingsConfig', async (app, element, settings)=>{
+    element.css({zIndex: 2000})
+})
+
 setUpSocketlib();
 
 /* ************************************* */
