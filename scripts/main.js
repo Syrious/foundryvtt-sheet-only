@@ -8,7 +8,6 @@ import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
-import {setupChatPanel} from "./chat.js";
 import {rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser} from "./actorsList.js";
 import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {setUpSocketlib} from "./socketlib.js";
@@ -58,7 +57,6 @@ Hooks.once('ready', async function () {
 
     setupContainer();
     rebuildActorList()
-    setupChatPanel();
     await popupSheet();
     hideUnusedElements();
 

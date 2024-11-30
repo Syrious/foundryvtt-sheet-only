@@ -1,67 +1,99 @@
 import {moduleId} from "./settings.js";
 
-function updateChatState(isCollapsed) {
-    const $sheet = $('.sheet-only-chat');
-    $sheet.toggleClass('collapse', isCollapsed);
+function popoutChat() {
+    // Retrieve the chat tab element
+    const chatTabElement = document.querySelector('#sidebar-tabs .item[data-tab="chat"]');
 
-    localStorage.setItem("collapsed-chat", isCollapsed ? "true" : "false");
+    // Ensure the element is found and the associated tab app can be accessed
+    if (chatTabElement && window.ui) {
+        const tabApp = window.ui[chatTabElement.dataset.tab];
+
+        if (tabApp && typeof tabApp.renderPopout === 'function') {
+            // Call renderPopout on the tabApp
+            tabApp.element.addClass("sheet-only-chat")
+
+            tabApp.renderPopout(tabApp);
+
+            function waitForRender() {
+                if (tabApp._popout.rendered) {
+                    tabApp._popout.element.addClass("so-draggable");
+                    tabApp._popout.element.find('#chat-form, #chat-controls').hide();
+
+                    const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
+                    updateChatFullscreen(chatFullscreen, tabApp._popout.element)
+                } else {
+                    setTimeout(waitForRender, 10); // check again after 10ms
+                }
+            }
+
+            waitForRender();
+        } else {
+            console.error("The tabApp or renderPopout function is not available.");
+        }
+    } else {
+        console.error("Chat tab element or ui object not found.");
+    }
+}
+
+function updateChatState(isCollapsed) {
+    if (isCollapsed) {
+        popoutChat();
+    } else {
+        closeChat();
+    }
 }
 
 export function openChat() {
+    console.warn("Opening chat")
     updateChatState(false);
 }
 
 export function closeChat() {
-    updateChatState(true);
-}
+    // Get the chat popout div
+    const chatPopout = document.getElementById('chat-popout');
 
-export function toggleChat() {
-    const $sheet = $('.sheet-only-chat');
-    const isCollapsed = $sheet.hasClass('collapse');
-    updateChatState(!isCollapsed);
-}
+    // Check if the chat popout exists to prevent errors
+    if (chatPopout) {
+        // Find the close button within the chat popout
+        const closeButton = chatPopout.querySelector('.header-button.control.close');
 
-export function setupChatPanel() {
-    const chatElement = $('#chat'); // Get the chat element
-    const newParentElement = $('.sheet-only-container'); // Get the new parent
-
-    if (chatElement.length && newParentElement.length) {
-        // Create a new div and wrap the chat element inside it
-        chatElement.wrap('<div id="chat-wrapper"></div>');
-
-        // Get the wrapper we just created along with its child
-        const chatElementWrapper = $('#chat-wrapper');
-        chatElementWrapper.addClass("sheet-only-chat");
-        chatElementWrapper.addClass('collapse');
-
-        const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
-        updateChatFullscreen(chatFullscreen)
-
-        chatElementWrapper.detach(); // Remove the wrapped chatElement (along with its wrapper) from the DOM
-        newParentElement.append(chatElementWrapper); // Append the wrapped chatElement (with its wrapper) to the new parent
+        // Check if the close button exists
+        if (closeButton) {
+            // Trigger the click event on the close button
+            closeButton.click();
+        } else {
+            console.error('Close button not found within chat popout!');
+        }
     } else {
-        console.log("Could not find chat panel")
+        console.error('Chat popout not found!');
     }
 }
 
-export function updateChatFullscreen(fullscreen) {
-    const chatElementWrapper = $('#chat-wrapper');
-    if(fullscreen) {
+export function toggleChat() {
+    const chat = document.getElementById('chat-popout');
+    const isOpen = chat !== null;
+    updateChatState(!isOpen);
+}
+
+export function updateChatFullscreen(fullscreen, chatPopout) {
+    if (fullscreen) {
         // To reset the chat to correct place even after moved around with draggable
-        chatElementWrapper.css({
+        chatPopout.css({
             left: 0,
             right: 0,
-            top: 0
+            top: 0,
+            width: '100%',
+            height: '100vh',
         });
-        chatElementWrapper.removeClass('so-draggable')
-        chatElementWrapper.addClass('fullscreen')
+
+        chatPopout.removeClass('so-draggable')
+
     } else {
-        chatElementWrapper.css({
+        chatPopout.css({
             left: '',
             right: 0,
             top: 0
         });
-        chatElementWrapper.removeClass('fullscreen')
-        chatElementWrapper.addClass('so-draggable');
+        chatPopout.addClass('so-draggable');
     }
 }
