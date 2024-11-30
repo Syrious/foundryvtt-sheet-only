@@ -125,6 +125,10 @@ Hooks.on('deleteActor', async function (actor) {
 });
 
 Hooks.on('renderContainerSheet', async (app, html) => {
+    if (!isSheetOnly()) {
+        return;
+    }
+
     app.setPosition({
         left: window.innerWidth,
         top: 0,
@@ -135,12 +139,26 @@ Hooks.on('renderContainerSheet', async (app, html) => {
 });
 
 Hooks.once('closeUserConfig', async () => {
+    if (!isSheetOnly()) {
+        return;
+    }
     // Popup sheet after user selected their character
     await popupSheet()
 });
 
 Hooks.on('renderSettingsConfig', async (app, element, settings)=>{
+    if (!isSheetOnly()) {
+        return;
+    }
+
     element.css({zIndex: 2000})
+
+    if(window.innerWidth < 600){
+        const content = element.find('.window-content .flexrow');
+        content.removeClass('flexrow');
+        content.addClass('flexcol');
+        console.log(content)
+    }
 })
 
 setUpSocketlib();
