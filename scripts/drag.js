@@ -87,6 +87,9 @@ function dragEnd(event) {
         selectedElement.style.transform = `translate(${x}px, ${y}px) scale(1)`;
 
         selectedElement.classList.remove('dragged');
+
+        applyTransformation(selectedElement);
+
         selectedElement = null;
     }
 }
@@ -104,4 +107,34 @@ function getPosition() {
     }
 
     return { x: xPosition, y: yPosition };
+}
+
+/**
+ * Applies the transformation to left and top so that if foundry triggers a new render, the window won't jump
+ * to its original position
+ * @param element The dragged element
+ */
+function applyTransformation(element) {
+    const computedStyle = getComputedStyle(element);
+
+    // Extract transformation values
+    const transform = computedStyle.transform;
+
+    if (transform !== 'none') {
+        // Parse the transform matrix
+        const matrix = transform.match(/matrix\(([^)]+)\)/)[1].split(', ').map(parseFloat);
+
+        // Translate values from the matrix
+        const translateX = matrix[4];
+        const translateY = matrix[5];
+
+        // Calculate the new top and left positions
+        const translatedLeft = parseFloat(computedStyle.left) + translateX;
+        const translatedTop = parseFloat(computedStyle.top) + translateY;
+
+        // Apply the calculated position and reset transformation
+        element.style.transform = 'none';
+        element.style.left =  `${translatedLeft}px`;
+        element.style.top = `${translatedTop}px`;
+    }
 }
