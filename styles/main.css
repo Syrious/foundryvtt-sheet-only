@@ -1,7 +1,6 @@
 /*Sheet Only Styling*/
 .sheet-only-hide,
-.sheet-only-sheet > header,
-#roll-hd {
+.sheet-only-sheet > header {
     display: none !important;
 }
 
