@@ -1,3 +1,6 @@
+# 1.7.2
+- Fixes missing button to roll for HP on short rest in dnd5e
+
 # 1.7.1
 - Fixes a bug where the chat was not well visible 
 - Fixes a bug where the settings window was hidden behind the bottom button bar 
