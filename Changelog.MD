@@ -1,3 +1,7 @@
+# 1.8.0
+- Removes 'black bar' behind ability scores (dnd5e)
+- Adds setting to disable bottom button bar for small displays 
+
 # 1.7.2
 - Fixes missing button to roll for HP on short rest in dnd5e
 

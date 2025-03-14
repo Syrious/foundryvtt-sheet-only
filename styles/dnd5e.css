@@ -253,12 +253,9 @@
     display: none;
 }
 .sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows {
-    padding: 0;
+    padding: 10px 0;
     margin-top: 8.75rem;
-    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(2px);
-    padding-top: 10px;
-    padding-bottom: 10px;
     border-radius: 0 0 10px 10px;
 }
 

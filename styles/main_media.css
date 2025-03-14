@@ -1,11 +1,11 @@
 @media (max-width: 800px) {
-    .sheet-only-sheet {
+    .sheet-only-sheet.small-display  {
         margin-top: 0;
         margin-bottom: 0;
         padding-bottom: 53px;
     }
 
-    .sheet-only-container {
+    .sheet-only-container.small-display {
         padding-bottom: 53px;
     }
 
@@ -14,7 +14,7 @@
         padding-bottom: 53px;
     }
 
-    #so-main-buttons {
+    #so-main-buttons.small-display{
         display: flex !important;
         position: fixed;
         bottom: 0;
@@ -23,11 +23,11 @@
         height: 50px;
     }
 
-    #so-main-buttons > button {
+    #so-main-buttons.small-display > button {
         height: 100%;
     }
 
-    #so-main-buttons > button > i {
+    #so-main-buttons.small-display > button > i {
         font-size: 24px;
     }
 

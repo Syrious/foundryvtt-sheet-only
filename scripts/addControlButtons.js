@@ -6,32 +6,43 @@ import {toggleChat} from "./chat.js";
 import {displayActorListButton, toggleActorList} from "./actorsList.js";
 import {displayMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 
-const maxWithForSmallDisplays = 800;
-const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+export function useSmallScreenSettings() {
+    const maxWithForSmallDisplays = 800;
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    const showBottomBar = game.settings.get("sheet-only", "show-bottom-bar");
+    const isSmallScreen = screenWidth < maxWithForSmallDisplays;
+
+    return isSmallScreen && showBottomBar;
+}
+
+function checkAndSetupSmallScreen() {
+    if (useSmallScreenSettings()) {
+        $('#so-main-buttons').addClass("small-display");
+        $('.sheet-only-container').addClass("small-display");
+
+        // Observe the DOM until sheet-only-sheet has been added
+        const observer = new MutationObserver(() => {
+            if ($(".sheet-only-sheet").length > 0) {
+                $('.sheet-only-sheet').addClass("small-display");
+
+                observer.disconnect(); // Stop watching
+            }
+        });
+
+        observer.observe(document.body, {childList: true, subtree: true});
+    }
+}
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
     const buttonContainer = $(`<div class="button-container so-draggable"></div>`);
 
-    if (screenWidth < maxWithForSmallDisplays) {
-        // Create a new container for main buttons at the bottom of the screen
-        const mainButtonsContainer = $(`<div class="small-display-main-buttons"></div>`);
+    buttonContainer.load("modules/sheet-only/templates/buttons.html", () => {
+        setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom);
+        setupMenuButtons(buttonContainer);
 
-        buttonContainer.load("modules/sheet-only/templates/buttons-small-display.html", () => {
-            setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom);
-            setupMenuButtonForSmallDisplays(buttonContainer);
-
-            const mainButtons = buttonContainer.find('#so-main-buttons');
-            mainButtonsContainer.append(mainButtons);
-        });
-
-        sheetContainer.append(mainButtonsContainer);
-    } else {
-
-        buttonContainer.load("modules/sheet-only/templates/buttons.html", () => {
-            setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZoom);
-            setupMenuButtonForLargeDisplays(buttonContainer);
-        });
-    }
+        checkAndSetupSmallScreen();
+    });
 
     sheetContainer.append(buttonContainer);
 
@@ -39,22 +50,13 @@ export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, re
     initDragListener();
 }
 
-function setupMenuButtonForLargeDisplays(buttonContainer) {
+function setupMenuButtons(buttonContainer) {
     const menuButton = buttonContainer.find("#so-menu");
 
     menuButton.on("click", function () {
         if (wasDragged()) return;
 
         $('#so-main-buttons').toggle();
-        $('#so-settings-buttons').toggle();
-    });
-}
-
-function setupMenuButtonForSmallDisplays(buttonContainer) {
-    const menuButton = buttonContainer.find("#so-menu");
-    menuButton.on("click", function () {
-        if (wasDragged()) return;
-
         $('#so-settings-buttons').toggle();
     });
 }

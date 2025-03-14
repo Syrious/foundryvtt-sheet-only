@@ -121,6 +121,16 @@ Hooks.on('init', () => {
         type: Object,
     });
 
+    game.settings.register(moduleId, "show-bottom-bar", {
+        name: i18n("Sheet-Only.show-bottom-bar.name"),
+        hint: i18n("Sheet-Only.show-bottom-bar.hint"),
+        scope: "client",
+        config: true,
+        default: true,
+        type: Boolean,
+        requiresReload: true
+    });
+
     volumeSettings(moduleId);
 })
 
