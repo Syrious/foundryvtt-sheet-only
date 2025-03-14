@@ -29,7 +29,7 @@
   "Sheet-Only.morph-on-mobile.hint": "(Default: Unchecked) You have Spotlight Omnisearch or Quick Insert installed. Should the players have the option to search for an actor to polymorph/wild shape/... into? Note: Token transformation only works if a GM account is logged on as well.",
   "Sheet-Only.drag.name": "Drag Activation",
   "Sheet-Only.drag.hint": "Time in milliseconds you need to hold to enable dragging. To disable this feature, set to 0. Default: 500",
-  "Sheet-Only.show-bottom-bar.name": "Small Screen Action Bar",
-  "Sheet-Only.show-bottom-bar.hint": "If enabled, it shows an action bar at the bottom of the screen for better access."
+  "Sheet-Only.show-bottom-bar.name": "Small Screen Button Bar",
+  "Sheet-Only.show-bottom-bar.hint": "If enabled, it shows the button bar at the bottom of the screen for better access on small displays (width < 800px)"
 }
 

@@ -28,5 +28,8 @@
   "Sheet-Only.morph-on-mobile.name": "Polymorph aktivieren",
   "Sheet-Only.morph-on-mobile.hint": "(Standard: Nicht aktiviert) Du hast Spotlight Omnisearch oder Quick Insert installiert. Dürfen die Spieler die Option haben, nach einem Monster zu suchen, um sie für Tiergestalt/Verwandlung/... zu verwenden? Hinweis: Die Transformierung der Token funktioniert nur, wenn mindestens ein Spielleiter eingeloggt ist.",
   "Sheet-Only.drag.name": "Dauer der Drag-Aktivierung",
-  "Sheet-Only.drag.hint": "Die Zeit in Millisekunden, die du drücken und halten musst, um Drag zu aktivieren. Trage 0 ein, um die Funktion zu deaktivieren Standard: 500"
+  "Sheet-Only.drag.hint": "Die Zeit in Millisekunden, die du drücken und halten musst, um Drag zu aktivieren. Trage 0 ein, um die Funktion zu deaktivieren Standard: 500",
+  "Sheet-Only.show-bottom-bar.name": "Button Leiste für kleine Bildschirme",
+  "Sheet-Only.show-bottom-bar.hint": "Blendet die Button Leiste am unteren Rand des Bildschirms ein. (Für kleine Bildschirme mit einer Breite kleiner als 800px)"
+
 }
