@@ -1,14 +1,14 @@
 /*Sheet Only Styling*/
 .sheet-only-hide,
 .sheet-only-sheet > header {
-    display: none !important;
+    display: none;
 }
 
 .sheet-only-sheet {
     position: relative;
     width: 100vw;
     height: 100dvh;
-    transform-origin: 'top left',
+    transform-origin: 'top left'
 }
 
 .sheet-only-container {

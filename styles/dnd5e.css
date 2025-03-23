@@ -286,5 +286,13 @@
     border-radius: 3px;
 }
 
+.sheet-only-sheet > header {
+    display: flex;
+}
+
+.sheet-only-sheet > header a {
+    display: none !important;
+}
+
 /** Quick Insert for Morph Search **
 aside.tooltip

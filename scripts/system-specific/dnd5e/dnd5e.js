@@ -39,24 +39,6 @@ function handleChatMessage(message, _html, messageData){
 }
 
 /**
- * Moves the edit slider for the new dnd sheet from header to sheet
- */
-export function dnd5eEditSlider() {
-    if (!isDnd5e()) {
-        return
-    }
-
-    setTimeout(function() {
-        const slider = $('.mode-slider');
-        if (slider) {
-            slider.css({position: 'absolute', top: '10px', left: '10px'});
-            const parent = $('.sheet-only-sheet');
-            parent.append(slider);
-        }
-    }, 750); // 2000 ms equal to 2 seconds
-}
-
-/**
  * Opens a tooltip
  * @param event
  */

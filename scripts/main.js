@@ -3,12 +3,12 @@ import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
 import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
-import {dnd5eReadyHook, dnd5eEditSlider} from "./system-specific/dnd5e/dnd5e.js";
+import {dnd5eReadyHook} from "./system-specific/dnd5e/dnd5e.js";
 import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
-import {rebuildActorList, switchToActor, getOwnedActors, isActorOwnedByUser} from "./actorsList.js";
+import {getOwnedActors, isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList.js";
 import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {setUpSocketlib} from "./socketlib.js";
 
@@ -88,8 +88,6 @@ Hooks.on('renderActorSheet',
 
         getTokenizerImage();
 
-        dnd5eEditSlider(app);
-
         if (actor) {
             await switchToActor(actor, false);
         }
@@ -146,14 +144,14 @@ Hooks.once('closeUserConfig', async () => {
     await popupSheet()
 });
 
-Hooks.on('renderSettingsConfig', async (app, element, settings)=>{
+Hooks.on('renderSettingsConfig', async (app, element, settings) => {
     if (!isSheetOnly()) {
         return;
     }
 
     element.css({zIndex: 2000})
 
-    if(window.innerWidth < 600){
+    if (window.innerWidth < 600) {
         const content = element.find('.window-content .flexrow');
         content.removeClass('flexrow');
         content.addClass('flexcol');
