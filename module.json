@@ -5,7 +5,8 @@
   "version": "1.8.1",
   "compatibility": {
     "minimum": "11",
-    "verified": "12"
+    "verified": "12.311",
+    "maximum": "12.343"
   },
   "authors": [
     {
