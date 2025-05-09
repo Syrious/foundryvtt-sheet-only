@@ -1,3 +1,6 @@
+# 1.8.2
+- Sets the maximum foundry version to 12.343
+- 
 # 1.8.1
 
 - [DND5e] fixes issue with the sheet not receiving updates and not be able to edit
