@@ -13,7 +13,7 @@ import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {setUpSocketlib} from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
-CONFIG.debug.hooks = false;
+// CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
@@ -65,10 +65,8 @@ Hooks.once('ready', async function () {
     dnd5eReadyHook();
 });
 
-Hooks.on('renderActorSheet',
-    /** @param {FormApplication|null} app */
-    async (app, _sheet, {actor}) => {
-        if (currentSheet?.appId === app.appId || !isSheetOnly()) {
+Hooks.on('renderActorSheetV2', async (app, _sheet, {actor}) => {
+        if (currentSheet?.id === app.id || !isSheetOnly()) {
             return;
         }
 
@@ -82,7 +80,7 @@ Hooks.on('renderActorSheet',
             height: window.innerHeight
         });
 
-        app.element.addClass('sheet-only-sheet');
+        app.classList.add('sheet-only-sheet');
 
         $(".window-resizable-handle").hide();
 
