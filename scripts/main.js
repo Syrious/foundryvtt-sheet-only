@@ -1,7 +1,6 @@
 import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
-import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook} from "./system-specific/dnd5e/dnd5e.js";
 import {actorStorage, getLastActorId} from "./actorStorage.js";
@@ -9,11 +8,9 @@ import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
 import {getOwnedActors, isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList.js";
-import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
-import {setUpSocketlib} from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
-CONFIG.debug.hooks = false;
+// CONFIG.debug.hooks = false;
 
 /** @type {FormApplication|null} */
 let currentSheet = null; // Track the currently open sheet
@@ -27,7 +24,6 @@ Hooks.on('setup', async () => {
     }
 
     await setupClient();
-    setupCompatibility();
 });
 
 /* Wildshape, Polymorph etc */
@@ -65,10 +61,8 @@ Hooks.once('ready', async function () {
     dnd5eReadyHook();
 });
 
-Hooks.on('renderActorSheet',
-    /** @param {FormApplication|null} app */
-    async (app, _sheet, {actor}) => {
-        if (currentSheet?.appId === app.appId || !isSheetOnly()) {
+Hooks.on('renderActorSheetV2', async (app, _sheet, {actor}) => {
+        if (currentSheet?.id === app.id || !isSheetOnly()) {
             return;
         }
 
@@ -82,7 +76,7 @@ Hooks.on('renderActorSheet',
             height: window.innerHeight
         });
 
-        app.element.addClass('sheet-only-sheet');
+        app.classList.add('sheet-only-sheet');
 
         $(".window-resizable-handle").hide();
 
@@ -91,8 +85,6 @@ Hooks.on('renderActorSheet',
         if (actor) {
             await switchToActor(actor, false);
         }
-
-        updateMorphSearchButton();
     }
 );
 
@@ -149,17 +141,26 @@ Hooks.on('renderSettingsConfig', async (app, element, settings) => {
         return;
     }
 
-    element.css({zIndex: 2000})
+    app.setPosition({zIndex: 2000})
 
     if (window.innerWidth < 600) {
-        const content = element.find('.window-content .flexrow');
-        content.removeClass('flexrow');
-        content.addClass('flexcol');
-        console.log(content)
+        app.setPosition({
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        })
+
+        const content = element.querySelector('.window-content');
+
+        if (content) {
+            content.style.flexDirection = 'column'
+            content.style.overflowY = 'auto';
+            content.style.maxHeight = '100vh';
+        }
     }
 })
 
-setUpSocketlib();
 
 /* ************************************* */
 
@@ -309,7 +310,8 @@ async function popupSheet() {
 }
 
 function onResize(event) {
-    currentSheet?.element.css({
+
+    currentSheet?.setPosition({
         width: window.innerWidth,
         height: window.innerHeight
     });

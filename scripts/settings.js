@@ -1,7 +1,5 @@
 import {i18n} from "./utils.js";
-import {allMorphRequirementsMet, realDiceActive} from "./compatibility.js";
 import {updateChatFullscreen} from "./chat.js";
-import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
 
 export const moduleId = "sheet-only";
@@ -62,32 +60,6 @@ Hooks.on('init', () => {
         },
         default: "Disabled",
         requiresReload: true
-    });
-
-    game.settings.register(moduleId, "real-dice", {
-        name: i18n("Sheet-Only.real-dice.name"),
-        hint: i18n("Sheet-Only.real-dice.hint"),
-        scope: "client",
-        config: realDiceActive(),
-        default: false,
-        type: Boolean,
-        requiresReload: false,
-        onChange: value => {
-            game.settings.set("real-dice", "manualRollMode", value)
-        }
-    });
-
-    game.settings.register(moduleId, "morph-on-mobile", {
-        name: i18n("Sheet-Only.morph-on-mobile.name"),
-        hint: i18n("Sheet-Only.morph-on-mobile.hint"),
-        scope: "world",
-        config: allMorphRequirementsMet(),
-        type: Boolean,
-        default: false,
-        requiresReload: false,
-        onChange: value => {
-            updateMorphSearchButton();
-        }
     });
 
     game.settings.register(moduleId, "dragDuration", {
@@ -178,7 +150,7 @@ class PlayerSelectionMenu extends FormApplication {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             id: "sheet-only",
             title: "Sheet-Only",
             template: "./modules/sheet-only/templates/controller.html",
@@ -194,7 +166,7 @@ class PlayerSelectionMenu extends FormApplication {
         let players = game.users.filter(u => !u.isGM)
             .map(u => {
                 let data = playerdata[u.id] || {};
-                return mergeObject({
+                return foundry.utils.mergeObject({
                     id: u.id,
                     name: u.name,
                     img: u.avatar,

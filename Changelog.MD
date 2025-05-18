@@ -1,6 +1,11 @@
+# 2.0.0
+- v13 compatibility
+- Unfortunately, the morph feature is gone
+  - It is too system-specific and honestly, it is just too much work to implement it again. I might do an addon for this sometime in the future 
+
 # 1.8.2
 - Sets the maximum foundry version to 12.343
-- 
+
 # 1.8.1
 
 - [DND5e] fixes issue with the sheet not receiving updates and not be able to edit

@@ -7,8 +7,10 @@
 .sheet-only-sheet {
     position: relative;
     width: 100vw;
-    height: 100dvh;
-    transform-origin: 'top left'
+    height: 100dvh !important;
+    transform-origin: top left;
+    max-height: unset;
+
 }
 
 .sheet-only-container {
@@ -108,4 +110,9 @@ body.hidden-canvas canvas#board {
 
 .sheet-only-actor-list img {
     border: none;
+}
+
+.sheet-only-chat-popout {
+    right: 0;
+    top: 0;
 }

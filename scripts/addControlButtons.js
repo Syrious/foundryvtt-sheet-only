@@ -4,7 +4,6 @@ import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {toggleChat} from "./chat.js";
 import {displayActorListButton, toggleActorList} from "./actorsList.js";
-import {displayMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
 
 export function useSmallScreenSettings() {
     const maxWithForSmallDisplays = 800;
@@ -144,7 +143,6 @@ function setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZ
     });
 
     displayActorListButton();
-    displayMorphSearchButton();
 }
 
 function setupDefaults() {
