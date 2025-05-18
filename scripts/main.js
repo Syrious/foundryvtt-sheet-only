@@ -1,7 +1,6 @@
 import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
-import {setupCompatibility} from "./compatibility.js";
 import {hideCanvas} from "./canvasHider.js";
 import {dnd5eReadyHook} from "./system-specific/dnd5e/dnd5e.js";
 import {actorStorage, getLastActorId} from "./actorStorage.js";
@@ -9,8 +8,6 @@ import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId} from "./settings.js";
 import {getOwnedActors, isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList.js";
-import {updateMorphSearchButton} from "./system-specific/dnd5e/morphSearch.js";
-import {setUpSocketlib} from "./socketlib.js";
 
 /* global game, canvas, Hooks, CONFIG, foundry */
 // CONFIG.debug.hooks = false;
@@ -27,7 +24,6 @@ Hooks.on('setup', async () => {
     }
 
     await setupClient();
-    setupCompatibility();
 });
 
 /* Wildshape, Polymorph etc */
@@ -89,8 +85,6 @@ Hooks.on('renderActorSheetV2', async (app, _sheet, {actor}) => {
         if (actor) {
             await switchToActor(actor, false);
         }
-
-        updateMorphSearchButton();
     }
 );
 
@@ -167,7 +161,6 @@ Hooks.on('renderSettingsConfig', async (app, element, settings) => {
     }
 })
 
-setUpSocketlib();
 
 /* ************************************* */
 
