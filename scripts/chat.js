@@ -29,14 +29,6 @@ function popoutChat() {
     }
 }
 
-function updateChatState(isCollapsed) {
-    if (isCollapsed) {
-        popoutChat();
-    } else {
-        closeChat();
-    }
-}
-
 export function openChat() {
     if(!chatPopout){
         popoutChat();
