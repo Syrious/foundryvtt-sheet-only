@@ -109,3 +109,8 @@ body.hidden-canvas canvas#board {
 .sheet-only-actor-list img {
     border: none;
 }
+
+.sheet-only-chat-popout {
+    right: 0;
+    top: 0;
+}
