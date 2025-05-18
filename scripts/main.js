@@ -147,13 +147,23 @@ Hooks.on('renderSettingsConfig', async (app, element, settings) => {
         return;
     }
 
-    element.css({zIndex: 2000})
+    app.setPosition({zIndex: 2000})
 
     if (window.innerWidth < 600) {
-        const content = element.find('.window-content .flexrow');
-        content.removeClass('flexrow');
-        content.addClass('flexcol');
-        console.log(content)
+        app.setPosition({
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight
+        })
+
+        const content = element.querySelector('.window-content');
+
+        if (content) {
+            content.style.flexDirection = 'column'
+            content.style.overflowY = 'auto';
+            content.style.maxHeight = '100vh';
+        }
     }
 })
 
@@ -307,7 +317,8 @@ async function popupSheet() {
 }
 
 function onResize(event) {
-    currentSheet?.element.css({
+
+    currentSheet?.setPosition({
         width: window.innerWidth,
         height: window.innerHeight
     });
