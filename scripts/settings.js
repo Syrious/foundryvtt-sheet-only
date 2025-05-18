@@ -178,7 +178,7 @@ class PlayerSelectionMenu extends FormApplication {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             id: "sheet-only",
             title: "Sheet-Only",
             template: "./modules/sheet-only/templates/controller.html",
@@ -194,7 +194,7 @@ class PlayerSelectionMenu extends FormApplication {
         let players = game.users.filter(u => !u.isGM)
             .map(u => {
                 let data = playerdata[u.id] || {};
-                return mergeObject({
+                return foundry.utils.mergeObject({
                     id: u.id,
                     name: u.name,
                     img: u.avatar,

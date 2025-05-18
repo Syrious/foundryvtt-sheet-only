@@ -1,4 +1,5 @@
 import {moduleId} from "./settings.js";
+import {isSheetOnly} from "./main.js";
 
 function popoutChat() {
     // Retrieve the chat tab element
@@ -73,6 +74,8 @@ export function toggleChat() {
 }
 
 export function updateChatFullscreen(fullscreen, chatPopout) {
+    if(!isSheetOnly()) return;
+
     if (fullscreen) {
         // To reset the chat to correct place even after moved around with draggable
         chatPopout.css({
