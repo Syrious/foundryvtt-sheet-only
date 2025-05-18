@@ -2,7 +2,7 @@
   "id": "sheet-only",
   "title": "Sheet Only",
   "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13.342"
