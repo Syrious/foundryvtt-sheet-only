@@ -38,27 +38,30 @@ function updateChatState(isCollapsed) {
 }
 
 export function openChat() {
-    updateChatState(false);
+    if(!chatPopout){
+        popoutChat();
+    }
 }
 
 export function closeChat() {
     if (chatPopout) {
         chatPopout.close();
-        chatPopout = null;
-    } else {
-        console.error('Chat popout not found!');
+        chatPopout = undefined;
     }
 }
 
 export function toggleChat() {
-    const chat = document.getElementById('chat-popout');
-    const isOpen = chat !== null;
-
-    updateChatState(!isOpen);
+    if (chatPopout) {
+        closeChat();
+    }else{
+        popoutChat();
+    }
 }
 
 export function updateChatFullscreen(fullscreen, chatPopout) {
     if(!isSheetOnly()) return;
+
+    chatPopout.element.style.zIndex = 9999;
 
     if (fullscreen) {
         // To reset the chat to correct place even after moved around with draggable
@@ -66,7 +69,7 @@ export function updateChatFullscreen(fullscreen, chatPopout) {
             left: 0,
             top: 0,
             width: window.innerWidth,
-            height: window.innerHeight,
+            height: window.innerHeight
         });
 
         chatPopout.classList.remove('so-draggable')
