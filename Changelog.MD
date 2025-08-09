@@ -1,7 +1,7 @@
 # 2.0.2
 - Minor style fix for dsa5e 7.1.11 
 
-# 2.0.1
+# 2.0.0
 - v13 compatibility
 - Unfortunately, the morph feature is gone
   - It is too system-specific and honestly, it is just too much work to implement it again. I might do an addon for this sometime in the future 
