@@ -2,10 +2,10 @@
   "id": "sheet-only",
   "title": "Sheet Only",
   "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.342"
+    "verified": "13.346"
   },
   "authors": [
     {
@@ -39,10 +39,12 @@
   ],
   "styles": [
     "styles/main.css",
-    "styles/dnd5e.css"
+    "styles/dnd5e.css",
+    "styles/dsa5e.css"
   ],
-  "url": "https://github.com/Syrious/foundryvtt-sheet-only",
-  "manifest": "https://github.com/Syrious/foundryvtt-sheet-only/releases/latest/download/module.json",
-  "download": "https://github.com/Syrious/foundryvtt-sheet-only/releases/download/1.6.3/module.zip",
-  "socket": true
+  "socket": true,
+  "bugs": "https://discord.gg/VMqndcyUGS",
+  "url": "${module-url}",
+  "manifest": "${module-endpoint}",
+  "download": "${download-endpoint}"
 }
