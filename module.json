@@ -2,10 +2,10 @@
   "id": "sheet-only",
   "title": "Sheet Only",
   "description": "Provides a fullscreen character sheet to use on tablets",
-  "version": "2.0.2",
+  "version": "2.1.1",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.346"
+    "verified": "13.347"
   },
   "authors": [
     {
@@ -33,15 +33,21 @@
     }
   ],
   "esmodules": [
-    "/scripts/main.js",
-    "/scripts/settings.js",
-    "/scripts/api.js"
+    "index.js"
   ],
   "styles": [
-    "styles/main.css",
-    "styles/dnd5e.css",
-    "styles/dsa5e.css"
+    "style.css"
   ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "json"
+      ],
+      "paths": [
+        "lang"
+      ]
+    }
+  },
   "socket": true,
   "bugs": "https://discord.gg/VMqndcyUGS",
   "url": "${module-url}",

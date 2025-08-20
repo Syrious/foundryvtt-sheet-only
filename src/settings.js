@@ -4,7 +4,7 @@ import {isDnd5e} from "./system-specific/dnd5e/dnd5e.js";
 
 export const moduleId = "sheet-only";
 
-Hooks.on('init', () => {
+export const registerSettings = () => {
     game.settings.registerMenu(moduleId, "settingsMenu", {
         name: i18n("Sheet-Only.settingsMenu.name"),
         label: i18n("Sheet-Only.settingsMenu.label"),
@@ -104,7 +104,7 @@ Hooks.on('init', () => {
     });
 
     volumeSettings(moduleId);
-})
+};
 
 function volumeSettings() {
     game.settings.register(moduleId, "volume_playlist", {

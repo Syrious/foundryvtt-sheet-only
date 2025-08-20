@@ -1,0 +1,17 @@
+{
+  "name": "sheet-only",
+  "version": "0.0.0",
+  "description": "Provides a fullscreen character sheet to use on tablets",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "Syrious",
+  "devDependencies": {
+    "rollup-plugin-copy": "^3.5.0",
+    "sass": "^1.90.0",
+    "vite": "^5.0.0"
+  }
+}

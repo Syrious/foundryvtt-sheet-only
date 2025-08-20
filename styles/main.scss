@@ -1,0 +1,120 @@
+
+/*Sheet Only Styling*/
+.sheet-only-hide,
+.sheet-only-sheet > header,
+.sheet-only-sheet:not(.dnd5e2) > .window-header{
+  display: none;
+}
+
+.sheet-only-sheet {
+  position: relative;
+  width: 100vw;
+  height: 100dvh !important;
+  transform-origin: top left;
+  max-height: unset;
+
+}
+
+.sheet-only-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100dvh;
+  justify-items: flex-start;
+  overflow: hidden;
+}
+
+.sheet-only-container > .small-display-main-buttons {
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+}
+
+.sheet-only-container > .small-display-main-buttons .button {
+  cursor: pointer;
+}
+
+.sheet-only-container > .small-display-main-buttons .button > i {
+  vertical-align: middle;
+}
+
+
+.sheet-only-container > .button-container {
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+  position: absolute;
+}
+
+#so-main-buttons, #so-settings-buttons, #so-menu-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sheet-only-container ~ .dialog {
+  /* Needs important because foundry sets the dialog z-index to 105 on element.style */
+  z-index: 600 !important;
+}
+
+body.hidden-canvas canvas#board {
+  display: none !important;
+}
+
+.sheet-only-actor-list {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0 0 0 / 90%);
+  justify-items: flex-start;
+  padding: 5px 5px 20vh;
+  gap: 3px;
+  flex-shrink: 0;
+  position: absolute;
+  z-index: 1001;
+  height: 100dvh;
+  width: 33vw;
+  max-width: 200px;
+  border-right: 10px solid rgb(68 68 68 / 90%);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transition: all 250ms;
+  overflow-y: scroll;
+}
+
+.sheet-only-actor-list.collapse {
+  display: none !important;
+}
+
+.dragged {
+  transform: scale(1.1);
+  box-shadow: #191813 0 0 10px;
+  overflow: hidden;
+}
+
+.dragged * {
+  overflow: hidden;
+}
+
+/* chat input box */
+.sheet-only-chat #chat-form,
+.sheet-only-chat #chat-controls,
+.sheet-only-chat .dice-tray {
+  display: none;
+}
+
+.sheet-only-chat.collapse {
+  display: none;
+}
+
+.sheet-only-actor-list img {
+  border: none;
+}
+
+.sheet-only-chat-popout {
+  right: 0;
+  top: 0;
+}
