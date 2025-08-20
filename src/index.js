@@ -7,9 +7,9 @@ import {dnd5eReadyHook} from "./system-specific/dnd5e/dnd5e.js";
 import {actorStorage, getLastActorId} from "./actorStorage.js";
 import {i18n} from "./utils.js";
 import {enableCanvasDialog} from "./dialogs.js";
-import {moduleId} from "./settings.js";
+import {moduleId, registerSettings} from "./settings.js";
 import {getOwnedActors, isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList.js";
-
+import {setupApi} from './api'
 /* global game, canvas, Hooks, CONFIG, foundry */
 // CONFIG.debug.hooks = false;
 
@@ -19,12 +19,18 @@ let currentSheet = null; // Track the currently open sheet
 /* ************************************* */
 /* *************** HOOKS *************** */
 /* ************************************* */
+
+Hooks.on('init', async () => {
+    registerSettings();
+});
+
 Hooks.on('setup', async () => {
     if (!isSheetOnly()) {
         return;
     }
 
     await setupClient();
+    setupApi(isSheetOnly());
 });
 
 /* Wildshape, Polymorph etc */

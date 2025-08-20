@@ -26,6 +26,7 @@ export default defineConfig({
     outDir: __dirname + "/dist",
     emptyOutDir: true,
     sourcemap: true,
+    minify: false,
     rollupOptions: {
       input: 'src/index.js',
       output: {
@@ -36,7 +37,6 @@ export default defineConfig({
           // Keep other assets in the assets folder
           return 'assets/[name][extname]';
         }
-
       },
       plugins: [
         copy({

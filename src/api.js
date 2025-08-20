@@ -1,13 +1,7 @@
 import { actorStorage } from "./actorStorage.js";
-import {isSheetOnly} from "./index.js";
+
 /* global game, Hooks*/
-
-
-Hooks.once('setup', async () => {
-    setupApi();
-});
-
-function setupApi() {
+export function setupApi(isSheetOnlyCallback) {
     game.modules.get('sheet-only').api = {
         // This sheet-only version is compatible with the following sheet-only-plus version
         plusCompatibility: "1.0.0",
@@ -17,17 +11,8 @@ function setupApi() {
         },
 
         isSheetOnly: function () {
-            return isSheetOnly();
+            return isSheetOnlyCallback;
         }
 
-        // ExampleClass: class {
-        //     constructor(name) {
-        //         this.name = name;
-        //     }
-        //
-        //     myMethod() {
-        //         //...the actual logic
-        //     }
-        // }
     }
 }
