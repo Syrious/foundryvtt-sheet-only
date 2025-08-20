@@ -13,7 +13,7 @@ export default defineConfig({
     open: '/game',
     proxy: {
       // Serves static files from main Foundry server.
-      [`^(/${s_PACKAGE_ID}/(assets|lang|packs|style.css))`]: 'http://localhost:30000',
+      [`^(/${s_PACKAGE_ID}/(assets|lang|packs|styles|templates|style.css))`]: 'http://localhost:30000',
 
       // All other paths besides package ID path are served from main Foundry server.
       [`^(?!/${s_PACKAGE_ID}/)`]: 'http://localhost:30000',
