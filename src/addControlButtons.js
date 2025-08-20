@@ -34,7 +34,6 @@ function checkAndSetupSmallScreen() {
 }
 
 export function addControlButtons(sheetContainer, increaseZoom, decreaseZoom, resetZoom) {
-    console.log("Whoop")
     const buttonContainer = $(`<div class="button-container so-draggable"></div>`);
 
     buttonContainer.load("modules/sheet-only/templates/buttons.html", () => {

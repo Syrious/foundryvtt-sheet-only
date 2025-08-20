@@ -31,6 +31,10 @@ Hooks.on('renderActorSheetV2', async (app, _sheet, {actor}) => {
     await onRenderActorSheetV2(app, _sheet, actor);
 });
 
+Hooks.on('renderActorSheet', async (app, _sheet, {actor}) => {
+    await onRenderActorSheetV2(app, _sheet, actor);
+});
+
 Hooks.on('createActor', async function (actor) {
     await onCreateActor(actor);
 });

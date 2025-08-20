@@ -1,6 +1,7 @@
 import {isSheetOnly} from "./util";
 import {getOwnedActors, switchToActor} from "./actorsList";
-import {currentSheet} from "./store";
+
+export let currentSheet;
 
 export async function onRenderActorSheetV2(app, _sheet, actor) {
     if (currentSheet?.id === app.id || !isSheetOnly()) {
@@ -28,7 +29,7 @@ export async function onRenderActorSheetV2(app, _sheet, actor) {
     }
 }
 
-export async function onRenderContainerSheet(app, html){
+export async function onRenderContainerSheet(app, html) {
     if (!isSheetOnly()) {
         return;
     }
@@ -41,6 +42,7 @@ export async function onRenderContainerSheet(app, html){
     })
     html.css('z-index', '99999');
 }
+
 function getTokenizerImage() {
     let actors = getOwnedActors();
     actors.map(actor => {
