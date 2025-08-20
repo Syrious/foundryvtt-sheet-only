@@ -1,4 +1,4 @@
-import { actorStorage, saveLastActorId } from "./actorStorage.js";
+import {actorStorage, saveLastActorId} from "./actorStorage.js";
 
 
 export function rebuildActorList() {
@@ -17,7 +17,7 @@ export function displayActorListButton() {
     const actorsListButton = $("#so-collapse-actor-select")
     const ownedActors = getOwnedActors();
 
-    if(ownedActors.length > 1) {
+    if (ownedActors.length > 1) {
         actorsListButton.show();
     } else {
         actorsListButton.hide();
@@ -53,15 +53,17 @@ export async function switchToActor(actor, render = true) {
     actorStorage.current = actor;
     if (render) await actor.sheet.render(true);
 
-    setCurrentActorTokenAsControlled();
+    setCurrentActorTokenAsControlled(actor);
     saveLastActorId(actorStorage.current.id);
 }
 
 // Take control of the token of this actor (for targeting)
 function setCurrentActorTokenAsControlled() {
-    const activeTokens = actorStorage.current.getActiveTokens();
-    if (activeTokens.length > 0) {
-        activeTokens[0].control({releaseOthers: true})
+    if (actorStorage.current) {
+        const activeTokens = actorStorage.current.getActiveTokens();
+        if (activeTokens.length > 0) {
+            activeTokens[0].control({releaseOthers: true})
+        }
     }
 }
 

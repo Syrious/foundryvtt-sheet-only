@@ -18,15 +18,16 @@ export async function onRenderActorSheetV2(app, _sheet, actor) {
         height: window.innerHeight
     });
 
-    app.classList.add('sheet-only-sheet');
+    if(app.classList){
+        app.classList.add('sheet-only-sheet');
+
+    }else{
+        _sheet.addClass('sheet-only-sheet');
+    }
 
     $(".window-resizable-handle").hide();
 
     getTokenizerImage();
-
-    if (actor) {
-        await switchToActor(actor, false);
-    }
 }
 
 export async function onRenderContainerSheet(app, html) {
