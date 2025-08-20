@@ -38,6 +38,16 @@
   "styles": [
     "style.css"
   ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "json"
+      ],
+      "paths": [
+        "lang"
+      ]
+    }
+  },
   "socket": true,
   "bugs": "https://discord.gg/VMqndcyUGS",
   "url": "${module-url}",

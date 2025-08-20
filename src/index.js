@@ -10,6 +10,7 @@ import {enableCanvasDialog} from "./dialogs.js";
 import {moduleId, registerSettings} from "./settings.js";
 import {getOwnedActors, isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList.js";
 import {setupApi} from './api'
+import {isSheetOnly} from "./util";
 /* global game, canvas, Hooks, CONFIG, foundry */
 // CONFIG.debug.hooks = false;
 
@@ -30,7 +31,7 @@ Hooks.on('setup', async () => {
     }
 
     await setupClient();
-    setupApi(isSheetOnly());
+    setupApi();
 });
 
 /* Wildshape, Polymorph etc */
@@ -239,32 +240,7 @@ function hideUnusedElements() {
     }
 }
 
-export function isSheetOnly() {
 
-    let playerdata = game.settings.get("sheet-only", 'playerdata');
-    let user = game.user;
-    let userData = playerdata[user.id];
-
-    if (userData) {
-        const useSheetOnly = userData.display;
-
-        if (useSheetOnly) {
-            const screenWidthToIgnoreSheetOnly = userData.screenwidth;
-
-            if (screenWidthToIgnoreSheetOnly <= 0) {
-                // We ignore screen size
-                return true;
-            }
-
-            if (screen.width < screenWidthToIgnoreSheetOnly) {
-                // If the mobile value is set, the screen width must be smaller than the set value to get sheet-only activated
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
 
 function userInitialization() {
     return new Promise((resolve, reject) => {

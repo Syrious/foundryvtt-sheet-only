@@ -1,5 +1,5 @@
 import {moduleId} from "./settings.js";
-import {isSheetOnly} from "./index.js";
+import {isSheetOnly} from "./util";
 
 let chatPopout;
 
