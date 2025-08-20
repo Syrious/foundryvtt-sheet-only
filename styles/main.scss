@@ -1,7 +1,8 @@
 
 /*Sheet Only Styling*/
 .sheet-only-hide,
-.sheet-only-sheet > header {
+.sheet-only-sheet > header,
+.sheet-only-sheet:not(.dnd5e2) > .window-header{
   display: none;
 }
 
