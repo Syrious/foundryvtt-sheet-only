@@ -1,6 +1,6 @@
 import {openChat} from "../../chat.js";
 import { moduleId } from "../../settings.js";
-import {isSheetOnly} from "../../util";
+import {isSheetOnly} from "../../utils";
 import {actorStorage} from "../../actorStorage";
 
 export function dnd5eReadyHook() {

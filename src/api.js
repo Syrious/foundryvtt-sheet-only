@@ -1,5 +1,5 @@
 import { actorStorage } from "./actorStorage.js";
-import {isSheetOnly} from "./util";
+import {isSheetOnly} from "./utils";
 
 /* global game, Hooks*/
 export function setupApi() {

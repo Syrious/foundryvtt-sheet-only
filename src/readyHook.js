@@ -1,4 +1,4 @@
-import {isSheetOnly} from "./util";
+import {i18n, isSheetOnly} from "./utils";
 import {moduleId} from "./settings";
 import {enableCanvasDialog} from "./dialogs";
 import {getOwnedActors, rebuildActorList} from "./actorsList";
@@ -6,7 +6,6 @@ import {dnd5eReadyHook} from "./system-specific/dnd5e/dnd5e";
 import {addControlButtons} from "./addControlButtons";
 import * as FirefoxZoom from "./firefoxZoom";
 import * as DefaultZoom from "./defaultZoom";
-import {i18n} from "./utils";
 import {popupSheet} from "./sheet";
 import {currentSheet} from "./sheetHook";
 

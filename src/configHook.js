@@ -1,4 +1,4 @@
-import {isSheetOnly} from "./util";
+import {isSheetOnly} from "./utils";
 import {popupSheet} from "./sheet";
 
 export async function onCloseUserConfig(){

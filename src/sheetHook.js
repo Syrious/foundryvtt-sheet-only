@@ -1,5 +1,5 @@
-import {isSheetOnly} from "./util";
-import {getOwnedActors, switchToActor} from "./actorsList";
+import {isSheetOnly} from "./utils";
+import {getOwnedActors} from "./actorsList";
 
 export let currentSheet;
 
@@ -18,10 +18,10 @@ export async function onRenderActorSheetV2(app, _sheet, actor) {
         height: window.innerHeight
     });
 
-    if(app.classList){
+    if (app.classList) {
         app.classList.add('sheet-only-sheet');
 
-    }else{
+    } else {
         _sheet.addClass('sheet-only-sheet');
     }
 

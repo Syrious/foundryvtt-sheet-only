@@ -1,4 +1,4 @@
-import {isSheetOnly} from "./util";
+import {isSheetOnly} from "./utils";
 import {setupApi} from "./api";
 import {hideCanvas} from "./canvasHider";
 

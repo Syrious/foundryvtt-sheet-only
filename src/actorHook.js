@@ -1,4 +1,4 @@
-import {isSheetOnly} from "./util";
+import {isSheetOnly} from "./utils";
 import {isActorOwnedByUser, rebuildActorList, switchToActor} from "./actorsList";
 import {actorStorage} from "./actorStorage";
 
