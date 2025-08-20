@@ -1,5 +1,7 @@
 import {openChat} from "../../chat.js";
 import { moduleId } from "../../settings.js";
+import {isSheetOnly} from "../../util";
+import {actorStorage} from "../../actorStorage";
 
 export function dnd5eReadyHook() {
     if (!isDnd5e()) {
@@ -51,5 +53,15 @@ function onActivate(event) {
             break;
         }
         element = element.parentElement;
+    }
+}
+
+export function onTransformActor(fromActor, toActor){
+    if (!isSheetOnly()) {
+        return;
+    }
+
+    if (actorStorage.current?.id === fromActor.id) {
+        actorStorage.current = toActor;
     }
 }
