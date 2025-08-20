@@ -36,9 +36,7 @@
     "index.js"
   ],
   "styles": [
-    "styles/main.css",
-    "styles/dnd5e.css",
-    "styles/dsa5e.css"
+    "style.css"
   ],
   "socket": true,
   "bugs": "https://discord.gg/VMqndcyUGS",

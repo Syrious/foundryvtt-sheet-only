@@ -13,7 +13,7 @@ export default defineConfig({
     open: '/game',
     proxy: {
       // Serves static files from main Foundry server.
-      [`^(/${s_PACKAGE_ID}/(assets|lang|packs|styles|templates|style.css))`]: 'http://localhost:30000',
+      [`^(/${s_PACKAGE_ID}/(assets|lang|packs|templates))`]: 'http://localhost:30000',
 
       // All other paths besides package ID path are served from main Foundry server.
       [`^(?!/${s_PACKAGE_ID}/)`]: 'http://localhost:30000',
@@ -29,21 +29,33 @@ export default defineConfig({
     rollupOptions: {
       input: 'src/index.js',
       output: {
-        entryFileNames: 'index.js'
+        entryFileNames: 'index.js',
+        assetFileNames: (assetInfo) => {
+          // Rename the CSS file to style.css and place it in the root
+          if (assetInfo.name.endsWith('.css')) return 'style.css';
+          // Keep other assets in the assets folder
+          return 'assets/[name][extname]';
+        }
+
       },
       plugins: [
-        // Copies additional files
         copy({
           targets: [
             { src: 'module.json', dest: 'dist/'},
             { src: 'LICENSE', dest: 'dist/'},
-            { src: 'styles/*', dest: 'dist/styles'},
             { src: 'templates/*', dest: 'dist/templates'},
-            {src: 'lang/*', dest: 'dist/lang'},
+            { src: 'lang/*', dest: 'dist/lang'},
           ],
           hook: 'writeBundle',
         }),
       ],
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
     },
   },
 });

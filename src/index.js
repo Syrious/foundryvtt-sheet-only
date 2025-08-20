@@ -1,3 +1,4 @@
+import '../styles/style.scss'
 import {addControlButtons} from "./addControlButtons.js";
 import * as FirefoxZoom from "./firefoxZoom.js";
 import * as DefaultZoom from "./defaultZoom.js";
