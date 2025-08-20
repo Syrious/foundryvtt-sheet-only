@@ -1,5 +1,5 @@
 import { actorStorage } from "./actorStorage.js";
-import {isSheetOnly} from "./main.js";
+import {isSheetOnly} from "./index.js";
 /* global game, Hooks*/
 
 

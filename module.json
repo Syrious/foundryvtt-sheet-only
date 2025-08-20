@@ -33,9 +33,7 @@
     }
   ],
   "esmodules": [
-    "/scripts/main.js",
-    "/scripts/settings.js",
-    "/scripts/api.js"
+    "index.js"
   ],
   "styles": [
     "styles/main.css",

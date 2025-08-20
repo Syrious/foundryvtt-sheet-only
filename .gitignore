@@ -27,3 +27,6 @@ replay_pid*
 /packs/maps/LOCK
 /packs/maps/LOG
 /packs/maps/LOG.old
+
+node_modules
+dist
