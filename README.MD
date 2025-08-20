@@ -5,6 +5,10 @@
 
 [Discord](https://discord.gg/VMqndcyUGS)
 
+# CODE-ONLY REPO
+This repository is only meant to host the code. All new releases can be found [on my hub](https://hub.adventurer-backpack.com)
+
+
 # FoundryVTT Sheet-Only
 Designed for in-person sessions. Players can connect with their **tablets** to foundry and will see their character sheet and only their character sheet. 
 They can interact with the sheet, see all the relevant information, and the sheet gets updated if the GM makes any changes such as inventory, HP and so on.
