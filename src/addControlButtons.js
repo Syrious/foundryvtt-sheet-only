@@ -4,6 +4,7 @@ import {toggleFullscreen} from "./fullscreen.js";
 import {sheetOnlyPlusActive} from "./compatibility.js";
 import {toggleChat} from "./chat.js";
 import {displayActorListButton, toggleActorList} from "./actorsList.js";
+import {toggleJournal} from "./journal";
 
 export function useSmallScreenSettings() {
     const maxWithForSmallDisplays = 800;
@@ -120,11 +121,7 @@ function setupDefaultButtons(buttonContainer, increaseZoom, decreaseZoom, resetZ
 
     journalButton.on("click", function () {
         if (wasDragged()) return;
-        if (sheetOnlyPlusActive()) {
-            game.modules.get('sheet-only-plus').api.openJournal();
-        } else {
-            showPatreonDialog("Journal");
-        }
+        toggleJournal();
     });
 
     controllingButton.on("click", function () {

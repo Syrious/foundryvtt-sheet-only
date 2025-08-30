@@ -6,15 +6,22 @@ import {onTransformActor} from "./system-specific/dnd5e/dnd5e";
 import {onRenderActorSheetV2, onRenderContainerSheet} from "./sheetHook";
 import {onCreateActor, onDeleteActor} from "./actorHook";
 import {onCloseUserConfig, onRenderSettingsConfig} from "./configHook";
+import integrateLame from "./third-party-modules/lame";
 
 /* global Hooks */
-// CONFIG.debug.hooks = false;
+// CONFIG.debug.hooks = true;
 Hooks.on('init', async () => {
     onInit();
 });
 
 Hooks.on('setup', async () => {
     await onSetup();
+});
+
+Hooks.on("renderChatLog", async (_app, htmlPassed, _data_ChatInput) => {
+    if (game.modules.has("lame-messenger")) {
+        integrateLame(htmlPassed)
+    }
 });
 
 

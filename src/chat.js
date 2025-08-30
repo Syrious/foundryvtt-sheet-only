@@ -1,5 +1,6 @@
 import {moduleId} from "./settings.js";
 import {isSheetOnly} from "./utils";
+import {renderOnSidebar} from "./sidebar";
 
 let chatPopout;
 
@@ -15,7 +16,14 @@ function popoutChat() {
             // Call renderPopout on the tabApp
             tabApp.renderPopout().then(popout => {
                 chatPopout = popout;
+
                 chatPopout.classList.add("so-draggable");
+
+                if(window.innerWidth > 800) {
+                    renderOnSidebar(popout);
+                }
+
+                addListener();
 
                 const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
                 updateChatFullscreen(chatFullscreen, chatPopout)
@@ -29,8 +37,14 @@ function popoutChat() {
     }
 }
 
+function addListener() {
+    chatPopout.addEventListener('close', () => {
+        chatPopout = undefined;
+    });
+}
+
 export function openChat() {
-    if(!chatPopout){
+    if (!chatPopout) {
         popoutChat();
     }
 }
@@ -45,13 +59,13 @@ export function closeChat() {
 export function toggleChat() {
     if (chatPopout) {
         closeChat();
-    }else{
+    } else {
         popoutChat();
     }
 }
 
 export function updateChatFullscreen(fullscreen, chatPopout) {
-    if(!isSheetOnly()) return;
+    if (!isSheetOnly()) return;
 
     chatPopout.element.style.zIndex = 9999;
 
