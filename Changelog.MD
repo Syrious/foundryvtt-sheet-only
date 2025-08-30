@@ -1,4 +1,4 @@
-# 2.2.0
+# 2.2.1
 - Adds [Lucas's Awesome Messenger Extension ](https://foundryvtt.com/packages/lame-messenger) to chat controls
 - Journal is now available in the free version
 - Better position for chat and journal
