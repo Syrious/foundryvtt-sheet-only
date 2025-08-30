@@ -1,22 +1,8 @@
 import {moduleId} from "./settings.js";
 import {isSheetOnly} from "./utils";
+import {renderOnSidebar} from "./sidebar";
 
 let chatPopout;
-
-function addListener(sheetOnlySheet) {
-    if(!sheetOnlySheet) return;
-
-    chatPopout.addEventListener('close', () => {
-        chatPopout = undefined;
-        if (sheetOnlySheet) sheetOnlySheet.style.width = "100%";
-    });
-}
-
-function modifySheetSize(sheetOnlySheet) {
-    if(!sheetOnlySheet) return;
-
-    sheetOnlySheet.style.width = window.innerWidth - chatPopout.element.offsetWidth + "px";
-}
 
 function popoutChat() {
     // Retrieve the chat tab element
@@ -29,13 +15,13 @@ function popoutChat() {
         if (tabApp && typeof tabApp.renderPopout === 'function') {
             // Call renderPopout on the tabApp
             tabApp.renderPopout().then(popout => {
-                        chatPopout = popout;
-                const sheetOnlySheet = document.getElementsByClassName("sheet-only-sheet")[0]
+                chatPopout = popout;
 
                 chatPopout.classList.add("so-draggable");
-                addListener(sheetOnlySheet);
-                modifySheetSize(sheetOnlySheet);
 
+                renderOnSidebar(popout).then(() => {
+                    addListener()
+                })
 
                 const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
                 updateChatFullscreen(chatFullscreen, chatPopout)
@@ -49,8 +35,14 @@ function popoutChat() {
     }
 }
 
+function addListener() {
+    chatPopout.addEventListener('close', () => {
+        chatPopout = undefined;
+    });
+}
+
 export function openChat() {
-    if(!chatPopout){
+    if (!chatPopout) {
         popoutChat();
     }
 }
@@ -65,13 +57,13 @@ export function closeChat() {
 export function toggleChat() {
     if (chatPopout) {
         closeChat();
-    }else{
+    } else {
         popoutChat();
     }
 }
 
 export function updateChatFullscreen(fullscreen, chatPopout) {
-    if(!isSheetOnly()) return;
+    if (!isSheetOnly()) return;
 
     chatPopout.element.style.zIndex = 9999;
 
