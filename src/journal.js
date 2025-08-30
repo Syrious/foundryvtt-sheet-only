@@ -7,9 +7,11 @@ export function openJournal() {
         journalPopout = journalApp;
         journalPopout.classList.add("so-draggable");
 
-        renderOnSidebar(journalPopout).then(() => {
-            addListener()
-        });
+        if(window.innerWidth > 800) {
+            renderOnSidebar(journalPopout);
+        }
+
+        addListener();
     });
 }
 

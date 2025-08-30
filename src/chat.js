@@ -19,9 +19,11 @@ function popoutChat() {
 
                 chatPopout.classList.add("so-draggable");
 
-                renderOnSidebar(popout).then(() => {
-                    addListener()
-                })
+                if(window.innerWidth > 800) {
+                    renderOnSidebar(popout);
+                }
+
+                addListener();
 
                 const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
                 updateChatFullscreen(chatFullscreen, chatPopout)
