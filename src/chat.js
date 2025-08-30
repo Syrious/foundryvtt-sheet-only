@@ -3,6 +3,21 @@ import {isSheetOnly} from "./utils";
 
 let chatPopout;
 
+function addListener(sheetOnlySheet) {
+    if(!sheetOnlySheet) return;
+
+    chatPopout.addEventListener('close', () => {
+        chatPopout = undefined;
+        if (sheetOnlySheet) sheetOnlySheet.style.width = "100%";
+    });
+}
+
+function modifySheetSize(sheetOnlySheet) {
+    if(!sheetOnlySheet) return;
+
+    sheetOnlySheet.style.width = window.innerWidth - chatPopout.element.offsetWidth + "px";
+}
+
 function popoutChat() {
     // Retrieve the chat tab element
     const chatTabElement = document.querySelector('#chat');
@@ -14,8 +29,13 @@ function popoutChat() {
         if (tabApp && typeof tabApp.renderPopout === 'function') {
             // Call renderPopout on the tabApp
             tabApp.renderPopout().then(popout => {
-                chatPopout = popout;
+                        chatPopout = popout;
+                const sheetOnlySheet = document.getElementsByClassName("sheet-only-sheet")[0]
+
                 chatPopout.classList.add("so-draggable");
+                addListener(sheetOnlySheet);
+                modifySheetSize(sheetOnlySheet);
+
 
                 const chatFullscreen = game.settings.get(moduleId, "chat-fullscreen");
                 updateChatFullscreen(chatFullscreen, chatPopout)
