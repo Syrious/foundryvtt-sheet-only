@@ -19,7 +19,7 @@ Hooks.on('setup', async () => {
 });
 
 Hooks.on("renderChatLog", async (_app, htmlPassed, _data_ChatInput) => {
-    if (game.modules.has("lame-messenger")) {
+    if (game.modules.get("lame-messenger")?.active) {
         integrateLame(htmlPassed)
     }
 });
