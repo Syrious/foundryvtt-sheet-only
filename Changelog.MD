@@ -1,3 +1,7 @@
+# 2.2.2
+- Fixes issue with journal popout, which was not rendered on sidebar if sheet-only plus wasn't installed
+- Fixes styling issues with Tidy5e sheet
+
 # 2.2.1
 - Adds [Lucas's Awesome Messenger Extension ](https://foundryvtt.com/packages/lame-messenger) to chat controls
 - Journal is now available in the free version
