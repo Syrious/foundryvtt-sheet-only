@@ -16,13 +16,18 @@ function addListener(sheetOnlySheet) {
 
     renderedApp.addEventListener('close', () => {
         renderedApp = undefined;
-        if (sheetOnlySheet) sheetOnlySheet.style.width = "100%";
+        if (sheetOnlySheet) {
+            sheetOnlySheet.style.width = "100%"
+            sheetOnlySheet.style.maxWidth = "100%"
+        };
     });
 }
 
 function modifySheetSize(sheetOnlySheet) {
     if (!sheetOnlySheet) return;
 
+    console.warn(window.innerWidth, renderedApp.element.offsetWidth)
     sheetOnlySheet.style.width = window.innerWidth - renderedApp.element.offsetWidth + "px";
+    sheetOnlySheet.style.maxWidth = window.innerWidth - renderedApp.element.offsetWidth + "px";
 }
 

@@ -5,7 +5,7 @@ import {isSheetOnly} from "./utils";
 export function setupApi() {
     game.modules.get('sheet-only').api = {
         // This sheet-only version is compatible with the following sheet-only-plus version
-        plusCompatibility: "1.2.0",
+        plusCompatibility: "1.2.1",
 
         getCurrentActor: function () {
             return actorStorage.current;

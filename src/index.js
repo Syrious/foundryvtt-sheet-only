@@ -7,6 +7,7 @@ import {onRenderActorSheetV2, onRenderContainerSheet} from "./sheetHook";
 import {onCreateActor, onDeleteActor} from "./actorHook";
 import {onCloseUserConfig, onRenderSettingsConfig} from "./configHook";
 import integrateLame from "./third-party-modules/lame";
+import {onRenderJournalDirectory} from "./journal";
 
 /* global Hooks */
 // CONFIG.debug.hooks = true;
@@ -61,3 +62,7 @@ Hooks.once('closeUserConfig', async () => {
 Hooks.on('renderSettingsConfig', async (app, element, settings) => {
     await onRenderSettingsConfig(app, element, settings);
 })
+
+Hooks.on('renderJournalDirectory', async (app, html, data) => {
+    onRenderJournalDirectory(app, html);
+});
