@@ -1,4 +1,5 @@
 import {actorStorage, saveLastActorId} from "./actorStorage.js";
+import {getUserData} from "./utils";
 
 
 export function rebuildActorList() {
@@ -29,7 +30,13 @@ export function getOwnedActors() {
 }
 
 export function isActorOwnedByUser(actor) {
-    return actor.ownership[game.user.id] === 3;
+    const userData = getUserData();
+
+    if (userData?.allowObserver) {
+        return actor.ownership[game.user.id] >= 2
+    } else {
+        return actor.ownership[game.user.id] === 3
+    }
 }
 
 export function getActorElements() {

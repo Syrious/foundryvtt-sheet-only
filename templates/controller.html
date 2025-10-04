@@ -5,16 +5,15 @@
                 <ol class="items-list inventory-list">
                     <li class="items-header flexrow">
                         <h3 class="item-name flexrow noborder" style="margin-right:auto;">{{localize 'Sheet-Only.players'}}</h3>
-<!--                        <div class="item-control" title="{{localize 'Sheet-Only.hint'}}">-->
-<!--                            {{localize 'Sheet-Only.name'}}-->
-<!--                        </div>-->
                         <div>
                             <label>Use Sheet Only</label>
                         </div>
                         <div>
+                            <label>Allow Observer Role</label>
+                        </div>
+                        <div>
                             <label>Activation screen width</label>
                         </div>
-
                     </li>
 
                     <ol class="item-list">
@@ -27,6 +26,9 @@
                             </div>
                             <div class="item-controls flexcol">
                                 <input type="checkbox" {{#if this.display}}checked{{/if}} class="display" />
+                            </div>
+                            <div class="item-controls flexcol">
+                                <input type="checkbox" {{#if this.allowObserver}}checked{{/if}} class="allowObserver" />
                             </div>
                             <div class="item-controls flexcol">
                                 <input type="number" min="0" placeholder="Screen Width to activate" value={{this.screenwidth}} class="screenwidth" title="Only activate if the screen width is smaller than entered value. Set to 0 to not check screen width."/>

@@ -2,11 +2,13 @@ export function i18n(key) {
     return game.i18n.localize(key)
 }
 
-export function isSheetOnly() {
-
+export function getUserData() {
     let playerdata = game.settings.get("sheet-only", 'playerdata');
-    let user = game.user;
-    let userData = playerdata[user.id];
+    return playerdata[game.user.id];
+}
+
+export function isSheetOnly() {
+    let userData = getUserData();
 
     if (userData) {
         const useSheetOnly = userData.display;
