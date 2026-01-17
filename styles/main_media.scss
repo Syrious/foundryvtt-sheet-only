@@ -68,6 +68,10 @@
         transform: translateX(-50%);
         max-width: 100vw;
     }
+
+  .window-resize-handle {
+    display: none;
+  }
 }
 
 
