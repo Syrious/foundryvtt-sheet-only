@@ -1,3 +1,6 @@
+# 2.3.1
+- Fixes styling issues for smartphones
+
 # 2.2.2
 - Fixes issue with journal popout, which was not rendered on sidebar if sheet-only plus wasn't installed
 - Fixes styling issues with Tidy5e sheet
