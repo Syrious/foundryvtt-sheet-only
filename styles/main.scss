@@ -1,3 +1,8 @@
+/* This fixes the issue on iPads and iPhones where dialogs don't expend the full height of the content */
+.application .window-content {
+  flex: 1 1 auto;
+}
+
 /*Sheet Only Styling*/
 .sheet-only-hide {
   display: none;
