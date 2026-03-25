@@ -1,3 +1,6 @@
+# 2.3.4
+- Fixes the issue on iPads and iPhones where dialogs don't expend the full height of the content
+
 # 2.3.3
 - Fixes sheet header. Header buttons (except the close button) are now displayed. 
 
