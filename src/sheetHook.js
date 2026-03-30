@@ -3,10 +3,12 @@ import {getOwnedActors} from "./actorsList";
 
 export let currentSheet;
 
-export async function onRenderActorSheetV2(app, _sheet, actor) {
+export async function onRenderActorSheetV2(app, html, actor) {
     if (currentSheet?.id === app.id || !isSheetOnly()) {
         return;
     }
+
+    removeTooltips(html);
 
     currentSheet?.close();
     currentSheet = app;
@@ -22,12 +24,23 @@ export async function onRenderActorSheetV2(app, _sheet, actor) {
         app.classList.add('sheet-only-sheet');
 
     } else {
-        _sheet.addClass('sheet-only-sheet');
+        html.addClass('sheet-only-sheet');
     }
 
     $(".window-resizable-handle").hide();
 
     getTokenizerImage();
+}
+
+function removeTooltips(html) {
+    html.querySelectorAll('[data-tooltip]').forEach(el => {
+        el.removeAttribute('data-tooltip');
+        el.removeAttribute('data-tooltip-class');
+        el.removeAttribute('data-tooltip-direction');
+        el.removeAttribute('aria-label');
+        el.classList.remove('item-tooltip');
+        el.classList.remove('rollable');
+    });
 }
 
 export async function onRenderContainerSheet(app, html) {
