@@ -140,6 +140,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    padding: 0;
     max-height: 300px;
     overflow-y: auto;
 }
@@ -218,6 +219,10 @@
 }
 
 /*DnD 5th Edition v2 (3.0.0 and higher)*/
+.dnd5e-tooltip.dnd5e2{
+  display: none;
+}
+
 .sheet-only-sheet.dnd5e2.sheet.actor.character {
     min-width: unset;
     min-height: unset;
