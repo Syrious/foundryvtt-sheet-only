@@ -1,3 +1,7 @@
+# 2.3.5
+- Disables tooltips for dnd5e
+- Increases list item buttons slightly for better access
+
 # 2.3.4
 - Fixes the issue on iPads and iPhones where dialogs don't expend the full height of the content
 
