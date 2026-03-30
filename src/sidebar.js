@@ -26,7 +26,6 @@ function addListener(sheetOnlySheet) {
 function modifySheetSize(sheetOnlySheet) {
     if (!sheetOnlySheet) return;
 
-    console.warn(window.innerWidth, renderedApp.element.offsetWidth)
     sheetOnlySheet.style.width = window.innerWidth - renderedApp.element.offsetWidth + "px";
     sheetOnlySheet.style.maxWidth = window.innerWidth - renderedApp.element.offsetWidth + "px";
 }
