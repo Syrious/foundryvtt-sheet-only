@@ -65,6 +65,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+
+  button {
+    color: #ededed;
+  }
 }
 
 .sheet-only-container ~ .dialog {
