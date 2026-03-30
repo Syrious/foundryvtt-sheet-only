@@ -293,3 +293,13 @@
 .sheet-only-sheet > header a {
     display: none !important;
 }
+
+.sheet-only-sheet .item-detail.item-controls{
+  width: 100px;
+  right: 20px;
+
+  .config-button {
+    transform: scale(1.8);
+    padding: unset;
+  }
+}
