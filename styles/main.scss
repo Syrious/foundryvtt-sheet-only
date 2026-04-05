@@ -19,7 +19,7 @@
 
 .sheet-only-sheet {
   position: relative;
-  width: 100vw;
+  width: 100vw !important;
   height: 100dvh !important;
   transform-origin: top left;
   max-height: unset;

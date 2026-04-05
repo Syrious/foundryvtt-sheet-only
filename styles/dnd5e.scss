@@ -1,305 +1,82 @@
-/*DnD 5th Edition v1 (2.1.4 and lower)*/
-.dnd5e.sheet.actor.character.sheet-only-sheet{
-    min-width: auto;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header img.profile{
-    border: none;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .header-details{
-    border-left: 2px groove #eeede0;
-}
-
-@media (max-width: 800px) {
-    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header {
-        zoom: 0.85;
-    }
-
-    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes {
-        zoom: 1.15
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.inventory {
-        zoom: 1.1
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.features {
-        zoom: 1.1
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .tab.spellbook {
-        zoom: 1.1
-    }
-}
-
-.dnd5e.sheet.actor.character.sheet-only-sheet .tab.attributes{
-    overflow: auto;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation{
-    flex: 0 0 60px;
-    flex-wrap: wrap;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation .item{
-    flex: 1 0 25%;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .sheet-header .attributes .attribute{
-    flex: 1 0 33%;
-    border:none;
-    border-bottom: 2px groove #eeede0;
-    border-left: 2px groove #eeede0;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .skills-list{
-    flex: auto;
-}
-.dnd5e.sheet.actor.character.sheet-only-sheet .center-pane{
-    flex: 1 0 100%;
-    overflow-y: visible;
-}
-
-@media (max-width: 800px) {
-    /** General Responsive Changes */
-    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary {
-        height: auto;
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li {
-        min-width: 80px;
-        min-width: min-content;
-        height: auto;
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .header-details .summary > li input {
-        min-width: 80px;
-    }
-
-    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation.tabs {
-        column-gap: 24px;
-        row-gap: 5px;
-        padding-bottom: 10px;
-    }
-
-    .dnd5e.sheet.actor.character.sheet-only-sheet .sheet-navigation .item {
-        margin: 0;
-    }
-
-    /** Inventory Responsive Changes */
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency {
-        margin: 0;
-        gap: 2px;
-    }
-
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > h3 {
-        white-space: nowrap;
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .denomination {
-        margin-inline-start: 10px;
-        font-size: 0;
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .denomination::after {
-        font-size: 12px;
-        content: "";
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .pp::after {
-        content: "P";
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .gp::after {
-        content: "G";
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .ep::after {
-        content: "E";
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .sp::after {
-        content: "S";
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > .cp::after {
-        content: "C";
-    }
-
-    .dnd5e.sheet.actor.character.sheet-only-sheet .currency > input[type="text"] {
-        margin-left:0px;
-        max-inline-size: 30px;
-        height: 30px;
-    }
-
-    /** Spellbook Responsive Changes */
-    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters {
-        justify-content: flex-start;
-
-    }
-    .dnd5e.sheet.actor.character.sheet-only-sheet .spellbook-filters > .filter-list {
-        padding: 10px 0;
-        max-width: none;
-        flex-basis: 100%;
-        max-width: 500px;
-    }
-}
-
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    color: #7a7971;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 300px;
-    overflow-y: auto;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-name {
-    flex: 1;
-    margin: 0;
-    overflow: hidden;
-    font-size: 13px;
-    text-align: left;
-    align-items: center;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-name h3, .sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-name h4 {
-    margin: 0;
-    white-space: nowrap;
-    overflow-x: hidden;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item {
-    align-items: center;
-    padding: 0 2px;
-    border-bottom: 1px solid #c9c7b8;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item:last-child {
-    border-bottom: none;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name {
-    color: #191813;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name .item-image {
-    flex: 0 0 30px;
-    height: 30px;
-    width: 30px;
-    background-size: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    margin-right: 5px;
-    text-align: center;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item .item-name .item-image {
-    flex: 0 0 48px;
-    width: 48px;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-controls {
-    flex: 0 0 90px;
-    text-align: center;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-controls .item-control {
-    flex: 0 0 25px;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .item-controls > input {
-    margin: auto;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .items-header {
-    height: 28px;
-    margin: 2px 0;
-    padding: 0;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.05);
-    border: 2px groove #eeede0;
-    font-weight: bold;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .items-header .item-control {
-    font-weight: normal;
-    flex: 0 0 90px;
-    font-size: 12px;
-    text-align: center;
-}
-.sheet-only-container .dnd5e.sheet.sheet-only-sheet .items-list .items-header h3 {
-    padding-left: 5px;
-    font-family: "Modesto Condensed", "Palatino Linotype", serif;
-    font-weight: 700;
-    text-align: left;
-    font-size: 16px;
-    min-width: 60px;
-}
-
-/*DnD 5th Edition v2 (3.0.0 and higher)*/
 .sheet-only-sheet.dnd5e2.sheet.actor.character {
-    min-width: unset;
-    min-height: unset;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character .tab-details .tab-body {
-    padding-top: 75px;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs {
-    flex-direction: row; 
-    gap: 0.1rem;
-    z-index: 1; 
+  min-width: unset;
+  min-height: unset;
+
+  .item-detail.item-controls {
+    width: 100px;
+    right: 20px;
+
+    .config-button {
+      transform: scale(1.8);
+      padding: unset;
+    }
+  }
+
+  nav.tabs {
+    flex-direction: row;
+    z-index: 1;
     right: 20rem;
     left: auto;
     top: 104px;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item {
-    justify-content: center;
-    padding-right: 0;
-    border-radius: 8px;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item.active,
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item:hover {
-    margin-left: 0;
-}
 
-.sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-header > .left .document-name {
-    font-size: 2.4rem;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character .sheet-header > .right > div:last-child {
-    margin-top: -1rem;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows > .top {
-    display: none;
-}
-.sheet-only-sheet.dnd5e2.sheet.actor.character .ability-scores .rows {
-    padding: 10px 0;
-    margin-top: 8.75rem;
-    backdrop-filter: blur(2px);
-    border-radius: 0 0 10px 10px;
-}
+    border-left: 1px solid var(--dnd5e-color-gold);
+    border-radius: 5px;
+    width: auto;
+    gap: .5rem;
 
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item {
-    justify-content: center;
-    padding-right: 0;
+    .item {
+      justify-content: center;
+      padding-right: 0;
+      border-radius: 8px;
+      position: relative;
+      border: none;
+      background: var(--dnd5e-color-black);
+      color: var(--dnd5e-color-gold);
+      height: 40px;
+      margin: 0;
+      box-shadow: 0 0 6px var(--dnd5e-shadow-45);
+      font-size: var(--font-size-14);
+      display: grid;
+      place-content: center;
+      line-height: normal;
 
-    position: relative;
-    border: none;
-    border-radius: 4px;
-    background: var(--dnd5e-color-black);
-    color: var(--dnd5e-color-gold);
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    box-shadow: 0 0 6px var(--dnd5e-shadow-45);
-    font-size: var(--font-size-14);
-    display: grid;
-    place-content: center;
-    line-height: normal;
-}
+      &.control {
+        min-width: 40px;
+      }
 
-.sheet-only-sheet.dnd5e2.sheet.actor.character nav.tabs > .item::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    border: 1px solid var(--dnd5e-color-gold);
-    border-radius: 3px;
-}
 
-.sheet-only-sheet > header {
-    display: flex;
-}
+      ::after {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        border: 1px solid var(--dnd5e-color-gold);
+        border-radius: 3px;
+      }
+    }
+  }
 
-.sheet-only-sheet > header a {
-    display: none !important;
-}
+  .tab-details .tab-body {
+    padding-top: 75px;
+  }
 
-.sheet-only-sheet .item-detail.item-controls{
-  width: 100px;
-  right: 20px;
+  .sheet-header {
+    .left {
+      .document-name {
+        font-size: 2.4rem;
+      }
+    }
+  }
 
-  .config-button {
-    transform: scale(1.8);
-    padding: unset;
+  .ability-scores {
+    .rows {
+      padding: 10px 0;
+      margin-top: 8.75rem;
+      backdrop-filter: blur(2px);
+      border-radius: 0 0 10px 10px;
+
+      .top {
+        display: none;
+      }
+    }
   }
 }
