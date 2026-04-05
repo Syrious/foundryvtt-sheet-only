@@ -25,7 +25,7 @@ export default defineConfig({
   build: {
     outDir: __dirname + "/dist",
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
     minify: false,
     rollupOptions: {
       input: 'src/index.js',

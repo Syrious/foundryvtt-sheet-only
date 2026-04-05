@@ -3,12 +3,11 @@ import {setupApi} from "./api";
 import {hideCanvas} from "./canvasHider";
 
 export async function onSetup() {
-    if (!isSheetOnly()) {
-        return;
-    }
-
-    await setupClient();
     setupApi();
+
+    if (isSheetOnly()) {
+        await setupClient();
+    }
 }
 
 async function setupClient() {
