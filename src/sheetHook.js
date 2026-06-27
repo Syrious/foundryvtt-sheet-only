@@ -33,14 +33,19 @@ export async function onRenderActorSheetV2(app, html, actor) {
 }
 
 function removeTooltips(html) {
-    html.querySelectorAll('[data-tooltip]').forEach(el => {
-        el.removeAttribute('data-tooltip');
-        el.removeAttribute('data-tooltip-class');
-        el.removeAttribute('data-tooltip-direction');
-        el.removeAttribute('aria-label');
-        el.classList.remove('item-tooltip');
-        el.classList.remove('rollable');
-    });
+    if(!html.querySelectorAll) return;
+
+    let dataToolTips = html.querySelectorAll('[data-tooltip]');
+    if(dataToolTips?.length > 0) {
+        dataToolTips.forEach(el => {
+            el.removeAttribute('data-tooltip');
+            el.removeAttribute('data-tooltip-class');
+            el.removeAttribute('data-tooltip-direction');
+            el.removeAttribute('aria-label');
+            el.classList.remove('item-tooltip');
+            el.classList.remove('rollable');
+        });
+    }
 }
 
 export async function onRenderContainerSheet(app, html) {
