@@ -1,3 +1,11 @@
+# 2.4.2
+- Fixes: PF2E – As a non-Sheet-Only user, opening the spell preparation sheet was handled as if the user was a sheet-only user.
+- Fixes: Crash for some systems (like pf2e) regarding elements not having tooltips
+
+# 2.4.1
+- Foundry V14 compatibility
+- Fixes styling issues with dnd5e
+
 # 2.3.5
 - Disables tooltips for dnd5e
 - Increases list item buttons slightly for better access
