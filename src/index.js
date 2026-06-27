@@ -10,7 +10,7 @@ import integrateLame from "./third-party-modules/lame";
 import {onRenderJournalDirectory} from "./journal";
 
 /* global Hooks */
-// CONFIG.debug.hooks = true;
+// CONFIG.debug.hooks = !CONFIG.debug.hooks;
 Hooks.on('init', async () => {
     onInit();
 });
