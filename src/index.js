@@ -8,6 +8,7 @@ import {onCreateActor, onDeleteActor} from "./actorHook";
 import {onCloseUserConfig, onRenderSettingsConfig} from "./configHook";
 import integrateLame from "./third-party-modules/lame";
 import {onRenderJournalDirectory} from "./journal";
+import {isSheetOnly} from "./utils";
 
 /* global Hooks */
 // CONFIG.debug.hooks = !CONFIG.debug.hooks;
@@ -40,7 +41,7 @@ Hooks.on('renderActorSheetV2', async (app, _sheet, {actor}) => {
 });
 
 Hooks.on('renderActorSheet', async (app, /** @type {jQuery} */ _sheet, {actor}) => {
-    if(game.system.id === "pf2e"){
+    if(game.system.id === "pf2e" && isSheetOnly()){
         if(_sheet.hasClass('spellcasting-entry') && _sheet.hasClass('preparation')) {
             _sheet.addClass("sheet-only-sheet");
             return;
