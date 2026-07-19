@@ -1,3 +1,6 @@
+# 2.4.3
+- Adds backward compatibility for FoundryVTT 13
+
 # 2.4.2
 - Fixes: PF2E – As a non-Sheet-Only user, opening the spell preparation sheet was handled as if the user was a sheet-only user.
 - Fixes: Crash for some systems (like pf2e) regarding elements not having tooltips
