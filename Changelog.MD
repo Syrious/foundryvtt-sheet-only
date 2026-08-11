@@ -1,3 +1,7 @@
+# 2.4.4
+- Improves zoom behavior
+- Makes content on smaller devices scrollable (Tested with Pf2e and Dnd5e)
+
 # 2.4.3
 - Adds backward compatibility for FoundryVTT 13
 
