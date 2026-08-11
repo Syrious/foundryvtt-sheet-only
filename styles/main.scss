@@ -17,6 +17,11 @@
   display: none;
 }
 
+.sheet-only-sheet .window-content {
+  overflow: auto !important;
+  scroll-behavior: smooth !important;
+}
+
 .sheet-only-sheet {
   position: relative;
 
