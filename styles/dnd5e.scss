@@ -11,6 +11,9 @@
       padding: unset;
     }
   }
+  .main-content > * {
+    overflow-y: auto !important;
+  }
 
   nav.tabs {
     flex-direction: row;
