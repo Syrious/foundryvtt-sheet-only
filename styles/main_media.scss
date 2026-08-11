@@ -37,9 +37,15 @@
         display: none;
     }
 
-    .sheet-only-sheet {
+    .window-app.sheet-only-sheet {
         margin-top: 0;
         margin-bottom: 0;
+        //
+        //min-width: auto !important;
+        //width: 100% !important;
+        //height: calc(100% - 25px) !important;
+        max-width: unset;
+        top: 0 !important;
     }
 
     /* Item dialog improvements */

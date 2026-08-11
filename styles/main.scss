@@ -19,10 +19,19 @@
 
 .sheet-only-sheet {
   position: relative;
-  width: 100vw !important;
-  height: 100dvh !important;
+
+  --zoom-level: 1;
+  zoom: var(--zoom-level);
+
+  width: calc(100dvw / var(--zoom-level)) !important;
+  height: calc((100dvh - 20px) / var(--zoom-level)) !important;
+
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+
   transform-origin: top left;
-  max-height: unset;
+  max-height: unset !important;
 }
 
 .sheet-only-container {
