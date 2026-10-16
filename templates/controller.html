@@ -14,6 +14,9 @@
                         <div>
                             <label>Activation screen width</label>
                         </div>
+                        <div>
+                            <label>Activate on Portrait View</label>
+                        </div>
                     </li>
 
                     <ol class="item-list">
@@ -32,6 +35,9 @@
                             </div>
                             <div class="item-controls flexcol">
                                 <input type="number" min="0" placeholder="Screen Width to activate" value={{this.screenwidth}} class="screenwidth" title="Only activate if the screen width is smaller than entered value. Set to 0 to not check screen width."/>
+                            </div>
+                            <div class="item-controls flexcol">
+                                <input type="checkbox" {{#if this.activateOnPortrait}}checked{{/if}} class="activateOnPortrait" title="Triggers sheet-only mode if the screen orientation is portrait." />
                             </div>
                         </li>
                         {{/each}}

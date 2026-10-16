@@ -15,13 +15,15 @@ export function isSheetOnly() {
 
         if (useSheetOnly) {
             const screenWidthToIgnoreSheetOnly = userData.screenwidth;
+            const activateOnPortrait = userData.activateOnPortrait;
+            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-            if (screenWidthToIgnoreSheetOnly <= 0) {
+            if ((!activateOnPortrait || isPortrait) && screenWidthToIgnoreSheetOnly <= 0) {
                 // We ignore screen size
                 return true;
             }
 
-            if (screen.width < screenWidthToIgnoreSheetOnly) {
+            if ((!activateOnPortrait || isPortrait) && screen.width < screenWidthToIgnoreSheetOnly) {
                 // If the mobile value is set, the screen width must be smaller than the set value to get sheet-only activated
                 return true;
             }

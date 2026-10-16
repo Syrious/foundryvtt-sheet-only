@@ -173,6 +173,7 @@ class PlayerSelectionMenu extends FormApplication {
                     display: false,
                     mobile: false,
                     screenwidth: 0,
+                    activateOnPortrait: false,
                     mirror: false,
                     selection: false
                 }, data);
@@ -194,6 +195,7 @@ class PlayerSelectionMenu extends FormApplication {
             data.mobile = $('.mobile', this).is(':checked');
             data.screenwidth = $('.screenwidth', this).val() || 0;
             data.allowObserver = $('.allowObserver', this).is(':checked');
+            data.activateOnPortrait = $('.activateOnPortrait', this).is(':checked');
 
             playerdata[id] = data;
         });
