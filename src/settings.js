@@ -154,7 +154,7 @@ class PlayerSelectionMenu extends FormApplication {
             id: "sheet-only",
             title: "Sheet-Only",
             template: "./modules/sheet-only/templates/controller.html",
-            width: 500,
+            width: 600,
             height: "auto",
             popOut: true
         });

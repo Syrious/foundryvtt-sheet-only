@@ -147,3 +147,7 @@ body.hidden-canvas canvas#board {
   right: 0;
   top: 0;
 }
+
+.sheet-only.settings .items-header{
+  min-width: 100%;
+}

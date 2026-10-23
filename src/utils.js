@@ -14,17 +14,14 @@ export function isSheetOnly() {
         const useSheetOnly = userData.display;
 
         if (useSheetOnly) {
-            const screenWidthToIgnoreSheetOnly = userData.screenwidth;
-            const activateOnPortrait = userData.activateOnPortrait;
-            const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            const sheetOnlyScreenWidthLimit = userData.screenwidth;
+            const activateInPortraitOnly = userData.activateOnPortrait;
+            const screenIsPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-            if ((!activateOnPortrait || isPortrait) && screenWidthToIgnoreSheetOnly <= 0) {
-                // We ignore screen size
-                return true;
-            }
+            const orientationAllowsSheetOnly = !activateInPortraitOnly || screenIsPortrait;
+            const screenWidthAllowsSheetOnly = sheetOnlyScreenWidthLimit <= 0 || screen.width < sheetOnlyScreenWidthLimit;
 
-            if ((!activateOnPortrait || isPortrait) && screen.width < screenWidthToIgnoreSheetOnly) {
-                // If the mobile value is set, the screen width must be smaller than the set value to get sheet-only activated
+            if (orientationAllowsSheetOnly && screenWidthAllowsSheetOnly) {
                 return true;
             }
         }

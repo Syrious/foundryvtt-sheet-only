@@ -1,53 +1,85 @@
-<div class="sheet-only flexcol" style="height:100%;">
-    <div class="dialog-content" style="max-height: calc(100% - 32px);">
-        <form style="height:100%;" class="flexcol">
+<div class="sheet-only sheet-only-settings">
+    <div class="dialog-content sheet-only-settings__content">
+        <form class="sheet-only-settings__form">
             <div class="sheet">
-                <ol class="items-list inventory-list">
-                    <li class="items-header flexrow">
-                        <h3 class="item-name flexrow noborder" style="margin-right:auto;">{{localize 'Sheet-Only.players'}}</h3>
-                        <div>
-                            <label>Use Sheet Only</label>
-                        </div>
-                        <div>
-                            <label>Allow Observer Role</label>
-                        </div>
-                        <div>
-                            <label>Activation screen width</label>
-                        </div>
-                        <div>
-                            <label>Activate on Portrait View</label>
-                        </div>
+                <ol class="items-list inventory-list sheet-only-settings__list">
+                    <li class="items-header sheet-only-settings__grid sheet-only-settings__header">
+                        <label class="item-name noborder sheet-only-settings__player-heading">
+                            {{localize 'Sheet-Only.players'}}
+                        </label>
+                        <label>Use Sheet Only</label>
+                        <label>Allow Observer Role</label>
+                        <label>Activate only in portrait view</label>
+
+                        <label>Activation screen width</label>
                     </li>
 
-                    <ol class="item-list">
-                        {{#each players}}
-                        <li class="item flexrow" data-item-id="{{this.id}}">
-                            <div class="item-name flexrow rollable">
-                                <h4>
-                                    {{this.name}}
-                                </h4>
-                            </div>
-                            <div class="item-controls flexcol">
-                                <input type="checkbox" {{#if this.display}}checked{{/if}} class="display" />
-                            </div>
-                            <div class="item-controls flexcol">
-                                <input type="checkbox" {{#if this.allowObserver}}checked{{/if}} class="allowObserver" />
-                            </div>
-                            <div class="item-controls flexcol">
-                                <input type="number" min="0" placeholder="Screen Width to activate" value={{this.screenwidth}} class="screenwidth" title="Only activate if the screen width is smaller than entered value. Set to 0 to not check screen width."/>
-                            </div>
-                            <div class="item-controls flexcol">
-                                <input type="checkbox" {{#if this.activateOnPortrait}}checked{{/if}} class="activateOnPortrait" title="Triggers sheet-only mode if the screen orientation is portrait." />
-                            </div>
-                        </li>
-                        {{/each}}
-                    </ol>
+                    <li>
+                        <ol class="item-list sheet-only-settings__players">
+                            {{#each players}}
+                            <li class="item sheet-only-settings__grid sheet-only-settings__row" data-item-id="{{this.id}}">
+                                <div class="item-name rollable sheet-only-settings__player-name">
+                                    <h4>{{this.name}}</h4>
+                                </div>
+
+                                <div class="item-controls sheet-only-settings__control">
+                                    <input
+                                            type="checkbox"
+                                            class="display"
+                                            {{#if this.display}}checked{{/if}}
+                                    />
+                                </div>
+
+                                <div class="item-controls sheet-only-settings__control">
+                                    <input
+                                            type="checkbox"
+                                            class="allowObserver"
+                                            {{#if this.allowObserver}}checked{{/if}}
+                                    title="Allow players with role observer to use sheet only"
+                                    />
+                                </div>
+
+                                <div class="item-controls sheet-only-settings__control">
+                                    <input
+                                            type="checkbox"
+                                            class="activateOnPortrait"
+                                            {{#if this.activateOnPortrait}}checked{{/if}}
+                                    title="Triggers sheet-only mode only if the screen orientation is portrait."
+                                    />
+                                </div>
+
+                                <div class="item-controls sheet-only-settings__control">
+                                    <input
+                                            type="number"
+                                            class="screenwidth sheet-only-settings__screen-width"
+                                            min="0"
+                                            placeholder="0"
+                                            value="{{this.screenwidth}}"
+                                            title="Only activate if the screen width is smaller than entered value. Set to 0 to not check screen width."
+                                    />
+                                </div>
+
+
+                            </li>
+                            {{/each}}
+                        </ol>
+                    </li>
                 </ol>
             </div>
         </form>
     </div>
-    <hr style="width: 60%;flex: 0 0 1px;" />
-    <div class="dialog-buttons" style="flex: 0 0 30px;">
-        <button type="submit" name="submit" class="dialog-buttons save" data-button="request"><i class="far fa-save"></i>{{localize 'Sheet-Only.button.save'}}</button>
+
+    <hr class="sheet-only-settings__divider" />
+
+    <div class="dialog-buttons sheet-only-settings__buttons">
+        <button
+                type="submit"
+                name="submit"
+                class="dialog-buttons save"
+                data-button="request"
+        >
+            <i class="far fa-save"></i>
+            {{localize 'Sheet-Only.button.save'}}
+        </button>
     </div>
 </div>
