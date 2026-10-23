@@ -1,3 +1,6 @@
+# 2.4.5
+- Adds new setting that triggers Sheet-Only-Mode only if the player uses portrait mode. Thanks to [Zalatos](https://github.com/Zalatos) for the contribution.
+
 # 2.4.4
 - Improves zoom behavior
 - Makes content on smaller devices scrollable (Tested with Pf2e and Dnd5e)
